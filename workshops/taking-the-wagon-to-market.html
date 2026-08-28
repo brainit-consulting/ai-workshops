@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Workshop #004 — Inside the Tack Room</title>
+<title>Workshop #010 — Taking the Wagon to Market</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='24 -8 140 126'%3E%3Crect x='24' y='-8' width='140' height='126' fill='%23f4ede1'/%3E%3Cpath fill='%23241d16' d='M112,40 C150,66 196,102 238,154 L262,132 C216,82 164,40 124,16 Z'/%3E%3Cpath fill='%23241d16' d='M130,40 C120,20 98,14 80,28 L38,92 C33,104 43,114 56,108 L102,88 C122,79 136,58 130,40 Z'/%3E%3Cpath fill='%23241d16' d='M112,30 L104,2 L128,24 Z'/%3E%3Cpath fill='%23241d16' d='M132,32 L134,6 L152,30 Z'/%3E%3Ccircle cx='101' cy='45' r='6' fill='%23f4ede1'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -690,14 +690,14 @@ details.demo h4:first-of-type{margin-top:.4em;}
 </svg>
 
 <header class="runner">
-  <a class="brand" href="index.html" title="All workshops"><span class="wsnum">#004</span> Inside the <em>Tack</em> Room</a>
+  <a class="brand" href="index.html" title="All workshops"><span class="wsnum">#010</span> Taking the Wagon to <em>Market</em></a>
   <nav>
     <a href="#contents">Contents</a>
-    <a href="#ch1">Tack Room</a>
-    <a href="#ch2">The Three</a>
-    <a href="#ch3">Terminal</a>
-    <a href="#ch4">Risks</a>
-    <a href="#ch5">Homework</a>
+    <a href="#ch1">The Barn</a>
+    <a href="#ch2">The Cloud</a>
+    <a href="#ch3">Ring &amp; Road</a>
+    <a href="#ch4">Going Live</a>
+    <a href="#ch5">Once Public</a>
     <a href="#ch6">FAQ</a>
     <a href="#glossary">Glossary</a>
   </nav>
@@ -705,7 +705,7 @@ details.demo h4:first-of-type{margin-top:.4em;}
     <button type="button" id="smaller" aria-label="Smaller text">A−</button>
     <button type="button" id="bigger" aria-label="Larger text">A+</button>
     <button type="button" id="printbtn" class="wide">Print</button>
-    <a class="wide" href="inside-the-tack-room.html" download>Download</a>
+    <a class="wide" href="taking-the-wagon-to-market.html" download>Download</a>
   </span>
 </header>
 
@@ -714,41 +714,51 @@ details.demo h4:first-of-type{margin-top:.4em;}
 <!-- ============================ COVER ============================ -->
 <section class="cover">
   <div class="cover-text">
-    <span class="kicker"><span class="wsnum">Workshop&nbsp;#004</span> &middot; lids up &mdash; bring your laptop</span>
-    <h1>The <span class="ai">Tack</span><br>Room<span class="of">where the work actually happens</span></h1>
-    <p class="deck">The building where the gear hangs ready, the workbench is, and the horse can finally be put to work. Today we go inside and fit it out.</p>
-    <p class="promise"><strong>By the end of today</strong> you will have the editor installed, you will know the three parts of the screen worth looking at, and the black panel will have stopped being frightening.</p>
+    <span class="kicker"><span class="wsnum">Workshop&nbsp;#010</span> &middot; <span class="lvl">Intermediate</span> lids down &mdash; watch it go live</span>
+    <h1>Taking the Wagon<br>to <span class="ai">Market</span><span class="of">nobody buys from your barn</span></h1>
+    <p class="deck">Everything you have built in nine sessions can be seen by exactly one person. Today that stops being true, and it takes about forty seconds.</p>
+    <p class="promise"><strong>By the end of today</strong> you will have something of your own at a real address on the internet, and you will know how to take it back down again in two seconds.</p>
     <p class="imprint">
       Presented by Emile du Toit<br>
       <a class="firm" href="https://brainitconsulting.com">brainitconsulting.com</a>
     </p>
   </div>
   <div class="cover-art">
-    <svg viewBox="0 0 520 360" role="img" aria-label="A horse in bridle and saddle"><use href="#horse-body"/><use href="#tack-bridle"/><use href="#tack-saddle"/></svg>
+    <svg viewBox="0 0 820 360" role="img" aria-label="A horse in full working harness pulling a covered wagon">
+      <path d="M440,322 L800,322" stroke="#c9b99f" stroke-width="3" fill="none"/>
+      <path d="M500,196 Q648,102 796,196" fill="#b8391c"/>
+      <rect x="500" y="196" width="296" height="68" rx="4" fill="#eadfcc" stroke="#5b4d3f" stroke-width="5"/>
+      <path d="M500,244 L430,268" stroke="#5b4d3f" stroke-width="8" fill="none" stroke-linecap="round"/>
+      <circle cx="560" cy="286" r="36" fill="#241d16"/><circle cx="560" cy="286" r="12" fill="#eadfcc"/>
+      <circle cx="744" cy="286" r="36" fill="#241d16"/><circle cx="744" cy="286" r="12" fill="#eadfcc"/>
+      <use href="#horse-body"/><use href="#tack-bridle"/><use href="#tack-saddle"/><use href="#tack-bags"/>
+    </svg>
   </div>
 </section>
 <!-- ============================ RECAP ============================ -->
 <section class="page-recap">
   <div class="recap">
     <span class="rc-label">Where we got to</span>
-    <p>Last session made the argument. Today we act on it.</p>
+    <p>Here is an overview of the last two sessions in five lines.</p>
     <ul>
-      <li><strong>The chat window has a ceiling.</strong> It cannot see your files, nothing persists, and you are the one carrying everything back and forth.</li>
-      <li><strong>A file is a thing with a name and contents.</strong> A folder is a box holding files.</li>
-      <li><strong>One folder, one job.</strong> Draw a line round the work, and that line is the boundary everything else depends on.</li>
+      <li><strong>You wrote a map</strong> &mdash; what the thing must do, before anybody builds it.</li>
+      <li><strong>You know what a well is</strong>, and when a folder of files is still the right answer.</li>
+      <li><strong>Rows and columns</strong>, one fact in one place, and a column you never kept is a question you cannot ask.</li>
+      <li><strong>You have a free Vercel account</strong> from last session's homework, which is most of today already done.</li>
+      <li><strong>And all of it is still on one laptop</strong>, visible to one person.</li>
     </ul>
-    <p>You were asked to make one folder with something real in it. If you did, open it now. If you didn't, make one in the next two minutes &mdash; any folder, any two files.</p>
+    <p>Today we fix the last part.</p>
   </div>
 </section>
 <!-- ============================ CONTENTS ============================ -->
 <section class="contents" id="contents">
   <h3 style="margin-top:0">Contents</h3>
   <ol>
-    <li><a href="#ch1">The tack room</a><span class="gloss">What an editor actually is.</span></li>
-    <li><a href="#ch2">Three things you'll actually look at</a><span class="gloss">Ignore the rest of the screen.</span></li>
-    <li><a href="#ch3">Talking to the stable</a><span class="gloss">The terminal, gently.</span></li>
-    <li><a href="#ch4">What can go wrong in here</a><span class="gloss">Almost nothing. And the one thing that can.</span></li>
-    <li><a href="#ch5">Before the next session</a><span class="gloss">Twenty minutes at your own kitchen table.</span></li>
+    <li><a href="#ch1">Nobody buys from your barn</a><span class="gloss">The gap between working and reachable.</span></li>
+    <li><a href="#ch2">What &ldquo;on the internet&rdquo; actually is</a><span class="gloss">There is no cloud. There is a computer.</span></li>
+    <li><a href="#ch3">Paddock, training ring, open road</a><span class="gloss">Three places, one public.</span></li>
+    <li><a href="#ch4">Putting it out, and taking it back</a><span class="gloss">Forty seconds out. Two seconds back.</span></li>
+    <li><a href="#ch5">What changes once it is public</a><span class="gloss">Four things, and one of them matters most.</span></li>
   </ol>
   <p style="margin-top:1.4rem; max-width:var(--measure); color:var(--ink-soft); font-style:italic;">
     Then the questions this always raises, the glossary so far, and the picture to photograph.
@@ -758,206 +768,331 @@ details.demo h4:first-of-type{margin-top:.4em;}
 <section class="chapter" id="ch1">
   <div class="chapter-head">
     <div class="chapter-num">01</div>
-    <h2>The tack room</h2>
-    <p class="standfirst">A window onto that folder. Not a place where you type code.</p>
+    <h2>Nobody buys from your barn</h2>
+    <p class="standfirst">Everything you have built so far can be seen by exactly one person.</p>
   </div>
 
-  <p class="dropcap">The thing everyone installs at this point is called a code editor, and the name puts people off before they have seen it. Nearly all of them use one called <em class="term">VS Code</em>. Free, made by Microsoft, and despite the name you are not going to be writing code in it.</p>
+  <p class="dropcap">Nine sessions in, you have a folder, an assistant that works in it, house rules, an undo, a map and a well. And every single bit of it lives on one laptop, in one house, and is visible to one person, who is you.</p>
 
-  <p>What it actually is: a single window that shows you one folder, everything in it, and gives the assistant somewhere to stand. That is why it is the tack room. It is not where the work is done — the horse does the work. It is where you can see all the gear at once, reach any of it, and watch what is being taken off the wall.</p>
+  <p>That is not a criticism. It is the normal shape of things at this point, and it is where a great many people quietly stop &mdash; not because the building got hard, but because the last step never got taken and the thing slowly stopped mattering.</p>
 
-  <p>You could do all of this without ever opening it. People do. But then you are trusting the assistant's account of what it did, instead of looking. Opening the tack room means you can see the shelf it just changed.</p>
+  <p>The gap is smaller than it looks. It is one command, or one button, and about forty seconds.</p>
 
-  <div class="box">
-    <span class="label">Worth being clear about</span>
-    <p>You will not be typing code. You will be typing sentences, in English, in a panel — the same as you typed into the chat window last session. The difference is that the sentences now land in a room where the horse can reach the gear.</p>
+  <div class="box stable">
+    <span class="label">What actually changes</span>
+    <p><strong>Before.</strong> Dale's list works when Dale's daughter has her laptop open, is sitting at the office desk, and has remembered to run it.</p>
+    <p><strong>After.</strong> Dale opens the same short web address on his phone, in the truck, at ten past six, while every laptop in the business is shut and in a bag.</p>
+    <p>Same list. Same three names. The only difference is where the copy is running.</p>
   </div>
+
+  <p class="pull">A thing nobody can reach is a hobby. That is fine, as long as you meant it.</p>
 </section>
-
 <!-- ============================ CH 02 ============================ -->
 <section class="chapter" id="ch2">
   <div class="chapter-head">
     <div class="chapter-num">02</div>
-    <h2>Three things you'll actually look at</h2>
-    <p class="standfirst">The screen has about forty things on it. You need three, and a fourth you'll barely touch.</p>
+    <h2>What &ldquo;on the internet&rdquo; actually is</h2>
+    <p class="standfirst">There is no cloud. There is somebody else's computer, and it is never off.</p>
   </div>
 
-  <p class="dropcap">The first time you open it, the window looks busy in a way that makes people close it again. Almost all of it is for professional programmers and you can ignore it permanently. Here are the three regions that matter, and what each one is for.</p>
+  <p class="dropcap">The word cloud has done a lot of damage, because it makes something quite ordinary sound like weather. Here is the whole arrangement, and there is nothing else hiding behind it.</p>
 
-  <figure>
-    <svg viewBox="0 0 960 560" role="img" aria-label="The editor window: file list on the left, the open page in the middle, the assistant panel on the right, and the terminal along the bottom">
-      <rect x="10" y="14" width="940" height="528" rx="8" fill="#eadfcc" stroke="#c9b99f" stroke-width="2"/>
-      <path d="M10,58 L950,58" stroke="#c9b99f" stroke-width="2"/>
-      <text class="lbl-sm" x="30" y="44">dale-estimates</text>
+  <figure class="wide">
+    <svg viewBox="0 0 1120 430" role="img" aria-label="A closed laptop on one side and an always-on machine with a name pointing at it on the other">
+      <defs><marker id="ar10" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+        <path d="M0,0 L10,5 L0,10 Z" fill="#b8391c"/></marker></defs>
 
-      <rect x="10" y="58" width="238" height="378" fill="#f4ede1" stroke="#c9b99f" stroke-width="2"/>
-      <circle cx="46" cy="96" r="17" fill="#b8391c"/>
-      <text class="lbl" x="40" y="103" style="font-size:20px; fill:#f4ede1">1</text>
-      <text class="lbl lbl-em" x="76" y="103">The files</text>
-      <text class="lbl-sm" x="30" y="142">Everything in the</text>
-      <text class="lbl-sm" x="30" y="168">folder. Click one</text>
-      <text class="lbl-sm" x="30" y="194">to see inside it.</text>
-      <text class="lbl-sm" x="30" y="248">rate-card.txt</text>
-      <text class="lbl-sm" x="30" y="280">past-estimates</text>
-      <text class="lbl-sm" x="30" y="312">notes.txt</text>
+      <path d="M96,236 L376,236 L404,272 L68,272 Z" fill="#241d16"/>
+      <rect class="ink" x="112" y="214" width="248" height="22" rx="6"/>
+      <text class="lbl" x="60" y="322">Your laptop</text>
+      <text class="lbl-sm" x="60" y="348">shut at half past six, and so is the thing you built</text>
 
-      <rect x="248" y="58" width="392" height="378" fill="#f4ede1" stroke="#c9b99f" stroke-width="2"/>
-      <circle cx="286" cy="96" r="17" fill="#b8391c"/>
-      <text class="lbl" x="280" y="103" style="font-size:20px; fill:#f4ede1">2</text>
-      <text class="lbl lbl-em" x="316" y="103">The open page</text>
-      <text class="lbl-sm" x="268" y="142">Whatever you clicked,</text>
-      <text class="lbl-sm" x="268" y="168">opened so you can read it.</text>
-      <text class="lbl-sm" x="268" y="212">This is where you check</text>
-      <text class="lbl-sm" x="268" y="238">the work &mdash; the estimate</text>
-      <text class="lbl-sm" x="268" y="264">it just wrote, in plain view,</text>
-      <text class="lbl-sm" x="268" y="290">before anything is sent.</text>
+      <path d="M446,196 L586,196" style="fill:none;stroke:#b8391c;stroke-width:7" marker-end="url(#ar10)"/>
+      <text class="lbl-sm" x="516" y="176" text-anchor="middle">a copy goes up</text>
 
-      <rect x="640" y="58" width="310" height="378" fill="#f4ede1" stroke="#b8391c" stroke-width="4"/>
-      <circle cx="678" cy="96" r="17" fill="#b8391c"/>
-      <text class="lbl" x="672" y="103" style="font-size:20px; fill:#f4ede1">3</text>
-      <text class="lbl lbl-em" x="708" y="103">The assistant</text>
-      <text class="lbl-sm" x="660" y="142">You type here in plain</text>
-      <text class="lbl-sm" x="660" y="168">English &mdash; the same as</text>
-      <text class="lbl-sm" x="660" y="194">the chat window you</text>
-      <text class="lbl-sm" x="660" y="220">already know.</text>
-      <text class="lbl-sm" x="660" y="266">It answers here, and</text>
-      <text class="lbl-sm" x="660" y="292">asks before it changes</text>
-      <text class="lbl-sm" x="660" y="318">anything.</text>
+      <rect x="620" y="96" width="220" height="212" rx="8" fill="#eadfcc" stroke="#5b4d3f" stroke-width="5"/>
+      <rect x="648" y="126" width="164" height="34" rx="4" fill="#5b4d3f"/>
+      <rect x="648" y="176" width="164" height="34" rx="4" fill="#5b4d3f"/>
+      <rect x="648" y="226" width="164" height="34" rx="4" fill="#5b4d3f"/>
+      <circle cx="672" cy="143" r="7" fill="#c2841f"/>
+      <circle cx="672" cy="193" r="7" fill="#c2841f"/>
+      <circle cx="672" cy="243" r="7" fill="#c2841f"/>
+      <text class="lbl" x="620" y="348">A machine that is never off</text>
 
-      <rect x="10" y="436" width="940" height="106" fill="#241d16"/>
-      <text class="lbl" x="40" y="478" style="fill:#c2841f; font-size:19px">And the terminal</text>
-      <text class="lbl-sm" x="40" y="512" style="fill:#d9cdba">Occasionally useful, never frightening. Chapter three.</text>
+      <path class="lead-under" d="M872,202 L920,202"/><path class="lead" d="M872,202 L920,202"/>
+      <rect x="932" y="172" width="164" height="60" rx="6" fill="#f0d9cf" stroke="#b8391c" stroke-width="4"/>
+      <text class="lbl-sm" x="1014" y="208" text-anchor="middle" style="font-size:18px; fill:#241d16">a name that</text>
+      <text class="lbl-sm" x="1014" y="228" text-anchor="middle" style="font-size:0px">.</text>
+      <text class="lbl lbl-em" x="932" y="290">points at it</text>
     </svg>
-    <figcaption><b>Fig. 3</b> &mdash; Learn these three. Everything else on that screen can wait, possibly forever.</figcaption>
+    <figcaption><b>Fig. 1</b> &mdash; There is no cloud. There is a computer that never gets switched off, a copy of your work on it, and a name pointing at the door.</figcaption>
   </figure>
 
-  <p>Number three is where the work gets asked for, and it should look familiar &mdash; it is the same back-and-forth you had in a browser last session, moved into the room with your files. That dark strip along the bottom is the part that frightens people, so it gets its own chapter.</p>
-</section>
+  <ul>
+    <li><strong>A computer that never gets switched off.</strong> In a building somewhere, with better power and better internet than your office has, looked after by people whose only job that is.</li>
+    <li><strong>A copy of your work on it.</strong> Not the original. Your folder stays exactly where it is; a copy goes up.</li>
+    <li><strong>A name pointing at it,</strong> so that when somebody types the name, they arrive at your copy rather than somebody else's.</li>
+  </ul>
 
+  <p>That is it. When people say a thing is &ldquo;deployed&rdquo;, they mean those three have happened. The word for doing it is <em class="term">deploy</em>, and the machine belongs to a company &mdash; ours is Vercel, the same account you signed up for last session to get the well.</p>
+
+  <p>Two things worth being clear about now rather than later.</p>
+
+  <ul>
+    <li><strong>Your laptop is not involved once it is up.</strong> You can close it, sell it, or drop it. The copy keeps serving.</li>
+    <li><strong>Nothing goes up that you did not send.</strong> Deploying does not scoop up your machine. It sends the one folder you pointed it at, and nothing else on the disk is in reach &mdash; the same line round the work from session three.</li>
+  </ul>
+
+  <p class="pull">Not weather. A computer, in a building, that nobody ever turns off.</p>
+</section>
 <!-- ============================ CH 03 ============================ -->
 <section class="chapter" id="ch3">
   <div class="chapter-head">
     <div class="chapter-num">03</div>
-    <h2>Talking to the stable</h2>
-    <p class="standfirst">The black box with the blinking cursor. It's a doorway, not a test.</p>
+    <h2>Paddock, training ring, open road</h2>
+    <p class="standfirst">Three places your work can be, and only one of them has the public in it.</p>
   </div>
 
-  <p class="dropcap">The dark panel along the bottom is called the <em class="term">terminal</em>, and it has an unearned reputation. If you have ever seen a film where somebody types furiously into a black screen, this is that, and it is nothing like that.</p>
+  <p class="dropcap">You would not take a green horse straight out onto the road. You work it in the paddock, then in a fenced ring where it can meet a few real things safely, and only then do you take it out where the traffic is. Publishing works the same way, and the middle step is the one nobody expects.</p>
 
-  <p>Notice what happened this morning: I did the entire job in the assistant panel on the right and never touched the black one. That is normal. You could work this way for months. So it is worth being straight about what the terminal is actually for, rather than leaving it as the scary part of the screen.</p>
+  <figure class="wide">
+    <svg viewBox="0 0 1120 470" role="img" aria-label="A closed rail fence, a fenced ring with a latched gate, and open road with no fence at all">
 
-  <p>It is a place where you type an instruction and press enter. That is all it is. Where the panel on the right talks to the horse, the terminal talks to the stable itself — the computer, directly, without any buttons in the way. Installing things, checking things, starting things: that is its job, and it is a job you will need perhaps once a month.</p>
+      <!-- the paddock: rails all the way round, no way in -->
+      <path d="M46,300 L46,150 M114,300 L114,150 M182,300 L182,150 M250,300 L250,150 M318,300 L318,150"
+            stroke="#5b4d3f" stroke-width="13" fill="none" stroke-linecap="round"/>
+      <path d="M40,186 L326,186 M40,246 L326,246" stroke="#5b4d3f" stroke-width="11" fill="none" stroke-linecap="round"/>
+      <text class="lbl lbl-em" x="40" y="348">The paddock</text>
+      <text class="lbl-sm" x="40" y="374">your own machine</text>
+      <text class="lbl-sm" x="40" y="398">nobody else can reach it at all</text>
 
-  <div class="box">
-    <span class="label">Three words, and how they fit together</span>
-    <p>Worth getting straight, because we use all three. <strong>The stable</strong> is your computer &mdash; the whole building. <strong>The tack room</strong> is one room inside it: the folder you are working in, with your gear in it. <strong>The horse</strong> lives in neither. It lives down the road at the company that built it, and comes when you call.</p>
-    <p>That last part is the one worth remembering. Nothing you own is inside the model, which is why the folder you choose is the boundary that matters.</p>
-  </div>
+      <!-- the training ring: same fence, one gate, one latch -->
+      <path d="M410,300 L410,150 M478,300 L478,150 M614,300 L614,150 M682,300 L682,150"
+            stroke="#c2841f" stroke-width="13" fill="none" stroke-linecap="round"/>
+      <path d="M404,186 L478,186 M404,246 L478,246 M614,186 L690,186 M614,246 L690,246"
+            stroke="#c2841f" stroke-width="11" fill="none" stroke-linecap="round"/>
+      <path d="M492,186 L600,186 M492,246 L600,246 M492,150 L492,300 M600,150 L600,300"
+            stroke="#c2841f" stroke-width="9" fill="none" stroke-linecap="round"/>
+      <circle cx="600" cy="216" r="20" fill="#c2841f"/>
+      <circle cx="600" cy="216" r="8" fill="#f4ede1"/>
+      <text class="lbl lbl-em" x="404" y="348" style="fill:#c2841f">The training ring</text>
+      <text class="lbl-sm" x="404" y="374">a preview: real internet, real address</text>
+      <text class="lbl-sm" x="404" y="398">and a latched gate &mdash; only your people</text>
+
+      <!-- the open road: no fence anywhere -->
+      <path d="M768,166 L1080,166 M768,290 L1080,290" stroke="#5b4d3f" stroke-width="9" fill="none" stroke-linecap="round"/>
+      <path d="M768,228 L1080,228" style="fill:none;stroke:#b8391c;stroke-width:9;stroke-dasharray:34 26;stroke-linecap:round"/>
+      <text class="lbl lbl-em" x="768" y="348">The open road</text>
+      <text class="lbl-sm" x="768" y="374">production &mdash; the short address</text>
+      <text class="lbl-sm" x="768" y="398">anybody at all, no gate, no login</text>
+
+      <text class="lbl-sm" x="40" y="448">One thing surprises everybody: the long deployment address is inside the fence, not outside it.</text>
+    </svg>
+    <figcaption><b>Fig. 2</b> &mdash; Paddock, training ring, open road. Two of the three are on the real internet, and only one of them has the public on it.</figcaption>
+  </figure>
+
+  <ul>
+    <li><strong>The paddock &mdash; your own machine.</strong> Fast, private, and nobody else can reach it at all. This is where you have been for nine sessions.</li>
+    <li><strong>The training ring &mdash; a <em class="term">preview</em>.</strong> Every time you send work up, it gets its own address on the real internet. Real ground: same machines, same speed, same everything. But there is a gate on it.</li>
+    <li><strong>The open road &mdash; <em class="term">production</em>.</strong> The short address. The one you print on a van. There is only ever one of these, and it is the only one the public can open.</li>
+  </ul>
 
   <div class="box stable">
-    <span class="label">Two worth learning today</span>
-    <p>These are the ones I use in front of you, and they are a fair sample of what the terminal is for &mdash; asking the computer about the software you have, rather than doing the work itself.</p>
-    <p><code>claude --version</code> &mdash; tells you which version of the assistant you have. Useful when something behaves oddly, or when instructions you read online assume a newer one.</p>
-    <p><code>claude --update</code> &mdash; checks whether there is a newer version and installs it if there is. If you are already current it says so and does nothing.</p>
-    <p>Those two are a fair sample of what the terminal is for. You are not commanding the machine to do your work; you are asking after its health.</p>
+    <span class="label">The bit that surprises everybody</span>
+    <p>Those long preview addresses are <strong>not public</strong>. Send one to somebody outside your account and they get a login screen, not your page.</p>
+    <p>We measured it rather than trusting the documentation. The short address answered normally to anyone. Every long deployment address &mdash; including the one currently serving production &mdash; sent a stranger to a login page instead.</p>
+    <p>So the training ring really is fenced, and the fence is on by default. That is the right way round, and it means you can put something half-finished up without any risk of a customer finding it.</p>
   </div>
 
-  <p>Why that pair, out of everything? Because this software changes every week or two, and almost every "it worked yesterday and not today" turns out to be a version behind. Knowing how to check and how to update is most of keeping the thing healthy, and it takes ten seconds.</p>
+  <p>The habit that follows is simple and it is the whole safety story of this session: <strong>look at it in the ring before you take it on the road.</strong> Same work, same internet, on your phone, with nobody watching. Then promote it.</p>
 
-  <p>Two things that help enormously and nobody mentions. It cannot read your mind, so it will complain about a typo rather than guess — that is not you failing, that is it being careful. And you can paste into it, so nobody is expecting you to type long things accurately.</p>
-
-  <p class="pull">You are not being tested by the black box. You are opening a door and calling the horse in.</p>
+  <p class="pull">Real ground, with a fence round it. That is what a preview is.</p>
 </section>
-
 <!-- ============================ CH 04 ============================ -->
 <section class="chapter" id="ch4">
   <div class="chapter-head">
     <div class="chapter-num">04</div>
-    <h2>What can go wrong in here</h2>
-    <p class="standfirst">Much less than you fear. And one thing worth respecting.</p>
+    <h2>Putting it out, and taking it back</h2>
+    <p class="standfirst">Forty seconds out. Two seconds back.</p>
   </div>
 
-  <p class="dropcap">People move slowly at this point because it feels like a room where you could break something expensive. Mostly you cannot. A folder is a folder. Opening one, looking in it, closing it again is about as dangerous as opening a filing cabinet.</p>
-
-  <h3>Things that are not the risk</h3>
-  <ul>
-    <li><strong>Typing the wrong thing in the terminal.</strong> Almost always it just says it doesn't understand and waits.</li>
-    <li><strong>Clicking the wrong part of the editor.</strong> The worst case is a panel you didn't want, which closes.</li>
-    <li><strong>Looking at a file.</strong> Looking changes nothing.</li>
-    <li><strong>Not understanding most of the screen.</strong> Nobody understands most of that screen.</li>
-  </ul>
-
-  <h3>The one that is</h3>
-  <p>The assistant can change and delete files, inside the folder you opened it in. That is what it is for &mdash; and it is also the only genuine hazard in this room. If it edits your rate card and gets it wrong, the old rate card is gone, in the same way it would be gone if you overwrote it yourself.</p>
-
-  <p>There is a proper answer to this, and we get to it in session seven: a way of keeping every previous version of everything, forever, so any mistake becomes a matter of stepping back rather than starting again. Until then, the boring version below works fine.</p>
+  <p class="dropcap">Here is the demo, start to finish, and you have met every idea in it before in another form. One page of Dale's &mdash; the three jobs waiting on him &mdash; and four commands.</p>
 
   <div class="box stable">
-    <span class="label">Until we fit the safety net</span>
-    <ul>
-      <li><strong>Work on copies.</strong> Copy the rate card into the project folder. Leave the original where it lives.</li>
-      <li><strong>Never open an assistant in your whole Documents folder.</strong> One job, one folder. That is what last session was for.</li>
-      <li><strong>Read what it says before you say yes.</strong> It tells you what it is about to change. That sentence is not decoration.</li>
-      <li><strong>Nothing irreplaceable, not yet.</strong> Not the only copy of anything.</li>
-    </ul>
+    <span class="label">What you are about to see</span>
+    <p><strong>1.</strong> The page, already live at a short address. I close the laptop lid and it stays up, because it was never running here.</p>
+    <p><strong>2.</strong> I change the heading, obviously and badly, and send it up. It comes back with a <em>preview</em> address.</p>
+    <p><strong>3.</strong> The preview shows the new wording. Production, in the other tab, has not moved. Two versions, both live, one public.</p>
+    <p><strong>4.</strong> I promote it. Now production has the bad heading and every customer can see it.</p>
+    <p><strong>5.</strong> I put yesterday's back. Watch the clock.</p>
   </div>
-</section>
 
+  <figure class="wide">
+    <svg viewBox="0 0 1120 430" role="img" aria-label="Three deployments in a row with an arrow going back from the newest to the previous one">
+      <defs><marker id="ar10b" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+        <path d="M0,0 L10,5 L0,10 Z" fill="#b8391c"/></marker></defs>
+
+      <path d="M60,330 L1060,330" stroke="#c9b99f" stroke-width="8" fill="none" stroke-linecap="round"/>
+
+      <rect class="plate" x="70" y="188" width="230" height="70" rx="6"/>
+      <text class="lbl-sm" x="185" y="230" text-anchor="middle" style="font-size:18px">Monday's version</text>
+      <rect x="178" y="258" width="14" height="72" rx="4" fill="#5b4d3f"/>
+      <rect x="169" y="272" width="32" height="18" rx="4" fill="#5b4d3f"/>
+
+      <rect x="440" y="188" width="230" height="70" rx="6" fill="#f0d9cf" stroke="#b8391c" stroke-width="4"/>
+      <text class="lbl-sm" x="555" y="230" text-anchor="middle" style="font-size:18px; fill:#241d16">Tuesday's &mdash; live</text>
+      <rect x="548" y="258" width="14" height="72" rx="4" fill="#5b4d3f"/>
+      <rect x="539" y="272" width="32" height="18" rx="4" fill="#b8391c"/>
+
+      <rect class="plate" x="810" y="188" width="230" height="70" rx="6"/>
+      <text class="lbl-sm" x="925" y="230" text-anchor="middle" style="font-size:18px">this morning's</text>
+      <rect x="918" y="258" width="14" height="72" rx="4" fill="#5b4d3f"/>
+      <rect x="909" y="272" width="32" height="18" rx="4" fill="#c2841f"/>
+
+      <path d="M900,146 C800,86 660,86 566,150" style="fill:none;stroke:#b8391c;stroke-width:7" marker-end="url(#ar10b)"/>
+      <text class="lbl lbl-em" x="730" y="64" text-anchor="middle">Put yesterday's back</text>
+
+      <text class="lbl-sm" x="60" y="384">Every version you ever put out is still sitting there, whole.</text>
+      <text class="lbl-sm" x="60" y="410">Going back is choosing one of them again &mdash; it took two seconds when we measured it.</text>
+    </svg>
+    <figcaption><b>Fig. 3</b> &mdash; Session seven's undo, now pointed at the thing your customers are looking at.</figcaption>
+  </figure>
+
+  <p>The rollback is the part worth sitting with. Every version you have ever published is still there, whole, and going back to one is a choice rather than a repair. When it ran during testing it took <strong>two seconds</strong>.</p>
+
+  <p>That matters because of what people do otherwise. Something goes wrong on a live site at four on a Friday, and the instinct is to fix it &mdash; badly, in a hurry, while customers watch. The professional move is the opposite: put the old one back first, so nobody is watching any more, and then fix it properly on Monday.</p>
+
+  <h3>The version you will actually use</h3>
+
+  <p>Commands are fine for showing you what happens. What you will really do is connect the folder to your Vercel account once, and then it deploys itself.</p>
+
+  <ul>
+    <li><strong>Every marker you push</strong> &mdash; session seven &mdash; gets its own preview address, automatically, without you asking.</li>
+    <li><strong>Whatever is on your main trail</strong> becomes production.</li>
+    <li><strong>You stop thinking about deploying.</strong> Saving a marker and publishing become the same act, which is the point at which this stops being a chore.</li>
+  </ul>
+
+  <p>That is why session seven came before this one. The markers were never only an undo &mdash; they are also the thing that decides what the public sees.</p>
+
+  <p class="pull">Do not fix a live site under pressure. Put yesterday's back, then fix it.</p>
+</section>
 <!-- ============================ CH 05 ============================ -->
 <section class="chapter" id="ch5">
   <div class="chapter-head">
     <div class="chapter-num">05</div>
-    <h2>Before the next session</h2>
-    <p class="standfirst">Twenty minutes at your own table, at your own pace.</p>
+    <h2>What changes once it is public</h2>
+    <p class="standfirst">Not much. But the things that change, change completely.</p>
   </div>
 
-  <p class="dropcap">Next time the lids come up and we all work along together. That goes well if everyone arrives with the room already built, and badly if we spend the first hour installing things on twelve different laptops. So here is the homework, and it is genuinely twenty minutes.</p>
+  <p class="dropcap">The mechanics of publishing are easy, and you have just watched them. What is worth ten minutes is the short list of things that are different once a stranger can reach your work.</p>
+
+
+  <details class="demo">
+    <summary>Show me every step &mdash; putting your first page on the internet</summary>
+    <div class="demo-body">
+      <p>Genuinely about ten minutes, and free. If you did last session's homework you already have the account, which was most of it.</p>
+
+      <h4>What you need first</h4>
+      <ol>
+        <li><strong>A free Vercel account</strong> &mdash; from session nine. If you skipped it, that walkthrough is in #009 chapter five.</li>
+        <li><strong>A folder with one file in it</strong>, called <code>index.html</code>. That name matters: it is the one a web address opens by default.</li>
+        <li><strong>Something in that file.</strong> Ask the assistant: &ldquo;make me an index.html with my business name, what we do in one line, and a phone number.&rdquo; Twenty seconds, and it is yours.</li>
+      </ol>
+
+      <h4>The easy way &mdash; drag and drop</h4>
+      <ol>
+        <li><strong>Go to your Vercel dashboard</strong> and look for <em>Add New</em>, then <em>Project</em>.</li>
+        <li><strong>There is a deploy-by-dragging option.</strong> Drag your folder onto it.</li>
+        <li><strong>Wait about forty seconds.</strong> You get an address ending in <code>.vercel.app</code>.</li>
+        <li><strong>Open it on your phone.</strong> This is the moment. Do it on your phone, not your laptop &mdash; it lands differently.</li>
+      </ol>
+
+      <h4>The way you will end up using</h4>
+      <ol>
+        <li><strong>Put the folder on GitHub</strong> &mdash; session seven, the same markers and the same push.</li>
+        <li><strong>On Vercel, Add New &rarr; Project &rarr; Import</strong>, and pick that repository.</li>
+        <li><strong>Deploy.</strong> From now on every push publishes itself: a preview for every marker, production for your main trail.</li>
+        <li><strong>Never deploy by hand again.</strong> That is the actual prize here.</li>
+      </ol>
+
+      <div class="box">
+        <span class="label">Three things not to do</span>
+        <p><strong>Do not put a password or a key in the page.</strong> Anything in a web page can be read by anyone who visits it &mdash; there is no such thing as a hidden line in a public file. Secrets go in <em class="term">environment variables</em>, which live on the machine that serves the page and never travel to the browser.</p>
+        <p><strong>Do not let the customer's browser talk to your well.</strong> The connection string from last session belongs on the server, never in the page. If you take one rule from today, take this one.</p>
+        <p><strong>Do not buy a domain on day one.</strong> The free address works perfectly and costs nothing. Buy the name when there is something at the other end of it worth naming &mdash; it is about fifteen dollars a year and it takes ten minutes whenever you are ready.</p>
+      </div>
+
+      <p>And if you get stuck: stop after ten minutes and bring it to the next session, or send me a message. This is the step where people give up quietly, and it is the one that takes the least time to unstick.</p>
+    </div>
+  </details>
+
+  <h3>Four things that are true from now on</h3>
+
+  <ul>
+    <li><strong>Anything in the page can be read.</strong> Not most of it &mdash; all of it. Right-click, view source, and there it is. So no keys, no passwords, no supplier prices you would not put in the window.</li>
+    <li><strong>The well is reached by the wagon, not by the customer.</strong> The page a customer loads never talks to your database directly. It asks the machine that serves the page, and that machine holds the key. This is the single most common expensive mistake, and now you will not make it.</li>
+    <li><strong>It costs nothing until it is working.</strong> Free tiers are generous, and no card is asked for. When you do outgrow them, the bill arrives because the thing is being used, which is the good problem.</li>
+    <li><strong>The name is separate from the thing.</strong> A <em class="term">domain</em> is rented by the year and pointed at whatever you like. You can point it somewhere else next spring without rebuilding anything.</li>
+  </ul>
+
+  <h3>Before the next session</h3>
 
   <ol class="checklist">
-    <li><strong>Install VS Code.</strong> Search for "VS Code download", take the one from Microsoft, and accept every default it offers you.</li>
-    <li><strong>Make a folder called <code>tack-room</code></strong> somewhere you can find it again. Your desktop is a perfectly good place.</li>
-    <li><strong>Open that folder in VS Code.</strong> File, then Open Folder, then pick it. The window will look empty, because it is.</li>
-    <li><strong>Find the three regions from chapter two.</strong> Files on the left, the big pane, and the dark strip along the bottom. If you can point at all three, you are ready.</li>
-    <li><strong>Put one real file in it.</strong> Drag in a copy of something from your own business &mdash; a price list, a standard reply, anything you would not mind an assistant reading.</li>
-    <li><strong>Stop there.</strong> That is all you need to do. Do not install anything else, and do not go looking for the assistant yet.</li>
+    <li><strong>Make a folder with one <code>index.html</code> in it.</strong> Your business name, one line about what you do, a phone number. Ask the assistant to write it.</li>
+    <li><strong>Put it on the internet.</strong> The walkthrough above; either route is fine.</li>
+    <li><strong>Open it on your phone.</strong> Do this bit properly. It is the moment the whole course turns into a thing rather than a course.</li>
+    <li><strong>Send the short address to one person</strong> who will be nice about it.</li>
+    <li><strong>Change one word and send it up again.</strong> Look at the preview address first, then promote it. Do the two-step once by hand so you know what the ring is for.</li>
+    <li><strong>Then roll it back</strong> and watch how long that takes.</li>
   </ol>
 
   <div class="box stable">
-    <span class="label">If you fall off</span>
-    <p>Everything from every session lives in a public folder on the internet, with a marker for the start and end of each workshop. If step three defeats you at half past nine on a Tuesday, you can go and look at exactly what your screen was supposed to look like, and pick it up from there. It is at <a class="repo" href="https://github.com/brainit-consulting/ai-workshops" target="_blank" rel="noopener">github.com/brainit-consulting/ai-workshops</a> &mdash; pick <em>end-of-004</em> from the dropdown, then the green Code button and Download ZIP. Nobody is counting who uses it.</p>
+    <span class="label">If any of that goes sideways</span>
+    <p>Everything is at <a class="repo" href="https://github.com/brainit-consulting/ai-workshops" target="_blank" rel="noopener">github.com/brainit-consulting/ai-workshops</a> &mdash; pick <em>end-of-010</em> from the dropdown for the one-page site used in the demo, ready to deploy.</p>
+    <p>And if it is the account, or the deploy, or a screen that does not look like the picture: that is what I am here for. Ten minutes of somebody who has seen the screen before beats an evening on your own, every time.</p>
   </div>
-</section>
 
+  <p>Step three is the one that matters. Everything else on the list is practice for it.</p>
+</section>
 <!-- ============================ CH 06 ============================ -->
 <section class="chapter" id="ch6">
   <div class="chapter-head">
     <div class="chapter-num">06</div>
     <h2>Questions people actually ask</h2>
-    <p class="standfirst">The ones that come up once the software is on the screen.</p>
+    <p class="standfirst">Six that come up every time this session is taught.</p>
   </div>
 
   <div class="faq">
-<div class="qa">
-      <h3 class="q">I already tried this and closed it because it looked terrifying.</h3>
-      <p class="horse-line">Everybody does. The screen is built for somebody else.</p>
-      <p>That first screen is designed for professional programmers and shows you everything it can do, which is the opposite of helpful. Chapter two is the antidote: three regions, ignore the rest. Open it again with that page next to you and it shrinks to a manageable size.</p>
+    <div class="qa">
+      <p class="q">Is this a website, or an app?</p>
+      <p class="horse-line">One wagon, whatever you load on it.</p>
+      <p>Both, and the distinction matters less than people think. A page with your phone number on it and a thing that talks to a database go up exactly the same way, to the same address, with the same two commands. Start with the page.</p>
     </div>
-
-  
-<div class="qa">
-      <h3 class="q">Mac or Windows?</h3>
-      <p class="horse-line">Both stables have the same gear in them.</p>
-      <p>Either. Everything in this session works on both, and the buttons are in slightly different places, which is the only complication. If you have a choice, bring whichever machine you actually use for the business — the point is to end up with your real work in the room.</p>
+    <div class="qa">
+      <p class="q">Can people find it before I am ready?</p>
+      <p class="horse-line">The ring is fenced. The road is not.</p>
+      <p>Not by accident. Previews need a login. Production is public but nobody knows the address until you tell them, and it will not turn up in a search for a good while unless you ask it to. If you want to be certain, put a password on it &mdash; that is a setting, not a build.</p>
     </div>
-
-    
-<div class="qa">
-      <h3 class="q">What does this cost?</h3>
-      <p class="horse-line">The tack room is free. The horse still eats.</p>
-      <p>VS Code is free. The folder is free. The assistant that works in it is the same subscription we talked about last time, around twenty dollars a month, and it still eats sugar cubes by the token. Nothing in today's homework costs anything at all.</p>
+    <div class="qa">
+      <p class="q">What if I break the live one?</p>
+      <p class="horse-line">Turn the wagon round.</p>
+      <p>Roll it back. Two seconds, and every previous version is still sitting there. Then fix the real problem with nobody watching. That is the whole answer, and it is why this session comes after session seven rather than before it.</p>
     </div>
-
-    
+    <div class="qa">
+      <p class="q">Do I need my own name &mdash; my own dot com?</p>
+      <p class="horse-line">The name over the stall can wait until there is a stall.</p>
+      <p>Not to start. The free address works exactly as well and costs nothing. Buy the name when you are ready to put it on a van &mdash; around fifteen dollars a year, ten minutes, and nothing gets rebuilt when you do it.</p>
+    </div>
+    <div class="qa">
+      <p class="q">What does it cost when people actually use it?</p>
+      <p class="horse-line">Feed scales with the herd.</p>
+      <p>Nothing for a long while. A small business site sits inside the free tier comfortably. If you ever leave it, you will be leaving it because enough people are using the thing to make the bill irrelevant &mdash; and you can set a spending cap so there are no surprises.</p>
+    </div>
+    <div class="qa">
+      <p class="q">Is my database now on the internet too?</p>
+      <p class="horse-line">The well was always in the yard. The gate is what you control.</p>
+      <p>It already was, from last session &mdash; that is what made it reachable from your phone. What matters is that the customer's browser never talks to it. The page asks the server, the server asks the well, and the key never leaves the server. Chapter five, second bullet, and it is the one to remember.</p>
+    </div>
   </div>
 </section>
 <!-- ============================ GLOSSARY ============================ -->
@@ -1027,68 +1162,175 @@ details.demo h4:first-of-type{margin-top:.4em;}
     <dt>Path <span class="from">003</span></dt>
     <dd>The written address of a file &mdash; which boxes it sits inside. <span class="horse">Directions to the shelf.</span></dd>
 
-    <dt>Editor <span style="font-weight:400">(VS Code)</span> <span class="from new">004</span></dt>
+    <dt>Editor <span style="font-weight:400">(VS Code)</span> <span class="from">004</span></dt>
     <dd>A window showing you one folder and everything in it. <span class="horse">The tack room.</span></dd>
 
-    <dt>Terminal <span class="from new">004</span></dt>
+    <dt>Terminal <span class="from">004</span></dt>
     <dd>A panel where you type an instruction to the computer directly. <span class="horse">Talking to the stable itself.</span></dd>
 
-    <dt>Install <span class="from new">004</span></dt>
+    <dt>Install <span class="from">004</span></dt>
     <dd>Putting a program on your own machine, once. <span class="horse">Building the room.</span></dd>
+
+    <dt>Permission prompt <span class="from">005</span></dt>
+    <dd>The stop before it changes anything, showing what it plans to do. <span class="horse">The gate, and your hand on the latch.</span></dd>
+
+    <dt>Approval mode <span class="from">005</span></dt>
+    <dd>Whether it asks every time, works on its own, or only shows a plan. <span class="horse">How loose you're holding the reins.</span></dd>
+
+    <dt>Interrupting <span class="from">005</span></dt>
+    <dd>Stopping it mid-job with the escape key. <span class="horse">A pull on the reins. Ordinary.</span></dd>
+
+    <dt>Project instructions <span class="from">006</span></dt>
+    <dd>A plain-English file of standing rules that lives in the folder. <span class="horse">The saddle, hanging in the room.</span></dd>
+
+    <dt>Run a command <span class="from">006</span></dt>
+    <dd>Doing something on the computer rather than writing words about it. <span class="horse">Actual work, not conversation.</span></dd>
+
+    <dt>Working on copies <span class="from">006</span></dt>
+    <dd>Duplicating a file so the original can't be harmed. <span class="horse">Schooling in the paddock, not on the road.</span></dd>
+
+    <dt>Version control <span class="from">007</span></dt>
+    <dd>Keeping every previous version of everything, so any of them can come back. <span class="horse">A trail you can ride back.</span></dd>
+
+    <dt>Git <span class="from">007</span></dt>
+    <dd>The program that keeps the trail. It runs on your own machine. <span class="horse">What drives the markers in.</span></dd>
+
+    <dt>Commit <span class="from">007</span></dt>
+    <dd>One marker, with a short note saying what you had just done. <span class="horse">A gate you can ride back through.</span></dd>
+
+    <dt>Repository <span style="font-weight:400">(repo)</span> <span class="from">007</span></dt>
+    <dd>A folder that keeps its own history. <span class="horse">The field, with the trail marked in it.</span></dd>
+
+    <dt>GitHub <span class="from">007</span></dt>
+    <dd>A copy of the repository kept online &mdash; a real backup, and a way to hand it to somebody. <span class="horse">The shared stable at the trailhead.</span></dd>
+
+    <dt>Push and pull <span class="from">007</span></dt>
+    <dd>Sending your markers up to that copy, and fetching down anything that is there and not here. <span class="horse">Riding to the trailhead and back.</span></dd>
+
+    <dt>Spec <span style="font-weight:400">(brief)</span> <span class="from">008</span></dt>
+    <dd>One page describing a job well enough to hand it over. What it must do &mdash; not how to build it. <span class="horse">The trail map. Where you are going, not which foot the horse leads with.</span></dd>
+
+    <dt>Scope <span class="from">008</span></dt>
+    <dd>What is in this job, and what is deliberately not. <span class="horse">Where the map stops. The country past the edge is not today's ride.</span></dd>
+
+    <dt>Acceptance <span class="from">008</span></dt>
+    <dd>How you will know the thing is right when you see it. <span class="horse">How you know you arrived.</span></dd>
+
+    <dt>Plan mode <span class="from">008</span></dt>
+    <dd>A setting where it works out what it would do, and shows you, before touching anything. <span class="horse">Reading the map aloud before anyone mounts up.</span></dd>
+
+    <dt>Assumption <span class="from">008</span></dt>
+    <dd>Something you took to be true and never checked. <span class="horse">A stretch of map you drew from memory rather than from riding it.</span></dd>
+
+    <dt>Database <span class="from">009</span></dt>
+    <dd>One place the information lives, built to be read and written by several things at once without ever disagreeing with itself. <span class="horse">The well.</span></dd>
+
+    <dt>Table <span class="from">009</span></dt>
+    <dd>A list of one kind of thing, with the same facts recorded about each one. <span class="horse">One list on the slate: every job, every time.</span></dd>
+
+    <dt>Row <span class="from">009</span></dt>
+    <dd>One of the things. One job, one customer, one invoice. <span class="horse">A single line on the slate.</span></dd>
+
+    <dt>Column <span class="from">009</span></dt>
+    <dd>One fact, kept about every row. Customer. Status. Date received. <span class="horse">The same question asked of every line.</span></dd>
+
+    <dt>Query <span style="font-weight:400">(SQL)</span> <span class="from">009</span></dt>
+    <dd>A written question put to the database. SQL is the language they are written in. <span class="horse">Lowering the bucket, and what you asked it to bring up.</span></dd>
+
+    <dt>Connection string <span class="from">009</span></dt>
+    <dd>One line of text that says where the well is and unlocks it. Treat it as a key, because it is one. <span class="horse">The key to the pump house.</span></dd>
+
+    <dt>Postgres <span style="font-weight:400">(Neon)</span> <span class="from">009</span></dt>
+    <dd>The most widely used serious database; Neon is a company that runs one for you. <span class="horse">A well somebody else dug, and maintains.</span></dd>
+
+    <dt>Deploy <span class="from new">010</span></dt>
+    <dd>Sending a copy of your work to a machine that is always on, so other people can reach it. <span class="horse">Loading the wagon and driving it to market.</span></dd>
+
+    <dt>Production <span class="from new">010</span></dt>
+    <dd>The version the public sees. There is only ever one. <span class="horse">The open road.</span></dd>
+
+    <dt>Preview <span class="from new">010</span></dt>
+    <dd>The same work, live on the internet, at an address only your people can open. <span class="horse">The training ring &mdash; real ground, fence round it.</span></dd>
+
+    <dt>Rollback <span class="from new">010</span></dt>
+    <dd>Putting the previous version back as the public one. Seconds, not a repair job. <span class="horse">Turning the wagon round.</span></dd>
+
+    <dt>Domain <span class="from new">010</span></dt>
+    <dd>The name people type. Yours, rented by the year, pointed at your work. <span class="horse">The name over the stall.</span></dd>
+
+    <dt>Environment variable <span class="from new">010</span></dt>
+    <dd>A secret kept on the machine that serves the page, never inside the page itself. <span class="horse">The key stays in the driver's pocket.</span></dd>
   </dl>
 </section>
 <!-- ============================ ONE PAGE ============================ -->
 <section class="chapter" id="onepage">
   <div class="chapter-head">
+    <div class="chapter-num">&#9733;</div>
     <h2>Everything on one page</h2>
-    <p class="standfirst">Photograph this before you go.</p>
+    <p class="standfirst">If you photograph one thing today, photograph this.</p>
   </div>
+
   <div class="strip">
     <div class="panel">
       <svg viewBox="0 0 900 620" aria-hidden="true">
-        <path fill="#241d16" d="M110,190 v-40 a18,18 0 0 1 18,-18 h190 a18,18 0 0 1 14,7 l34,45 h416 a18,18 0 0 1 18,18 v300 a18,18 0 0 1 -18,18 h-654 a18,18 0 0 1 -18,-18 Z"/>
-        <rect x="230" y="212" width="440" height="230" rx="8" fill="#f4ede1" stroke="#c9b99f" stroke-width="6" transform="rotate(-3 450 330)"/>
-        <rect x="250" y="228" width="440" height="230" rx="8" fill="#f4ede1" stroke="#c9b99f" stroke-width="6" transform="rotate(2 450 330)"/>
-        <g stroke="#c9b99f" stroke-width="12" stroke-linecap="round"><path d="M300,290 h340"/><path d="M300,340 h340"/><path d="M300,390 h240"/></g>
-        <path fill="#b8391c" d="M110,300 h680 a18,18 0 0 1 18,18 v202 a18,18 0 0 1 -18,18 h-680 a18,18 0 0 1 -18,-18 v-202 a18,18 0 0 1 18,-18 Z"/>
+        <path d="M180,380 L720,380 L780,470 L120,470 Z" fill="#241d16"/>
+        <rect x="220" y="330" width="460" height="50" rx="12" fill="#241d16"/>
+        <path d="M300,250 L600,250 M300,190 L520,190" stroke="#c9b99f" stroke-width="22" stroke-linecap="round" fill="none"/>
+        <path d="M640,150 L760,270 M760,150 L640,270" stroke="#b8391c" stroke-width="26" stroke-linecap="round" fill="none"/>
       </svg>
-      <h4>1 &middot; One folder, one job</h4>
-      <p>From last session. The line round the work.</p>
+      <h4>1 &middot; Nobody buys from your barn</h4>
+      <p>It works. One person can see it. That is not the same thing.</p>
     </div>
     <div class="panel">
       <svg viewBox="0 0 900 620" aria-hidden="true">
-        <rect x="40" y="60" width="820" height="500" rx="10" fill="#eadfcc" stroke="#c9b99f" stroke-width="6"/>
-        <rect x="40" y="60" width="230" height="330" fill="#f4ede1" stroke="#c9b99f" stroke-width="6"/>
-        <rect x="40" y="390" width="820" height="170" fill="#241d16"/>
-        <circle cx="140" cy="170" r="34" fill="#b8391c"/><circle cx="560" cy="170" r="34" fill="#b8391c"/>
-        <circle cx="140" cy="475" r="34" fill="#c2841f"/>
+        <path d="M70,190 L70,440 M170,190 L170,440 M270,190 L270,440" stroke="#5b4d3f" stroke-width="26" stroke-linecap="round" fill="none"/>
+        <path d="M56,250 L284,250 M56,370 L284,370" stroke="#5b4d3f" stroke-width="22" stroke-linecap="round" fill="none"/>
+        <path d="M350,190 L350,440 M570,190 L570,440" stroke="#c2841f" stroke-width="26" stroke-linecap="round" fill="none"/>
+        <path d="M350,250 L570,250 M350,370 L570,370" stroke="#c2841f" stroke-width="22" stroke-linecap="round" fill="none"/>
+        <circle cx="570" cy="310" r="34" fill="#c2841f"/><circle cx="570" cy="310" r="13" fill="#eadfcc"/>
+        <path d="M640,220 L870,220 M640,420 L870,420" stroke="#5b4d3f" stroke-width="20" stroke-linecap="round" fill="none"/>
+        <path d="M640,320 L870,320" style="fill:none;stroke:#b8391c;stroke-width:20;stroke-dasharray:44 32;stroke-linecap:round"/>
       </svg>
-      <h4>2 &middot; The tack room</h4>
-      <p>Files left, work in the middle, where you talk to it beside.</p>
+      <h4>2 &middot; Paddock, ring, road</h4>
+      <p>Two are on the real internet. One has the public on it.</p>
     </div>
     <div class="panel">
-      <svg viewBox="0 0 520 360" aria-hidden="true">
-        <rect fill="#241d16" x="40" y="60" width="440" height="240" rx="10"/>
-        <text x="260" y="205" text-anchor="middle" style="font-family:'Archivo Narrow','Arial Narrow',sans-serif; font-size:64px; font-weight:700; fill:#c2841f">cd</text>
+      <svg viewBox="0 0 900 620" aria-hidden="true">
+        <defs><marker id="a10c" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+          <path d="M0,0 L10,5 L0,10 Z" fill="#b8391c"/></marker></defs>
+        <path d="M80,500 L820,500" stroke="#c9b99f" stroke-width="16" fill="none" stroke-linecap="round"/>
+        <rect x="160" y="380" width="44" height="120" rx="10" fill="#5b4d3f"/>
+        <rect x="428" y="380" width="44" height="120" rx="10" fill="#5b4d3f"/>
+        <rect x="696" y="380" width="44" height="120" rx="10" fill="#5b4d3f"/>
+        <rect x="404" y="404" width="92" height="40" rx="10" fill="#b8391c"/>
+        <path d="M700,280 C600,170 380,170 250,290" style="fill:none;stroke:#b8391c;stroke-width:24" marker-end="url(#a10c)"/>
       </svg>
-      <h4>3 &middot; The terminal</h4>
-      <p>A door, not a test. Two commands and you are done.</p>
+      <h4>3 &middot; Two seconds back</h4>
+      <p>Every version is still there. Going back is a choice.</p>
     </div>
     <div class="panel soon">
       <span class="soon-tag">Next session</span>
-      <svg viewBox="0 0 520 360" aria-hidden="true"><use href="#horse-body"/><use href="#tack-bridle"/><use href="#tack-saddle"/><use href="#tack-bags"/></svg>
-      <h4>4 &middot; The working horse</h4>
-      <p>It comes into the room and starts opening gates.</p>
+      <svg viewBox="0 0 900 620" aria-hidden="true">
+        <path d="M80,200 L820,200 M80,340 L820,340 M80,480 L820,480"
+              stroke="#5b4d3f" stroke-width="18" fill="none" stroke-linecap="round"/>
+        <rect x="150" y="140" width="34" height="400" rx="10" fill="#5b4d3f"/>
+        <rect x="430" y="140" width="34" height="400" rx="10" fill="#5b4d3f"/>
+        <rect x="710" y="140" width="34" height="400" rx="10" fill="#5b4d3f"/>
+        <path d="M470,300 L560,390 L720,180" style="fill:none;stroke:#b8391c;stroke-width:30;stroke-linecap:round;stroke-linejoin:round"/>
+      </svg>
+      <h4>4 &middot; Riding the fences</h4>
+      <p>The dull weekly round that stops the disasters.</p>
     </div>
   </div>
-  <p style="margin-top:2rem"><strong>And you still hold the reins.</strong> The room does not make the horse cleverer &mdash; it just means you stop being the one carrying buckets.</p>
+
+  <p style="margin-top:2rem"><strong>The habit worth keeping:</strong> look at it in the ring before you take it on the road, and when something goes wrong on the road, put yesterday's back before you try to fix anything. Both take seconds. Both are the difference between a bad ten minutes and a bad Friday.</p>
 </section>
 <!-- ============================ NEXT TIME ============================ -->
 <section class="nexttime" id="nexttime">
   <span class="nt-label">Next session</span>
-  <h2>#005 &mdash; The Horse That Opens Gates</h2>
-  <p>You have the room. Next time the horse walks into it and starts picking things up &mdash; reading your files, writing new ones, running things. The important half of that session is what it does before every single change: it stops at the gate and waits for you.</p>
-  <p class="nt-take"><strong>Before you come:</strong> finish the twenty-minute setup above. Next session assumes the editor opens.</p>
+  <h2>#011 &mdash; Riding the Fences</h2>
+  <p>You now have something on the internet that people can reach, which means for the first time it can break where you cannot see it. Next time is the dull, unglamorous round that stops that mattering: how to check work you cannot read, what to check after every change, and how to have the machine do the checking so it actually happens on a Tuesday in November rather than only in the week you were enthusiastic.</p>
+  <p class="nt-take"><strong>Before you come:</strong> have your page live, and write down the one thing about it that would embarrass you most if it quietly stopped working.</p>
 </section>
 <!-- ============================ BACK COVER ============================ -->
 <section class="backcover">
@@ -1125,7 +1367,7 @@ details.demo h4:first-of-type{margin-top:.4em;}
 </section>
 
 <p class="colophon">
-  Workshop #004 &middot; Inside the Tack Room<br>
+  Workshop #010 &middot; Taking the Wagon to Market<br>
   &copy; 2026 Emile du Toit, BrainIT Consulting<br>
   Print it, download it, share it with your team. Just leave my name on it.
 </p>

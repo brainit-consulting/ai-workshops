@@ -19,6 +19,7 @@ On GitHub, use the branch/tag dropdown at the top left and choose:
 - `end-of-007` — after *Breadcrumbs*
 - `end-of-008` — after *Drawing the Trail Map*
 - `end-of-009` — after *The Well*
+- `end-of-010` — after *Taking the Wagon to Market*
 
 Then click the green **Code** button and **Download ZIP**. You do not
 need to know what git is to do that — and session seven explains what
@@ -33,6 +34,9 @@ follow along at home.
 
 **`workshops/`** — a copy of each workshop page, so you have them
 offline. They print, too.
+
+**`first-site/`** — the one-page site from session ten, ready to put on
+the internet. One file.
 
 **`the-well/`** — the table from session nine, written out, and the
 house-rules file that made the demo behave. No connection string, on
