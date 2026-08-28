@@ -20,6 +20,7 @@ On GitHub, use the branch/tag dropdown at the top left and choose:
 - `end-of-008` — after *Drawing the Trail Map*
 - `end-of-009` — after *The Well*
 - `end-of-010` — after *Taking the Wagon to Market*
+- `end-of-011` — after *Riding the Fences*
 
 Then click the green **Code** button and **Download ZIP**. You do not
 need to know what git is to do that — and session seven explains what
@@ -34,6 +35,9 @@ follow along at home.
 
 **`workshops/`** — a copy of each workshop page, so you have them
 offline. They print, too.
+
+**`checks/`** — the four checks from session eleven, and the page they
+check. `node --test` and nothing to install.
 
 **`first-site/`** — the one-page site from session ten, ready to put on
 the internet. One file.
