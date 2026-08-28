@@ -17,6 +17,7 @@ On GitHub, use the branch/tag dropdown at the top left and choose:
 - `end-of-004` — after *Inside the Tack Room*
 - `end-of-006` — after *Driving the Working Horse*
 - `end-of-007` — after *Breadcrumbs*
+- `end-of-008` — after *Drawing the Trail Map*
 
 Then click the green **Code** button and **Download ZIP**. You do not
 need to know what git is to do that — and session seven explains what
@@ -32,6 +33,11 @@ follow along at home.
 **`workshops/`** — a copy of each workshop page, so you have them
 offline. They print, too.
 
+**`trail-map-template.md`** — a blank map with the five headings on it,
+from session eight. Copy it into your own folder and fill it in. Dale's
+finished one is in `dale-estimates/spec.md` if you want to see the shape
+before you try it.
+
 ## The rules we work by
 
 Same as in the room:
@@ -41,6 +47,9 @@ Same as in the room:
 - Mark before you hand it anything big, and mark when a piece of work
   comes out right. From session seven on, that is the undo — you no
   longer need to work on copies.
+- Before you ask for anything you would be annoyed to get wrong, write
+  the map. Then say: “Don't build anything yet. Ask me what you need to
+  know first.”
 
 ## Something not working?
 

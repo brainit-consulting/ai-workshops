@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Workshop #007 — Breadcrumbs</title>
+<title>Workshop #008 — Drawing the Trail Map</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='24 -8 140 126'%3E%3Crect x='24' y='-8' width='140' height='126' fill='%23f4ede1'/%3E%3Cpath fill='%23241d16' d='M112,40 C150,66 196,102 238,154 L262,132 C216,82 164,40 124,16 Z'/%3E%3Cpath fill='%23241d16' d='M130,40 C120,20 98,14 80,28 L38,92 C33,104 43,114 56,108 L102,88 C122,79 136,58 130,40 Z'/%3E%3Cpath fill='%23241d16' d='M112,30 L104,2 L128,24 Z'/%3E%3Cpath fill='%23241d16' d='M132,32 L134,6 L152,30 Z'/%3E%3Ccircle cx='101' cy='45' r='6' fill='%23f4ede1'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -686,14 +686,14 @@ details.demo h4:first-of-type{margin-top:.4em;}
 </svg>
 
 <header class="runner">
-  <a class="brand" href="index.html" title="All workshops"><span class="wsnum">#007</span> <em>Bread</em>crumbs</a>
+  <a class="brand" href="index.html" title="All workshops"><span class="wsnum">#008</span> Drawing the <em>Trail Map</em></a>
   <nav>
     <a href="#contents">Contents</a>
-    <a href="#ch1">The Copies</a>
-    <a href="#ch2">Markers</a>
-    <a href="#ch3">Riding Back</a>
-    <a href="#ch4">Trailhead</a>
-    <a href="#ch5">Homework</a>
+    <a href="#ch1">The Ask</a>
+    <a href="#ch2">A Map</a>
+    <a href="#ch3">Dale's Map</a>
+    <a href="#ch4">Ask It</a>
+    <a href="#ch5">In The Folder</a>
     <a href="#ch6">FAQ</a>
     <a href="#glossary">Glossary</a>
   </nav>
@@ -701,7 +701,7 @@ details.demo h4:first-of-type{margin-top:.4em;}
     <button type="button" id="smaller" aria-label="Smaller text">A−</button>
     <button type="button" id="bigger" aria-label="Larger text">A+</button>
     <button type="button" id="printbtn" class="wide">Print</button>
-    <a class="wide" href="breadcrumbs.html" download>Download</a>
+    <a class="wide" href="drawing-the-trail-map.html" download>Download</a>
   </span>
 </header>
 
@@ -710,24 +710,22 @@ details.demo h4:first-of-type{margin-top:.4em;}
 <!-- ============================ COVER ============================ -->
 <section class="cover">
   <div class="cover-text">
-    <span class="kicker"><span class="wsnum">Workshop&nbsp;#007</span> &middot; lids up &mdash; bring your laptop</span>
-    <h1>Bread<span class="ai">crumbs</span><span class="of">the trail you can ride back</span></h1>
-    <p class="deck">Everything so far has had one hole in it. You approve a change on Tuesday, realize on Thursday it was wrong, and nothing helps you. Today we close it.</p>
-    <p class="promise"><strong>By the end of today</strong> you will be able to keep every version of everything you make, put any of it back, and stop working on copies.</p>
+    <span class="kicker"><span class="wsnum">Workshop&nbsp;#008</span> &middot; lids up &mdash; you write one today</span>
+    <h1>Drawing the<br><span class="ai">Trail Map</span><span class="of">before anybody builds it</span></h1>
+    <p class="deck">You can build things now, and you can undo them. What limits you from here is not the horse. It is how clearly you can say what you actually want.</p>
+    <p class="promise"><strong>By the end of today</strong> you will be able to write one page that describes a job clearly enough to hand over &mdash; to an assistant, or to a person.</p>
     <p class="imprint">
       Presented by Emile du Toit<br>
       <a class="firm" href="https://brainitconsulting.com">brainitconsulting.com</a>
     </p>
   </div>
   <div class="cover-art">
-    <svg viewBox="-200 0 720 360" role="img" aria-label="A horse in full working harness, with marked trail posts on the ground behind it">
-      <path d="M-186,322 L60,322" stroke="#c9b99f" stroke-width="3" fill="none"/>
-      <rect x="-178" y="234" width="15" height="88" rx="4" fill="#5b4d3f"/>
-      <rect x="-183" y="248" width="25" height="17" rx="3" fill="#b8391c"/>
-      <rect x="-120" y="248" width="14" height="74" rx="4" fill="#5b4d3f"/>
-      <rect x="-125" y="260" width="24" height="16" rx="3" fill="#b8391c"/>
-      <rect x="-64" y="260" width="13" height="62" rx="4" fill="#5b4d3f"/>
-      <rect x="-69" y="270" width="22" height="15" rx="3" fill="#b8391c"/>
+    <svg viewBox="-230 0 750 360" role="img" aria-label="A horse in full working harness with a dashed route drawn ahead of it, ending at a cross">
+      <path d="M-216,322 L60,322" stroke="#c9b99f" stroke-width="3" fill="none"/>
+      <path d="M-30,318 C-84,310 -122,300 -156,288 C-176,281 -192,274 -204,266"
+            style="fill:none;stroke:#b8391c;stroke-width:8;stroke-dasharray:20 17;stroke-linecap:round"/>
+      <path d="M-222,232 L-186,264 M-186,232 L-222,264"
+            stroke="#b8391c" stroke-width="11" stroke-linecap="round" fill="none"/>
       <use href="#horse-body"/><use href="#tack-bridle"/><use href="#tack-saddle"/><use href="#tack-bags"/>
     </svg>
   </div>
@@ -736,26 +734,26 @@ details.demo h4:first-of-type{margin-top:.4em;}
 <section class="page-recap">
   <div class="recap">
     <span class="rc-label">Where we got to</span>
-    <p>Here is an overview of last time in five lines.</p>
+    <p>Here is an overview of the last two sessions in five lines.</p>
     <ul>
-      <li><strong>You have a room.</strong> One folder, one job, opened in the editor.</li>
-      <li><strong>You have a working horse in it</strong> that reads files, writes files and runs commands.</li>
-      <li><strong>It stops at every gate</strong> and waits for you before it changes anything.</li>
-      <li><strong>You can describe a job</strong> and write your house rules into the folder so you stop repeating yourself.</li>
-      <li><strong>And you have been working on copies</strong> the entire time, because there has been no way back.</li>
+      <li><strong>You have a folder and an assistant in it</strong> that reads, writes and runs things.</li>
+      <li><strong>It stops at every gate</strong>, and you are the one who decides.</li>
+      <li><strong>Your house rules live in the folder</strong>, so you stop repeating yourself.</li>
+      <li><strong>And since last time, every version is kept.</strong> A mistake is a step backwards rather than a rebuild.</li>
+      <li><strong>Which means the tools are no longer what is slowing you down.</strong></li>
     </ul>
-    <p>Today is the way back.</p>
+    <p>Today we deal with what is.</p>
   </div>
 </section>
 <!-- ============================ CONTENTS ============================ -->
 <section class="contents" id="contents">
   <h3 style="margin-top:0">Contents</h3>
   <ol>
-    <li><a href="#ch1">The folder full of almost-the-same file</a><span class="gloss">Everybody has one. Here is why it fails.</span></li>
-    <li><a href="#ch2">Dropping a marker</a><span class="gloss">What you are actually asking for, and the one download.</span></li>
-    <li><a href="#ch3">Riding back</a><span class="gloss">I break something on purpose. Then I put it back.</span></li>
-    <li><a href="#ch4">The stable at the trailhead</a><span class="gloss">A copy that is not on your laptop.</span></li>
-    <li><a href="#ch5">Three sentences, and one job</a><span class="gloss">What you say, and what to do before next time.</span></li>
+    <li><a href="#ch1">You got exactly what you asked for</a><span class="gloss">Which is the problem.</span></li>
+    <li><a href="#ch2">What a map is</a><span class="gloss">One page, five headings, before anything is built.</span></li>
+    <li><a href="#ch3">Dale's map, in full</a><span class="gloss">The one to copy the shape of.</span></li>
+    <li><a href="#ch4">Let it draw the map with you</a><span class="gloss">A real conversation, printed.</span></li>
+    <li><a href="#ch5">The map lives in the folder</a><span class="gloss">And what to do when you change your mind.</span></li>
   </ol>
   <p style="margin-top:1.4rem; max-width:var(--measure); color:var(--ink-soft); font-style:italic;">
     Then the questions this always raises, the glossary so far, and the picture to photograph.
@@ -765,385 +763,339 @@ details.demo h4:first-of-type{margin-top:.4em;}
 <section class="chapter" id="ch1">
   <div class="chapter-head">
     <div class="chapter-num">01</div>
-    <h2>The folder full of almost-the-same file</h2>
-    <p class="standfirst">Everybody has one. It is not a bad habit &mdash; it is a missing tool.</p>
+    <h2>You got exactly what you asked for</h2>
+    <p class="standfirst">Which is the problem, and it is nobody's fault but the sentence.</p>
   </div>
 
-  <p class="dropcap">Open your documents folder and look for the file you have made four copies of. There is nearly always one. <code>estimates.txt</code>, then <code>estimates-v2.txt</code>, then <code>estimates-final.txt</code>, and then, because life happened on a Thursday, <code>estimates-final-ACTUALLY.txt</code>. Nobody planned that. It grew.</p>
+  <p class="dropcap">Dale asks for &ldquo;something to track my estimates.&rdquo; Twenty minutes later he has a thing that tracks estimates: every estimate he has ever written, in a tidy list, newest first, with totals. It works. It is well made. He opens it once and never opens it again.</p>
 
-  <p>The instinct behind it is exactly right. You wanted to be able to go back, so you copied the file before you changed it. Copying is the only undo most people have ever been handed, and you used it sensibly.</p>
+  <p>What he wanted at six in the morning, sitting in the truck with the engine running, was <em>which of these is waiting on me.</em> Three names. That is all.</p>
 
-  <p>It just does not work very well, and it is worth being precise about why.</p>
+  <p>Nothing went wrong. He asked for the wrong thing, and he had no way of knowing it was the wrong thing until he saw the right thing missing.</p>
 
-  <ul>
-    <li><strong>The names lie.</strong> Six months on, <em>final</em> and <em>ACTUALLY</em> tell you nothing about which one Dale actually sent to the customer.</li>
-    <li><strong>You cannot see what changed.</strong> You have four entire files and no record of the difference between any two of them.</li>
-    <li><strong>You keep all of them forever</strong>, because deleting one feels like the sort of decision you regret on a Tuesday.</li>
-    <li><strong>And the one time it mattered</strong>, you had already saved over the original before it occurred to you to copy it.</li>
-  </ul>
+  <figure class="wide">
+    <svg viewBox="0 0 1120 470" role="img" aria-label="One request leading down three different dashed roads to three different destinations">
+      <rect class="plate" x="40" y="188" width="300" height="96" rx="8"/>
+      <text class="lbl" x="190" y="228" text-anchor="middle">What you said</text>
+      <text class="lbl-sm" x="190" y="258" text-anchor="middle" style="font-size:17px">&ldquo;something to track my estimates&rdquo;</text>
 
-  <figure>
-    <svg viewBox="0 0 900 430" role="img" aria-label="A folder holding four near-identical copies of the same file">
-      <path d="M40,100 L262,100 L286,132 L560,132 L560,398 L40,398 Z" fill="#5b4d3f"/>
+      <path d="M348,214 C520,150 680,110 850,96"
+            style="fill:none;stroke:#c9b99f;stroke-width:8;stroke-dasharray:18 15;stroke-linecap:round"/>
+      <path d="M348,236 C520,232 680,230 850,228"
+            style="fill:none;stroke:#c9b99f;stroke-width:8;stroke-dasharray:18 15;stroke-linecap:round"/>
+      <path d="M348,258 C520,322 680,362 850,376"
+            style="fill:none;stroke:#b8391c;stroke-width:9;stroke-dasharray:18 15;stroke-linecap:round"/>
 
-      <rect x="70"  y="150" width="360" height="246" rx="4" fill="#f4ede1" stroke="#c9b99f" stroke-width="3"/>
-      <text class="lbl-sm" x="92"  y="180" style="font-size:19px">estimates.txt</text>
-      <rect x="88"  y="186" width="360" height="210" rx="4" fill="#f4ede1" stroke="#c9b99f" stroke-width="3"/>
-      <text class="lbl-sm" x="110" y="216" style="font-size:19px">estimates-v2.txt</text>
-      <rect x="106" y="222" width="360" height="174" rx="4" fill="#f4ede1" stroke="#c9b99f" stroke-width="3"/>
-      <text class="lbl-sm" x="128" y="252" style="font-size:19px">estimates-final.txt</text>
-      <rect x="124" y="258" width="360" height="138" rx="4" fill="#f4ede1" stroke="#c9b99f" stroke-width="3"/>
-      <text class="lbl-sm" x="146" y="288" style="font-size:19px">estimates-final-ACTUALLY.txt</text>
+      <rect class="plate" x="866" y="58" width="220" height="76" rx="8"/>
+      <text class="lbl-sm" x="976" y="90" text-anchor="middle" style="font-size:17px">every estimate</text>
+      <text class="lbl-sm" x="976" y="114" text-anchor="middle" style="font-size:17px">you have ever written</text>
 
-      <rect x="40" y="300" width="520" height="98" rx="6" fill="#b8391c"/>
+      <rect class="plate" x="866" y="190" width="220" height="76" rx="8"/>
+      <text class="lbl-sm" x="976" y="222" text-anchor="middle" style="font-size:17px">a total, by month</text>
+      <text class="lbl-sm" x="976" y="246" text-anchor="middle" style="font-size:17px">with a chart</text>
 
-      <path class="lead-under" d="M604,196 L566,216"/><path class="lead" d="M604,196 L566,216"/>
-      <text class="lbl lbl-em" x="616" y="190">Which one is real?</text>
-      <text class="lbl-sm" x="616" y="218">You can read the names.</text>
-      <text class="lbl-sm" x="616" y="242">You cannot read what changed.</text>
+      <rect x="866" y="336" width="220" height="80" rx="8" fill="#f0d9cf" stroke="#b8391c" stroke-width="4"/>
+      <text class="lbl-sm" x="976" y="368" text-anchor="middle" style="font-size:17px; fill:#241d16">the three waiting</text>
+      <text class="lbl-sm" x="976" y="392" text-anchor="middle" style="font-size:17px; fill:#241d16">on you this morning</text>
 
-      <path class="lead-under" d="M604,330 L566,348"/><path class="lead" d="M604,330 L566,348"/>
-      <text class="lbl lbl-em" x="616" y="324">You keep them all</text>
-      <text class="lbl-sm" x="616" y="352">because deleting one feels</text>
-      <text class="lbl-sm" x="616" y="376">like something you would regret.</text>
+      <text class="lbl lbl-em" x="866" y="446">What you meant</text>
+      <text class="lbl-sm" x="40" y="352">All three are a fair reading of the same sentence.</text>
+      <text class="lbl-sm" x="40" y="378">Only one of them is any use in a truck at six in the morning.</text>
     </svg>
-    <figcaption><b>Fig. 1</b> &mdash; The only undo most people have ever been given. It is four whole files and no record of the difference between any two of them.</figcaption>
+    <figcaption><b>Fig. 1</b> &mdash; Nothing went wrong here. Every road leads somewhere the words allowed it to go.</figcaption>
   </figure>
 
-  <p>What you want instead is one file with one name, and every version it has ever been kept behind it, automatically, somewhere you cannot delete by accident. That is <em class="term">version control</em>. It has existed for about forty years, it is free, and the only reason it has not reached your desk is that it was built by programmers for programmers.</p>
+  <p>This is the session where the limit stops being the tool. You have an assistant that can build, an editor to build in, and an undo if it goes badly. From here on, what you get is decided almost entirely by how clearly you said what you wanted.</p>
 
-  <p class="pull">Copying a file is a wish for an undo. Today you get the undo.</p>
+  <p>Three things go wrong with a plain request, and they go wrong every time.</p>
+
+  <ul>
+    <li><strong>Every word you left out, it fills in.</strong> You did not say &ldquo;only the ones waiting on me&rdquo;, so it had to decide, and it decided reasonably.</li>
+    <li><strong>It cannot see your Friday.</strong> It does not know this gets read on a phone, in a truck, before seven, by a man with one hand free.</li>
+    <li><strong>It will not tell you that you were vague.</strong> Not unless you ask it to &mdash; which is chapter four, and is the most useful sentence in this session.</li>
+  </ul>
 
   <div class="box">
-    <span class="label">What this fixes, specifically</span>
-    <p>Right now, if you let the assistant loose on a real file and it makes a mess, you have two options: the editor's undo button, which lasts until you close the window, and whatever copy you happened to make first.</p>
-    <p>By the end of today you have a third: <em>put it back the way it was at nine this morning.</em> Every file in the folder. Any morning you like.</p>
+    <span class="label">What Dale meant, in the words he would have used if anyone had asked</span>
+    <p>&ldquo;When I get in the truck I want to know which jobs are stuck on me. Not the ones I've sent &mdash; those are gone. The ones where somebody's waiting and I'm the reason. And if there's a gas one in there I want it at the top, because that's the one I can't sit on.&rdquo;</p>
+    <p>Nobody asked. He would have said all of it in fifteen seconds.</p>
   </div>
+
+  <p class="pull">You will get what you asked for. The skill is asking for the right thing.</p>
 </section>
 <!-- ============================ CH 02 ============================ -->
 <section class="chapter" id="ch2">
   <div class="chapter-head">
     <div class="chapter-num">02</div>
-    <h2>Dropping a marker</h2>
-    <p class="standfirst">You ride out, and every so often you stop and mark where you are.</p>
+    <h2>What a map is</h2>
+    <p class="standfirst">One page of plain English, written before anything is built.</p>
   </div>
 
-  <p class="dropcap">Picture riding a trail you are going to need to come back along. Every so often you stop, drive a marker into the ground, and tie a note to it saying what you had just done. <em>This is where the rate card started being right.</em> Then you ride on, and after the next stretch of work you mark again.</p>
+  <p class="dropcap">You would not send a driver to a place he has never been with the words &ldquo;head north, you'll see it.&rdquo; You would draw him a map &mdash; not the whole county, just enough of it: where he is going, what he will pass, where the road is closed, and how he will know he has arrived.</p>
 
-  <p>That is the idea, and everything else today is detail. Three things about those markers matter.</p>
+  <p>A map here is one page describing a job well enough that somebody else could do it without you in the room. In the trade it is called a <em class="term">spec</em>, short for specification, or sometimes a brief. Same thing. Five headings and about three hundred words.</p>
 
-  <ul>
-    <li><strong>You choose when.</strong> A marker is not an autosave. You drop one when a piece of work is finished and you are happy with it &mdash; which is exactly what makes the note worth writing.</li>
-    <li><strong>The note is for future-you.</strong> Six words, said the way you would say them out loud: <em>priced the Tanner job</em>. Not <em>update</em>.</li>
-    <li><strong>Nothing is ever removed.</strong> Markers only get added. Going back to an earlier one does not throw away the ones after it &mdash; the trail is still there, and you can ride forward again.</li>
-  </ul>
+  <figure>
+    <svg viewBox="0 0 900 578" role="img" aria-label="A single sheet of paper pinned up, with the five headings of a map written on it">
+      <path d="M52,52 L512,52 L572,112 L572,540 L52,540 Z" fill="#eadfcc" opacity=".55"/>
+      <path d="M40,40 L500,40 L560,100 L560,528 L40,528 Z" fill="#f4ede1" stroke="#5b4d3f" stroke-width="5"/>
+      <path d="M500,40 L560,100 L500,100 Z" fill="#eadfcc" stroke="#5b4d3f" stroke-width="5"/>
+      <circle cx="270" cy="74" r="12" fill="#b8391c"/>
+      <circle cx="266" cy="70" r="4" fill="#f0d9cf"/>
 
-  <figure class="wide">
-    <svg viewBox="0 0 1120 480" role="img" aria-label="A trail of marked posts with notes, the horse at the near end, and an arrow riding back to the second marker">
-      <defs>
-        <marker id="arrow7" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto">
-          <path d="M0,0 L10,5 L0,10 Z" fill="#b8391c"/>
-        </marker>
-      </defs>
+      <text class="lbl-sm" x="82" y="132" style="font-size:21px; font-weight:700; fill:#b8391c">1. What it is</text>
+      <rect x="82" y="146" width="360" height="10" rx="5" fill="#c9b99f"/>
+      <rect x="82" y="166" width="286" height="10" rx="5" fill="#c9b99f"/>
 
-      <path d="M40,392 L1090,392" stroke="#c9b99f" stroke-width="8" fill="none" stroke-linecap="round"/>
-      <rect class="plate" x="44" y="216" width="172" height="66" rx="5"/>
-      <text class="lbl-sm" x="130" y="244" text-anchor="middle" style="font-size:17px">started the</text>
-      <text class="lbl-sm" x="130" y="268" text-anchor="middle" style="font-size:17px">estimate folder</text>
-      <path class="lead" d="M130,282 L130,300"/>
-      <rect x="123" y="300" width="14" height="92" rx="4" fill="#5b4d3f"/>
-      <rect x="114" y="314" width="32" height="18" rx="4" fill="#b8391c"/>
-      <rect class="plate" x="234" y="216" width="172" height="66" rx="5"/>
-      <text class="lbl-sm" x="320" y="244" text-anchor="middle" style="font-size:17px">added the</text>
-      <text class="lbl-sm" x="320" y="268" text-anchor="middle" style="font-size:17px">rate card</text>
-      <path class="lead" d="M320,282 L320,300"/>
-      <rect x="313" y="300" width="14" height="92" rx="4" fill="#5b4d3f"/>
-      <rect x="304" y="314" width="32" height="18" rx="4" fill="#b8391c"/>
-      <rect class="plate" x="424" y="216" width="172" height="66" rx="5"/>
-      <text class="lbl-sm" x="510" y="244" text-anchor="middle" style="font-size:17px">priced the</text>
-      <text class="lbl-sm" x="510" y="268" text-anchor="middle" style="font-size:17px">Tanner job</text>
-      <path class="lead" d="M510,282 L510,300"/>
-      <rect x="503" y="300" width="14" height="92" rx="4" fill="#5b4d3f"/>
-      <rect x="494" y="314" width="32" height="18" rx="4" fill="#b8391c"/>
-      <rect class="plate" x="614" y="216" width="172" height="66" rx="5"/>
-      <text class="lbl-sm" x="700" y="244" text-anchor="middle" style="font-size:17px">fixed the</text>
-      <text class="lbl-sm" x="700" y="268" text-anchor="middle" style="font-size:17px">Saturday rate</text>
-      <path class="lead" d="M700,282 L700,300"/>
-      <rect x="693" y="300" width="14" height="92" rx="4" fill="#5b4d3f"/>
-      <rect x="684" y="314" width="32" height="18" rx="4" fill="#b8391c"/>
+      <text class="lbl-sm" x="82" y="216" style="font-size:21px; font-weight:700; fill:#b8391c">2. What it reads, and never touches</text>
+      <rect x="82" y="230" width="392" height="10" rx="5" fill="#c9b99f"/>
+      <rect x="82" y="250" width="240" height="10" rx="5" fill="#c9b99f"/>
 
-      <g transform="translate(846,212) scale(0.56)"><use href="#horse-body"/><use href="#tack-bridle"/><use href="#tack-saddle"/><use href="#tack-bags"/></g>
+      <text class="lbl-sm" x="82" y="300" style="font-size:21px; font-weight:700; fill:#b8391c">3. What you would see</text>
+      <rect x="82" y="314" width="352" height="10" rx="5" fill="#c9b99f"/>
+      <rect x="82" y="334" width="310" height="10" rx="5" fill="#c9b99f"/>
 
-      <path d="M888,182 C750,116 470,116 326,200" style="fill:none;stroke:#b8391c;stroke-width:7" marker-end="url(#arrow7)"/>
-      <text class="lbl lbl-em" x="520" y="98" text-anchor="middle">Ride back to here</text>
+      <text class="lbl-sm" x="82" y="384" style="font-size:21px; font-weight:700; fill:#b8391c">4. How you will know it is right</text>
+      <rect x="82" y="398" width="330" height="10" rx="5" fill="#c9b99f"/>
+      <rect x="82" y="418" width="212" height="10" rx="5" fill="#c9b99f"/>
 
-      <text class="lbl" x="40" y="440">Each marker: a moment you chose</text>
-      <text class="lbl-sm" x="40" y="466">and a note saying what you had just done</text>
-      <text class="lbl lbl-em" x="906" y="440">You are here</text>
+      <text class="lbl-sm" x="82" y="468" style="font-size:21px; font-weight:700; fill:#b8391c">5. What I am not sure about</text>
+      <rect x="82" y="482" width="368" height="10" rx="5" fill="#c9b99f"/>
+      <rect x="82" y="502" width="196" height="10" rx="5" fill="#c9b99f"/>
+
+      <path class="lead-under" d="M598,120 L566,120"/><path class="lead" d="M598,120 L566,120"/>
+      <text class="lbl lbl-em" x="610" y="114">One page</text>
+      <text class="lbl-sm" x="610" y="140">about three hundred words</text>
+
+      <path class="lead-under" d="M598,458 L566,462"/><path class="lead" d="M598,458 L566,462"/>
+      <text class="lbl lbl-em" x="610" y="452">The one people skip</text>
+      <text class="lbl-sm" x="610" y="478">and the most useful of the five</text>
+
+      <text class="lbl-sm" x="40" y="566">If it needs three pages, it is three jobs.</text>
     </svg>
-    <figcaption><b>Fig. 2</b> &mdash; The trail. Every marker is a state of the whole folder you can put back, and the note is what tells you which one you want.</figcaption>
+    <figcaption><b>Fig. 2</b> &mdash; The map. Five headings on one page, written before anything is built. This is the thing to photograph today.</figcaption>
   </figure>
 
-  <p>Now the real words, because you will meet them everywhere from here on. One marker is a <em class="term">commit</em>. A folder that keeps its own markers is a <em class="term">repository</em>, which everybody shortens to <em>repo</em>. The program doing the marking is called <em class="term">git</em>, and it runs entirely on your own machine &mdash; no account, no internet, nothing sent anywhere.</p>
-
-  <h3>The one download</h3>
-
-  <p>Git is not built into Windows. It is a single install of the same shape as VS Code in session four, and then you never think about it again.</p>
-
-  <div class="box">
-    <span class="label">Getting git onto your machine</span>
-    <p><strong>Windows.</strong> Go to <a class="repo" href="https://git-scm.com" target="_blank" rel="noopener">git-scm.com</a>, click the download button, and accept every default screen the installer offers. There are a lot of screens. Every default is fine.</p>
-    <p><strong>Mac.</strong> Open the terminal and type <code>git --version</code>. If it is missing, the Mac offers to fetch it for you. Say yes.</p>
-    <p><strong>Either way, you are done when</strong> <code>git --version</code> prints a number back at you. Nothing else to check.</p>
+  <div class="box stable">
+    <span class="label">The five headings</span>
+    <p><strong>1. What it is.</strong> One sentence, and who it is for. If you cannot finish this sentence, stop &mdash; that is the actual problem, not the building.</p>
+    <p><strong>2. What it reads, and what it must never touch.</strong> Which files, which folders, which information. And then the nevers, plainly.</p>
+    <p><strong>3. What you would actually see.</strong> Describe the thing itself. Not &ldquo;a summary&rdquo; &mdash; write out a line of it, the way it would really look.</p>
+    <p><strong>4. How you will know it is right.</strong> Two or three things that must be true. &ldquo;Tanner is at the top.&rdquo; &ldquo;Nothing I've already sent appears.&rdquo;</p>
+    <p><strong>5. What you are not sure about.</strong> The questions you cannot answer yet. This heading is the one people leave out, and it is the most valuable one on the page.</p>
   </div>
 
-  <details class="demo">
-    <summary>Show me every step &mdash; the install, click by click</summary>
-    <div class="demo-body">
-      <p>Nothing here needs an account, a card, or a decision. About five minutes on Windows and less than that on a Mac. If you have installed anything before, this is the same as that.</p>
+  <p><strong>One page, on purpose.</strong> Longer than that and nobody reads it, including you in three weeks. If it will not fit on a page, you are describing three jobs, and three jobs want three maps and doing one at a time.</p>
 
-      <p><strong>First, two things that save confusion later.</strong> You will never open git. There is no icon to look for and no window to log into &mdash; it sits underneath and other programs use it. And if anything at all asks you to create an account, that is GitHub, which is chapter four and is not needed today.</p>
+  <p>You are not writing this for a computer. Write it the way you wrote your house rules in session six &mdash; the way you would brief a capable new employee on their first morning. That is the same skill, and you already have it.</p>
 
-      <h4>Windows</h4>
-      <ol>
-        <li><strong>Go to <a class="repo" href="https://git-scm.com" target="_blank" rel="noopener">git-scm.com</a>.</strong> There is a large button on the right that says <em>Download for Windows</em>. Click it. If it offers you a choice, take the one that says <em>64-bit</em> &mdash; that is almost certainly your computer.</li>
-        <li><strong>Find the file it downloaded.</strong> It goes to your Downloads folder and is called something like <code>Git-2.51.0-64-bit.exe</code>. The numbers will be different by the time you read this. That is fine.</li>
-        <li><strong>Double-click it.</strong> Windows will ask whether you want to let it make changes to your device. Say <strong>Yes</strong>.</li>
-        <li><strong>Now the long bit.</strong> The installer asks about a dozen questions, and some of them look alarming. <strong>Click Next on every single one.</strong> You are not skipping anything you need &mdash; the defaults are the right answers for what we are doing, and they are the right answers for most professionals too.</li>
-        <li><strong>Click Install</strong> on the last screen, then <strong>Finish</strong> when it is done. Untick <em>View Release Notes</em> unless you enjoy that sort of thing.</li>
-      </ol>
-
-      <h4>Mac</h4>
-      <ol>
-        <li><strong>Open VS Code</strong> and open a terminal inside it: the <em>Terminal</em> menu, then <em>New Terminal</em>. A panel appears along the bottom.</li>
-        <li><strong>Type <code>git --version</code> and press Enter.</strong> Most Macs already have it, and a version number comes straight back. If it does, you are finished.</li>
-        <li><strong>If a box appears</strong> offering to install the <em>command line developer tools</em>, click <strong>Install</strong> and let it run. It takes a few minutes and it is a normal thing for a Mac to offer.</li>
-        <li><strong>When it finishes</strong>, type <code>git --version</code> again.</li>
-      </ol>
-
-      <h4>Checking it worked &mdash; both</h4>
-      <ol>
-        <li><strong>Open VS Code.</strong> If it was already open, close it and open it again &mdash; it needs to be started after the install to notice it.</li>
-        <li><strong>Open a terminal in it:</strong> the <em>Terminal</em> menu, then <em>New Terminal</em>. This is the same black panel from session four.</li>
-        <li><strong>Type <code>git --version</code></strong> and press Enter.</li>
-        <li><strong>You want a version number back</strong> &mdash; something like <code>git version 2.51.0</code>. Nothing else to check.</li>
-      </ol>
-
-      <div class="box">
-        <span class="label">If it says something else</span>
-        <p><strong>&ldquo;command not found&rdquo; or &ldquo;is not recognized&rdquo;.</strong> Nine times in ten this means VS Code was open during the install. Close it completely and open it again, then try once more.</p>
-        <p><strong>Still nothing after that?</strong> Restart the computer and try once more. That genuinely is the fix, and it is the last thing to try on your own.</p>
-        <p><strong>Still nothing?</strong> Stop. Bring the laptop to the session and we will do it together in two minutes. Nobody has ever been the only one.</p>
-      </div>
-
-      <p class="say">"You have just installed the thing every software company on earth runs on. It took five minutes and asked you nothing."</p>
-    </div>
-  </details>
-
-  <p>You are not going to type git commands after today. You need it installed for the same reason a kettle needs plumbing in &mdash; something else does the work, but the thing has to be there.</p>
+  <p class="pull">The map is worth more than the horse. Anyone can borrow a horse.</p>
 </section>
 <!-- ============================ CH 03 ============================ -->
 <section class="chapter" id="ch3">
   <div class="chapter-head">
     <div class="chapter-num">03</div>
-    <h2>Riding back</h2>
-    <p class="standfirst">I am going to break something on purpose. Watch what happens next.</p>
+    <h2>Dale's map, in full</h2>
+    <p class="standfirst">The one to copy the shape of. The words are his; the shape is yours to steal.</p>
   </div>
 
-  <p class="dropcap">This part is worth watching rather than reading. Dale's estimates folder is on the screen, it has four markers behind it, and everything in it is correct. I am going to open the rate card, delete the labor rate, save the file, and then get it back.</p>
+  <p class="dropcap">Working example. This is the map for the thing Dale actually wanted &mdash; the list of estimates stuck on him &mdash; written before a single file was made. It is shorter than the description of it took.</p>
 
   <div class="box stable">
-    <span class="label">What you are about to see</span>
-    <p><strong>1.</strong> The folder as it should be. Four markers behind it, the last one from ten minutes ago.</p>
-    <p><strong>2.</strong> I break it. Labor rate deleted, file saved. It is now wrong on disk, and the editor's undo will not survive closing the window.</p>
-    <p><strong>3.</strong> I ask what the damage is: <em>what has changed since the last marker?</em> It tells me &mdash; one file, one line gone, and it shows me the line.</p>
-    <p><strong>4.</strong> I ask for it back: <em>put everything back the way it was at the last marker.</em></p>
-    <p><strong>5.</strong> It is back. Nobody typed a command, and nothing else in the folder moved.</p>
+    <span class="label">The estimate queue &mdash; what I understood</span>
+    <p><strong>What it is.</strong> One short list, on Dale's phone, of estimate requests that cannot move without him. Nothing else on it. When an estimate is written and sent, it drops off &mdash; there is nothing to mark as done.</p>
+    <p><strong>What it reads.</strong> Three things already on the office computer: <code>inbox/</code>, the emails saved in each morning; <code>past-estimates/</code>, so it knows what has been done; and <code>rate-card.txt</code> and <code>notes.txt</code>, so it can tell a job we can price from one we cannot.</p>
+    <p><strong>What it must never do.</strong> It does not read email. It does not send anything. It does not write the estimates. It does not price gas &mdash; it flags it and stops.</p>
+    <p><strong>What you would see.</strong> Name, one line on the job, why it is waiting, and what would move it:</p>
+    <p style="padding-left:1.4rem; border-left:3px solid var(--rule)"><strong>Tanner, 212 Wilbanks Rd</strong> &mdash; 4 days<br>Gas smell at the stove. We don't price gas. Call him.<br>Water heater's separate and quotable if you want it split.</p>
+    <p><strong>How I will know it is right.</strong> Tanner is at the top, because gas beats waiting time. Alvarez shows as ready to price. Nothing already sent appears anywhere on it. No prices on this list &mdash; prices belong in the estimate.</p>
+    <p><strong>What I am not sure about.</strong> How it knows a job is finished. Today the only signal is a file appearing in <code>past-estimates/</code> with the customer's name on it &mdash; so if Alvarez calls again next spring about something else, the old file still has her name and the new email gets counted as already done. That is a job silently missing off the list, which is the one failure that actually costs money.</p>
   </div>
 
-  <details class="demo">
-    <summary>Nothing up my sleeve &mdash; the exact steps I am about to take</summary>
-    <div class="demo-body">
-      <p>Same as session three: you are welcome to watch the mechanics rather than the magic. Ten steps, not one of them typed at a command line, and the folder starts identical every time I run this.</p>
-      <ol>
-        <li><strong>Set the folder up.</strong> A script puts Dale's folder back to the same starting state and lays four markers on it &mdash; the same four notes as the picture in the last chapter.</li>
-        <li><strong>Open <code>rate-card.txt</code></strong> from the file list down the left, and leave it on screen.</li>
-        <li><strong>Find the line that reads</strong> <code>Labor, per hour after that &nbsp;&nbsp;$110</code>.</li>
-        <li><strong>Select the whole line and delete it.</strong> Click at the start of it, hold <strong>Shift</strong> and press the <strong>down arrow</strong>, then press <strong>Delete</strong>. Doing it by hand rather than with a shortcut means the room can see it happen from the back row.</li>
-        <li><strong>Save it.</strong> <strong>Ctrl + S</strong>, or <strong>Cmd + S</strong> on a Mac. The white dot on the tab disappears, which is how you know it is written to disk rather than sitting in the editor.</li>
-        <li><strong>Close the tab.</strong> <strong>Ctrl + W</strong>. This is the step that matters, and it is worth pausing on: the editor's undo history goes with the tab. From here, nothing on this laptop can bring that line back except what happens next.
-          <p class="say">"That is a real deletion. It is saved, and the undo button has gone with it."</p>
-        </li>
-        <li><strong>Ask what happened.</strong> In the assistant panel, type: <code>what has changed since the last marker?</code></li>
-        <li><strong>Read the answer out loud</strong> rather than moving straight on. It names the file, quotes the exact line, and &mdash; every time I have run it &mdash; goes on to say unprompted that the card now has no hourly rate at all, so any estimate priced from it would be wrong. That is the part worth watching.</li>
-        <li><strong>Ask for it back.</strong> <code>put everything back the way it was at the last marker</code> &mdash; then approve it when it stops and asks. That stop is the gate from session five, and it has not gone anywhere.</li>
-        <li><strong>Open <code>rate-card.txt</code> again.</strong> The line is back, exactly as it was.</li>
-      </ol>
-      <div class="box">
-        <span class="label">Two things worth saying out loud</span>
-        <p><strong>It might put the line back by editing the file rather than by running a git command.</strong> Both are fine and the result is identical &mdash; it checks, and reports that the folder now matches the marker. If that is what happens, say so; it is a better answer than pretending there is only one way.</p>
-        <p><strong>The folder is what tells it a marker is a commit.</strong> "Marker" is our word, not the tool's. So the folder carries a short instructions file &mdash; the same kind you wrote last session &mdash; with one line explaining the word. Without it, the assistant stops and asks what a marker is. That file is exactly what chapter five asks you to write for yourself.</p>
-      </div>
-      <p><strong>To do it again:</strong> there is nothing to clean up. Run the setup script, and it lays the folder and the four markers out fresh. It always ends the same way.</p>
-    </div>
-  </details>
-
-  <p>The moment to watch is step three, not step five. It could tell me <em>what</em> had changed &mdash; not that a file had been touched, but which line went missing. That is worth as much as the undo, because most of the time you do not want to go back. You want to know what happened.</p>
-
-  <h3>The three ways back</h3>
+  <h3>Three things to notice about it</h3>
 
   <ul>
-    <li><strong>Back to the last marker.</strong> Undo everything since. This is the one you will use.</li>
-    <li><strong>Back to a marker further down the trail.</strong> Tuesday morning, before any of this started.</li>
-    <li><strong>Just look.</strong> Show me what changed and leave it alone. That is not a change at all, and it is free.</li>
+    <li><strong>It says what the thing must not do</strong> as clearly as what it must. Half the value of a map is the roads you cross out.</li>
+    <li><strong>It writes out a real line of the output.</strong> &ldquo;Tanner, 212 Wilbanks Rd &mdash; 4 days&rdquo; settles a dozen small arguments that would otherwise be settled by whoever builds it.</li>
+    <li><strong>It names its own weakest part</strong> instead of pretending to be finished. That last heading is where the next conversation starts.</li>
   </ul>
 
-  <h3>What it does not do</h3>
-
-  <p>Being straight about this is the difference between a safety net and a false one.</p>
-
-  <ul>
-    <li><strong>It covers the folder you set it up in.</strong> Files elsewhere on your machine are not on the trail and never were.</li>
-    <li><strong>It does not un-send anything.</strong> An email that went out, an invoice that was submitted, a page that went on the internet &mdash; those are out in the world. Git covers your files, not the consequences of them.</li>
-    <li><strong>No marker, no way back.</strong> Work you never marked is work git has never seen. This is the one that catches people, and it is the reason for the rule below.</li>
-  </ul>
-
-  <div class="box stable">
-    <span class="label">The one rule</span>
-    <p>Drop a marker before you hand it anything big, and drop one when a piece of work comes out right.</p>
-    <p>Ten seconds each. Everything between two markers is recoverable. Anything before your first marker is not, which is why the first thing you do in a folder is mark it.</p>
-  </div>
-
-  <p class="pull">A mistake stops being a rebuild and becomes a step backwards.</p>
+  <p class="pull">Half the value of a map is the roads you cross out.</p>
 </section>
 <!-- ============================ CH 04 ============================ -->
 <section class="chapter" id="ch4">
   <div class="chapter-head">
     <div class="chapter-num">04</div>
-    <h2>The stable at the trailhead</h2>
-    <p class="standfirst">The trail is on your laptop. Laptops get dropped.</p>
+    <h2>Let it draw the map with you</h2>
+    <p class="standfirst">You do not have to be good at this on the first morning.</p>
   </div>
 
-  <p class="dropcap">Everything so far lives on one machine &mdash; the same machine that can be left in an airport, rained on, or simply decline to turn on one Monday. A trail you can only ride from one spot is not much of a safety net.</p>
+  <p class="dropcap">Writing a map from a blank page is hard, and nobody should have to start there. The assistant will write it with you, and it turns out to be rather good at it &mdash; because the thing it is genuinely best at is noticing what you did not say.</p>
 
-  <p>So there is a second copy, kept somewhere else, and the two are kept in step. Ours is <em class="term">GitHub</em>: a copy of the repository, markers and notes and all, sitting on the internet. Sending your new markers up there is called a <em class="term">push</em>. Fetching down anything that is up there and not here is a <em class="term">pull</em>. Those two words are most of the vocabulary.</p>
-
-  <figure class="wide">
-    <svg viewBox="0 0 1120 430" role="img" aria-label="A laptop holding the trail, and a barn at the trailhead holding a second copy, with arrows both ways">
-      <defs>
-        <marker id="arrow7b" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto">
-          <path d="M0,0 L10,5 L0,10 Z" fill="#b8391c"/>
-        </marker>
-      </defs>
-
-      <rect class="ink" x="80" y="112" width="300" height="192" rx="8"/>
-      <rect fill="#f4ede1" x="96" y="128" width="268" height="160" rx="4"/>
-      <path d="M120,256 L344,256" stroke="#c9b99f" stroke-width="5" fill="none" stroke-linecap="round"/>
-      <rect x="152" y="196" width="12" height="60" rx="3" fill="#5b4d3f"/>
-      <rect x="148" y="206" width="20" height="13" rx="3" fill="#b8391c"/>
-      <rect x="216" y="204" width="12" height="52" rx="3" fill="#5b4d3f"/>
-      <rect x="212" y="214" width="20" height="13" rx="3" fill="#b8391c"/>
-      <rect x="280" y="210" width="12" height="46" rx="3" fill="#5b4d3f"/>
-      <rect x="276" y="220" width="20" height="13" rx="3" fill="#b8391c"/>
-      <path d="M52,304 L408,304 L436,340 L24,340 Z" fill="#241d16"/>
-      <text class="lbl" x="60" y="390">Your machine</text>
-      <text class="lbl-sm" x="60" y="414">where the trail gets made</text>
-
-      <path d="M900,92 L1100,190 L700,190 Z" fill="#b8391c"/>
-      <rect x="734" y="190" width="332" height="154" fill="#eadfcc" stroke="#5b4d3f" stroke-width="5"/>
-      <rect x="882" y="142" width="36" height="34" rx="3" fill="#5b4d3f"/>
-      <rect x="826" y="228" width="148" height="116" fill="#5b4d3f"/>
-      <path d="M826,228 L974,344 M974,228 L826,344" stroke="#eadfcc" stroke-width="6" fill="none"/>
-      <text class="lbl" x="700" y="390">The trailhead</text>
-      <text class="lbl-sm" x="700" y="414">a copy that is not on your desk</text>
-
-      <path d="M456,172 L682,172" style="fill:none;stroke:#b8391c;stroke-width:6" marker-end="url(#arrow7b)"/>
-      <text class="lbl lbl-em" x="570" y="152" text-anchor="middle">Push</text>
-      <text class="lbl-sm" x="570" y="196" text-anchor="middle">send your markers up</text>
-
-      <path d="M682,266 L456,266" style="fill:none;stroke:#b8391c;stroke-width:6" marker-end="url(#arrow7b)"/>
-      <text class="lbl lbl-em" x="570" y="246" text-anchor="middle">Pull</text>
-      <text class="lbl-sm" x="570" y="290" text-anchor="middle">fetch down what is there</text>
-    </svg>
-    <figcaption><b>Fig. 3</b> &mdash; Two copies of the same trail, kept in step. The one on the right survives the one on the left being dropped.</figcaption>
-  </figure>
-
-  <p>It buys three things, and only the first is about safety.</p>
-
-  <ul>
-    <li><strong>A backup that is actually a backup.</strong> Not the current version of the file &mdash; every version of it, with the notes explaining each one.</li>
-    <li><strong>The same work from two machines.</strong> The office desktop in the morning, the laptop at the kitchen table at night, one trail between them.</li>
-    <li><strong>A way to hand it to somebody.</strong> A link, and they have all of it, history included.</li>
-  </ul>
-
-  <h3>Public and private</h3>
-
-  <p>A repository on GitHub is private unless you say otherwise, and private means private. Public means what it says too: anybody on the internet can read every file in it and every note you ever wrote.</p>
-
-  <div class="box">
-    <span class="label">Before you make anything public</span>
-    <p><strong>Never</strong> customer names, addresses or phone numbers. <strong>Never</strong> prices you would not put in the window. <strong>Never</strong> a password, a key, or anything a bank sent you.</p>
-    <p>The test is the same one you already use: if you would not pin it to the noticeboard in your own reception, it does not go in a public repository.</p>
-  </div>
-
-  <p>Which brings us to something you have been using since session four without being told what it was. The fallback has always been a folder on the internet you could download a ZIP from when a step defeated you on a Tuesday night. That folder is a public repository, and the dropdown you picked <em>end-of-004</em> out of was a list of markers. You have been riding somebody else's trail for three sessions.</p>
+  <p>There is one sentence that does it. Say the thing you want, then add:</p>
 
   <div class="box stable">
-    <span class="label">The class folder, now that it makes sense</span>
-    <p><a class="repo" href="https://github.com/brainit-consulting/ai-workshops" target="_blank" rel="noopener">github.com/brainit-consulting/ai-workshops</a></p>
-    <p>Every session has a marker at its end. Pick one from the dropdown to see exactly what the screen was supposed to look like at that point, then the green Code button and Download ZIP. Nobody is counting who uses it.</p>
+    <span class="label">The sentence that changes what you get</span>
+    <p><strong>&ldquo;Don't build anything yet. Ask me what you need to know first.&rdquo;</strong></p>
+    <p>Say it every time until it stops feeling odd. Without it, it will start building, because that is what it was asked for.</p>
   </div>
+
+  <p>Here is a real one, trimmed to fit the page. Dale's folder, the same one from session three, and the same one-line wish that produced the wrong thing in chapter one.</p>
+
+  <div class="transcript">
+    <div class="turn you">
+      <span class="who">Dale</span>
+      <p>I want something that tells me which estimates are still waiting on me. Don't build anything yet. Ask me what you need to know first.</p>
+    </div>
+    <div class="turn">
+      <span class="who">The assistant</span>
+      <p>I read the folder first so my questions aren't generic. Here's what's here: three customer emails in <code>inbox/</code>, all unanswered as far as I can tell. One finished estimate in <code>past-estimates/</code>. Your house rules, and a rate card effective March 2026.</p>
+      <p>Worth flagging up front: nothing in this folder records <em>state</em>. There's no &ldquo;I sent this&rdquo;, no &ldquo;I'm waiting on Brody to tell me the model&rdquo;, no date on anything. The only signal available today is &ldquo;there's a file in <code>inbox/</code> and no matching file in <code>past-estimates/</code>&rdquo;. That shapes most of the rest.</p>
+      <p>First question. When you say an estimate is &ldquo;waiting on me&rdquo;, which of these do you mean?</p>
+      <ul>
+        <li><strong>A.</strong> Emails with no estimate written yet &mdash; the plain backlog.</li>
+        <li><strong>B.</strong> Ones I've started but can't finish without a decision only you can make. Tanner is the live example: his water heater is priceable, the gas stove isn't, so the whole job stalls on you.</li>
+        <li><strong>C.</strong> Ones where I need something from the customer first &mdash; Brody says &ldquo;jammed and humming&rdquo; with no model, and there's no address on his email at all.</li>
+        <li><strong>D.</strong> Ones I've sent that the customer hasn't replied to.</li>
+      </ul>
+      <p>A, B and C are all &ldquo;the ball is in your court&rdquo;. D is the opposite. Which do you want counted, and is D in or out?</p>
+    </div>
+    <div class="turn you">
+      <span class="who">Dale</span>
+      <p>A, B and C. Leave D out &mdash; once I've sent it, it's off my list. And I look at this on my phone in the truck, first thing.</p>
+    </div>
+    <div class="turn">
+      <span class="who">The assistant</span>
+      <p>Good &mdash; that keeps it to one list: things you can act on.</p>
+      <p>The phone detail matters more than it might seem, so let me chase it. These three emails are sitting here as text files in a folder. Is that the real setup, or is it a snapshot someone made of what's actually in your email?</p>
+      <p>I ask because it decides who has to do something to keep the list current. If the folder is real, somebody is already saving emails into it by hand &mdash; and you'd be reading yesterday's picture in the truck unless they'd been in that morning. If it's standing in for your actual inbox, this has to read your mail directly, which is a bigger build and needs access to your account.</p>
+    </div>
+    <div class="turn you">
+      <span class="who">Dale</span>
+      <p>The folder is real &mdash; my daughter saves the emails into it every morning before she opens the office. Now write me the map: one page, plain English, no code, so I can check you understood before you build anything.</p>
+    </div>
+    <div class="turn">
+      <span class="who">The assistant</span>
+      <p class="aside">&mdash; and out comes the map in chapter three, plus three things it still needs from him: who runs it each morning and when, how it reaches his phone, and whether the inbox ever gets emptied.</p>
+    </div>
+  </div>
+
+  <h3>What just happened</h3>
+
+  <ul>
+    <li><strong>It read the folder before it asked anything.</strong> The questions are about Tanner and Brody by name, not about &ldquo;your workflow&rdquo;.</li>
+    <li><strong>It found the hole Dale did not know was there.</strong> Nothing in that folder records what has been sent. Dale would not have thought to mention it, because it had never been written down anywhere in twenty years.</li>
+    <li><strong>The second question is the one that matters.</strong> &ldquo;Is this folder real, or a stand-in for your email?&rdquo; Dale had never once said which, because to him it was obvious. It was not obvious. It changes what gets built.</li>
+  </ul>
+
+  <p>Four questions and about three minutes of typing. The version built from the map was the list he wanted. The version built from the sentence in chapter one was not.</p>
+
+  <h3>The button that does this for you</h3>
+
+  <p>Both assistants have a setting for it, and it is worth knowing the name because everybody uses it. It is called <em class="term">plan mode</em>: it works out what it would do, writes the plan down, and shows it to you without touching a single file until you say go.</p>
+
+  <ul>
+    <li><strong>Claude Code.</strong> Press <strong>Shift + Tab</strong> to cycle the mode until it says plan. Same key cycles back.</li>
+    <li><strong>Codex.</strong> Ask it for a plan first and read it before approving. Same idea, one step less formal.</li>
+  </ul>
+
+  <p>Plan mode and the sentence above do the same job. The sentence works everywhere and costs you nothing to remember, so start there.</p>
+
+  <p class="pull">It is not that it cannot read your mind. It is that nobody ever asked you the questions.</p>
 </section>
 <!-- ============================ CH 05 ============================ -->
 <section class="chapter" id="ch5">
   <div class="chapter-head">
     <div class="chapter-num">05</div>
-    <h2>Three sentences, and one job</h2>
-    <p class="standfirst">You never type git. You say what you want, in English.</p>
+    <h2>The map lives in the folder</h2>
+    <p class="standfirst">And what to do on the day you change your mind.</p>
   </div>
 
-  <p class="dropcap">Here is what all of this looks like on an ordinary Tuesday. You are not going to learn commands, because the working horse from last session already knows them. What you need is to know what to ask for, and when.</p>
+  <p class="dropcap">A map that lives in your head is not a map. Save it as a file in the project folder &mdash; call it <code>spec.md</code>, or <code>map.txt</code>, or anything you will recognise &mdash; right next to the house rules you wrote in session six.</p>
 
-  <div class="box stable">
-    <span class="label">The three sentences</span>
-    <p><strong>Once, at the start.</strong> &ldquo;Set this folder up for version control and save a first marker.&rdquo;</p>
-    <p><strong>When a piece of work comes out right.</strong> &ldquo;Save a marker &mdash; I've just finished the rate card.&rdquo;</p>
-    <p><strong>When it goes wrong.</strong> &ldquo;Put this back the way it was at the last marker.&rdquo;</p>
+  <figure class="wide">
+    <svg viewBox="0 0 1120 452" role="img" aria-label="A project folder holding house rules, the map and the work, with four markers on the trail behind it">
+      <path d="M40,96 L262,96 L286,128 L620,128 L620,394 L40,394 Z" fill="#5b4d3f"/>
+      <rect x="76" y="152" width="320" height="52" rx="4" fill="#f4ede1" stroke="#c9b99f" stroke-width="3"/>
+      <text class="lbl-sm" x="96" y="185" style="font-size:19px">CLAUDE.md</text>
+      <rect x="76" y="216" width="320" height="52" rx="4" fill="#f0d9cf" stroke="#b8391c" stroke-width="3"/>
+      <text class="lbl-sm" x="96" y="249" style="font-size:19px; fill:#241d16">spec.md</text>
+      <rect x="76" y="280" width="320" height="52" rx="4" fill="#f4ede1" stroke="#c9b99f" stroke-width="3"/>
+      <text class="lbl-sm" x="96" y="313" style="font-size:19px">estimates/</text>
+      <rect x="40" y="336" width="580" height="58" rx="6" fill="#b8391c"/>
+
+      <path class="lead-under" d="M646,242 L410,242"/><path class="lead" d="M646,242 L410,242"/>
+      <text class="lbl lbl-em" x="658" y="236">The map, in the folder</text>
+      <text class="lbl-sm" x="658" y="262">beside the house rules, where</text>
+      <text class="lbl-sm" x="658" y="286">it can be read without asking</text>
+
+      <path d="M700,396 L1080,396" stroke="#c9b99f" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <rect x="746" y="336" width="12" height="60" rx="4" fill="#5b4d3f"/>
+      <rect x="738" y="348" width="28" height="15" rx="4" fill="#b8391c"/>
+      <rect x="846" y="336" width="12" height="60" rx="4" fill="#5b4d3f"/>
+      <rect x="838" y="348" width="28" height="15" rx="4" fill="#b8391c"/>
+      <rect x="946" y="336" width="12" height="60" rx="4" fill="#5b4d3f"/>
+      <rect x="938" y="348" width="28" height="15" rx="4" fill="#b8391c"/>
+      <rect x="1046" y="336" width="12" height="60" rx="4" fill="#5b4d3f"/>
+      <rect x="1038" y="348" width="28" height="15" rx="4" fill="#b8391c"/>
+      <text class="lbl-sm" x="40" y="434">Marked like the rest, so you can read how your thinking changed.</text>
+    </svg>
+    <figcaption><b>Fig. 3</b> &mdash; Three sessions in one picture: the rules from six, the markers from seven, and today's map sitting between them.</figcaption>
+  </figure>
+
+  <p>Three things follow from it being a file, and all three matter more than they sound.</p>
+
+  <ul>
+    <li><strong>It is still there in three weeks</strong>, when you have forgotten why you decided the sent ones drop off the list.</li>
+    <li><strong>You can point at it.</strong> &ldquo;Read <code>spec.md</code>, then build the first part of it&rdquo; is a better instruction than anything you will type from memory on a Tuesday.</li>
+    <li><strong>It gets marked, like everything else.</strong> Which means that in a month you can read how your own thinking changed, in your own words, with the dates on it.</li>
+  </ul>
+
+  <h3>When you change your mind</h3>
+
+  <p>You will, and quickly &mdash; usually the moment you see the first version. There is a right way round and a wrong way round.</p>
+
+  <div class="compare">
+    <div class="bad">
+      <span class="tag">The wrong way round</span>
+      <p>Argue with the build. Six messages later nobody can say what the thing is meant to do, including you.</p>
+      <code>no, not like that
+put the gas ones first
+actually take the prices off</code>
+    </div>
+    <div class="good">
+      <span class="tag">The right way round</span>
+      <p>Change the map, mark it, then ask again. One message, and the reason survives.</p>
+      <code>I've changed spec.md - gas jobs go
+at the top regardless of how long
+they've waited. Read it again and
+rebuild the list to match.</code>
+    </div>
   </div>
 
-  <p>There is a fourth you will reach for more than you expect: <em>what has changed since the last marker?</em> It is the question you ask when the assistant has been busy for ten minutes and you would like to know what it actually did.</p>
+  <p>The map is the thing you argue with. Once it is right, the building is the easy part &mdash; and if it comes out wrong anyway, you have a marker to step back to and a page to point at.</p>
 
-  <h3>Better still: make it happen without you</h3>
+  <h3>Now write one</h3>
 
-  <p>Last session you wrote your house rules into a file in the folder. This is a line for that file, and it turns everything above into something you no longer have to remember at the right moment.</p>
-
-  <div class="box stable">
-    <span class="label">Add this to your project instructions</span>
-    <p>Before you change more than one file, save a marker first.</p>
-    <p>When a piece of work is finished and I have said it is good, save a marker with a short plain note saying what changed.</p>
-  </div>
-
-  <p>Two sentences of English in a text file. From then on the trail marks itself, and the only thing left for you to do is the riding back.</p>
-
-  <h3>A word about branches, since somebody will say it</h3>
-
-  <p>There is a thing called a <em>branch</em>. It is riding a second trail alongside the main one, so you can try something risky without disturbing the work that already functions &mdash; and then either bring it back onto the main trail or walk away from it and leave the main trail untouched. It is genuinely useful, and real teams use it every day.</p>
-
-  <p>You do not need it in order to have an undo, and we are not doing it today. It is here so that when somebody says <em>branch</em> at you, you know what they mean and you know you have not missed anything.</p>
-
-  <h3>Before the next session</h3>
+  <p>Ten minutes, on the thing you brought with you. Paper is fine &mdash; better than fine, actually; nobody types their first one well.</p>
 
   <ol class="checklist">
-    <li><strong>Install git</strong> if you have not already. Chapter two has the box, and inside it a click-by-click walkthrough for Windows and Mac &mdash; open <em>Show me every step</em>. Nothing else on this list works until this one is done.</li>
-    <li><strong>Open your practice folder</strong> from last session and start the assistant in it.</li>
-    <li><strong>Ask for the first marker.</strong> &ldquo;Set this folder up for version control and save a first marker.&rdquo;</li>
-    <li><strong>Change something.</strong> Edit any file at all and save it. Make it obvious.</li>
-    <li><strong>Ask what changed.</strong> Read the answer properly. This is the step people skip, and it is the step that builds the trust.</li>
-    <li><strong>Put it back.</strong> &ldquo;Put everything back the way it was at the last marker.&rdquo; Watch it come back.</li>
-    <li><strong>Then do it once on something real.</strong> A folder of yours that matters. You have the undo now, and that is how you can go back to a good point in your project before the error or issue happened.</li>
+    <li><strong>Write the first sentence.</strong> &ldquo;It is a ___ for ___ that ___.&rdquo; If you get stuck here, that is the finding, not a failure.</li>
+    <li><strong>What does it read?</strong> Where does the information come from today &mdash; a folder, a notebook, somebody's head?</li>
+    <li><strong>What must it never do?</strong> At least two. There are always two.</li>
+    <li><strong>Write one real line of what you would see.</strong> Not a description of it. The line itself, as it would appear.</li>
+    <li><strong>Two things that must be true</strong> for you to call it right.</li>
+    <li><strong>Then the last heading:</strong> what you are not sure about. Write down the questions even if you cannot answer any of them.</li>
+    <li><strong>When you get home</strong>, type it into <code>spec.md</code> in a folder, open the assistant there, and say: &ldquo;Read this map. Don't build anything yet &mdash; tell me what's missing from it.&rdquo;</li>
   </ol>
 
-  <p>Step seven is why today exists. Six sessions of working on copies end here.</p>
+  <div class="box stable">
+    <span class="label">A blank one to copy</span>
+    <p>There is an empty map with the five headings on it, and Dale's finished one beside it, in the class folder: <a class="repo" href="https://github.com/brainit-consulting/ai-workshops" target="_blank" rel="noopener">github.com/brainit-consulting/ai-workshops</a></p>
+    <p>Pick <em>end-of-008</em> from the dropdown, then the green Code button and Download ZIP. The template is <code>trail-map-template.md</code>.</p>
+  </div>
+
+  <p>Step seven is the one that teaches you the most, and it takes two minutes. Almost nobody's first map survives it intact, and that is the point.</p>
 </section>
 <!-- ============================ CH 06 ============================ -->
 <section class="chapter" id="ch6">
@@ -1155,34 +1107,34 @@ details.demo h4:first-of-type{margin-top:.4em;}
 
   <div class="faq">
     <div class="qa">
-      <p class="q">Is this the same thing as Dropbox or OneDrive?</p>
-      <p class="horse-line">A stable hand who tidies as you go, against a trail you marked yourself.</p>
-      <p>No, and they solve different problems. Those keep the current version of a file safely off your machine, and some of them keep a short history. What none of them do is let you say &ldquo;this state of the whole folder, right here, was good, and here is why&rdquo; &mdash; and then get it back six weeks later. Use both. They do not fight.</p>
+      <p class="q">Isn't this just more work before I get anything?</p>
+      <p class="horse-line">Ten minutes with a map beats an afternoon riding the wrong way.</p>
+      <p>It is about ten minutes, and it is the ten minutes that decides whether the next hour was worth having. The cost of skipping it is not that you get nothing &mdash; it is that you get something plausible, use it twice, and quietly stop.</p>
     </div>
     <div class="qa">
-      <p class="q">Do I have to put my work on the internet?</p>
-      <p class="horse-line">You can mark a trail and never once ride to the trailhead.</p>
-      <p>No. Git runs entirely on your own machine and never asks for an account. GitHub is a separate, optional thing on top of it, and when you do use it, private is the default. Chapter four is worth having; it is not compulsory.</p>
+      <p class="q">What if I don't know the answers to my own questions?</p>
+      <p class="horse-line">An unmarked stretch of map is still worth drawing.</p>
+      <p>Write &ldquo;I don't know&rdquo; and move on. That is what the fifth heading is for. A question you have written down is a thing you can go and find out on Thursday; a question you never noticed is the reason the thing gets rebuilt in March.</p>
     </div>
     <div class="qa">
-      <p class="q">What if I forget to drop markers?</p>
-      <p class="horse-line">No markers, no trail.</p>
-      <p>Then there is nothing to go back to, and that is the honest answer. It is also why chapter five has you write the habit into the project instructions file instead of relying on remembering it at the exact moment you are distracted.</p>
+      <p class="q">How long should it be?</p>
+      <p class="horse-line">One page. A map you have to unfold twice is two maps.</p>
+      <p>One page, around three hundred words. If it genuinely will not fit, you are describing more than one job &mdash; which is useful to have discovered. Split it, and build the first one.</p>
     </div>
     <div class="qa">
-      <p class="q">Could it lose my work?</p>
-      <p class="horse-line">You can only lose what you never marked.</p>
-      <p>Anything you have marked is remarkably hard to lose &mdash; that is what git is for. The one thing that can go is work you changed and never marked, if you ask to be put back to the last marker. Which is the same sentence as the answer above: mark often, and there is nothing much to lose.</p>
+      <p class="q">Do I have to write it, or can it?</p>
+      <p class="horse-line">It can draw the map. You still have to know the country.</p>
+      <p>It can write most of it, and chapter four is how. But you have to read it back and correct it, and that part cannot be handed over &mdash; you are the only one in the conversation who has ever sat in the truck.</p>
     </div>
     <div class="qa">
-      <p class="q">Is this what actual programmers use?</p>
-      <p class="horse-line">Same trail, same markers, same horse.</p>
-      <p>Yes &mdash; this exact thing, not a simplified version of it. Every serious software team on earth runs on git. You are using four of its features and ignoring the rest, which is a perfectly respectable way to use a tool.</p>
+      <p class="q">Is this the same as a contract or a statement of work?</p>
+      <p class="horse-line">A map is for the riding. A contract is for afterwards.</p>
+      <p>Related, but no. A contract is about who owes whom what if it goes wrong. A map is about making sure it does not. If you are hiring somebody to build this, a good map makes a far better contract possible &mdash; but write it for yourself first.</p>
     </div>
     <div class="qa">
-      <p class="q">What does it cost?</p>
-      <p class="horse-line">Feed for a horse you already own.</p>
-      <p>Git is free and always has been. GitHub is free for what you will be doing with it, including private repositories. There are paid tiers aimed at companies with a lot of people; you are not one.</p>
+      <p class="q">What if it builds something different from the map anyway?</p>
+      <p class="horse-line">Then the map had a road on it you did not mean to draw.</p>
+      <p>Nine times in ten the map was ambiguous and you can see exactly where when you reread it. Fix that line, mark it, ask again. And you have an undo now, so the wrong version costs you nothing but the ten minutes.</p>
     </div>
   </div>
 </section>
@@ -1280,23 +1232,38 @@ details.demo h4:first-of-type{margin-top:.4em;}
     <dt>Working on copies <span class="from">006</span></dt>
     <dd>Duplicating a file so the original can't be harmed. <span class="horse">Schooling in the paddock, not on the road.</span></dd>
 
-    <dt>Version control <span class="from new">007</span></dt>
+    <dt>Version control <span class="from">007</span></dt>
     <dd>Keeping every previous version of everything, so any of them can come back. <span class="horse">A trail you can ride back.</span></dd>
 
-    <dt>Git <span class="from new">007</span></dt>
+    <dt>Git <span class="from">007</span></dt>
     <dd>The program that keeps the trail. It runs on your own machine. <span class="horse">What drives the markers in.</span></dd>
 
-    <dt>Commit <span class="from new">007</span></dt>
+    <dt>Commit <span class="from">007</span></dt>
     <dd>One marker, with a short note saying what you had just done. <span class="horse">A gate you can ride back through.</span></dd>
 
-    <dt>Repository <span style="font-weight:400">(repo)</span> <span class="from new">007</span></dt>
+    <dt>Repository <span style="font-weight:400">(repo)</span> <span class="from">007</span></dt>
     <dd>A folder that keeps its own history. <span class="horse">The field, with the trail marked in it.</span></dd>
 
-    <dt>GitHub <span class="from new">007</span></dt>
+    <dt>GitHub <span class="from">007</span></dt>
     <dd>A copy of the repository kept online &mdash; a real backup, and a way to hand it to somebody. <span class="horse">The shared stable at the trailhead.</span></dd>
 
-    <dt>Push and pull <span class="from new">007</span></dt>
+    <dt>Push and pull <span class="from">007</span></dt>
     <dd>Sending your markers up to that copy, and fetching down anything that is there and not here. <span class="horse">Riding to the trailhead and back.</span></dd>
+
+    <dt>Spec <span style="font-weight:400">(brief)</span> <span class="from new">008</span></dt>
+    <dd>One page describing a job well enough to hand it over. <span class="horse">The trail map.</span></dd>
+
+    <dt>Scope <span class="from new">008</span></dt>
+    <dd>What is in this job, and what is deliberately not. <span class="horse">Where the map stops. The country past the edge is not today's ride.</span></dd>
+
+    <dt>Acceptance <span class="from new">008</span></dt>
+    <dd>How you will know the thing is right when you see it. <span class="horse">How you know you arrived.</span></dd>
+
+    <dt>Plan mode <span class="from new">008</span></dt>
+    <dd>A setting where it works out what it would do, and shows you, before touching anything. <span class="horse">Reading the map aloud before anyone mounts up.</span></dd>
+
+    <dt>Assumption <span class="from new">008</span></dt>
+    <dd>Something you took to be true and never checked. <span class="horse">A stretch of map you drew from memory rather than from riding it.</span></dd>
   </dl>
 </section>
 <!-- ============================ ONE PAGE ============================ -->
@@ -1310,63 +1277,67 @@ details.demo h4:first-of-type{margin-top:.4em;}
   <div class="strip">
     <div class="panel">
       <svg viewBox="0 0 900 620" aria-hidden="true">
-        <path d="M60,120 L390,120 L426,168 L840,168 L840,560 L60,560 Z" fill="#5b4d3f"/>
-        <rect x="110" y="196" width="540" height="330" rx="6" fill="#f4ede1" stroke="#c9b99f" stroke-width="5"/>
-        <rect x="140" y="248" width="540" height="278" rx="6" fill="#f4ede1" stroke="#c9b99f" stroke-width="5"/>
-        <rect x="170" y="300" width="540" height="226" rx="6" fill="#f4ede1" stroke="#c9b99f" stroke-width="5"/>
-        <rect x="60" y="410" width="780" height="150" rx="8" fill="#b8391c"/>
+        <rect class="plate" x="40" y="250" width="250" height="120" rx="10"/>
+        <path d="M300,270 C480,180 600,140 850,120" style="fill:none;stroke:#c9b99f;stroke-width:14;stroke-dasharray:26 22;stroke-linecap:round"/>
+        <path d="M300,310 C480,306 600,304 850,300" style="fill:none;stroke:#c9b99f;stroke-width:14;stroke-dasharray:26 22;stroke-linecap:round"/>
+        <path d="M300,350 C480,440 600,480 850,500" style="fill:none;stroke:#b8391c;stroke-width:16;stroke-dasharray:26 22;stroke-linecap:round"/>
+        <circle cx="860" cy="120" r="34" fill="#c9b99f"/><circle cx="860" cy="300" r="34" fill="#c9b99f"/>
+        <circle cx="860" cy="500" r="40" fill="#b8391c"/>
       </svg>
-      <h4>1 &middot; The copies</h4>
-      <p>Four files, four names, and no record of the difference.</p>
+      <h4>1 &middot; One sentence, three roads</h4>
+      <p>All fair readings. One of them is the one you meant.</p>
     </div>
     <div class="panel">
       <svg viewBox="0 0 900 620" aria-hidden="true">
-        <rect x="150" y="120" width="600" height="210" rx="12" fill="#eadfcc" stroke="#c9b99f" stroke-width="7"/>
-        <rect x="216" y="188" width="468" height="26" rx="13" fill="#c9b99f"/>
-        <rect x="216" y="252" width="330" height="26" rx="13" fill="#c9b99f"/>
-        <path d="M450,330 L450,400" stroke="#5b4d3f" stroke-width="7" fill="none"/>
-        <rect x="418" y="400" width="64" height="180" rx="10" fill="#5b4d3f"/>
-        <rect x="380" y="446" width="140" height="56" rx="10" fill="#b8391c"/>
+        <path d="M180,60 L620,60 L720,160 L720,560 L180,560 Z" fill="#f4ede1" stroke="#5b4d3f" stroke-width="12"/>
+        <path d="M620,60 L720,160 L620,160 Z" fill="#eadfcc" stroke="#5b4d3f" stroke-width="12"/>
+        <circle cx="400" cy="118" r="20" fill="#b8391c"/>
+        <rect x="240" y="176" width="190" height="22" rx="11" fill="#b8391c"/>
+        <rect x="240" y="222" width="410" height="16" rx="8" fill="#c9b99f"/>
+        <rect x="240" y="290" width="230" height="22" rx="11" fill="#b8391c"/>
+        <rect x="240" y="336" width="380" height="16" rx="8" fill="#c9b99f"/>
+        <rect x="240" y="404" width="200" height="22" rx="11" fill="#b8391c"/>
+        <rect x="240" y="450" width="410" height="16" rx="8" fill="#c9b99f"/>
+        <rect x="240" y="486" width="300" height="16" rx="8" fill="#c9b99f"/>
       </svg>
-      <h4>2 &middot; A marker</h4>
-      <p>A moment you chose, and a note saying what you had done.</p>
+      <h4>2 &middot; Five headings</h4>
+      <p>One page. The last one is what you are unsure of.</p>
     </div>
     <div class="panel">
       <svg viewBox="0 0 900 620" aria-hidden="true">
-        <defs><marker id="a7c" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto">
-          <path d="M0,0 L10,5 L0,10 Z" fill="#b8391c"/></marker></defs>
-        <path d="M60,520 L840,520" stroke="#c9b99f" stroke-width="12" fill="none" stroke-linecap="round"/>
-        <rect x="180" y="380" width="40" height="140" rx="10" fill="#5b4d3f"/>
-        <rect x="480" y="380" width="40" height="140" rx="10" fill="#5b4d3f"/>
-        <rect x="760" y="380" width="40" height="140" rx="10" fill="#5b4d3f"/>
-        <path d="M760,250 C620,130 340,130 212,258" style="fill:none;stroke:#b8391c;stroke-width:22" marker-end="url(#a7c)"/>
+        <rect class="plate" x="60" y="90" width="780" height="150" rx="12"/>
+        <rect x="110" y="140" width="420" height="20" rx="10" fill="#c9b99f"/>
+        <rect x="110" y="186" width="300" height="20" rx="10" fill="#c9b99f"/>
+        <text x="450" y="400" text-anchor="middle" style="font-family:'Alfa Slab One',Georgia,serif; font-size:200px; fill:#b8391c">?</text>
+        <rect class="plate" x="60" y="440" width="780" height="130" rx="12"/>
+        <rect x="110" y="480" width="500" height="20" rx="10" fill="#c9b99f"/>
+        <rect x="110" y="522" width="360" height="20" rx="10" fill="#c9b99f"/>
       </svg>
-      <h4>3 &middot; Riding back</h4>
-      <p>Any marker, any time. Nothing is thrown away.</p>
+      <h4>3 &middot; Make it ask you</h4>
+      <p>&ldquo;Don't build anything yet. Ask me what you need to know.&rdquo;</p>
     </div>
     <div class="panel soon">
       <span class="soon-tag">Next session</span>
       <svg viewBox="0 0 900 620" aria-hidden="true">
-        <path d="M120,90 L780,90 L780,540 L120,540 Z" fill="#f4ede1" stroke="#5b4d3f" stroke-width="10"/>
-        <path d="M120,90 L780,90 L780,540 L120,540 Z" fill="none" stroke="#c9b99f" stroke-width="4"/>
-        <path d="M200,470 C300,330 380,430 470,300 C540,200 620,240 690,170"
-              style="fill:none;stroke:#b8391c;stroke-width:16;stroke-dasharray:34 26;stroke-linecap:round"/>
-        <circle cx="200" cy="470" r="30" fill="#5b4d3f"/>
-        <path d="M660,140 L720,200 M720,140 L660,200" stroke="#b8391c" stroke-width="20" stroke-linecap="round" fill="none"/>
+        <ellipse cx="450" cy="180" rx="180" ry="60" fill="#5b4d3f"/>
+        <path d="M270,180 L270,470 A180,60 0 0 0 630,470 L630,180" fill="#5b4d3f"/>
+        <ellipse cx="450" cy="180" rx="130" ry="42" fill="#241d16"/>
+        <path d="M180,250 L120,250 L120,520 L240,520" style="fill:none;stroke:#b8391c;stroke-width:18;stroke-linecap:round"/>
+        <path d="M720,250 L780,250 L780,520 L660,520" style="fill:none;stroke:#b8391c;stroke-width:18;stroke-linecap:round"/>
       </svg>
-      <h4>4 &middot; Drawing the trail map</h4>
-      <p>Saying what you want, before anybody builds it.</p>
+      <h4>4 &middot; The well</h4>
+      <p>One well, many troughs. Where the information actually lives.</p>
     </div>
   </div>
 
-  <p style="margin-top:2rem"><strong>The rule that carries all of it:</strong> mark before you hand it something big, and mark when something comes out right. Ten seconds, twice a day. That is the price of never rebuilding anything again.</p>
+  <p style="margin-top:2rem"><strong>The habit that carries all of it:</strong> before you ask for anything you would be annoyed to get wrong, say what it is, what it reads, what it must never do, what you would see, and how you will know. Ten minutes. Then let it ask you what you left out.</p>
 </section>
 <!-- ============================ NEXT TIME ============================ -->
 <section class="nexttime" id="nexttime">
   <span class="nt-label">Next session</span>
-  <h2>#008 &mdash; Drawing the Trail Map</h2>
-  <p>You can now build things and undo them, which means the thing that limits you is no longer the horse &mdash; it is how clearly you can say what you want before anybody starts. Next time we write that down properly. A page of plain English that describes the job, agreed before a single file is touched, is worth more than any amount of clever building later.</p>
-  <p class="nt-take"><strong>Before you come:</strong> think of one small thing in your business you wish existed. Not how it would work &mdash; just what it would do for you.</p>
+  <h2>#009 &mdash; The Well</h2>
+  <p>Every map you have just written points at the same awkward question: where does the information actually live? For Dale it is a folder of text files his daughter fills in each morning, which works until two people need it at once, or he wants it on his phone without her being at her desk. Next time we dig a well &mdash; one place the information lives, that everything else draws from.</p>
+  <p class="nt-take"><strong>Before you come:</strong> bring the map you wrote today, and underline the line that says where the information comes from.</p>
 </section>
 <!-- ============================ BACK COVER ============================ -->
 <section class="backcover">
@@ -1403,7 +1374,7 @@ details.demo h4:first-of-type{margin-top:.4em;}
 </section>
 
 <p class="colophon">
-  Workshop #007 &middot; Breadcrumbs<br>
+  Workshop #008 &middot; Drawing the Trail Map<br>
   &copy; 2026 Emile du Toit, BrainIT Consulting<br>
   Print it, download it, share it with your team. Just leave my name on it.
 </p>
