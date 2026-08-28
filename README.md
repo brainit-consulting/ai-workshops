@@ -14,11 +14,11 @@ not a finished project you have to reverse-engineer.
 
 On GitHub, use the branch/tag dropdown at the top left and choose:
 
-- `end-of-002` — after *The Tack Room*
-- `end-of-003` — after *The Working Horse*
+- `end-of-004` — after *Inside the Tack Room*
+- `end-of-006` — after *Driving the Working Horse*
 
 Then click the green **Code** button and **Download ZIP**. You do not
-need to know what git is to do that. Session four is where we learn it
+need to know what git is to do that. Session seven is where we learn it
 properly.
 
 ## What's in here
@@ -37,7 +37,7 @@ Same as in the room:
 - One job, one folder. Nothing outside it is ever in reach.
 - Read the permission prompt before you answer it.
 - Work on copies of anything you'd be sorry to lose — at least until
-  session four, when we fit a proper undo.
+  session seven, when we fit a proper undo.
 
 ## Something not working?
 
