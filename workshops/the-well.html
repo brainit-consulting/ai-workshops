@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Workshop #008 — Drawing the Trail Map</title>
+<title>Workshop #009 — The Well</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='24 -8 140 126'%3E%3Crect x='24' y='-8' width='140' height='126' fill='%23f4ede1'/%3E%3Cpath fill='%23241d16' d='M112,40 C150,66 196,102 238,154 L262,132 C216,82 164,40 124,16 Z'/%3E%3Cpath fill='%23241d16' d='M130,40 C120,20 98,14 80,28 L38,92 C33,104 43,114 56,108 L102,88 C122,79 136,58 130,40 Z'/%3E%3Cpath fill='%23241d16' d='M112,30 L104,2 L128,24 Z'/%3E%3Cpath fill='%23241d16' d='M132,32 L134,6 L152,30 Z'/%3E%3Ccircle cx='101' cy='45' r='6' fill='%23f4ede1'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -686,14 +686,14 @@ details.demo h4:first-of-type{margin-top:.4em;}
 </svg>
 
 <header class="runner">
-  <a class="brand" href="index.html" title="All workshops"><span class="wsnum">#008</span> Drawing the <em>Trail Map</em></a>
+  <a class="brand" href="index.html" title="All workshops"><span class="wsnum">#009</span> The <em>Well</em></a>
   <nav>
     <a href="#contents">Contents</a>
-    <a href="#ch1">The Ask</a>
-    <a href="#ch2">A Map</a>
-    <a href="#ch3">Dale's Map</a>
-    <a href="#ch4">Ask It</a>
-    <a href="#ch5">In The Folder</a>
+    <a href="#ch1">Where It Lives</a>
+    <a href="#ch2">The Well</a>
+    <a href="#ch3">Rows</a>
+    <a href="#ch4">Asking It</a>
+    <a href="#ch5">Digging One</a>
     <a href="#ch6">FAQ</a>
     <a href="#glossary">Glossary</a>
   </nav>
@@ -701,7 +701,7 @@ details.demo h4:first-of-type{margin-top:.4em;}
     <button type="button" id="smaller" aria-label="Smaller text">A−</button>
     <button type="button" id="bigger" aria-label="Larger text">A+</button>
     <button type="button" id="printbtn" class="wide">Print</button>
-    <a class="wide" href="drawing-the-trail-map.html" download>Download</a>
+    <a class="wide" href="the-well.html" download>Download</a>
   </span>
 </header>
 
@@ -710,22 +710,28 @@ details.demo h4:first-of-type{margin-top:.4em;}
 <!-- ============================ COVER ============================ -->
 <section class="cover">
   <div class="cover-text">
-    <span class="kicker"><span class="wsnum">Workshop&nbsp;#008</span> &middot; lids up &mdash; you write one today</span>
-    <h1>Drawing the<br><span class="ai">Trail Map</span><span class="of">before anybody builds it</span></h1>
-    <p class="deck">You can build things now, and you can undo them. What limits you from here is not the horse. It is how clearly you can say what you actually want.</p>
-    <p class="promise"><strong>By the end of today</strong> you will be able to write one page that describes a job clearly enough to hand over &mdash; to an assistant, or to a person.</p>
+    <span class="kicker"><span class="wsnum">Workshop&nbsp;#009</span> &middot; lids down &mdash; watch me dig one</span>
+    <h1>The <span class="ai">Well</span><span class="of">where the information actually lives</span></h1>
+    <p class="deck">Your folder of files has worked fine so far. This is the session about the four moments it stops working, and the one thing that replaces it.</p>
+    <p class="promise"><strong>By the end of today</strong> you will know what a database is for, when you need one, and &mdash; just as usefully &mdash; when a folder of files is still the right answer.</p>
     <p class="imprint">
       Presented by Emile du Toit<br>
       <a class="firm" href="https://brainitconsulting.com">brainitconsulting.com</a>
     </p>
   </div>
   <div class="cover-art">
-    <svg viewBox="-230 0 750 360" role="img" aria-label="A horse in full working harness with a dashed route drawn ahead of it, ending at a cross">
-      <path d="M-216,322 L60,322" stroke="#c9b99f" stroke-width="3" fill="none"/>
-      <path d="M-30,318 C-84,310 -122,300 -156,288 C-176,281 -192,274 -204,266"
-            style="fill:none;stroke:#b8391c;stroke-width:8;stroke-dasharray:20 17;stroke-linecap:round"/>
-      <path d="M-222,232 L-186,264 M-186,232 L-222,264"
-            stroke="#b8391c" stroke-width="11" stroke-linecap="round" fill="none"/>
+    <svg viewBox="0 0 790 360" role="img" aria-label="A horse in full working harness standing beside a stone well with a bucket">
+      <path d="M470,322 L770,322" stroke="#c9b99f" stroke-width="3" fill="none"/>
+      <path d="M556,146 L645,96 L734,146 Z" fill="#b8391c"/>
+      <rect x="572" y="142" width="14" height="100" fill="#5b4d3f"/>
+      <rect x="704" y="142" width="14" height="100" fill="#5b4d3f"/>
+      <rect x="572" y="150" width="146" height="11" rx="5" fill="#5b4d3f"/>
+      <path d="M645,161 L645,206" stroke="#5b4d3f" stroke-width="3" fill="none"/>
+      <rect x="628" y="206" width="34" height="27" rx="3" fill="#b8391c"/>
+      <rect x="556" y="236" width="178" height="17" rx="6" fill="#5b4d3f"/>
+      <rect x="566" y="253" width="158" height="69" rx="4" fill="#eadfcc" stroke="#5b4d3f" stroke-width="4"/>
+      <path d="M566,278 L724,278 M619,253 L619,278 M671,253 L671,278 M593,278 L593,322 M645,278 L645,322 M697,278 L697,322"
+            stroke="#5b4d3f" stroke-width="3" fill="none"/>
       <use href="#horse-body"/><use href="#tack-bridle"/><use href="#tack-saddle"/><use href="#tack-bags"/>
     </svg>
   </div>
@@ -734,26 +740,26 @@ details.demo h4:first-of-type{margin-top:.4em;}
 <section class="page-recap">
   <div class="recap">
     <span class="rc-label">Where we got to</span>
-    <p>Here is an overview of the last two sessions in five lines.</p>
+    <p>Here is an overview of last time in five lines.</p>
     <ul>
-      <li><strong>You have a folder and an assistant in it</strong> that reads, writes and runs things.</li>
-      <li><strong>It stops at every gate</strong>, and you are the one who decides.</li>
-      <li><strong>Your house rules live in the folder</strong>, so you stop repeating yourself.</li>
-      <li><strong>And since last time, every version is kept.</strong> A mistake is a step backwards rather than a rebuild.</li>
-      <li><strong>Which means the tools are no longer what is slowing you down.</strong></li>
+      <li><strong>You wrote a map</strong> &mdash; one page saying what a job is, before anybody builds it.</li>
+      <li><strong>Five headings</strong>, and the last one is what you are not sure about.</li>
+      <li><strong>You say what, not how.</strong> Deciding how is the part it is good at.</li>
+      <li><strong>The map lives in the folder</strong>, beside your house rules, and gets marked like everything else.</li>
+      <li><strong>And heading two asks where the information comes from.</strong></li>
     </ul>
-    <p>Today we deal with what is.</p>
+    <p>Which is where today starts.</p>
   </div>
 </section>
 <!-- ============================ CONTENTS ============================ -->
 <section class="contents" id="contents">
   <h3 style="margin-top:0">Contents</h3>
   <ol>
-    <li><a href="#ch1">You got exactly what you asked for</a><span class="gloss">Which is the problem.</span></li>
-    <li><a href="#ch2">What a map is</a><span class="gloss">Five headings, one page &mdash; and what to leave out.</span></li>
-    <li><a href="#ch3">Dale's map, in full</a><span class="gloss">The one to copy the shape of.</span></li>
-    <li><a href="#ch4">Let it draw the map with you</a><span class="gloss">A real conversation, printed.</span></li>
-    <li><a href="#ch5">The map lives in the folder</a><span class="gloss">And what to do when you change your mind.</span></li>
+    <li><a href="#ch1">Where does it actually live?</a><span class="gloss">Four moments a folder gives out.</span></li>
+    <li><a href="#ch2">One well, many troughs</a><span class="gloss">What a database is for, and when you do not need one.</span></li>
+    <li><a href="#ch3">Rows and columns is the whole idea</a><span class="gloss">There is less to this than people expect.</span></li>
+    <li><a href="#ch4">Asking the well a question</a><span class="gloss">You will not write these. You should read them.</span></li>
+    <li><a href="#ch5">Digging one, and before next time</a><span class="gloss">Free, three minutes, nothing installed.</span></li>
   </ol>
   <p style="margin-top:1.4rem; max-width:var(--measure); color:var(--ink-soft); font-style:italic;">
     Then the questions this always raises, the glossary so far, and the picture to photograph.
@@ -763,394 +769,397 @@ details.demo h4:first-of-type{margin-top:.4em;}
 <section class="chapter" id="ch1">
   <div class="chapter-head">
     <div class="chapter-num">01</div>
-    <h2>You got exactly what you asked for</h2>
-    <p class="standfirst">Which is the problem, and it is nobody's fault but the sentence.</p>
+    <h2>Where does it actually live?</h2>
+    <p class="standfirst">Every map you wrote last time ends at the same question.</p>
   </div>
 
-  <p class="dropcap">Dale asks for &ldquo;something to track my estimates.&rdquo; Twenty minutes later he has a thing that tracks estimates: every estimate he has ever written, in a tidy list, newest first, with totals. It works. It is well made. He opens it once and never opens it again.</p>
+  <p class="dropcap">Go back to the map you wrote in the last session and find heading two &mdash; the one that says where the information comes from. For most people in this room it says something like <em>a folder</em>, <em>a spreadsheet</em>, or, honestly, <em>my head and a notebook in the truck</em>.</p>
 
-  <p>What he wanted at six in the morning, sitting in the truck with the engine running, was <em>which of these is waiting on me.</em> Three names. That is all.</p>
+  <p>For Dale it is a folder of text files that his daughter fills in each morning before she opens the office. That works. It has worked for months. It is worth being clear about that before we replace it with anything.</p>
 
-  <p>Nothing went wrong. He asked for the wrong thing, and he had no way of knowing it was the wrong thing until he saw the right thing missing.</p>
+  <p>It stops working at four specific moments, and they are worth naming because you can usually feel one of them coming.</p>
 
-  <figure class="wide">
-    <svg viewBox="0 0 1120 470" role="img" aria-label="One request leading down three different dashed roads to three different destinations">
-      <rect class="plate" x="40" y="188" width="300" height="96" rx="8"/>
-      <text class="lbl" x="190" y="228" text-anchor="middle">What you said</text>
-      <text class="lbl-sm" x="190" y="258" text-anchor="middle" style="font-size:17px">&ldquo;something to track my estimates&rdquo;</text>
-
-      <path d="M348,214 C520,150 680,110 850,96"
-            style="fill:none;stroke:#c9b99f;stroke-width:8;stroke-dasharray:18 15;stroke-linecap:round"/>
-      <path d="M348,236 C520,232 680,230 850,228"
-            style="fill:none;stroke:#c9b99f;stroke-width:8;stroke-dasharray:18 15;stroke-linecap:round"/>
-      <path d="M348,258 C520,322 680,362 850,376"
-            style="fill:none;stroke:#b8391c;stroke-width:9;stroke-dasharray:18 15;stroke-linecap:round"/>
-
-      <rect class="plate" x="866" y="58" width="220" height="76" rx="8"/>
-      <text class="lbl-sm" x="976" y="90" text-anchor="middle" style="font-size:17px">every estimate</text>
-      <text class="lbl-sm" x="976" y="114" text-anchor="middle" style="font-size:17px">you have ever written</text>
-
-      <rect class="plate" x="866" y="190" width="220" height="76" rx="8"/>
-      <text class="lbl-sm" x="976" y="222" text-anchor="middle" style="font-size:17px">a total, by month</text>
-      <text class="lbl-sm" x="976" y="246" text-anchor="middle" style="font-size:17px">with a chart</text>
-
-      <rect x="866" y="336" width="220" height="80" rx="8" fill="#f0d9cf" stroke="#b8391c" stroke-width="4"/>
-      <text class="lbl-sm" x="976" y="368" text-anchor="middle" style="font-size:17px; fill:#241d16">the three waiting</text>
-      <text class="lbl-sm" x="976" y="392" text-anchor="middle" style="font-size:17px; fill:#241d16">on you this morning</text>
-
-      <text class="lbl lbl-em" x="866" y="446">What you meant</text>
-      <text class="lbl-sm" x="40" y="352">All three are a fair reading of the same sentence.</text>
-      <text class="lbl-sm" x="40" y="378">Only one of them is any use in a truck at six in the morning.</text>
-    </svg>
-    <figcaption><b>Fig. 1</b> &mdash; Nothing went wrong here. Every road leads somewhere the words allowed it to go.</figcaption>
-  </figure>
-
-  <p>This is the session where the limit stops being the tool. You have an assistant that can build, an editor to build in, and an undo if it goes badly. From here on, what you get is decided almost entirely by how clearly you said what you wanted.</p>
-
-  <p>Three things go wrong with a plain request, and they go wrong every time.</p>
-
-  <ul>
-    <li><strong>Every word you left out, it fills in.</strong> You did not say &ldquo;only the ones waiting on me&rdquo;, so it had to decide, and it decided reasonably.</li>
-    <li><strong>It cannot see your Friday.</strong> It does not know this gets read on a phone, in a truck, before seven, by a man with one hand free.</li>
-    <li><strong>It will not tell you that you were vague.</strong> Not unless you ask it to &mdash; which is chapter four, and is the most useful sentence in this session.</li>
-  </ul>
-
-  <div class="box">
-    <span class="label">What Dale meant, in the words he would have used if anyone had asked</span>
-    <p>&ldquo;When I get in the truck I want to know which jobs are stuck on me. Not the ones I've sent &mdash; those are gone. The ones where somebody's waiting and I'm the reason. And if there's a gas one in there I want it at the top, because that's the one I can't sit on.&rdquo;</p>
-    <p>Nobody asked. He would have said all of it in fifteen seconds.</p>
+  <div class="box stable">
+    <span class="label">The four moments a folder gives out</span>
+    <p><strong>1. Two people need it at once.</strong> His daughter is editing the file while Dale is reading it. One of them is looking at something that is no longer true, and neither of them knows which.</p>
+    <p><strong>2. You want it somewhere else.</strong> On the phone, in the truck, at half past six. The folder is on the office computer, and the office is shut.</p>
+    <p><strong>3. You ask a question of all of it at once.</strong> &ldquo;What did we bill in July?&rdquo; A folder cannot answer that. Somebody opens twelve files and adds up.</p>
+    <p><strong>4. The same fact is written in two places.</strong> Tanner's address is in the email and on the estimate. He moves. Now one of them is wrong, and it is a coin toss which one you read next.</p>
   </div>
 
-  <p class="pull">You will get what you asked for. The skill is asking for the right thing.</p>
+  <p>Number four is the one that quietly costs money, and it is the one this session is really about. Everything else follows from it.</p>
+
+  <p class="pull">A folder is a fine place to keep things. It is a poor place to keep the truth.</p>
 </section>
 <!-- ============================ CH 02 ============================ -->
 <section class="chapter" id="ch2">
   <div class="chapter-head">
     <div class="chapter-num">02</div>
-    <h2>What a map is</h2>
-    <p class="standfirst">One page of plain English, written before anything is built.</p>
+    <h2>One well, many troughs</h2>
+    <p class="standfirst">What a database is for &mdash; and, just as usefully, when you do not need one.</p>
   </div>
 
-  <p class="dropcap">You would not send a driver to a place he has never been with the words &ldquo;head north, you'll see it.&rdquo; You would draw him a map &mdash; not the whole county, just enough of it: where he is going, what he will pass, where the road is closed, and how he will know he has arrived.</p>
+  <p class="dropcap">A well is one hole in the ground, dug once, in the right place. Around the yard there are troughs &mdash; one by the gate, one in the paddock, one in the barn. Every trough draws from the same well. Nobody carries buckets between them, and no trough ever has different water in it from another.</p>
 
-  <p>A map here is one page describing a job well enough that somebody else could do it without you in the room. In the trade it is called a <em class="term">spec</em>, short for specification, or sometimes a brief. Same thing. Five headings and about three hundred words.</p>
+  <figure class="wide">
+    <svg viewBox="0 0 1120 560" role="img" aria-label="One well in the middle with channels running out to three separate troughs">
+      <path d="M446,128 L560,66 L674,128 Z" fill="#b8391c"/>
+      <rect x="466" y="124" width="17" height="116" fill="#5b4d3f"/>
+      <rect x="637" y="124" width="17" height="116" fill="#5b4d3f"/>
+      <rect x="466" y="134" width="188" height="13" rx="6" fill="#5b4d3f"/>
+      <path d="M560,147 L560,196" stroke="#5b4d3f" stroke-width="4" fill="none"/>
+      <rect x="540" y="196" width="40" height="32" rx="4" fill="#b8391c"/>
+      <rect x="446" y="242" width="228" height="20" rx="7" fill="#5b4d3f"/>
+      <rect x="458" y="262" width="204" height="84" rx="5" fill="#eadfcc" stroke="#5b4d3f" stroke-width="5"/>
+      <path d="M458,300 L662,300 M526,262 L526,300 M594,262 L594,300 M492,300 L492,346 M560,300 L560,346 M628,300 L628,346"
+            stroke="#5b4d3f" stroke-width="3" fill="none"/>
+      <path class="lead-under" d="M262,168 L440,246"/><path class="lead" d="M262,168 L440,246"/>
+      <text class="lbl lbl-em" x="40" y="150">One well</text>
+      <text class="lbl-sm" x="40" y="176">every fact, written down once</text>
 
-  <div class="box">
-    <span class="label">And a warning about that word</span>
-    <p><strong>&ldquo;Spec&rdquo; makes people write the wrong document.</strong> They hear <em>specification</em>, and within two paragraphs they are describing how to build the thing &mdash; which tables it needs, which buttons go where, which language it should be written in.</p>
-    <p>The more technical the person, the worse the habit, and it is meant kindly. They know how things get built, so they write down how. Then they hand over a page that has quietly settled every decision in advance, and they never find out whether there was a better way of doing it, because they never asked.</p>
-    <p>You do not tell a plumber which wrench. You tell him the sink is leaking under the cabinet, there's damp in the wood, and you'd like it done before Christmas.</p>
-    <p><strong>Look back at session two.</strong> Look, decide, act, check &mdash; the loop. <em>Deciding how</em> is the part it is genuinely good at. Your part is what, and why, and what must never happen. Hand over the how as well and you have taken away the only bit it does better than you, and you now own every one of those decisions, including the ones you did not notice you were making.</p>
-    <p>If you have a real constraint &mdash; it must open in Excel because your accountant lives there, it has to work on the office computer that never gets replaced &mdash; that is not a how. That is a what, and it goes under heading two.</p>
-  </div>
+      <path d="M452,318 C340,318 250,340 176,376" style="fill:none;stroke:#c9b99f;stroke-width:9;stroke-linecap:round"/>
+      <path d="M560,352 C560,392 560,412 560,442" style="fill:none;stroke:#c9b99f;stroke-width:9;stroke-linecap:round"/>
+      <path d="M668,318 C780,318 870,340 944,376" style="fill:none;stroke:#c9b99f;stroke-width:9;stroke-linecap:round"/>
 
-  <p class="pull">Describe the leak. Not the wrench.</p>
+      <path d="M40,378 L232,378 L212,442 L60,442 Z" fill="#eadfcc" stroke="#5b4d3f" stroke-width="5"/>
+      <text class="lbl-sm" x="136" y="474" text-anchor="middle">the list on Dale's phone</text>
 
-  <figure>
-    <svg viewBox="0 0 900 578" role="img" aria-label="A single sheet of paper pinned up, with the five headings of a map written on it">
-      <path d="M52,52 L512,52 L572,112 L572,540 L52,540 Z" fill="#eadfcc" opacity=".55"/>
-      <path d="M40,40 L500,40 L560,100 L560,528 L40,528 Z" fill="#f4ede1" stroke="#5b4d3f" stroke-width="5"/>
-      <path d="M500,40 L560,100 L500,100 Z" fill="#eadfcc" stroke="#5b4d3f" stroke-width="5"/>
-      <circle cx="270" cy="74" r="12" fill="#b8391c"/>
-      <circle cx="266" cy="70" r="4" fill="#f0d9cf"/>
+      <path d="M464,444 L656,444 L636,508 L484,508 Z" fill="#eadfcc" stroke="#5b4d3f" stroke-width="5"/>
 
-      <text class="lbl-sm" x="82" y="132" style="font-size:21px; font-weight:700; fill:#b8391c">1. What it is</text>
-      <rect x="82" y="146" width="360" height="10" rx="5" fill="#c9b99f"/>
-      <rect x="82" y="166" width="286" height="10" rx="5" fill="#c9b99f"/>
+      <path d="M888,378 L1080,378 L1060,442 L908,442 Z" fill="#eadfcc" stroke="#5b4d3f" stroke-width="5"/>
+      <text class="lbl-sm" x="984" y="474" text-anchor="middle">Friday's callback sheet</text>
 
-      <text class="lbl-sm" x="82" y="216" style="font-size:21px; font-weight:700; fill:#b8391c">2. What it reads, and never touches</text>
-      <rect x="82" y="230" width="392" height="10" rx="5" fill="#c9b99f"/>
-      <rect x="82" y="250" width="240" height="10" rx="5" fill="#c9b99f"/>
-
-      <text class="lbl-sm" x="82" y="300" style="font-size:21px; font-weight:700; fill:#b8391c">3. What you would see</text>
-      <rect x="82" y="314" width="352" height="10" rx="5" fill="#c9b99f"/>
-      <rect x="82" y="334" width="310" height="10" rx="5" fill="#c9b99f"/>
-
-      <text class="lbl-sm" x="82" y="384" style="font-size:21px; font-weight:700; fill:#b8391c">4. How you will know it is right</text>
-      <rect x="82" y="398" width="330" height="10" rx="5" fill="#c9b99f"/>
-      <rect x="82" y="418" width="212" height="10" rx="5" fill="#c9b99f"/>
-
-      <text class="lbl-sm" x="82" y="468" style="font-size:21px; font-weight:700; fill:#b8391c">5. What I am not sure about</text>
-      <rect x="82" y="482" width="368" height="10" rx="5" fill="#c9b99f"/>
-      <rect x="82" y="502" width="196" height="10" rx="5" fill="#c9b99f"/>
-
-      <path class="lead-under" d="M598,120 L566,120"/><path class="lead" d="M598,120 L566,120"/>
-      <text class="lbl lbl-em" x="610" y="114">One page</text>
-      <text class="lbl-sm" x="610" y="140">about three hundred words</text>
-
-      <path class="lead-under" d="M598,458 L566,462"/><path class="lead" d="M598,458 L566,462"/>
-      <text class="lbl lbl-em" x="610" y="452">The one people skip</text>
-      <text class="lbl-sm" x="610" y="478">and the most useful of the five</text>
-
-      <text class="lbl-sm" x="40" y="566">If it needs three pages, it is three jobs.</text>
+      <text class="lbl-sm" x="560" y="540" text-anchor="middle">the estimate app</text>
     </svg>
-    <figcaption><b>Fig. 2</b> &mdash; The map. Five headings on one page, written before anything is built. This is the thing to photograph today.</figcaption>
+    <figcaption><b>Fig. 1</b> &mdash; One well, many troughs. Each trough shows the same water because there is only one well &mdash; nobody is carrying buckets between them.</figcaption>
   </figure>
 
-  <div class="box stable">
-    <span class="label">The five headings</span>
-    <p><strong>1. What it is.</strong> One sentence, and who it is for. If you cannot finish this sentence, stop &mdash; that is the actual problem, not the building.</p>
-    <p><strong>2. What it reads, and what it must never touch.</strong> Which files, which folders, which information. And then the nevers, plainly.</p>
-    <p><strong>3. What you would actually see.</strong> Describe the thing itself. Not &ldquo;a summary&rdquo; &mdash; write out a line of it, the way it would really look.</p>
-    <p><strong>4. How you will know it is right.</strong> Two or three things that must be true. &ldquo;Tanner is at the top.&rdquo; &ldquo;Nothing I've already sent appears.&rdquo;</p>
-    <p><strong>5. What you are not sure about.</strong> The questions you cannot answer yet. This heading is the one people leave out, and it is the most valuable one on the page.</p>
+  <p>That is a <em class="term">database</em>. One place the information lives. Everything that needs it draws from there, and because there is only one of it, nothing can ever disagree with anything else.</p>
+
+  <p>The word people reach for first is &ldquo;a big spreadsheet&rdquo;, and it is close enough to start with. The difference that matters: a well is built to be drawn from by several things at once, from several places, without anyone waiting and without two people seeing different answers. A spreadsheet is one file, and one file has one person in it at a time.</p>
+
+  <h3>Who is going to use it?</h3>
+
+  <p>This is the question that decides whether you need a well at all, and it is worth asking out loud before anything else. There are three honest answers and they lead three different ways.</p>
+
+  <ul>
+    <li><strong>Just me.</strong> Then a folder is fine, and a spreadsheet is fine. Genuinely &mdash; not as a consolation. If nobody else touches it and it lives on one machine, a well is a cost with no benefit, and anybody who tells you otherwise is selling something.</li>
+    <li><strong>Me and the people who work for me.</strong> Now you want a well. This is Dale: two people, two places, one truth. It is the most common answer in a room like this one and it is what today is aimed at.</li>
+    <li><strong>My customers, over the internet, with their own logins.</strong> Then you want a well and several other things besides &mdash; a way to know who is who, a way to send them mail, a way to keep one customer from seeing another's business. That is a bigger job than today, and we will come to it.</li>
+  </ul>
+
+  <div class="box">
+    <span class="label">When a folder is still the right answer</span>
+    <p>Only you touch it. It fits on one screen. You have never once wished you could ask it a question. Nobody has ever had to ask which copy is current.</p>
+    <p>If that is you, keep the folder. Come back to this session on the day one of those four moments happens, because it will, and you will recognise it.</p>
   </div>
 
-  <p><strong>One page, on purpose.</strong> Longer than that and nobody reads it, including you in three weeks. If it will not fit on a page, you are describing three jobs, and three jobs want three maps and doing one at a time.</p>
-
-  <p>You are not writing this for a computer. Write it the way you wrote your house rules in session six &mdash; the way you would brief a capable new employee on their first morning. That is the same skill, and you already have it.</p>
-
-  <p class="pull">The map is worth more than the horse. Anyone can borrow a horse.</p>
+  <p class="pull">A well is dug once, in the right place. That is most of the skill.</p>
 </section>
 <!-- ============================ CH 03 ============================ -->
 <section class="chapter" id="ch3">
   <div class="chapter-head">
     <div class="chapter-num">03</div>
-    <h2>Dale's map, in full</h2>
-    <p class="standfirst">The one to copy the shape of. The words are his; the shape is yours to steal.</p>
+    <h2>Rows and columns is the whole idea</h2>
+    <p class="standfirst">There is less to a database than people expect. That is the good news.</p>
   </div>
 
-  <p class="dropcap">Working example. This is the map for the thing Dale actually wanted &mdash; the list of estimates stuck on him &mdash; written before a single file was made. It is shorter than the description of it took.</p>
+  <p class="dropcap">Here is the entire structure, and there is genuinely nothing hiding behind it. A <em class="term">table</em> is a list of one kind of thing. Every one of those things gets a <em class="term">row</em>. Every fact you keep about them gets a <em class="term">column</em>, and every row has the same columns as every other.</p>
 
-  <div class="box stable">
-    <span class="label">The estimate queue &mdash; what I understood</span>
-    <p><strong>What it is.</strong> One short list, on Dale's phone, of estimate requests that cannot move without him. Nothing else on it. When an estimate is written and sent, it drops off &mdash; there is nothing to mark as done.</p>
-    <p><strong>What it reads.</strong> Three things already on the office computer: <code>inbox/</code>, the emails saved in each morning; <code>past-estimates/</code>, so it knows what has been done; and <code>rate-card.txt</code> and <code>notes.txt</code>, so it can tell a job we can price from one we cannot.</p>
-    <p><strong>What it must never do.</strong> It does not read email. It does not send anything. It does not write the estimates. It does not price gas &mdash; it flags it and stops.</p>
-    <p><strong>What you would see.</strong> Name, one line on the job, why it is waiting, and what would move it:</p>
-    <p style="padding-left:1.4rem; border-left:3px solid var(--rule)"><strong>Tanner, 212 Wilbanks Rd</strong> &mdash; 4 days<br>Gas smell at the stove. We don't price gas. Call him.<br>Water heater's separate and quotable if you want it split.</p>
-    <p><strong>How I will know it is right.</strong> Tanner is at the top, because gas beats waiting time. Alvarez shows as ready to price. Nothing already sent appears anywhere on it. No prices on this list &mdash; prices belong in the estimate.</p>
-    <p><strong>What I am not sure about.</strong> How it knows a job is finished. Today the only signal is a file appearing in <code>past-estimates/</code> with the customer's name on it &mdash; so if Alvarez calls again next spring about something else, the old file still has her name and the new email gets counted as already done. That is a job silently missing off the list, which is the one failure that actually costs money.</p>
-  </div>
+  <figure class="wide">
+    <svg viewBox="0 -32 1120 502" role="img" aria-label="A table of Dale's jobs, with the header row and one row marked">
+      <rect x="40" y="60" width="1040" height="58" fill="#5b4d3f"/>
+      <text class="lbl-sm" x="62"  y="97" style="font-size:20px; fill:#f4ede1">customer</text>
+      <text class="lbl-sm" x="242" y="97" style="font-size:20px; fill:#f4ede1">job</text>
+      <text class="lbl-sm" x="642" y="97" style="font-size:20px; fill:#f4ede1">status</text>
+      <text class="lbl-sm" x="822" y="97" style="font-size:20px; fill:#f4ede1">waiting_on</text>
+      <text class="lbl-sm" x="1000" y="97" style="font-size:20px; fill:#f4ede1">received</text>
 
-  <h3>Three things to notice about it</h3>
+      <rect x="40" y="118" width="1040" height="56" fill="#f0d9cf" stroke="#b8391c" stroke-width="4"/>
+      <text class="lbl-sm" x="62"  y="153" style="font-size:19px; fill:#241d16">Tanner</text>
+      <text class="lbl-sm" x="242" y="153" style="font-size:19px; fill:#241d16">Water heater, plus gas smell at stove</text>
+      <text class="lbl-sm" x="642" y="153" style="font-size:19px; fill:#241d16">stopped</text>
+      <text class="lbl-sm" x="822" y="153" style="font-size:19px; fill:#241d16">Dale &mdash; gas</text>
+      <text class="lbl-sm" x="1000" y="153" style="font-size:19px; fill:#241d16">Aug 21</text>
+
+      <rect x="40" y="174" width="1040" height="56" fill="#f4ede1" stroke="#c9b99f" stroke-width="2"/>
+      <text class="lbl-sm" x="62"  y="209" style="font-size:19px">Brody</text>
+      <text class="lbl-sm" x="242" y="209" style="font-size:19px">Disposal jammed, toilet running</text>
+      <text class="lbl-sm" x="642" y="209" style="font-size:19px">stopped</text>
+      <text class="lbl-sm" x="822" y="209" style="font-size:19px">customer</text>
+      <text class="lbl-sm" x="1000" y="209" style="font-size:19px">Aug 22</text>
+
+      <rect x="40" y="230" width="1040" height="56" fill="#f4ede1" stroke="#c9b99f" stroke-width="2"/>
+      <text class="lbl-sm" x="62"  y="265" style="font-size:19px">Alvarez</text>
+      <text class="lbl-sm" x="242" y="265" style="font-size:19px">Leaking trap under bathroom sink</text>
+      <text class="lbl-sm" x="642" y="265" style="font-size:19px">ready to price</text>
+      <text class="lbl-sm" x="822" y="265" style="font-size:19px">&mdash;</text>
+      <text class="lbl-sm" x="1000" y="265" style="font-size:19px">Aug 24</text>
+
+      <rect x="40" y="286" width="1040" height="56" fill="#f4ede1" stroke="#c9b99f" stroke-width="2"/>
+      <text class="lbl-sm" x="62"  y="321" style="font-size:19px">Smith</text>
+      <text class="lbl-sm" x="242" y="321" style="font-size:19px">Kitchen faucet, corroded shut-offs</text>
+      <text class="lbl-sm" x="642" y="321" style="font-size:19px">sent</text>
+      <text class="lbl-sm" x="822" y="321" style="font-size:19px">&mdash;</text>
+      <text class="lbl-sm" x="1000" y="321" style="font-size:19px">Jul 6</text>
+
+      <path class="lead-under" d="M300,50 L300,26"/><path class="lead" d="M300,50 L300,26"/>
+      <text class="lbl lbl-em" x="40" y="20">Columns: the same fact, kept about every job</text>
+
+      <path class="lead-under" d="M20,146 L36,146"/><path class="lead" d="M20,146 L36,146"/>
+      <text class="lbl lbl-em" x="40" y="386">One row is one job</text>
+      <text class="lbl-sm" x="40" y="412">and every fact about it sits on that line, once</text>
+      <text class="lbl-sm" x="40" y="446">Change Tanner's address here and it is changed everywhere that draws from the well.</text>
+    </svg>
+    <figcaption><b>Fig. 2</b> &mdash; A table. One row per job, one column per fact. There is nothing more to it than that, and there does not need to be.</figcaption>
+  </figure>
+
+  <p>Dale's well has one table in it called <code>jobs</code>. One row per job. Seven columns, because there are seven facts worth keeping about a job. That is the whole design, and it took about four minutes to decide.</p>
+
+  <p>Two rules follow from the picture, and they are the only two you need today.</p>
 
   <ul>
-    <li><strong>It says what the thing must not do</strong> as clearly as what it must. Half the value of a map is the roads you cross out.</li>
-    <li><strong>It writes out a real line of the output.</strong> &ldquo;Tanner, 212 Wilbanks Rd &mdash; 4 days&rdquo; settles a dozen small arguments that would otherwise be settled by whoever builds it.</li>
-    <li><strong>It names its own weakest part</strong> instead of pretending to be finished. That last heading is where the next conversation starts.</li>
+    <li><strong>One fact, one place.</strong> Tanner's address is written once. When he moves, it is corrected once, and every trough in the yard is correct from that moment. If you find yourself changing the same fact in two places, you have two wells and one of them is lying.</li>
+    <li><strong>One kind of thing per table.</strong> Jobs go in the jobs table. Customers, if you ever need them separately, go in a customers table. Resist the urge to build one enormous table with everything in it &mdash; that is a spreadsheet with extra steps.</li>
   </ul>
 
-  <p class="pull">Half the value of a map is the roads you cross out.</p>
+  <h3>The columns you choose decide the questions you can ask</h3>
+
+  <p>This is the part worth slowing down for, and it came out of building the demo you are about to see rather than out of a book.</p>
+
+  <p>Dale's table records the date a request <em>came in</em>. It does not record the date the estimate <em>went out</em>. Nobody noticed, because nobody had ever needed it. Then somebody asked what looks like the simplest question in the world &mdash; <em>what did we bill in July?</em> &mdash; and the well cannot answer it. It can tell you what came in during July and has since been billed, which is a different question wearing the same coat.</p>
+
+  <div class="box stable">
+    <span class="label">What it actually said, unprompted</span>
+    <p>&ldquo;The table only records the day a request came in &mdash; there's no date for when it was sent out. So this is &lsquo;jobs received in July that have been billed&rsquo;, not &lsquo;invoices sent in July&rsquo;. If you want the two to line up going forward, we'd need a sent date column.&rdquo;</p>
+    <p>Nobody asked it to check that. It is the single most useful sentence in this session.</p>
+  </div>
+
+  <p>So: a column you did not write down is a question you cannot ask. You will not get this right first time and you are not supposed to. Adding a column later is a small job. Knowing that you needed one is the hard part, and this is how you find out.</p>
+
+  <p class="pull">A column you never kept is a question you cannot ask.</p>
 </section>
 <!-- ============================ CH 04 ============================ -->
 <section class="chapter" id="ch4">
   <div class="chapter-head">
     <div class="chapter-num">04</div>
-    <h2>Let it draw the map with you</h2>
-    <p class="standfirst">You do not have to be good at this on the first morning.</p>
+    <h2>Asking the well a question</h2>
+    <p class="standfirst">You will not write these. You do need to be able to read one.</p>
   </div>
 
-  <p class="dropcap">Writing a map from a blank page is hard, and nobody should have to start there. The assistant will write it with you, and it turns out to be rather good at it &mdash; because the thing it is genuinely best at is noticing what you did not say.</p>
+  <p class="dropcap">A question put to a well is called a <em class="term">query</em>, and it is written in a language called SQL &mdash; most people say &ldquo;sequel&rdquo;. It has been around since the nineteen-seventies, which is why it looks the way it does, and it is not going anywhere.</p>
 
-  <p>There is one sentence that does it. Say the thing you want, then add:</p>
+  <figure class="wide">
+    <svg viewBox="0 0 1120 400" role="img" aria-label="Plain English going in, SQL in the middle, and rows of answer coming out">
+      <defs>
+        <marker id="arrow9" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+          <path d="M0,0 L10,5 L0,10 Z" fill="#b8391c"/>
+        </marker>
+      </defs>
+
+      <rect class="plate" x="30" y="120" width="280" height="110" rx="8"/>
+      <text class="lbl-sm" x="170" y="166" text-anchor="middle" style="font-size:19px">&ldquo;which jobs are still</text>
+      <text class="lbl-sm" x="170" y="192" text-anchor="middle" style="font-size:19px">waiting on me?&rdquo;</text>
+      <text class="lbl lbl-em" x="170" y="264" text-anchor="middle">What you say</text>
+
+      <path d="M320,175 L400,175" style="fill:none;stroke:#b8391c;stroke-width:6" marker-end="url(#arrow9)"/>
+
+      <rect x="414" y="106" width="300" height="138" rx="8" fill="#241d16"/>
+      <text x="434" y="146" style="font-family:'Courier New',monospace; font-size:19px; fill:#f4ede1">SELECT customer, job</text>
+      <text x="434" y="176" style="font-family:'Courier New',monospace; font-size:19px; fill:#f4ede1">FROM jobs</text>
+      <text x="434" y="206" style="font-family:'Courier New',monospace; font-size:19px; fill:#c2841f">WHERE waiting_on</text>
+      <text x="434" y="234" style="font-family:'Courier New',monospace; font-size:19px; fill:#c2841f">ILIKE '%dale%';</text>
+      <text class="lbl lbl-em" x="564" y="278" text-anchor="middle">What it writes</text>
+      <text class="lbl-sm" x="564" y="304" text-anchor="middle">read this line before you believe the answer</text>
+
+      <path d="M724,175 L804,175" style="fill:none;stroke:#b8391c;stroke-width:6" marker-end="url(#arrow9)"/>
+
+      <rect x="818" y="106" width="272" height="46" fill="#5b4d3f"/>
+      <text class="lbl-sm" x="838" y="136" style="font-size:18px; fill:#f4ede1">customer</text>
+      <text class="lbl-sm" x="978" y="136" style="font-size:18px; fill:#f4ede1">waiting_on</text>
+      <rect x="818" y="152" width="272" height="46" fill="#f0d9cf" stroke="#b8391c" stroke-width="3"/>
+      <text class="lbl-sm" x="838" y="182" style="font-size:18px; fill:#241d16">Tanner</text>
+      <text class="lbl-sm" x="978" y="182" style="font-size:18px; fill:#241d16">Dale &mdash; gas</text>
+      <text class="lbl lbl-em" x="954" y="264" text-anchor="middle">What comes back</text>
+      <text class="lbl-sm" x="954" y="290" text-anchor="middle">one row, and a reason</text>
+    </svg>
+    <figcaption><b>Fig. 3</b> &mdash; You will not write the middle box. You should be able to read it &mdash; it is the only place you can check that your question was understood.</figcaption>
+  </figure>
+
+  <p>You are not going to learn to write these, and you do not need to. What you need is to be able to look at one and check it asked what you meant &mdash; which is the same skill as reading the permission prompt in session five, and it matters for the same reason.</p>
+
+  <p>Read this one out loud in English and see how far you get:</p>
 
   <div class="box stable">
-    <span class="label">The sentence that changes what you get</span>
-    <p><strong>&ldquo;Don't build anything yet. Ask me what you need to know first.&rdquo;</strong></p>
-    <p>Say it every time until it stops feeling odd. Without it, it will start building, because that is what it was asked for.</p>
+    <span class="label">One query, in two languages</span>
+    <p><code style="display:block; white-space:pre">SELECT customer, job
+FROM   jobs
+WHERE  waiting_on ILIKE '%dale%'
+ORDER BY received;</code></p>
+    <p><strong>Select</strong> the customer and the job &mdash; <em>show me these two facts.</em><br>
+    <strong>From</strong> jobs &mdash; <em>out of the jobs list.</em><br>
+    <strong>Where</strong> waiting_on is something like &ldquo;dale&rdquo; &mdash; <em>but only the ones with my name against them.</em><br>
+    <strong>Order by</strong> received &mdash; <em>oldest first.</em></p>
+    <p>Four lines, four ordinary English sentences. That is most of SQL, and the rest is more of the same.</p>
   </div>
 
-  <p>Here is a real one, trimmed to fit the page. Dale's folder, the same one from session three, and the same one-line wish that produced the wrong thing in chapter one.</p>
+  <p>Here is the real exchange from the demo, exactly as it came back.</p>
 
   <div class="transcript">
     <div class="turn you">
       <span class="who">Dale</span>
-      <p>I want something that tells me which estimates are still waiting on me. Don't build anything yet. Ask me what you need to know first.</p>
+      <p>Which jobs are still waiting on me?</p>
     </div>
     <div class="turn">
       <span class="who">The assistant</span>
-      <p>I read the folder first so my questions aren't generic. Here's what's here: three customer emails in <code>inbox/</code>, all unanswered as far as I can tell. One finished estimate in <code>past-estimates/</code>. Your house rules, and a rate card effective March 2026.</p>
-      <p>Worth flagging up front: nothing in this folder records <em>state</em>. There's no &ldquo;I sent this&rdquo;, no &ldquo;I'm waiting on Brody to tell me the model&rdquo;, no date on anything. The only signal available today is &ldquo;there's a file in <code>inbox/</code> and no matching file in <code>past-estimates/</code>&rdquo;. That shapes most of the rest.</p>
-      <p>First question. When you say an estimate is &ldquo;waiting on me&rdquo;, which of these do you mean?</p>
-      <ul>
-        <li><strong>A.</strong> Emails with no estimate written yet &mdash; the plain backlog.</li>
-        <li><strong>B.</strong> Ones I've started but can't finish without a decision only you can make. Tanner is the live example: his water heater is priceable, the gas stove isn't, so the whole job stalls on you.</li>
-        <li><strong>C.</strong> Ones where I need something from the customer first &mdash; Brody says &ldquo;jammed and humming&rdquo; with no model, and there's no address on his email at all.</li>
-        <li><strong>D.</strong> Ones I've sent that the customer hasn't replied to.</li>
-      </ul>
-      <p>A, B and C are all &ldquo;the ball is in your court&rdquo;. D is the opposite. Which do you want counted, and is D in or out?</p>
-    </div>
-    <div class="turn you">
-      <span class="who">Dale</span>
-      <p>A, B and C. Leave D out &mdash; once I've sent it, it's off my list. And I look at this on my phone in the truck, first thing.</p>
-    </div>
-    <div class="turn">
-      <span class="who">The assistant</span>
-      <p>Good &mdash; that keeps it to one list: things you can act on.</p>
-      <p>The phone detail matters more than it might seem, so let me chase it. These three emails are sitting here as text files in a folder. Is that the real setup, or is it a snapshot someone made of what's actually in your email?</p>
-      <p>I ask because it decides who has to do something to keep the list current. If the folder is real, somebody is already saving emails into it by hand &mdash; and you'd be reading yesterday's picture in the truck unless they'd been in that morning. If it's standing in for your actual inbox, this has to read your mail directly, which is a bigger build and needs access to your account.</p>
-    </div>
-    <div class="turn you">
-      <span class="who">Dale</span>
-      <p>The folder is real &mdash; my daughter saves the emails into it every morning before she opens the office. Now write me the map: one page, plain English, no code, so I can check you understood before you build anything.</p>
-    </div>
-    <div class="turn">
-      <span class="who">The assistant</span>
-      <p class="aside">&mdash; and out comes the map in chapter three, plus three things it still needs from him: who runs it each morning and when, how it reaches his phone, and whether the inbox ever gets emptied.</p>
+      <p>The SQL I ran:</p>
+      <p><code style="display:block; white-space:pre">SELECT customer, address, job, status, waiting_on, received, total
+FROM jobs
+WHERE waiting_on ILIKE '%dale%'
+ORDER BY received;</code></p>
+      <p>That asks for every job where the ball is with you, oldest first.</p>
+      <p><strong>One job is waiting on you.</strong></p>
+      <p><strong>Tanner &mdash; 212 Wilbanks Rd</strong>, came in 21 August 2026. Water heater rumbling, plus a gas smell at the stove. Status is stopped, nothing billed yet.</p>
+      <p>It's flagged to you because of the gas smell &mdash; that's gas work, so I haven't priced any of it and won't. No date promised to the customer.</p>
+      <p>For context, nothing else is sitting with anyone else except one job waiting on the customer (a model number and an address); the rest are one ready to price and four already sent.</p>
     </div>
   </div>
 
-  <h3>What just happened</h3>
+  <p>Notice what happened in the third line of that query. It searched for anything <em>like</em> &ldquo;dale&rdquo;, because it did not know how Dale's name was written in that column &mdash; and it said so. In an earlier run it refused to guess at all, and told me a filter that guessed wrong would quietly hide jobs. That is the behaviour you want, and it is the reason to read the query rather than only the answer.</p>
 
-  <ul>
-    <li><strong>It read the folder before it asked anything.</strong> The questions are about Tanner and Brody by name, not about &ldquo;your workflow&rdquo;.</li>
-    <li><strong>It found the hole Dale did not know was there.</strong> Nothing in that folder records what has been sent. Dale would not have thought to mention it, because it had never been written down anywhere in twenty years.</li>
-    <li><strong>The second question is the one that matters.</strong> &ldquo;Is this folder real, or a stand-in for your email?&rdquo; Dale had never once said which, because to him it was obvious. It was not obvious. It changes what gets built.</li>
-  </ul>
-
-  <p>Four questions and about three minutes of typing, and what came out of the other end is the map in chapter three &mdash; including the part where it names its own weakest point without being asked. That is the same one-line wish it started from.</p>
-
-  <h3>The button that does this for you</h3>
-
-  <p>Both assistants have a setting for it, and it is worth knowing the name because everybody uses it. It is called <em class="term">plan mode</em>: it works out what it would do, writes the plan down, and shows it to you without touching a single file until you say go.</p>
-
-  <ul>
-    <li><strong>Claude Code.</strong> Press <strong>Shift + Tab</strong> to cycle the mode until it says plan. Same key cycles back.</li>
-    <li><strong>Codex.</strong> Ask it for a plan first and read it before approving. Same idea, one step less formal.</li>
-  </ul>
-
-  <p>Plan mode and the sentence above do the same job. The sentence works everywhere and costs you nothing to remember, so start there.</p>
-
-  <p class="pull">It is not that it cannot read your mind. It is that nobody ever asked you the questions.</p>
+  <p class="pull">Read the question. The answer will always look confident.</p>
 </section>
 <!-- ============================ CH 05 ============================ -->
 <section class="chapter" id="ch5">
   <div class="chapter-head">
     <div class="chapter-num">05</div>
-    <h2>The map lives in the folder</h2>
-    <p class="standfirst">And what to do on the day you change your mind.</p>
+    <h2>Digging one, and before next time</h2>
+    <p class="standfirst">Free, about three minutes, and nothing to install.</p>
   </div>
 
-  <p class="dropcap">A map that lives in your head is not a map. Save it as a file in the project folder &mdash; call it <code>spec.md</code>, or <code>map.txt</code>, or anything you will recognise &mdash; right next to the house rules you wrote in session six.</p>
+  <p class="dropcap">You do not dig a well by hand any more, and you certainly do not run one yourself. You rent one. It is free at the size any of us will use today, it lives on the internet rather than on your office computer, and getting one takes about as long as making a cup of tea.</p>
 
-  <figure class="wide">
-    <svg viewBox="0 0 1120 452" role="img" aria-label="A project folder holding house rules, the map and the work, with four markers on the trail behind it">
-      <path d="M40,96 L262,96 L286,128 L620,128 L620,394 L40,394 Z" fill="#5b4d3f"/>
-      <rect x="76" y="152" width="320" height="52" rx="4" fill="#f4ede1" stroke="#c9b99f" stroke-width="3"/>
-      <text class="lbl-sm" x="96" y="185" style="font-size:19px">CLAUDE.md</text>
-      <rect x="76" y="216" width="320" height="52" rx="4" fill="#f0d9cf" stroke="#b8391c" stroke-width="3"/>
-      <text class="lbl-sm" x="96" y="249" style="font-size:19px; fill:#241d16">spec.md</text>
-      <rect x="76" y="280" width="320" height="52" rx="4" fill="#f4ede1" stroke="#c9b99f" stroke-width="3"/>
-      <text class="lbl-sm" x="96" y="313" style="font-size:19px">estimates/</text>
-      <rect x="40" y="336" width="580" height="58" rx="6" fill="#b8391c"/>
+  <p>There are several companies who will do this. We use <em class="term">Neon</em>, and we get it through <strong>Vercel</strong> &mdash; which is worth explaining, because it saves you an account.</p>
 
-      <path class="lead-under" d="M646,242 L410,242"/><path class="lead" d="M646,242 L410,242"/>
-      <text class="lbl lbl-em" x="658" y="236">The map, in the folder</text>
-      <text class="lbl-sm" x="658" y="262">beside the house rules, where</text>
-      <text class="lbl-sm" x="658" y="286">it can be read without asking</text>
+  <p>Vercel is where, next session, you will put something on the internet. It also has a marketplace of things you might need on the way, and a database is one of them. So you sign up once, at Vercel, and get the well from there. One account instead of two, one bill instead of two &mdash; and both of them are free at this size.</p>
 
-      <path d="M700,396 L1080,396" stroke="#c9b99f" stroke-width="6" fill="none" stroke-linecap="round"/>
-      <rect x="746" y="336" width="12" height="60" rx="4" fill="#5b4d3f"/>
-      <rect x="738" y="348" width="28" height="15" rx="4" fill="#b8391c"/>
-      <rect x="846" y="336" width="12" height="60" rx="4" fill="#5b4d3f"/>
-      <rect x="838" y="348" width="28" height="15" rx="4" fill="#b8391c"/>
-      <rect x="946" y="336" width="12" height="60" rx="4" fill="#5b4d3f"/>
-      <rect x="938" y="348" width="28" height="15" rx="4" fill="#b8391c"/>
-      <rect x="1046" y="336" width="12" height="60" rx="4" fill="#5b4d3f"/>
-      <rect x="1038" y="348" width="28" height="15" rx="4" fill="#b8391c"/>
-      <text class="lbl-sm" x="40" y="434">Marked like the rest, so you can read how your thinking changed.</text>
-    </svg>
-    <figcaption><b>Fig. 3</b> &mdash; Three sessions in one picture: the rules from six, the markers from seven, and today's map sitting between them.</figcaption>
-  </figure>
 
-  <p>Three things follow from it being a file, and all three matter more than they sound.</p>
+  <details class="demo">
+    <summary>Show me every step &mdash; getting a free Vercel account, click by click</summary>
+    <div class="demo-body">
+      <p>Free, about three minutes, and no card. You will need this account next session as well, so it is not a detour.</p>
 
-  <ul>
-    <li><strong>It is still there in three weeks</strong>, when you have forgotten why you decided the sent ones drop off the list.</li>
-    <li><strong>You can point at it.</strong> &ldquo;Read <code>spec.md</code>, then build the first part of it&rdquo; is a better instruction than anything you will type from memory on a Tuesday.</li>
-    <li><strong>It gets marked, like everything else.</strong> Which means that in a month you can read how your own thinking changed, in your own words, with the dates on it.</li>
-  </ul>
+      <h4>Signing up</h4>
+      <ol>
+        <li><strong>Go to <a class="repo" href="https://vercel.com" target="_blank" rel="noopener">vercel.com</a></strong> and click <em>Sign Up</em>.</li>
+        <li><strong>Choose <em>Hobby</em></strong> when it asks what you are doing. Hobby is free and stays free. It is the right answer even though you are running a business &mdash; it is about how much you use, not who you are.</li>
+        <li><strong>Sign in with GitHub</strong> if you made an account in session seven. That is one fewer password, and it means the two already know about each other. Otherwise use your email.</li>
+        <li><strong>Give it a name</strong> when it asks. Your own name is fine. Nobody sees it but you until you decide otherwise.</li>
+        <li><strong>Skip anything about deploying a project.</strong> It will offer you templates and clever things. You do not need any of them today; close them down and you will land on an empty dashboard, which is exactly right.</li>
+      </ol>
 
-  <h3>When you change your mind</h3>
+      <h4>Digging your own well</h4>
+      <ol>
+        <li><strong>Find the Storage tab</strong> on the dashboard.</li>
+        <li><strong>Choose Neon Postgres</strong> from the list, and the <strong>free</strong> plan.</li>
+        <li><strong>Give it a name</strong> &mdash; something you will recognise in a month. <code>my-first-well</code> is a perfectly good name.</li>
+        <li><strong>That is it.</strong> The well exists. It is empty, and that is fine &mdash; you are not going to put anything real in it today.</li>
+        <li><strong>Find the connection string</strong>, look at it, and close the tab without copying it anywhere. Today you only need to know what it looks like and that it is a key.</li>
+      </ol>
 
-  <p>You will, and quickly &mdash; usually the moment you see the first version. There is a right way round and a wrong way round.</p>
-
-  <div class="compare">
-    <div class="bad">
-      <span class="tag">The wrong way round</span>
-      <p>Argue with the build. Six messages later nobody can say what the thing is meant to do, including you.</p>
-      <code>no, not like that
-put the gas ones first
-actually take the prices off</code>
+      <div class="box">
+        <span class="label">If a screen does not match this</span>
+        <p>It might not. Vercel changes its wording and moves its buttons more often than this page gets reprinted, and Neon does too. The shape does not change: sign in, find storage, pick Postgres, pick free, name it.</p>
+        <p>If you get stuck for more than ten minutes, stop. It is not you, and it is not worth an evening. <strong>Bring it to the next session</strong>, or send me a message and I will get you unstuck &mdash; that part is genuinely quick when somebody has seen the screen before.</p>
+      </div>
     </div>
-    <div class="good">
-      <span class="tag">The right way round</span>
-      <p>Change the map, mark it, then ask again. One message, and the reason survives.</p>
-      <code>I've changed spec.md - gas jobs go
-at the top regardless of how long
-they've waited. Read it again and
-rebuild the list to match.</code>
+  </details>
+
+  <h3>What I did up here, in full</h3>
+
+
+  <details class="demo">
+    <summary>Nothing up my sleeve &mdash; every step of what I just did</summary>
+    <div class="demo-body">
+      <p>Six steps and one command. The well did not exist twenty minutes before this session started.</p>
+      <ol>
+        <li><strong>Sign in to Vercel</strong> &mdash; the free hobby account, the same one you will need next session anyway.</li>
+        <li><strong>Add a database from the marketplace.</strong> On Vercel that is the <em>Storage</em> tab, then Neon, then the free plan. It takes about thirty seconds and asks you almost nothing.
+          <p>From the terminal it is one line, which is what I ran up here:</p>
+          <p><code style="display:block; white-space:pre">vercel integration add neon --name dale-well --plan free_v3</code></p>
+        </li>
+        <li><strong>Vercel hands back a connection string</strong> and puts it in the project for you. One line of text, beginning <code>postgresql://</code>. That is the key to the well &mdash; more on it in a moment.</li>
+        <li><strong>Make the table.</strong> I asked for it in English: &ldquo;make a table called jobs, one row per job, with columns for customer, address, the job, status, who we're waiting on, the date it came in, and the total.&rdquo;</li>
+        <li><strong>Put Dale's jobs in it</strong> &mdash; the same three from the inbox you have seen since session three, plus four already sent so there is something to add up.</li>
+        <li><strong>Ask it things in English.</strong> That is chapters three and four, and it is the whole point of the exercise.</li>
+      </ol>
+
+      <div class="box">
+        <span class="label">The one thing to be careful with</span>
+        <p>The connection string is a key. Anyone who has it can read and change everything in your well, from anywhere, without a password prompt.</p>
+        <p>So: it never goes in a public repository, it never gets pasted into a chat window or an email, and it never appears in a screenshot. It lives in a file called <code>.env.local</code> in the project folder, and the very first thing you do is add that filename to <code>.gitignore</code> so the markers from session seven never pick it up.</p>
+        <p>If one does get out: go back to the dashboard and reset it. It takes a minute, and everything that was using the old one stops working until you update it &mdash; which is annoying, and much better than the alternative.</p>
+      </div>
     </div>
-  </div>
+  </details>
 
-  <p>The map is the thing you argue with. Once it is right, the building is the easy part &mdash; and if it comes out wrong anyway, you have a marker to step back to and a page to point at.</p>
-
-  <h3>Now write one</h3>
-
-  <p>Ten minutes, on the thing you brought with you. Paper is fine &mdash; better than fine, actually; nobody types their first one well.</p>
+  <h3>Before the next session</h3>
 
   <ol class="checklist">
-    <li><strong>Write the first sentence.</strong> &ldquo;It is a ___ for ___ that ___.&rdquo; If you get stuck here, that is the finding, not a failure.</li>
-    <li><strong>What does it read?</strong> Where does the information come from today &mdash; a folder, a notebook, somebody's head?</li>
-    <li><strong>What must it never do?</strong> At least two. There are always two.</li>
-    <li><strong>Write one real line of what you would see.</strong> Not a description of it. The line itself, as it would appear.</li>
-    <li><strong>Two things that must be true</strong> for you to call it right.</li>
-    <li><strong>Then the last heading:</strong> what you are not sure about. Write down the questions even if you cannot answer any of them.</li>
-    <li><strong>When you get home</strong>, type it into <code>spec.md</code> in a folder, open the assistant there, and say: &ldquo;Read this map. Don't build anything yet &mdash; tell me what's missing from it.&rdquo;</li>
+    <li><strong>Get the free Vercel account.</strong> The walkthrough above. Ten minutes, and you need it next time regardless.</li>
+    <li><strong>Dig one well and leave it empty.</strong> Storage, Neon Postgres, free plan, give it a name. Then close the tab. You have a well.</li>
+    <li><strong>Look at the connection string once</strong> so you know what one looks like, and put it nowhere.</li>
+    <li><strong>Take out the map you wrote last session</strong> and read heading two again &mdash; where the information comes from.</li>
+    <li><strong>Answer the question from chapter two, in writing, on the map:</strong> who is going to use this? Just you, you and your staff, or your customers? One line. It changes everything that comes after it.</li>
+    <li><strong>Then sketch the columns.</strong> What is the one kind of thing you are keeping &mdash; jobs, customers, deliveries? And what facts do you keep about each one? A list on paper is exactly enough.</li>
   </ol>
 
   <div class="box stable">
-    <span class="label">A blank one to copy</span>
-    <p>There is an empty map with the five headings on it, and Dale's finished one beside it, in the class folder: <a class="repo" href="https://github.com/brainit-consulting/ai-workshops" target="_blank" rel="noopener">github.com/brainit-consulting/ai-workshops</a></p>
-    <p>Pick <em>end-of-008</em> from the dropdown, then the green Code button and Download ZIP. The template is <code>trail-map-template.md</code>.</p>
+    <span class="label">If any of that goes sideways</span>
+    <p>Everything from every session is at <a class="repo" href="https://github.com/brainit-consulting/ai-workshops" target="_blank" rel="noopener">github.com/brainit-consulting/ai-workshops</a> &mdash; pick <em>end-of-009</em> from the dropdown for the table Dale's well was built from.</p>
+    <p>And if the account or the well is where you get stuck, or you simply have a business to run and no evening to spend on this: that is what I am here for. Getting somebody unstuck takes minutes, and I would rather do that than have you decide the whole thing is not for you.</p>
   </div>
 
-  <p>Step seven is the one that teaches you the most, and it takes two minutes. Almost nobody's first map survives it intact, and that is the point.</p>
+  <p>Step five is the one to actually do. It is one line, and it is the line that decides whether the next thing you build is an afternoon or a fortnight.</p>
 </section>
 <!-- ============================ CH 06 ============================ -->
 <section class="chapter" id="ch6">
   <div class="chapter-head">
     <div class="chapter-num">06</div>
     <h2>Questions people actually ask</h2>
-    <p class="standfirst">Seven that come up every time this session is taught.</p>
+    <p class="standfirst">Six that come up every time this session is taught.</p>
   </div>
 
   <div class="faq">
     <div class="qa">
-      <p class="q">Isn't this just more work before I get anything?</p>
-      <p class="horse-line">Ten minutes with a map beats an afternoon riding the wrong way.</p>
-      <p>It is about ten minutes, and it is the ten minutes that decides whether the next hour was worth having. The cost of skipping it is not that you get nothing &mdash; it is that you get something plausible, use it twice, and quietly stop.</p>
+      <p class="q">Is this not just a big spreadsheet?</p>
+      <p class="horse-line">A bucket is not a well, however big the bucket.</p>
+      <p>It is close enough to picture, and it is a good place to start from. Two real differences: several things can draw from a well at the same moment without waiting or disagreeing, and a well can be asked questions of all of it at once. A spreadsheet is a file, and a file has one person in it at a time.</p>
     </div>
     <div class="qa">
-      <p class="q">What if I don't know the answers to my own questions?</p>
-      <p class="horse-line">An unmarked stretch of map is still worth drawing.</p>
-      <p>Write &ldquo;I don't know&rdquo; and move on. That is what the fifth heading is for. A question you have written down is a thing you can go and find out on Thursday; a question you never noticed is the reason the thing gets rebuilt in March.</p>
+      <p class="q">Do I need to learn SQL?</p>
+      <p class="horse-line">You do not need to dig to drink. You do need to look in the bucket.</p>
+      <p>No. You need to be able to read four lines of it and say whether it asked what you meant. That is a twenty-minute skill and it is worth having, because the answer that comes back will look equally confident whether the question was right or wrong.</p>
     </div>
     <div class="qa">
-      <p class="q">How long should it be?</p>
-      <p class="horse-line">One page. A map you have to unfold twice is two maps.</p>
-      <p>One page, around three hundred words. If it genuinely will not fit, you are describing more than one job &mdash; which is useful to have discovered. Split it, and build the first one.</p>
+      <p class="q">What does it cost?</p>
+      <p class="horse-line">Free until the herd gets big.</p>
+      <p>Nothing, at the size anybody in this room will use. Free tiers on both Vercel and Neon are generous, and no card is asked for. If you ever outgrow it, you will have a business that can afford the bill and it will be about the price of a phone contract.</p>
     </div>
     <div class="qa">
-      <p class="q">Should I say which database, or which language to build it in?</p>
-      <p class="horse-line">You choose where you are going. It knows the ground better than you do.</p>
-      <p>Almost never. If you have a genuine reason &mdash; everything else you own is already in one place, or your bookkeeper needs it to open in Excel &mdash; write that down as a thing it must do, under heading two. If you are only saying it because it sounds like the sort of thing a spec should say, leave it out and see what it suggests. You can always disagree afterwards, and by then you will know why.</p>
+      <p class="q">Is my information safe out there on the internet?</p>
+      <p class="horse-line">A well with a lid beats a bucket left in the yard.</p>
+      <p>Safer than the office computer, honestly &mdash; it is backed up, it is patched, and it does not get stolen out of a truck. The weak point is not the well; it is the key. Guard the connection string and you have done the large majority of it. And keep anything you would not want in the newspaper out of it until you know more.</p>
     </div>
     <div class="qa">
-      <p class="q">Do I have to write it, or can it?</p>
-      <p class="horse-line">It can draw the map. You still have to know the country.</p>
-      <p>It can write most of it, and chapter four is how. But you have to read it back and correct it, and that part cannot be handed over &mdash; you are the only one in the conversation who has ever sat in the truck.</p>
+      <p class="q">What happens to my folder of files?</p>
+      <p class="horse-line">The old trough stays where it is until the new one holds water.</p>
+      <p>Nothing, yet. You do not move anything today. When you do move, you move one kind of thing at a time and you keep the folder until you have stopped needing it &mdash; which, with markers from session seven behind you, costs nothing to do carefully.</p>
     </div>
     <div class="qa">
-      <p class="q">Is this the same as a contract or a statement of work?</p>
-      <p class="horse-line">A map is for the riding. A contract is for afterwards.</p>
-      <p>Related, but no. A contract is about who owes whom what if it goes wrong. A map is about making sure it does not. If you are hiring somebody to build this, a good map makes a far better contract possible &mdash; but write it for yourself first.</p>
-    </div>
-    <div class="qa">
-      <p class="q">What if it builds something different from the map anyway?</p>
-      <p class="horse-line">Then the map had a road on it you did not mean to draw.</p>
-      <p>Nine times in ten the map was ambiguous and you can see exactly where when you reread it. Fix that line, mark it, ask again. And you have an undo now, so the wrong version costs you nothing but the ten minutes.</p>
+      <p class="q">What if I get the columns wrong?</p>
+      <p class="horse-line">You will. Wells get deepened.</p>
+      <p>Everybody does, and adding a column later is a small job. The thing that stings is not a missing column &mdash; it is the same fact written in two places, which is why chapter three spends its time there rather than on getting the list perfect.</p>
     </div>
   </div>
 </section>
@@ -1266,20 +1275,41 @@ rebuild the list to match.</code>
     <dt>Push and pull <span class="from">007</span></dt>
     <dd>Sending your markers up to that copy, and fetching down anything that is there and not here. <span class="horse">Riding to the trailhead and back.</span></dd>
 
-    <dt>Spec <span style="font-weight:400">(brief)</span> <span class="from new">008</span></dt>
+    <dt>Spec <span style="font-weight:400">(brief)</span> <span class="from">008</span></dt>
     <dd>One page describing a job well enough to hand it over. What it must do &mdash; not how to build it. <span class="horse">The trail map. Where you are going, not which foot the horse leads with.</span></dd>
 
-    <dt>Scope <span class="from new">008</span></dt>
+    <dt>Scope <span class="from">008</span></dt>
     <dd>What is in this job, and what is deliberately not. <span class="horse">Where the map stops. The country past the edge is not today's ride.</span></dd>
 
-    <dt>Acceptance <span class="from new">008</span></dt>
+    <dt>Acceptance <span class="from">008</span></dt>
     <dd>How you will know the thing is right when you see it. <span class="horse">How you know you arrived.</span></dd>
 
-    <dt>Plan mode <span class="from new">008</span></dt>
+    <dt>Plan mode <span class="from">008</span></dt>
     <dd>A setting where it works out what it would do, and shows you, before touching anything. <span class="horse">Reading the map aloud before anyone mounts up.</span></dd>
 
-    <dt>Assumption <span class="from new">008</span></dt>
+    <dt>Assumption <span class="from">008</span></dt>
     <dd>Something you took to be true and never checked. <span class="horse">A stretch of map you drew from memory rather than from riding it.</span></dd>
+
+    <dt>Database <span class="from new">009</span></dt>
+    <dd>One place the information lives, built to be read and written by several things at once without ever disagreeing with itself. <span class="horse">The well.</span></dd>
+
+    <dt>Table <span class="from new">009</span></dt>
+    <dd>A list of one kind of thing, with the same facts recorded about each one. <span class="horse">One list on the slate: every job, every time.</span></dd>
+
+    <dt>Row <span class="from new">009</span></dt>
+    <dd>One of the things. One job, one customer, one invoice. <span class="horse">A single line on the slate.</span></dd>
+
+    <dt>Column <span class="from new">009</span></dt>
+    <dd>One fact, kept about every row. Customer. Status. Date received. <span class="horse">The same question asked of every line.</span></dd>
+
+    <dt>Query <span style="font-weight:400">(SQL)</span> <span class="from new">009</span></dt>
+    <dd>A written question put to the database. SQL is the language they are written in. <span class="horse">Lowering the bucket, and what you asked it to bring up.</span></dd>
+
+    <dt>Connection string <span class="from new">009</span></dt>
+    <dd>One line of text that says where the well is and unlocks it. Treat it as a key, because it is one. <span class="horse">The key to the pump house.</span></dd>
+
+    <dt>Postgres <span style="font-weight:400">(Neon)</span> <span class="from new">009</span></dt>
+    <dd>The most widely used serious database; Neon is a company that runs one for you. <span class="horse">A well somebody else dug, and maintains.</span></dd>
   </dl>
 </section>
 <!-- ============================ ONE PAGE ============================ -->
@@ -1293,67 +1323,69 @@ rebuild the list to match.</code>
   <div class="strip">
     <div class="panel">
       <svg viewBox="0 0 900 620" aria-hidden="true">
-        <rect class="plate" x="40" y="250" width="250" height="120" rx="10"/>
-        <path d="M300,270 C480,180 600,140 850,120" style="fill:none;stroke:#c9b99f;stroke-width:14;stroke-dasharray:26 22;stroke-linecap:round"/>
-        <path d="M300,310 C480,306 600,304 850,300" style="fill:none;stroke:#c9b99f;stroke-width:14;stroke-dasharray:26 22;stroke-linecap:round"/>
-        <path d="M300,350 C480,440 600,480 850,500" style="fill:none;stroke:#b8391c;stroke-width:16;stroke-dasharray:26 22;stroke-linecap:round"/>
-        <circle cx="860" cy="120" r="34" fill="#c9b99f"/><circle cx="860" cy="300" r="34" fill="#c9b99f"/>
-        <circle cx="860" cy="500" r="40" fill="#b8391c"/>
+        <path d="M300,140 L450,60 L600,140 Z" fill="#b8391c"/>
+        <rect x="326" y="136" width="24" height="150" fill="#5b4d3f"/>
+        <rect x="550" y="136" width="24" height="150" fill="#5b4d3f"/>
+        <rect x="326" y="150" width="248" height="20" rx="9" fill="#5b4d3f"/>
+        <path d="M450,170 L450,236" stroke="#5b4d3f" stroke-width="7" fill="none"/>
+        <rect x="418" y="236" width="64" height="52" rx="6" fill="#b8391c"/>
+        <rect x="290" y="300" width="320" height="30" rx="10" fill="#5b4d3f"/>
+        <rect x="306" y="330" width="288" height="230" rx="6" fill="#eadfcc" stroke="#5b4d3f" stroke-width="9"/>
+        <path d="M306,430 L594,430 M402,330 L402,430 M498,330 L498,430 M354,430 L354,560 M450,430 L450,560 M546,430 L546,560"
+              stroke="#5b4d3f" stroke-width="6" fill="none"/>
       </svg>
-      <h4>1 &middot; One sentence, three roads</h4>
-      <p>All fair readings. One of them is the one you meant.</p>
+      <h4>1 &middot; One well</h4>
+      <p>Every fact written down once, in one place.</p>
     </div>
     <div class="panel">
       <svg viewBox="0 0 900 620" aria-hidden="true">
-        <path d="M180,60 L620,60 L720,160 L720,560 L180,560 Z" fill="#f4ede1" stroke="#5b4d3f" stroke-width="12"/>
-        <path d="M620,60 L720,160 L620,160 Z" fill="#eadfcc" stroke="#5b4d3f" stroke-width="12"/>
-        <circle cx="400" cy="118" r="20" fill="#b8391c"/>
-        <rect x="240" y="176" width="190" height="22" rx="11" fill="#b8391c"/>
-        <rect x="240" y="222" width="410" height="16" rx="8" fill="#c9b99f"/>
-        <rect x="240" y="290" width="230" height="22" rx="11" fill="#b8391c"/>
-        <rect x="240" y="336" width="380" height="16" rx="8" fill="#c9b99f"/>
-        <rect x="240" y="404" width="200" height="22" rx="11" fill="#b8391c"/>
-        <rect x="240" y="450" width="410" height="16" rx="8" fill="#c9b99f"/>
-        <rect x="240" y="486" width="300" height="16" rx="8" fill="#c9b99f"/>
+        <rect x="60" y="120" width="780" height="90" fill="#5b4d3f"/>
+        <rect x="60" y="210" width="780" height="90" fill="#f0d9cf" stroke="#b8391c" stroke-width="8"/>
+        <rect x="60" y="300" width="780" height="90" fill="#f4ede1" stroke="#c9b99f" stroke-width="4"/>
+        <rect x="60" y="390" width="780" height="90" fill="#f4ede1" stroke="#c9b99f" stroke-width="4"/>
+        <path d="M320,120 L320,480 M580,120 L580,480" stroke="#c9b99f" stroke-width="4" fill="none"/>
       </svg>
-      <h4>2 &middot; Five headings</h4>
-      <p>One page. The last one is what you are unsure of.</p>
+      <h4>2 &middot; Rows and columns</h4>
+      <p>One row per thing. One column per fact. That is all of it.</p>
     </div>
     <div class="panel">
       <svg viewBox="0 0 900 620" aria-hidden="true">
-        <rect class="plate" x="60" y="90" width="780" height="150" rx="12"/>
-        <rect x="110" y="140" width="420" height="20" rx="10" fill="#c9b99f"/>
-        <rect x="110" y="186" width="300" height="20" rx="10" fill="#c9b99f"/>
-        <text x="450" y="400" text-anchor="middle" style="font-family:'Alfa Slab One',Georgia,serif; font-size:200px; fill:#b8391c">?</text>
-        <rect class="plate" x="60" y="440" width="780" height="130" rx="12"/>
-        <rect x="110" y="480" width="500" height="20" rx="10" fill="#c9b99f"/>
-        <rect x="110" y="522" width="360" height="20" rx="10" fill="#c9b99f"/>
+        <rect class="plate" x="60" y="90" width="780" height="130" rx="12"/>
+        <rect x="110" y="130" width="440" height="22" rx="11" fill="#c9b99f"/>
+        <rect x="110" y="174" width="300" height="22" rx="11" fill="#c9b99f"/>
+        <rect x="60" y="270" width="780" height="150" rx="12" fill="#241d16"/>
+        <text x="110" y="330" style="font-family:'Courier New',monospace; font-size:44px; fill:#f4ede1">SELECT ...</text>
+        <text x="110" y="390" style="font-family:'Courier New',monospace; font-size:44px; fill:#c2841f">WHERE ...</text>
+        <rect class="plate" x="60" y="470" width="780" height="110" rx="12"/>
+        <rect x="110" y="510" width="360" height="22" rx="11" fill="#b8391c"/>
       </svg>
-      <h4>3 &middot; Make it ask you</h4>
-      <p>&ldquo;Don't build anything yet. Ask me what you need to know.&rdquo;</p>
+      <h4>3 &middot; Read the question</h4>
+      <p>You will not write the SQL. Check that it asked what you meant.</p>
     </div>
     <div class="panel soon">
       <span class="soon-tag">Next session</span>
       <svg viewBox="0 0 900 620" aria-hidden="true">
-        <ellipse cx="450" cy="180" rx="180" ry="60" fill="#5b4d3f"/>
-        <path d="M270,180 L270,470 A180,60 0 0 0 630,470 L630,180" fill="#5b4d3f"/>
-        <ellipse cx="450" cy="180" rx="130" ry="42" fill="#241d16"/>
-        <path d="M180,250 L120,250 L120,520 L240,520" style="fill:none;stroke:#b8391c;stroke-width:18;stroke-linecap:round"/>
-        <path d="M720,250 L780,250 L780,520 L660,520" style="fill:none;stroke:#b8391c;stroke-width:18;stroke-linecap:round"/>
+        <path d="M150,300 L620,300 L620,470 L150,470 Z" fill="#eadfcc" stroke="#5b4d3f" stroke-width="12"/>
+        <path d="M150,300 L250,190 L720,190 L620,300 Z" fill="#b8391c"/>
+        <circle cx="260" cy="510" r="62" fill="#241d16"/>
+        <circle cx="530" cy="510" r="62" fill="#241d16"/>
+        <circle cx="260" cy="510" r="22" fill="#eadfcc"/>
+        <circle cx="530" cy="510" r="22" fill="#eadfcc"/>
+        <path d="M720,190 L830,240 L830,420 L620,420" style="fill:none;stroke:#5b4d3f;stroke-width:12"/>
       </svg>
-      <h4>4 &middot; The well</h4>
-      <p>One well, many troughs. Where the information actually lives.</p>
+      <h4>4 &middot; Taking the wagon to market</h4>
+      <p>Nobody buys from your barn. Putting it on the internet.</p>
     </div>
   </div>
 
-  <p style="margin-top:2rem"><strong>The habit that carries all of it:</strong> before you ask for anything you would be annoyed to get wrong, say what it is, what it reads, what it must never do, what you would see, and how you will know. Ten minutes. Then let it ask you what you left out.</p>
+  <p style="margin-top:2rem"><strong>The question that decides everything:</strong> who is going to use this? Just you &mdash; keep your folder. You and your staff &mdash; dig a well. Your customers, with logins &mdash; that is a bigger job, and worth planning before you start rather than after.</p>
 </section>
 <!-- ============================ NEXT TIME ============================ -->
 <section class="nexttime" id="nexttime">
   <span class="nt-label">Next session</span>
-  <h2>#009 &mdash; The Well</h2>
-  <p>Every map you have just written points at the same awkward question: where does the information actually live? For Dale it is a folder of text files his daughter fills in each morning, which works until two people need it at once, or he wants it on his phone without her being at her desk. Next time we dig a well &mdash; one place the information lives, that everything else draws from.</p>
-  <p class="nt-take"><strong>Before you come:</strong> bring the map you wrote today, and underline the line that says where the information comes from.</p>
+  <h2>#010 &mdash; Taking the Wagon to Market</h2>
+  <p>You have a horse, a map, an undo and now a well. Everything you have built so far lives on your own machine, where precisely one person can see it &mdash; you. Next time we put something on the internet: a real address, that a customer could type in, that works when your laptop is shut. It is the session where the thing you have been making stops being a thing you have been making.</p>
+  <p class="nt-take"><strong>Before you come:</strong> have the free Vercel account from today, and think of one thing you would want a customer to be able to see.</p>
 </section>
 <!-- ============================ BACK COVER ============================ -->
 <section class="backcover">
@@ -1390,7 +1422,7 @@ rebuild the list to match.</code>
 </section>
 
 <p class="colophon">
-  Workshop #008 &middot; Drawing the Trail Map<br>
+  Workshop #009 &middot; The Well<br>
   &copy; 2026 Emile du Toit, BrainIT Consulting<br>
   Print it, download it, share it with your team. Just leave my name on it.
 </p>

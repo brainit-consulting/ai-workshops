@@ -1,0 +1,41 @@
+# Dale & Son — where the job information lives
+
+This folder has no job files in it. Everything about the work lives in a
+Postgres database — the well.
+
+The connection string is in `.env.local` as `DATABASE_URL`. Never print
+it, never paste it into a reply, and never write it into any other file.
+
+## Asking the well a question
+
+Run the SQL with psql:
+
+```
+psql "$env:DATABASE_URL" -c "<the SQL>"
+```
+
+**Always show me the SQL**, in a code block, before the answer. Then say
+in one sentence what it asks for, in plain English. I want to be able to
+check it says what I meant before I believe the numbers.
+
+All money is US dollars. Write it as $1,104.50 — never any other
+currency symbol.
+
+## What is in the well
+
+One table, `jobs`:
+
+| column | what it holds |
+|---|---|
+| `customer` | surname, the way Dale says it |
+| `address` | where the job is, if we know |
+| `job` | one line describing the work |
+| `status` | `ready to price`, `stopped`, or `sent` |
+| `waiting_on` | who the ball is with, blank if nobody |
+| `received` | the day the request came in |
+| `total` | what it was billed at, blank until it is sent |
+
+## House rules, same as always
+
+Never price gas work — flag it for Dale and say why. Never promise a
+date. Plain language; the customer is not a plumber.
