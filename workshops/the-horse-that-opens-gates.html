@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Workshop #005 — The Horse That Opens Gates</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='24 -8 140 126'%3E%3Crect x='24' y='-8' width='140' height='126' fill='%23f4ede1'/%3E%3Cpath fill='%23241d16' d='M112,40 C150,66 196,102 238,154 L262,132 C216,82 164,40 124,16 Z'/%3E%3Cpath fill='%23241d16' d='M130,40 C120,20 98,14 80,28 L38,92 C33,104 43,114 56,108 L102,88 C122,79 136,58 130,40 Z'/%3E%3Cpath fill='%23241d16' d='M112,30 L104,2 L128,24 Z'/%3E%3Cpath fill='%23241d16' d='M132,32 L134,6 L152,30 Z'/%3E%3Ccircle cx='101' cy='45' r='6' fill='%23f4ede1'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Zilla+Slab:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600;7..72,700&family=Archivo+Narrow:wght@500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   RIDING THE AI HORSE — workshop book
+   Edit the venue/date on the cover (search: EDIT ME)
+   ============================================================ */
+
+:root{
+  --paper:#f4ede1;
+  --paper-deep:#eadfcc;
+  --ink:#241d16;
+  --ink-soft:#5b4d3f;
+  --rule:#c9b99f;
+  --ember:#b8391c;
+  --ember-wash:#f0d9cf;
+  --honey:#c2841f;
+
+  /* slab faces — even stroke weight, no hairlines to squint at */
+  --font-poster:"Alfa Slab One", Georgia, serif;
+  --font-display:"Zilla Slab", Georgia, serif;
+  --font-body:"Literata", Georgia, serif;
+  --font-label:"Archivo Narrow", "Arial Narrow", sans-serif;
+  --font-hand:"Patrick Hand", "Segoe Print", cursive;
+
+  /* text runs the width of the screen — this is shown on a projector.
+     min() so it never overshoots the page gutters. */
+  --measure:min(100%, 72rem);
+}
+
+*{box-sizing:border-box;}
+
+html{
+  /* type scales with the viewport, so a big screen gets big text
+     rather than short lines. A− / A+ step it up three notches. */
+  font-size:clamp(19px, 1.35vw, 28px);
+  scroll-behavior:smooth;
+}
+html.t-1{font-size:clamp(21px, 1.55vw, 32px);}
+html.t-2{font-size:clamp(23px, 1.80vw, 36px);}
+html.t-3{font-size:clamp(25px, 2.05vw, 40px);}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:1.05rem;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* paper grain ------------------------------------------------ */
+.grain{
+  position:fixed; inset:0; pointer-events:none; z-index:50;
+  opacity:.35; mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/><feColorMatrix type='saturate' values='0'/></filter><rect width='180' height='180' filter='url(%23n)' opacity='0.16'/></svg>");
+}
+
+/* running head ----------------------------------------------- */
+.runner{
+  position:sticky; top:0; z-index:40;
+  display:flex; align-items:center; gap:1rem;
+  padding:.55rem clamp(1rem,4vw,3rem);
+  background:var(--paper);
+  border-bottom:1px solid var(--rule);
+  font-family:var(--font-label);
+  text-transform:uppercase; letter-spacing:.12em;
+  font-size:.62rem;
+}
+.runner .brand{font-weight:700; color:var(--ink); text-decoration:none;}
+.runner .brand:hover{color:var(--ember);}
+.runner .brand .wsnum{color:var(--honey); font-weight:700;}
+.cover .kicker .wsnum{
+  background:var(--ember); color:var(--paper);
+  padding:.28em .6em; letter-spacing:.2em; margin-right:.5em;
+}
+.runner .brand em{font-style:normal; color:var(--ember);}
+.runner nav{display:flex; gap:.8rem; flex-wrap:wrap; margin-left:auto;}
+.runner .brand{white-space:nowrap;}
+.runner nav a{color:var(--ink-soft); text-decoration:none; border-bottom:1px solid transparent; padding-bottom:2px;}
+.runner nav a:hover{color:var(--ember); border-bottom-color:var(--ember);}
+.sizer{display:flex; gap:.3rem; margin-left:.6rem;}
+.sizer button{
+  font-family:var(--font-label); font-size:.7rem; font-weight:700;
+  background:none; border:1px solid var(--rule); color:var(--ink-soft);
+  width:2rem; height:1.7rem; cursor:pointer; line-height:1;
+}
+.sizer button:hover{border-color:var(--ember); color:var(--ember);}
+.sizer .wide, .sizer a.wide{
+  width:auto; padding:0 .7rem; height:1.7rem; display:inline-flex; align-items:center;
+  font-family:var(--font-label); font-size:.62rem; font-weight:700;
+  text-transform:uppercase; letter-spacing:.12em; text-decoration:none;
+  border:1px solid var(--rule); color:var(--ink-soft); background:none; cursor:pointer;
+}
+.sizer .wide:hover{border-color:var(--ember); color:var(--ember);}
+
+/* page frame ------------------------------------------------- */
+.page{
+  max-width:none;
+  margin:0;
+  /* generous left gutter — the chapter numerals hang into it */
+  padding:0 clamp(1.1rem,4.5vw,7rem) 0 clamp(1.4rem,6.5vw,10rem);
+}
+
+/* ============ COVER ============ */
+.cover{
+  min-height:88vh;
+  display:grid;
+  grid-template-columns:1fr;
+  align-content:center;
+  padding-block:clamp(2rem,7vw,5rem);
+  border-bottom:3px double var(--rule);
+}
+.cover .kicker{
+  font-family:var(--font-label); text-transform:uppercase;
+  letter-spacing:.34em; font-size:.66rem; color:var(--ember); font-weight:700;
+}
+.cover h1{
+  font-family:var(--font-poster);
+  font-weight:400;
+  font-size:clamp(2.9rem,6.6vw,4.9rem);
+  line-height:.94;
+  margin:.4em 0 .1em;
+  letter-spacing:-.015em;
+  color:var(--honey);
+}
+.cover h1 .ai{
+  color:var(--ember);
+  letter-spacing:.01em;
+}
+.cover h1 .of{
+  display:block; font-family:var(--font-display);
+  font-size:.4em; font-weight:600; font-style:italic;
+  letter-spacing:.02em; margin-left:.25em;
+}
+.cover .deck{
+  font-size:1.28rem; line-height:1.45; max-width:34rem;
+  border-left:3px solid var(--ember); padding-left:1rem; margin:1.4rem 0 0;
+}
+.cover .imprint{
+  margin-top:2.6rem; font-family:var(--font-label); font-size:.78rem;
+  text-transform:uppercase; letter-spacing:.16em; color:var(--ink-soft);
+  line-height:2;
+}
+.cover .imprint .firm{
+  color:var(--ember); font-weight:700; text-decoration:none;
+  border-bottom:2px solid var(--rule); padding-bottom:2px;
+}
+.cover .imprint .firm:hover{border-bottom-color:var(--ember);}
+.cover-art{margin:1rem 0 0; }
+.cover-art svg{width:100%; height:auto; max-height:46vh; display:block;}
+
+@media (min-width:60rem){
+  .cover{grid-template-columns:1.05fr .95fr; gap:2.5rem; align-items:center;}
+  .cover-art{margin:0; grid-column:2; grid-row:1;}
+  .cover-text{grid-column:1; grid-row:1;}
+}
+
+/* ============ CONTENTS ============ */
+.contents{padding:clamp(2.5rem,6vw,4.5rem) 0; border-bottom:1px solid var(--rule);}
+.contents ol{list-style:none; margin:0; padding:0; counter-reset:toc;}
+.contents li{
+  counter-increment:toc;
+  display:flex; align-items:baseline; gap:.9rem;
+  padding:.55rem 0; border-bottom:1px dotted var(--rule);
+}
+.contents li::before{
+  content:counter(toc,decimal-leading-zero);
+  font-family:var(--font-display); font-size:1.5rem; color:var(--ember);
+  min-width:2.4rem;
+}
+.contents a{
+  font-family:var(--font-display); font-size:1.4rem; color:var(--ink);
+  text-decoration:none; font-weight:600;
+}
+.contents a:hover{color:var(--ember);}
+.contents .gloss{
+  font-family:var(--font-body); font-size:.85rem; color:var(--ink-soft);
+  margin-left:auto; text-align:right; max-width:32rem; line-height:1.35;
+}
+@media (max-width:44rem){ .contents .gloss{display:none;} }
+
+/* ============ CHAPTERS ============ */
+.chapter{
+  padding:clamp(3rem,8vw,6rem) 0 clamp(2rem,5vw,4rem);
+  border-bottom:1px solid var(--rule);
+  position:relative;
+}
+.chapter-head{position:relative; margin-bottom:2.2rem;}
+.chapter-num{
+  font-family:var(--font-poster);
+  font-size:clamp(2rem,3.4vw,2.8rem);
+  line-height:1;
+  color:var(--honey);
+  letter-spacing:.02em;
+  pointer-events:none;
+  display:flex; align-items:center; gap:.6rem;
+}
+/* a rule running off to the right of the numeral */
+.chapter-num::after{
+  content:""; flex:1; height:2px; background:var(--rule); max-width:14rem;
+}
+.chapter-num{margin-bottom:.1em;}
+.chapter h2{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:clamp(2rem,5.6vw,3.4rem);
+  line-height:1.02;
+  margin:-.12em 0 .2em;
+  max-width:24ch;
+}
+.chapter .standfirst{
+  font-size:1.22rem; line-height:1.5; font-style:italic; color:var(--ink-soft);
+  max-width:54rem; margin:.6rem 0 0;
+}
+.chapter p{max-width:var(--measure); margin:0 0 1.05em;}
+.chapter h3{
+  font-family:var(--font-label); text-transform:uppercase; letter-spacing:.16em;
+  font-size:.8rem; font-weight:700; color:var(--ember);
+  margin:2.2em 0 .7em; padding-bottom:.35em; border-bottom:1px solid var(--rule);
+  max-width:var(--measure);
+}
+.chapter ul,.chapter ol{max-width:var(--measure); padding-left:1.3em; margin:0 0 1.2em;}
+.chapter li{margin-bottom:.5em;}
+.chapter li::marker{color:var(--ember);}
+
+/* drop cap on the first paragraph of each chapter */
+.dropcap::first-letter{
+  font-family:var(--font-poster); font-weight:400;
+  float:left; font-size:3.6em; line-height:.86;
+  padding:.06em .09em 0 0; color:var(--honey);
+}
+
+strong{font-weight:700;}
+/* inset shadow, not padding — a highlight that doesn't push the
+   following punctuation away from the word */
+em.term{font-style:normal; font-weight:700; box-shadow:inset 0 -.34em 0 var(--ember-wash);}
+
+/* pull quote — deliberately breaks the measure */
+.pull{
+  font-family:var(--font-hand);
+  font-size:clamp(1.7rem,4vw,2.7rem);
+  line-height:1.28; font-style:normal;
+  margin:2.2rem 0 2.4rem;
+  padding:0 0 0 1.2rem;
+  border-left:4px solid var(--ember);
+  max-width:60rem;
+}
+@media (min-width:70rem){ .pull{margin-left:-3rem;} }
+
+/* boxes ------------------------------------------------------ */
+.box{
+  border:1px solid var(--rule);
+  background:var(--paper-deep);
+  padding:1.4rem 1.7rem;
+  margin:1.8rem 0 2rem;
+  max-width:62rem;
+}
+.box .label{
+  font-family:var(--font-label); text-transform:uppercase; letter-spacing:.18em;
+  font-size:.68rem; font-weight:700; color:var(--ember); display:block; margin-bottom:.6rem;
+}
+.box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:0;}
+.box.stable{border-left:5px solid var(--ember);}
+.box .repo{
+  color:var(--ember); font-weight:700; text-decoration:none;
+  border-bottom:2px solid var(--rule); padding-bottom:1px;
+  overflow-wrap:anywhere;
+}
+.box .repo:hover{border-bottom-color:var(--ember);}
+
+.compare{display:grid; gap:1.2rem; margin:1.6rem 0 2rem; max-width:var(--measure);}
+@media (min-width:48rem){ .compare{grid-template-columns:1fr 1fr;} }
+.compare > div{border:1px solid var(--rule); padding:1.1rem 1.2rem; background:var(--paper-deep);}
+.compare .tag{
+  font-family:var(--font-label); text-transform:uppercase; letter-spacing:.16em;
+  font-size:.66rem; font-weight:700; display:block; margin-bottom:.5rem;
+}
+.compare .bad .tag{color:var(--ink-soft);}
+.compare .good .tag{color:var(--ember);}
+.compare p{font-size:.95rem; margin:0;}
+.compare code{
+  font-family:var(--font-label); font-size:.95em; letter-spacing:.01em;
+  display:block; background:var(--paper); border-left:3px solid var(--rule);
+  padding:.6rem .8rem; margin-top:.5rem; white-space:pre-wrap; line-height:1.45;
+}
+
+/* figures ---------------------------------------------------- */
+figure{margin:2.4rem 0; max-width:var(--measure);}
+figure svg{width:100%; height:auto; display:block;}
+/* near-square diagrams stay on one screen instead of filling it */
+figure.tall svg{max-height:80vh; width:auto; margin:0;}
+figcaption{
+  font-family:var(--font-label); font-size:.76rem; letter-spacing:.06em;
+  color:var(--ink-soft); margin-top:.7rem; padding-top:.5rem;
+  border-top:1px solid var(--rule); max-width:56rem;
+}
+figcaption b{font-weight:700; color:var(--ember); text-transform:uppercase; letter-spacing:.14em; font-size:.9em;}
+figure.wide{max-width:none;}
+
+.strip{display:grid; grid-template-columns:repeat(2,1fr); gap:1.2rem;}
+@media (min-width:56rem){ .strip{grid-template-columns:repeat(4,1fr);} }
+.strip .panel{border:1px solid var(--rule); background:var(--paper-deep); padding:.7rem;}
+.strip .panel h4{
+  font-family:var(--font-label); text-transform:uppercase; letter-spacing:.13em;
+  font-size:.68rem; margin:.5rem 0 .2rem; color:var(--ember); font-weight:700;
+}
+.strip .panel p{font-size:.82rem; margin:0; line-height:1.35; color:var(--ink-soft);}
+
+/* resource cards --------------------------------------------- */
+.links{display:grid; gap:1.4rem; margin:2rem 0 2.6rem; max-width:var(--measure);}
+@media (min-width:48rem){ .links{grid-template-columns:1fr 1fr;} }
+.linkcard{
+  display:block; text-decoration:none; color:var(--ink);
+  border:1px solid var(--rule); border-left:5px solid var(--ember);
+  background:var(--paper-deep); padding:1.3rem 1.5rem;
+}
+.linkcard:hover{background:var(--ember-wash);}
+.linkcard .tag{
+  display:block; font-family:var(--font-label); text-transform:uppercase;
+  letter-spacing:.18em; font-size:.66rem; font-weight:700; color:var(--ink-soft);
+}
+.linkcard .name{
+  display:block; font-family:var(--font-display); font-weight:700;
+  font-size:2rem; line-height:1.1; margin:.2rem 0 .1rem; color:var(--honey);
+}
+.linkcard .url{
+  display:block; font-family:var(--font-label); font-weight:700; font-size:1rem;
+  color:var(--ember); letter-spacing:.04em; border-bottom:2px solid var(--rule);
+  padding-bottom:.4rem; margin-bottom:.6rem;
+}
+.linkcard .note{display:block; font-size:.92rem; line-height:1.45; color:var(--ink-soft);}
+
+/* table ------------------------------------------------------ */
+.tablewrap{overflow-x:auto; margin:2rem 0;}
+table{border-collapse:collapse; width:100%; min-width:40rem; font-size:.92rem;}
+th,td{text-align:left; vertical-align:top; padding:.75rem .8rem; border-bottom:1px solid var(--rule);}
+th{
+  font-family:var(--font-label); text-transform:uppercase; letter-spacing:.13em;
+  font-size:.66rem; color:var(--ember); border-bottom:2px solid var(--rule); font-weight:700;
+}
+td:first-child{font-weight:600;}
+td .sub{
+  font-family:var(--font-label); font-size:.82rem; font-weight:600;
+  color:var(--ember); letter-spacing:.03em;
+}
+
+/* the presenter's steps, shown openly ------------------------- */
+details.demo{
+  border:1px solid var(--rule); border-left:5px solid var(--honey);
+  background:var(--paper-deep); margin:1.8rem 0 2rem;
+  max-width:62rem; padding:0 1.5rem;
+}
+details.demo summary{
+  cursor:pointer; list-style:none; padding:1.1rem 0;
+  font-family:var(--font-label); text-transform:uppercase;
+  letter-spacing:.16em; font-size:.72rem; font-weight:700; color:var(--honey);
+  display:flex; align-items:center; gap:.7rem;
+}
+details.demo summary::-webkit-details-marker{display:none;}
+details.demo summary::before{
+  content:"+"; font-family:var(--font-poster); font-size:1.2rem;
+  line-height:1; color:var(--honey);
+}
+details.demo[open] summary::before{content:"\2013";}
+details.demo summary:hover{color:var(--ember);}
+details.demo .demo-body{padding:0 0 1.3rem;}
+details.demo ol{margin:0 0 1.1rem; padding-left:1.3em;}
+details.demo li{margin-bottom:.45em;}
+details.demo p{margin:0 0 .9em;}
+details.demo .say{font-family:var(--font-hand); font-size:1.25rem; color:var(--ember);}
+
+/* FAQ --------------------------------------------------------- */
+.faq{max-width:var(--measure);}
+.qa{padding:1.8rem 0; border-bottom:1px solid var(--rule);}
+.qa:first-child{padding-top:.6rem;}
+.qa .q{
+  font-family:var(--font-display); font-weight:700;
+  font-size:clamp(1.3rem,2.4vw,1.9rem); line-height:1.15;
+  color:var(--ink); text-transform:none; letter-spacing:0;
+  margin:0 0 .5rem; padding:0; border:none; max-width:40ch;
+}
+.qa .horse-line{
+  font-family:var(--font-hand); font-size:1.4rem; line-height:1.3;
+  color:var(--ember); margin:0 0 .9rem; max-width:44rem;
+}
+.qa p{max-width:var(--measure);}
+.qa p:last-child{margin-bottom:0;}
+
+/* glossary --------------------------------------------------- */
+.glossary dl{margin:0; max-width:var(--measure); column-gap:3.5rem;}
+@media (min-width:70rem){ .glossary dl{columns:2;} .glossary dt{break-after:avoid;} .glossary dd{break-inside:avoid;} }
+.glossary dt{
+  font-family:var(--font-display); font-weight:700; font-size:1.15rem;
+  margin-top:1.3rem; color:var(--ink);
+}
+.glossary dd{margin:.2rem 0 0; padding-bottom:.9rem; border-bottom:1px dotted var(--rule); color:var(--ink-soft);}
+.glossary dd .horse{color:var(--ember); font-style:italic;}
+
+/* checklist -------------------------------------------------- */
+.checklist{list-style:none; padding:0; counter-reset:step; max-width:var(--measure);}
+.checklist li{
+  counter-increment:step; position:relative;
+  padding:.9rem 0 .9rem 3.2rem; border-bottom:1px solid var(--rule);
+}
+.checklist li::before{
+  content:counter(step); position:absolute; left:0; top:.75rem;
+  font-family:var(--font-display); font-size:1.6rem; color:var(--ember); font-weight:700;
+}
+
+/* back cover — the one dark surface in the book --------------- */
+.backcover{
+  background:var(--ink); color:var(--paper);
+  margin:3rem 0 0;
+  padding:clamp(2.4rem,5vw,4rem) clamp(1.6rem,4vw,3.5rem);
+  max-width:var(--measure);
+  border-top:6px solid var(--ember);
+}
+.bc-kicker{
+  display:block; font-family:var(--font-label); text-transform:uppercase;
+  letter-spacing:.26em; font-size:.7rem; font-weight:700; color:var(--honey);
+}
+.backcover h2{
+  font-family:var(--font-poster); font-weight:400;
+  font-size:clamp(1.7rem,3.6vw,2.6rem); line-height:1.08;
+  margin:.5rem 0 .8rem; color:var(--paper); max-width:22ch;
+}
+.backcover > .bc-inner > p{max-width:46rem; color:#d9cdba; margin:0 0 1.4rem;}
+.bc-grid{display:grid; gap:1.8rem; margin:2rem 0 2rem;}
+@media (min-width:52rem){ .bc-grid{grid-template-columns:repeat(3,1fr); gap:2.4rem;} }
+.bc-grid > div{border-top:2px solid var(--ember); padding-top:.9rem;}
+.bc-num{
+  font-family:var(--font-poster); font-size:1.2rem; color:var(--honey);
+  display:block; margin-bottom:.2rem;
+}
+.bc-grid h3{
+  font-family:var(--font-display); font-weight:700; font-size:1.35rem;
+  margin:0 0 .35rem; color:var(--paper); text-transform:none; letter-spacing:0;
+  border:none; padding:0;
+}
+.bc-grid p{margin:0; font-size:.95rem; line-height:1.5; color:#c3b7a4;}
+.bc-fact{
+  font-family:var(--font-hand) !important;
+  font-size:1.45rem !important; line-height:1.35;
+  color:var(--honey) !important;
+  border-left:3px solid var(--ember); padding-left:1rem;
+  max-width:38rem !important;
+}
+.bc-cta{
+  display:flex; flex-wrap:wrap; align-items:center; gap:1rem 1.6rem;
+  margin:2rem 0 0 !important; padding-top:1.5rem;
+  border-top:1px solid #4a3f33;
+  font-family:var(--font-label); text-transform:uppercase; letter-spacing:.16em;
+  font-size:.8rem;
+}
+.bc-cta span{color:#d9cdba; font-weight:600;}
+.bc-cta a{
+  color:var(--ink); background:var(--honey); font-weight:700;
+  padding:.7em 1.3em; text-decoration:none; letter-spacing:.12em;
+}
+.bc-cta a:hover{background:var(--paper);}
+
+/* colophon --------------------------------------------------- */
+.colophon{padding:3rem 0 5rem; font-family:var(--font-label); font-size:.72rem;
+  text-transform:uppercase; letter-spacing:.16em; color:var(--ink-soft); line-height:2;}
+.colophon .firm{color:var(--ember); font-weight:700; text-decoration:none; border-bottom:1px solid var(--rule);}
+
+/* svg drawing conventions ------------------------------------ */
+.ink{fill:#241d16;}
+.ink-far{fill:#5b4d3f;}
+.tack{fill:none; stroke:#b8391c; stroke-width:5; stroke-linecap:round; stroke-linejoin:round;}
+.tack-fill{fill:#b8391c;}
+.hair{fill:none; stroke:#241d16; stroke-width:2.5;}
+.tack-under{fill:none; stroke:#f4ede1; stroke-width:9; stroke-linecap:round; stroke-linejoin:round;}
+.lead{fill:none; stroke:#5b4d3f; stroke-width:2.5; stroke-dasharray:7 6;}
+.lead-under{fill:none; stroke:#f4ede1; stroke-width:8; stroke-linecap:round;}
+.lbl{font-family:"Archivo Narrow","Arial Narrow",sans-serif; font-size:23px; font-weight:700;
+  text-transform:uppercase; letter-spacing:.1em; fill:#241d16;}
+.lbl-em{fill:#b8391c;}
+.lbl-sm{font-family:"Archivo Narrow","Arial Narrow",sans-serif; font-size:18px; font-weight:600;
+  letter-spacing:.03em; fill:#5b4d3f; text-transform:none;}
+.plate{fill:#eadfcc; stroke:#c9b99f; stroke-width:2;}
+
+
+/* ---- split-session components (added when workshops became 45 min) ---- */
+
+/* the promise on the cover: what they leave able to do */
+.cover .promise{
+  max-width:34rem; margin:1.3rem 0 0; font-size:1.02rem; line-height:1.5;
+  color:var(--ink-soft); border-left:3px solid var(--honey); padding-left:1rem;
+}
+.cover .promise strong{color:var(--ink);}
+
+/* the recap that opens a second half */
+.recap{
+  border:1px solid var(--rule); border-left:5px solid var(--honey);
+  background:var(--paper-deep); padding:1.4rem 1.6rem;
+  margin:0 0 2.4rem; max-width:var(--measure);
+}
+.recap .rc-label{
+  display:block; font-family:var(--font-label); text-transform:uppercase;
+  letter-spacing:.18em; font-size:.68rem; font-weight:700; color:var(--honey);
+  margin-bottom:.6rem;
+}
+.recap p{margin:0 0 .8em; max-width:none;}
+.recap p:last-child{margin-bottom:0;}
+.recap ul{margin:.2rem 0 .9rem; padding-left:1.3em;}
+.recap li{margin-bottom:.35em;}
+.recap li::marker{color:var(--honey);}
+
+/* what is coming next session */
+.nexttime{
+  border-top:3px double var(--rule);
+  padding:clamp(2rem,4vw,3rem) 0 clamp(1.5rem,3vw,2rem);
+  max-width:var(--measure);
+}
+.nexttime .nt-label{
+  display:block; font-family:var(--font-label); text-transform:uppercase;
+  letter-spacing:.24em; font-size:.7rem; font-weight:700; color:var(--ember);
+}
+.nexttime h2{
+  font-family:var(--font-display); font-weight:700;
+  font-size:clamp(1.6rem,3.4vw,2.4rem); line-height:1.1;
+  margin:.4rem 0 .7rem;
+}
+.nexttime p{max-width:56rem; margin:0 0 1em;}
+.nexttime .nt-take{
+  font-family:var(--font-hand); font-size:1.4rem; color:var(--ember);
+  border-left:3px solid var(--ember); padding-left:1rem; margin-top:1.2rem;
+}
+
+/* glossary: which session each word arrived in */
+.glossary dt .from{
+  font-family:var(--font-label); font-size:.62rem; font-weight:700;
+  letter-spacing:.14em; color:var(--paper); background:var(--rule);
+  padding:.18em .5em; vertical-align:middle; margin-left:.5em;
+}
+.glossary dt .from.new{background:var(--ember);}
+
+/* a summary panel showing what is still to come */
+.strip .panel.soon{opacity:.55; border-style:dashed;}
+.strip .panel.soon .soon-tag{
+  display:block; font-family:var(--font-label); text-transform:uppercase;
+  letter-spacing:.16em; font-size:.6rem; font-weight:700; color:var(--ember);
+  margin-bottom:.3rem;
+}
+
+@media print{
+  .nexttime{page-break-inside:avoid;}
+  .recap{page-break-inside:avoid;}
+}
+
+/* print ------------------------------------------------------ */
+/* NOTE: no CSS running header/footer here. Chrome positions
+   position:fixed elements inside the page content area, so a
+   repeating header collides with the text (measured, 2026-08-27).
+   Use the browser's own Headers and footers option instead — it
+   also supplies page numbers, which CSS cannot in Chrome. */
+.printonly{display:none;}
+
+@media print{
+  html{font-size:12.5pt;}
+  body{background:#fff;}
+  .grain,.runner{display:none !important;}
+  .chapter{page-break-before:always; border-bottom:none;}
+  .cover{min-height:auto; page-break-after:always;}
+  .pull,.box,figure,table,.qa,.workshop{page-break-inside:avoid;}
+  a{color:inherit; text-decoration:none;}
+  /* don't print a full page of dark ink */
+  .backcover{background:#fff !important; color:#000 !important; border:2px solid #000;}
+  .backcover h2,.bc-grid h3,.bc-kicker,.bc-num,.bc-fact{color:#000 !important;}
+  .backcover p,.bc-grid p,.bc-cta span{color:#333 !important;}
+  .bc-cta a{background:none !important; color:#000 !important; border:1px solid #000;}
+}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ============================================================
+     SHARED DRAWINGS
+     ============================================================ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- the horse itself, no tack. viewBox space 0 0 520 360 -->
+    <g id="horse-body">
+      <!-- far legs first, lighter -->
+      <path class="ink-far" d="M212,196 L232,196 L230,254 L236,316 L216,316 L212,254 Z"/>
+      <path class="ink-far" d="M366,200 L392,200 L386,248 L360,284 L366,316 L346,316 L340,282 L364,246 Z"/>
+      <!-- tail -->
+      <path class="ink" d="M394,126 C430,138 450,180 444,232 C440,268 424,290 408,300 C424,264 430,216 417,178 C411,157 401,141 394,126 Z"/>
+      <!-- barrel + haunch + shoulder -->
+      <ellipse class="ink" cx="348" cy="172" rx="60" ry="66"/>
+      <ellipse class="ink" cx="272" cy="180" rx="78" ry="57"/>
+      <ellipse class="ink" cx="200" cy="172" rx="50" ry="60"/>
+      <!-- neck -->
+      <path class="ink" d="M126,44 C170,72 202,100 224,140 L168,196 C154,142 122,102 90,76 Z"/>
+      <!-- head -->
+      <path class="ink" d="M130,40 C120,20 98,14 80,28 L38,92 C33,104 43,114 56,108 L102,88 C122,79 136,58 130,40 Z"/>
+      <!-- ears -->
+      <path class="ink" d="M112,30 L104,2 L128,24 Z"/>
+      <path class="ink" d="M132,32 L134,6 L152,30 Z"/>
+      <!-- mane -->
+      <path class="ink" d="M112,40 C150,66 196,102 238,154 L262,132 C216,82 164,40 124,16 Z"/>
+      <!-- near legs -->
+      <path class="ink" d="M178,196 L202,196 L198,254 L203,316 L179,316 L174,254 Z"/>
+      <path class="ink" d="M336,200 L364,200 L358,248 L332,284 L338,316 L316,316 L310,282 L334,246 Z"/>
+      <!-- hooves -->
+      <rect class="ink" x="174" y="308" width="31" height="12" rx="2"/>
+      <rect class="ink" x="212" y="308" width="27" height="12" rx="2"/>
+      <rect class="ink" x="312" y="308" width="29" height="12" rx="2"/>
+      <rect class="ink" x="342" y="308" width="27" height="12" rx="2"/>
+      <!-- eye -->
+      <circle cx="101" cy="45" r="6" fill="#f4ede1"/>
+      <!-- ground -->
+      <path d="M40,322 L470,322" stroke="#c9b99f" stroke-width="3" fill="none"/>
+    </g>
+
+    <!-- bridle + reins. every strap is drawn twice: a paper casing, then
+         the ember strap, so it stays legible crossing the dark body -->
+    <g id="tack-bridle">
+      <path class="tack-under" d="M116,48 L72,94"/>
+      <path class="tack-under" d="M58,72 L84,102"/>
+      <path class="tack-under" d="M64,98 C140,120 216,132 296,132"/>
+      <path class="tack" d="M116,48 L72,94"/>
+      <path class="tack" d="M58,72 L84,102"/>
+      <path class="tack" d="M64,98 C140,120 216,132 296,132"/>
+      <circle class="tack-fill" cx="66" cy="98" r="7"/>
+    </g>
+
+    <!-- saddle, girth, stirrup -->
+    <g id="tack-saddle">
+      <path class="tack-under" d="M292,128 L296,208"/>
+      <path class="tack-under" d="M264,124 C244,156 246,206 268,238"/>
+      <path class="tack" d="M264,124 C244,156 246,206 268,238"/>
+      <ellipse class="tack-fill" cx="292" cy="120" rx="54" ry="17" transform="rotate(-4 292 120)"/>
+      <ellipse class="tack-fill" cx="340" cy="106" rx="9" ry="16" transform="rotate(16 340 106)"/>
+      <ellipse class="tack-fill" cx="246" cy="116" rx="7" ry="13" transform="rotate(-10 246 116)"/>
+      <path class="tack" d="M292,128 L296,208"/>
+      <path class="tack-fill" d="M282,206 h28 a7,7 0 0 1 7,7 v12 a7,7 0 0 1 -7,7 h-28 a7,7 0 0 1 -7,-7 v-12 a7,7 0 0 1 7,-7 Z M285,214 h22 v11 h-22 Z"/>
+    </g>
+
+    <!-- saddlebags -->
+    <g id="tack-bags">
+      <path class="tack-fill" d="M352,146 h72 a9,9 0 0 1 9,9 v48 a9,9 0 0 1 -9,9 h-72 a9,9 0 0 1 -9,-9 v-48 a9,9 0 0 1 9,-9 Z"/>
+      <path d="M343,168 h90" stroke="#f4ede1" stroke-width="4" fill="none"/>
+      <path d="M388,168 v20" stroke="#f4ede1" stroke-width="4" fill="none"/>
+    </g>
+  </defs>
+</svg>
+
+<header class="runner">
+  <a class="brand" href="index.html" title="All workshops"><span class="wsnum">#005</span> The Horse That Opens <em>Gates</em></a>
+  <nav>
+    <a href="#contents">Contents</a>
+    <a href="#ch1">Gates</a>
+    <a href="#ch2">The Latch</a>
+    <a href="#ch3">The Bags</a>
+    <a href="#ch4">The Reins</a>
+    <a href="#ch5">FAQ</a>
+    <a href="#glossary">Glossary</a>
+  </nav>
+  <span class="sizer">
+    <button type="button" id="smaller" aria-label="Smaller text">A−</button>
+    <button type="button" id="bigger" aria-label="Larger text">A+</button>
+    <button type="button" id="printbtn" class="wide">Print</button>
+    <a class="wide" href="the-horse-that-opens-gates.html" download>Download</a>
+  </span>
+</header>
+
+<main class="page">
+
+<!-- ============================ COVER ============================ -->
+<section class="cover">
+  <div class="cover-text">
+    <span class="kicker"><span class="wsnum">Workshop&nbsp;#005</span> &middot; watch first, hands stay down</span>
+    <h1>The Horse That<br>Opens <span class="ai">Gates</span><span class="of">and stops at every one</span></h1>
+    <p class="deck">The same animal from the first session starts doing the actual work. The thing that makes that safe is that it will not touch a latch until you say so.</p>
+    <p class="promise"><strong>By the end of today</strong> you will know what an agent actually is, what it can and cannot reach, and exactly what happens at the moment before it changes anything.</p>
+    <p class="imprint">
+      Presented by Emile du Toit<br>
+      <a class="firm" href="https://brainitconsulting.com">brainitconsulting.com</a>
+    </p>
+  </div>
+  <div class="cover-art">
+    <svg viewBox="0 0 520 360" role="img" aria-label="A horse in full working harness"><use href="#horse-body"/><use href="#tack-bridle"/><use href="#tack-saddle"/><use href="#tack-bags"/></svg>
+  </div>
+</section>
+<!-- ============================ RECAP ============================ -->
+<section class="page-recap">
+  <div class="recap">
+    <span class="rc-label">Where we got to</span>
+    <p>Three sessions in, and the room is ready.</p>
+    <ul>
+      <li><strong>The horse</strong> predicts the next word. <strong>The saddle</strong> is your standing instructions. <strong>The saddlebags</strong> are tools.</li>
+      <li><strong>One folder, one job</strong> &mdash; the line round the work.</li>
+      <li><strong>The tack room</strong> is the editor: your files on the left, the open page in the middle, and the assistant beside them.</li>
+    </ul>
+    <p>Everything so far, the assistant only talked about. Today it starts doing.</p>
+  </div>
+</section>
+<!-- ============================ CONTENTS ============================ -->
+<section class="contents" id="contents">
+  <h3 style="margin-top:0">Contents</h3>
+  <ol>
+    <li><a href="#ch1">The horse that opens gates</a><span class="gloss">Same animal. Put to work.</span></li>
+    <li><a href="#ch2">It stops at every gate</a><span class="gloss">The most important thing in this session.</span></li>
+    <li><a href="#ch3">What's in the bags now</a><span class="gloss">Four things it can actually do.</span></li>
+    <li><a href="#ch4">Taking the reins back</a><span class="gloss">Stopping it is normal, not failure.</span></li>
+  </ol>
+  <p style="margin-top:1.4rem; max-width:var(--measure); color:var(--ink-soft); font-style:italic;">
+    Then the questions this always raises, the glossary so far, and the picture to photograph.
+  </p>
+</section>
+<!-- ============================ CH 01 ============================ -->
+<section class="chapter" id="ch1">
+  <div class="chapter-head">
+    <div class="chapter-num">01</div>
+    <h2>The horse that opens gates</h2>
+    <p class="standfirst">Nothing has been replaced. Something has been added.</p>
+  </div>
+
+  <p class="dropcap">A riding horse takes you somewhere and brings you back. A working horse does a job on the property &mdash; pulls the load, moves the stock, and yes, gets a gate open when a gate is in the way. Same animal, same training, different work, and rather different tack.</p>
+
+  <p>That is the whole of what has changed. In the first session you had a horse and a set of reins: you asked, it answered, and everything it produced arrived as words you then had to carry somewhere yourself. Last session we walked into the room where your files are. Today the horse comes into that room and starts picking things up.</p>
+
+  <div class="box stable">
+    <span class="label">What actually changed, in one line each</span>
+    <ul>
+      <li><strong>Sessions one and two.</strong> It could talk, and it could use tools. You did all the fetching and carrying.</li>
+      <li><strong>Sessions three and four.</strong> We found the room where your work lives, and fitted it out.</li>
+      <li><strong>Today.</strong> It can open your files, change them, and run things &mdash; inside that one folder, and only when you say yes.</li>
+    </ul>
+  </div>
+
+  <p>The word for this is an <em class="term">agent</em>, which sounds like something from a film and means something very dull: a model that has been given a goal, some tools, and permission to keep going until the job is done. You met the idea in session one as the loop. Today you meet it as a thing on a screen.</p>
+
+  <p class="pull">Nobody fetched a cleverer horse. They just put this one to work.</p>
+</section>
+
+<!-- ============================ CH 02 ============================ -->
+<section class="chapter" id="ch2">
+  <div class="chapter-head">
+    <div class="chapter-num">02</div>
+    <h2>It stops at every gate</h2>
+    <p class="standfirst">If you remember one thing from today, this is the one.</p>
+  </div>
+
+  <p class="dropcap">A working horse that opens gates sounds alarming until you see how it actually goes. It walks up to the gate. It stops. It waits. It does not touch the latch until the person with it says go. Every gate, every time, no exceptions, no matter how many times it has been through that gate before.</p>
+
+  <p>On screen this is the <em class="term">permission prompt</em>, and it is the whole safety story of this session. Before the assistant changes a file, creates a file, or runs anything on your computer, it stops and tells you exactly what it is about to do. Nothing happens until you answer.</p>
+
+  <figure>
+    <svg viewBox="0 0 1120 430" role="img" aria-label="The horse stopped at a closed gate, with the latch marked as yours">
+      <path d="M40,352 L1080,352" stroke="#c9b99f" stroke-width="8" fill="none"/>
+
+      <g transform="translate(0,42) scale(0.86)"><use href="#horse-body"/><use href="#tack-bridle"/><use href="#tack-saddle"/><use href="#tack-bags"/></g>
+
+      <rect class="ink" x="556" y="96" width="18" height="264" rx="4"/>
+      <rect class="ink" x="836" y="96" width="18" height="264" rx="4"/>
+      <rect class="ink" x="566" y="132" width="272" height="16" rx="4"/>
+      <rect class="ink" x="566" y="268" width="272" height="16" rx="4"/>
+
+      <path d="M700,208 L846,208" stroke="#b8391c" stroke-width="15" stroke-linecap="round" fill="none"/>
+      <circle class="tack-fill" cx="700" cy="208" r="30"/>
+      <circle cx="700" cy="208" r="11" fill="#f4ede1"/>
+
+      <path class="lead-under" d="M700,170 L700,80"/><path class="lead" d="M700,170 L700,80"/>
+      <text class="lbl lbl-em" x="700" y="58" text-anchor="middle">The latch is yours</text>
+
+      <text class="lbl" x="120" y="392">It walks up. It stops.</text>
+      <text class="lbl-sm" x="120" y="418">Every gate. Every time.</text>
+
+      <text class="lbl lbl-em" x="884" y="200">The job</text>
+      <text class="lbl-sm" x="884" y="228">on the other side</text>
+    </svg>
+    <figcaption><b>Fig. 1</b> &mdash; The permission prompt. It is not a formality and it is not a warning &mdash; it is the horse waiting for you.</figcaption>
+  </figure>
+
+  <h3>What the prompt is telling you</h3>
+  <p>It will name the file, and show you what it wants to write. Read the file name at minimum. Most mistakes announce themselves right there &mdash; a file you didn't expect, in a place you didn't expect.</p>
+
+  <ul>
+    <li><strong>Yes</strong> &mdash; go ahead, this once.</li>
+    <li><strong>No</strong> &mdash; don't. It stops and asks what you'd rather it did. Saying no is not an argument; it is steering.</li>
+    <li><strong>Yes, and stop asking for this kind of thing</strong> &mdash; convenient, and the one to leave alone for now.</li>
+  </ul>
+
+  <div class="box stable">
+    <span class="label">Three ways to ride, and which to pick</span>
+    <p><strong>Ask me every time.</strong> The gate stays shut until you open it. Start here. Stay here for a good while.</p>
+    <p><strong>Go ahead on your own.</strong> It stops asking about edits and just works. Useful once you know a job well &mdash; and only in a folder where a mistake costs you nothing.</p>
+    <p><strong>Just tell me the plan.</strong> It works out what it would do and shows you, without touching anything. Excellent for "what would this take?" and completely safe.</p>
+  </div>
+
+  <p>The middle one is where people get themselves into trouble, and always in the same way: they turn it on for a job they understand, then leave it on for a job they don't.</p>
+</section>
+
+<!-- ============================ CH 03 ============================ -->
+<section class="chapter" id="ch3">
+  <div class="chapter-head">
+    <div class="chapter-num">03</div>
+    <h2>What's in the bags now</h2>
+    <p class="standfirst">Session one's saddlebags, made real.</p>
+  </div>
+
+  <p class="dropcap">In the first session the saddlebags were an idea &mdash; the things a model could be given so it could act rather than only talk. Sitting in your folder, they stop being an idea. Here is the whole set, and it is shorter than you would think.</p>
+
+  <figure class="wide">
+    <svg viewBox="0 0 980 400" role="img" aria-label="Four capabilities: read a file, write a file, run a command, search the web">
+      <rect class="plate" x="8" y="18" width="466" height="112" rx="6"/>
+      <text x="34" y="62" class="lbl lbl-em">Read a file</text>
+      <text x="34" y="96" class="lbl-sm">Open anything in the folder and take it in</text>
+
+      <rect class="plate" x="506" y="18" width="466" height="112" rx="6"/>
+      <text x="532" y="62" class="lbl lbl-em">Write a file</text>
+      <text x="532" y="96" class="lbl-sm">Create or change one &mdash; asks first, every time</text>
+
+      <rect class="plate" x="8" y="154" width="466" height="112" rx="6"/>
+      <text x="34" y="198" class="lbl lbl-em">Run a command</text>
+      <text x="34" y="232" class="lbl-sm">Do a thing on the computer &mdash; asks first, every time</text>
+
+      <rect class="plate" x="506" y="154" width="466" height="112" rx="6"/>
+      <text x="532" y="198" class="lbl lbl-em">Search the web</text>
+      <text x="532" y="232" class="lbl-sm">Go and look, instead of guessing from memory</text>
+
+      <path d="M8,306 L972,306" stroke="#c9b99f" stroke-width="2"/>
+      <text x="8" y="346" class="lbl">Everything it does, it does <tspan class="lbl-em">in front of you</tspan>.</text>
+      <text x="8" y="382" class="lbl-sm">Every file opened, every change made, every command run &mdash; all of it on the screen, in order.</text>
+    </svg>
+    <figcaption><b>Fig. 2</b> &mdash; Four capabilities. Two of them stop and ask before they happen.</figcaption>
+  </figure>
+
+  <p>"Run a command" is the one that makes people sit up, so let us be plain about it. It means the assistant can do the sort of thing you did in the black panel last session &mdash; check a version, count some files, start something. It cannot reach outside the folder you opened it in, and it asks before every single one.</p>
+
+  <p>What is not in the bags matters just as much. It has no access to your email unless you connect it. It cannot see your other folders. It has not been given your bank, your accounts package, or your phone. Those connections exist and are useful, and they are a later session, deliberately.</p>
+</section>
+
+<!-- ============================ CH 04 ============================ -->
+<section class="chapter" id="ch4">
+  <div class="chapter-head">
+    <div class="chapter-num">04</div>
+    <h2>Taking the reins back</h2>
+    <p class="standfirst">Stopping it is ordinary. Riders do it constantly.</p>
+  </div>
+
+  <p class="dropcap">Sooner or later it will set off in a direction you did not intend &mdash; usually because you asked for something more loosely than you thought. Nobody watching this for the first time expects to be allowed to interrupt, so it is worth saying plainly: you can stop it at any moment, and doing so costs nothing.</p>
+
+  <h3>The three ways you steer mid-job</h3>
+  <ul>
+    <li><strong>Stop it.</strong> The escape key. It halts where it is. Nothing is half-broken, because anything it had already done, it had already asked you about.</li>
+    <li><strong>Say no at the gate.</strong> When the prompt appears and it is about to do the wrong thing, decline. It stops and asks what you would prefer.</li>
+    <li><strong>Just tell it.</strong> "No, not that file &mdash; the one in past-estimates." It is a conversation, and correcting it mid-job is the normal way to work, not a sign anything failed.</li>
+  </ul>
+
+  <div class="box">
+    <span class="label">When it asks you a question, that is it working properly</span>
+    <p>Sometimes it will come back with a question rather than an answer &mdash; which tank size, which of these two files did you mean, do you want this sent or drafted. That is the behaviour you want. Dale's own rules say don't guess a price, and a horse that asks rather than guesses is one you can leave a job with.</p>
+  </div>
+
+  <p>There is one more thing worth knowing before next session. Everything above is steering while you are watching. What none of it gives you is a way back after the fact &mdash; if you approve a change to your rate card on Tuesday and realise on Thursday it was wrong, none of these buttons help. That is exactly what session seven is for.</p>
+</section>
+
+<!-- ============================ CH 05 ============================ -->
+<section class="chapter" id="ch5">
+  <div class="chapter-head">
+    <div class="chapter-num">05</div>
+    <h2>Questions people actually ask</h2>
+    <p class="standfirst">The ones that come up the moment it can change something.</p>
+  </div>
+
+  <div class="faq">
+<div class="qa">
+      <h3 class="q">Can it delete my files?</h3>
+      <p class="horse-line">Only through a gate you opened.</p>
+      <p>Inside the folder you opened it in, yes &mdash; and it will stop and tell you before it does. It cannot touch anything outside that folder. The honest risk is not that it goes rogue; it is that you get comfortable and start clicking yes without reading, which is why we work on copies until session seven.</p>
+    </div>
+
+    
+<div class="qa">
+      <h3 class="q">Could I break my computer with this?</h3>
+      <p class="horse-line">The horse is in one stall, and the door is latched.</p>
+      <p>Practically, no. It works in the folder you opened, it asks before it runs anything, and nothing on this list touches Windows or macOS itself. The realistic bad day is a folder of files in a mess &mdash; annoying, recoverable, and the exact thing session seven makes trivial.</p>
+    </div>
+
+  
+<div class="qa">
+      <h3 class="q">Is it uploading my files to train itself?</h3>
+      <p class="horse-line">The horse reads in your room. It doesn't take the papers home.</p>
+      <p>What it reads goes to the company's computers so it can answer &mdash; the same as when you pasted into a browser in session one. Whether those conversations may be used to improve future models is a setting in your account, and it is worth looking at once and deciding. The model itself is not learning your business as it goes; it starts each conversation knowing nothing but what is in the room.</p>
+    </div>
+
+    
+  </div>
+</section>
+<!-- ============================ GLOSSARY ============================ -->
+<section class="chapter glossary" id="glossary">
+  <div class="chapter-head">
+    <h2>Plain words</h2>
+    <p class="standfirst">Everything the series has named so far. Today's are marked.</p>
+  </div>
+
+  <p style="max-width:var(--measure)">This list grows every session and always shows the lot, so you never need last week's handout to read this week's.</p>
+
+  <dl>
+    <dt>Large language model (LLM) <span class="from">001</span></dt>
+    <dd>The engine that predicts the next word. <span class="horse">The horse.</span></dd>
+
+    <dt>GPT <span class="from">001</span></dt>
+    <dd><strong>G</strong>enerative &mdash; it makes new text rather than looking up a stored answer. <strong>P</strong>re-trained &mdash; all its learning happened in advance. <strong>T</strong>ransformer &mdash; the design of the machinery underneath. <span class="horse">A breed name, not a job title.</span></dd>
+
+    <dt>Knowledge cutoff <span class="from">001</span></dt>
+    <dd>The date its training stopped. It knows nothing after it, and doesn't know that it doesn't. <span class="horse">The last day the horse was out in the world.</span></dd>
+
+    <dt>Prompt <span class="from">001</span></dt>
+    <dd>What you type. <span class="horse">A pull on the reins.</span></dd>
+
+    <dt>Chatbot <span class="from">001</span></dt>
+    <dd>A model you can talk to, turn by turn. <span class="horse">Horse plus bridle.</span></dd>
+
+    <dt>System prompt / instructions <span class="from">001</span></dt>
+    <dd>Standing orders sent with every message, whether you type them or not. <span class="horse">The saddle.</span></dd>
+
+    <dt>Context window <span class="from">001</span></dt>
+    <dd>How much of the conversation it can hold at once. <span class="horse">How far it can see on this ride.</span></dd>
+
+    <dt>Token <span class="from">001</span></dt>
+    <dd>A chunk of a word &mdash; how length is counted, and how you're billed. <span class="horse">Sugar cubes.</span></dd>
+
+    <dt>Hallucination <span class="from">001</span></dt>
+    <dd>Making something up and sounding certain. <span class="horse">Bolting at a plastic bag.</span></dd>
+
+    <dt>Tool <span class="from">002</span></dt>
+    <dd>A specific action it's allowed to take in the real world. <span class="horse">A saddlebag.</span></dd>
+
+    <dt>MCP <span class="from">002</span></dt>
+    <dd>An agreed standard for plugging tools into a model. <span class="horse">Standard-size buckles.</span></dd>
+
+    <dt>Agent <span class="from">002</span></dt>
+    <dd>A model given a goal, tools, and permission to keep going. <span class="horse">A working horse, not a show pony.</span></dd>
+
+    <dt>Agentic loop <span class="from">002</span></dt>
+    <dd>Look, decide, act, check, repeat. <span class="horse">The ride itself.</span></dd>
+
+    <dt>Human in the loop <span class="from">002</span></dt>
+    <dd>A person approves before something real happens. <span class="horse">A hand on the reins.</span></dd>
+
+    <dt>Automation <span class="from">002</span></dt>
+    <dd>The same work happening without you starting it each time. <span class="horse">The horse knows the route.</span></dd>
+
+    <dt>File <span class="from">003</span></dt>
+    <dd>A thing with a name and contents. <span class="horse">A single piece of gear.</span></dd>
+
+    <dt>Folder <span style="font-weight:400">(directory)</span> <span class="from">003</span></dt>
+    <dd>A box holding files, and sometimes other folders. <span class="horse">A shelf.</span></dd>
+
+    <dt>Project <span class="from">003</span></dt>
+    <dd>One folder holding one job's worth of everything. <span class="horse">The room, with the door shut.</span></dd>
+
+    <dt>Path <span class="from">003</span></dt>
+    <dd>The written address of a file &mdash; which boxes it sits inside. <span class="horse">Directions to the shelf.</span></dd>
+
+    <dt>Editor <span style="font-weight:400">(VS Code)</span> <span class="from">004</span></dt>
+    <dd>A window showing you one folder and everything in it. <span class="horse">The tack room.</span></dd>
+
+    <dt>Terminal <span class="from">004</span></dt>
+    <dd>A panel where you type an instruction to the computer directly. <span class="horse">Talking to the stable itself.</span></dd>
+
+    <dt>Install <span class="from">004</span></dt>
+    <dd>Putting a program on your own machine, once. <span class="horse">Building the room.</span></dd>
+
+    <dt>Permission prompt <span class="from new">005</span></dt>
+    <dd>The stop before it changes anything, showing what it plans to do. <span class="horse">The gate, and your hand on the latch.</span></dd>
+
+    <dt>Approval mode <span class="from new">005</span></dt>
+    <dd>Whether it asks every time, works on its own, or only shows a plan. <span class="horse">How loose you're holding the reins.</span></dd>
+
+    <dt>Interrupting <span class="from new">005</span></dt>
+    <dd>Stopping it mid-job with the escape key. <span class="horse">A pull on the reins. Ordinary.</span></dd>
+  </dl>
+</section>
+<!-- ============================ ONE PAGE ============================ -->
+<section class="chapter" id="onepage">
+  <div class="chapter-head">
+    <h2>The whole thing on one page</h2>
+    <p class="standfirst">Photograph this before you go.</p>
+  </div>
+  <div class="strip">
+    <div class="panel">
+      <svg viewBox="0 0 520 360" aria-hidden="true"><use href="#horse-body"/><use href="#tack-bridle"/><use href="#tack-saddle"/><use href="#tack-bags"/></svg>
+      <h4>1 &middot; It can act</h4>
+      <p>Read, write, run, look things up &mdash; inside one folder.</p>
+    </div>
+    <div class="panel">
+      <svg viewBox="0 0 520 360" aria-hidden="true">
+        <rect fill="#241d16" x="60" y="40" width="18" height="270" rx="4"/>
+        <rect fill="#241d16" x="442" y="40" width="18" height="270" rx="4"/>
+        <rect fill="#241d16" x="70" y="86" width="380" height="18" rx="4"/>
+        <rect fill="#241d16" x="70" y="246" width="380" height="18" rx="4"/>
+        <path d="M258,176 L462,176" stroke="#b8391c" stroke-width="22" stroke-linecap="round" fill="none"/>
+        <circle fill="#b8391c" cx="258" cy="176" r="44"/><circle fill="#f4ede1" cx="258" cy="176" r="16"/>
+      </svg>
+      <h4>2 &middot; It stops at the gate</h4>
+      <p>Every change, every command. You open the latch.</p>
+    </div>
+    <div class="panel">
+      <svg viewBox="0 0 520 360" aria-hidden="true">
+        <path d="M60,300 L460,300" stroke="#c9b99f" stroke-width="8" fill="none"/>
+        <g transform="translate(-30,60) scale(0.72)"><use href="#horse-body"/><use href="#tack-bridle"/></g>
+        <rect fill="#b8391c" x="308" y="128" width="176" height="112" rx="18"/>
+        <text x="396" y="200" text-anchor="middle" style="font-family:'Archivo Narrow',sans-serif; font-size:62px; font-weight:700; fill:#f4ede1">esc</text>
+      </svg>
+      <h4>3 &middot; You can stop it</h4>
+      <p>Escape halts it. Saying no is steering, not failure.</p>
+    </div>
+    <div class="panel soon">
+      <span class="soon-tag">Next session</span>
+      <svg viewBox="0 0 900 620" aria-hidden="true">
+        <rect fill="#241d16" x="40" y="34" width="440" height="20" rx="4"/>
+        <rect fill="#241d16" x="252" y="54" width="16" height="20" rx="3"/>
+        <rect fill="#f4ede1" stroke="#b8391c" stroke-width="9" x="146" y="74" width="228" height="238" rx="5"/>
+        <circle fill="#b8391c" cx="260" cy="98" r="10"/>
+        <rect fill="#c9b99f" x="176" y="136" width="168" height="13" rx="6"/>
+        <rect fill="#c9b99f" x="176" y="172" width="168" height="13" rx="6"/>
+        <rect fill="#c9b99f" x="176" y="208" width="120" height="13" rx="6"/>
+      </svg>
+      <h4>4 &middot; Driving it</h4>
+      <p>Describing a job, and writing the house rules down.</p>
+    </div>
+  </div>
+  <p style="margin-top:2rem"><strong>And there is still no undo.</strong> Until we fit one, work on copies of anything you would be sorry to lose. Ten seconds of copying buys you every mistake for free.</p>
+</section>
+<!-- ============================ NEXT TIME ============================ -->
+<section class="nexttime" id="nexttime">
+  <span class="nt-label">Next session</span>
+  <h2>#006 &mdash; Driving the Working Horse</h2>
+  <p>Today was what it is and what it will not do without asking. Next time is how to drive it: describing a job so you get the thing you wanted, writing your house rules into the folder so you stop repeating them, and choosing between the two of these worth using.</p>
+  <p class="nt-take"><strong>Before you come:</strong> nothing. Just turn up.</p>
+</section>
+<!-- ============================ BACK COVER ============================ -->
+<section class="backcover">
+  <div class="bc-inner">
+    <span class="bc-kicker">Want someone to hold the reins with you?</span>
+    <h2>I do this for a living, and I quite like it.</h2>
+    <p>Thirty-plus years in enterprise software and a computer science degree — which mostly means I have watched a great many horses bolt, and I can usually tell you which ones are worth saddling before you spend money on the saddle.</p>
+
+    <div class="bc-grid">
+      <div>
+        <span class="bc-num">01</span>
+        <h3>In person</h3>
+        <p>Your team, your room, your actual work on the whiteboard instead of somebody else's examples.</p>
+      </div>
+      <div>
+        <span class="bc-num">02</span>
+        <h3>Over video</h3>
+        <p>The same session, at your desks, with fewer chairs to stack afterwards.</p>
+      </div>
+      <div>
+        <span class="bc-num">03</span>
+        <h3>Built for real</h3>
+        <p>When the idea survives the workshop and somebody has to go and build the thing — that part I do too.</p>
+      </div>
+    </div>
+
+    <p class="bc-fact">Fun fact — I rode to school on horseback as a kid in South Africa. So the metaphor isn't borrowed. I've done the falling off in person.</p>
+
+    <p class="bc-cta">
+      <span>Emile du Toit</span>
+      <a href="https://brainitconsulting.com">brainitconsulting.com</a>
+    </p>
+  </div>
+</section>
+
+<p class="colophon">
+  Workshop #005 &middot; The Horse That Opens Gates<br>
+  &copy; 2026 Emile du Toit, BrainIT Consulting<br>
+  Print it, download it, share it with your team. Just leave my name on it.
+</p>
+
+</main>
+
+<script>
+// text size control — three steps up from the default
+(function(){
+  var level = 0, root = document.documentElement;
+  function apply(){
+    root.classList.remove('t-1','t-2','t-3');
+    if(level > 0) root.classList.add('t-' + level);
+  }
+  document.getElementById('bigger').onclick  = function(){ if(level < 3){ level++; apply(); } };
+  document.getElementById('smaller').onclick = function(){ if(level > 0){ level--; apply(); } };
+  document.getElementById('printbtn').onclick = function(){ window.print(); };
+
+  // A closed <details> prints as just its summary line, which would leave
+  // the demo steps out of the handout. Open them all before printing.
+  window.addEventListener('beforeprint', function(){
+    var d = document.querySelectorAll('details');
+    for (var i = 0; i < d.length; i++) d[i].open = true;
+  });
+})();
+</script>
+</body>
+</html>

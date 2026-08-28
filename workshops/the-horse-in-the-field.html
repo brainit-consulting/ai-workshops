@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Workshop #001 — The Horse in the Field</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='24 -8 140 126'%3E%3Crect x='24' y='-8' width='140' height='126' fill='%23f4ede1'/%3E%3Cpath fill='%23241d16' d='M112,40 C150,66 196,102 238,154 L262,132 C216,82 164,40 124,16 Z'/%3E%3Cpath fill='%23241d16' d='M130,40 C120,20 98,14 80,28 L38,92 C33,104 43,114 56,108 L102,88 C122,79 136,58 130,40 Z'/%3E%3Cpath fill='%23241d16' d='M112,30 L104,2 L128,24 Z'/%3E%3Cpath fill='%23241d16' d='M132,32 L134,6 L152,30 Z'/%3E%3Ccircle cx='101' cy='45' r='6' fill='%23f4ede1'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Zilla+Slab:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600;7..72,700&family=Archivo+Narrow:wght@500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   RIDING THE AI HORSE — workshop book
+   Edit the venue/date on the cover (search: EDIT ME)
+   ============================================================ */
+
+:root{
+  --paper:#f4ede1;
+  --paper-deep:#eadfcc;
+  --ink:#241d16;
+  --ink-soft:#5b4d3f;
+  --rule:#c9b99f;
+  --ember:#b8391c;
+  --ember-wash:#f0d9cf;
+  --honey:#c2841f;
+
+  /* slab faces — even stroke weight, no hairlines to squint at */
+  --font-poster:"Alfa Slab One", Georgia, serif;
+  --font-display:"Zilla Slab", Georgia, serif;
+  --font-body:"Literata", Georgia, serif;
+  --font-label:"Archivo Narrow", "Arial Narrow", sans-serif;
+  --font-hand:"Patrick Hand", "Segoe Print", cursive;
+
+  /* text runs the width of the screen — this is shown on a projector.
+     min() so it never overshoots the page gutters. */
+  --measure:min(100%, 72rem);
+}
+
+*{box-sizing:border-box;}
+
+html{
+  /* type scales with the viewport, so a big screen gets big text
+     rather than short lines. A− / A+ step it up three notches. */
+  font-size:clamp(19px, 1.35vw, 28px);
+  scroll-behavior:smooth;
+}
+html.t-1{font-size:clamp(21px, 1.55vw, 32px);}
+html.t-2{font-size:clamp(23px, 1.80vw, 36px);}
+html.t-3{font-size:clamp(25px, 2.05vw, 40px);}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:1.05rem;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* paper grain ------------------------------------------------ */
+.grain{
+  position:fixed; inset:0; pointer-events:none; z-index:50;
+  opacity:.35; mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/><feColorMatrix type='saturate' values='0'/></filter><rect width='180' height='180' filter='url(%23n)' opacity='0.16'/></svg>");
+}
+
+/* running head ----------------------------------------------- */
+.runner{
+  position:sticky; top:0; z-index:40;
+  display:flex; align-items:center; gap:1rem;
+  padding:.55rem clamp(1rem,4vw,3rem);
+  background:var(--paper);
+  border-bottom:1px solid var(--rule);
+  font-family:var(--font-label);
+  text-transform:uppercase; letter-spacing:.12em;
+  font-size:.62rem;
+}
+.runner .brand{font-weight:700; color:var(--ink); text-decoration:none;}
+.runner .brand:hover{color:var(--ember);}
+.runner .brand .wsnum{color:var(--honey); font-weight:700;}
+.cover .kicker .wsnum{
+  background:var(--ember); color:var(--paper);
+  padding:.28em .6em; letter-spacing:.2em; margin-right:.5em;
+}
+.runner .brand em{font-style:normal; color:var(--ember);}
+.runner nav{display:flex; gap:.8rem; flex-wrap:wrap; margin-left:auto;}
+.runner .brand{white-space:nowrap;}
+.runner nav a{color:var(--ink-soft); text-decoration:none; border-bottom:1px solid transparent; padding-bottom:2px;}
+.runner nav a:hover{color:var(--ember); border-bottom-color:var(--ember);}
+.sizer{display:flex; gap:.3rem; margin-left:.6rem;}
+.sizer button{
+  font-family:var(--font-label); font-size:.7rem; font-weight:700;
+  background:none; border:1px solid var(--rule); color:var(--ink-soft);
+  width:2rem; height:1.7rem; cursor:pointer; line-height:1;
+}
+.sizer button:hover{border-color:var(--ember); color:var(--ember);}
+.sizer .wide, .sizer a.wide{
+  width:auto; padding:0 .7rem; height:1.7rem; display:inline-flex; align-items:center;
+  font-family:var(--font-label); font-size:.62rem; font-weight:700;
+  text-transform:uppercase; letter-spacing:.12em; text-decoration:none;
+  border:1px solid var(--rule); color:var(--ink-soft); background:none; cursor:pointer;
+}
+.sizer .wide:hover{border-color:var(--ember); color:var(--ember);}
+
+/* page frame ------------------------------------------------- */
+.page{
+  max-width:none;
+  margin:0;
+  /* generous left gutter — the chapter numerals hang into it */
+  padding:0 clamp(1.1rem,4.5vw,7rem) 0 clamp(1.4rem,6.5vw,10rem);
+}
+
+/* ============ COVER ============ */
+.cover{
+  min-height:88vh;
+  display:grid;
+  grid-template-columns:1fr;
+  align-content:center;
+  padding-block:clamp(2rem,7vw,5rem);
+  border-bottom:3px double var(--rule);
+}
+.cover .kicker{
+  font-family:var(--font-label); text-transform:uppercase;
+  letter-spacing:.34em; font-size:.66rem; color:var(--ember); font-weight:700;
+}
+.cover h1{
+  font-family:var(--font-poster);
+  font-weight:400;
+  font-size:clamp(2.9rem,6.6vw,4.9rem);
+  line-height:.94;
+  margin:.4em 0 .1em;
+  letter-spacing:-.015em;
+  color:var(--honey);
+}
+.cover h1 .ai{
+  color:var(--ember);
+  letter-spacing:.01em;
+}
+.cover h1 .of{
+  display:block; font-family:var(--font-display);
+  font-size:.4em; font-weight:600; font-style:italic;
+  letter-spacing:.02em; margin-left:.25em;
+}
+.cover .deck{
+  font-size:1.28rem; line-height:1.45; max-width:34rem;
+  border-left:3px solid var(--ember); padding-left:1rem; margin:1.4rem 0 0;
+}
+.cover .imprint{
+  margin-top:2.6rem; font-family:var(--font-label); font-size:.78rem;
+  text-transform:uppercase; letter-spacing:.16em; color:var(--ink-soft);
+  line-height:2;
+}
+.cover .imprint .firm{
+  color:var(--ember); font-weight:700; text-decoration:none;
+  border-bottom:2px solid var(--rule); padding-bottom:2px;
+}
+.cover .imprint .firm:hover{border-bottom-color:var(--ember);}
+.cover-art{margin:1rem 0 0; }
+.cover-art svg{width:100%; height:auto; max-height:46vh; display:block;}
+
+@media (min-width:60rem){
+  .cover{grid-template-columns:1.05fr .95fr; gap:2.5rem; align-items:center;}
+  .cover-art{margin:0; grid-column:2; grid-row:1;}
+  .cover-text{grid-column:1; grid-row:1;}
+}
+
+/* ============ CONTENTS ============ */
+.contents{padding:clamp(2.5rem,6vw,4.5rem) 0; border-bottom:1px solid var(--rule);}
+.contents ol{list-style:none; margin:0; padding:0; counter-reset:toc;}
+.contents li{
+  counter-increment:toc;
+  display:flex; align-items:baseline; gap:.9rem;
+  padding:.55rem 0; border-bottom:1px dotted var(--rule);
+}
+.contents li::before{
+  content:counter(toc,decimal-leading-zero);
+  font-family:var(--font-display); font-size:1.5rem; color:var(--ember);
+  min-width:2.4rem;
+}
+.contents a{
+  font-family:var(--font-display); font-size:1.4rem; color:var(--ink);
+  text-decoration:none; font-weight:600;
+}
+.contents a:hover{color:var(--ember);}
+.contents .gloss{
+  font-family:var(--font-body); font-size:.85rem; color:var(--ink-soft);
+  margin-left:auto; text-align:right; max-width:32rem; line-height:1.35;
+}
+@media (max-width:44rem){ .contents .gloss{display:none;} }
+
+/* ============ CHAPTERS ============ */
+.chapter{
+  padding:clamp(3rem,8vw,6rem) 0 clamp(2rem,5vw,4rem);
+  border-bottom:1px solid var(--rule);
+  position:relative;
+}
+.chapter-head{position:relative; margin-bottom:2.2rem;}
+.chapter-num{
+  font-family:var(--font-poster);
+  font-size:clamp(2rem,3.4vw,2.8rem);
+  line-height:1;
+  color:var(--honey);
+  letter-spacing:.02em;
+  pointer-events:none;
+  display:flex; align-items:center; gap:.6rem;
+}
+/* a rule running off to the right of the numeral */
+.chapter-num::after{
+  content:""; flex:1; height:2px; background:var(--rule); max-width:14rem;
+}
+.chapter-num{margin-bottom:.1em;}
+.chapter h2{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:clamp(2rem,5.6vw,3.4rem);
+  line-height:1.02;
+  margin:-.12em 0 .2em;
+  max-width:24ch;
+}
+.chapter .standfirst{
+  font-size:1.22rem; line-height:1.5; font-style:italic; color:var(--ink-soft);
+  max-width:54rem; margin:.6rem 0 0;
+}
+.chapter p{max-width:var(--measure); margin:0 0 1.05em;}
+.chapter h3{
+  font-family:var(--font-label); text-transform:uppercase; letter-spacing:.16em;
+  font-size:.8rem; font-weight:700; color:var(--ember);
+  margin:2.2em 0 .7em; padding-bottom:.35em; border-bottom:1px solid var(--rule);
+  max-width:var(--measure);
+}
+.chapter ul,.chapter ol{max-width:var(--measure); padding-left:1.3em; margin:0 0 1.2em;}
+.chapter li{margin-bottom:.5em;}
+.chapter li::marker{color:var(--ember);}
+
+/* drop cap on the first paragraph of each chapter */
+.dropcap::first-letter{
+  font-family:var(--font-poster); font-weight:400;
+  float:left; font-size:3.6em; line-height:.86;
+  padding:.06em .09em 0 0; color:var(--honey);
+}
+
+strong{font-weight:700;}
+/* inset shadow, not padding — a highlight that doesn't push the
+   following punctuation away from the word */
+em.term{font-style:normal; font-weight:700; box-shadow:inset 0 -.34em 0 var(--ember-wash);}
+
+/* pull quote — deliberately breaks the measure */
+.pull{
+  font-family:var(--font-hand);
+  font-size:clamp(1.7rem,4vw,2.7rem);
+  line-height:1.28; font-style:normal;
+  margin:2.2rem 0 2.4rem;
+  padding:0 0 0 1.2rem;
+  border-left:4px solid var(--ember);
+  max-width:60rem;
+}
+@media (min-width:70rem){ .pull{margin-left:-3rem;} }
+
+/* boxes ------------------------------------------------------ */
+.box{
+  border:1px solid var(--rule);
+  background:var(--paper-deep);
+  padding:1.4rem 1.7rem;
+  margin:1.8rem 0 2rem;
+  max-width:62rem;
+}
+.box .label{
+  font-family:var(--font-label); text-transform:uppercase; letter-spacing:.18em;
+  font-size:.68rem; font-weight:700; color:var(--ember); display:block; margin-bottom:.6rem;
+}
+.box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:0;}
+.box.stable{border-left:5px solid var(--ember);}
+
+.compare{display:grid; gap:1.2rem; margin:1.6rem 0 2rem; max-width:var(--measure);}
+@media (min-width:48rem){ .compare{grid-template-columns:1fr 1fr;} }
+.compare > div{border:1px solid var(--rule); padding:1.1rem 1.2rem; background:var(--paper-deep);}
+.compare .tag{
+  font-family:var(--font-label); text-transform:uppercase; letter-spacing:.16em;
+  font-size:.66rem; font-weight:700; display:block; margin-bottom:.5rem;
+}
+.compare .bad .tag{color:var(--ink-soft);}
+.compare .good .tag{color:var(--ember);}
+.compare p{font-size:.95rem; margin:0;}
+.compare code{
+  font-family:var(--font-label); font-size:.95em; letter-spacing:.01em;
+  display:block; background:var(--paper); border-left:3px solid var(--rule);
+  padding:.6rem .8rem; margin-top:.5rem; white-space:pre-wrap; line-height:1.45;
+}
+
+/* figures ---------------------------------------------------- */
+figure{margin:2.4rem 0; max-width:var(--measure);}
+figure svg{width:100%; height:auto; display:block;}
+/* near-square diagrams stay on one screen instead of filling it */
+figure.tall svg{max-height:80vh; width:auto; margin:0;}
+figcaption{
+  font-family:var(--font-label); font-size:.76rem; letter-spacing:.06em;
+  color:var(--ink-soft); margin-top:.7rem; padding-top:.5rem;
+  border-top:1px solid var(--rule); max-width:56rem;
+}
+figcaption b{font-weight:700; color:var(--ember); text-transform:uppercase; letter-spacing:.14em; font-size:.9em;}
+figure.wide{max-width:none;}
+
+.strip{display:grid; grid-template-columns:repeat(2,1fr); gap:1.2rem;}
+@media (min-width:56rem){ .strip{grid-template-columns:repeat(4,1fr);} }
+.strip .panel{border:1px solid var(--rule); background:var(--paper-deep); padding:.7rem;}
+.strip .panel h4{
+  font-family:var(--font-label); text-transform:uppercase; letter-spacing:.13em;
+  font-size:.68rem; margin:.5rem 0 .2rem; color:var(--ember); font-weight:700;
+}
+.strip .panel p{font-size:.82rem; margin:0; line-height:1.35; color:var(--ink-soft);}
+
+/* resource cards --------------------------------------------- */
+.links{display:grid; gap:1.4rem; margin:2rem 0 2.6rem; max-width:var(--measure);}
+@media (min-width:48rem){ .links{grid-template-columns:1fr 1fr;} }
+.linkcard{
+  display:block; text-decoration:none; color:var(--ink);
+  border:1px solid var(--rule); border-left:5px solid var(--ember);
+  background:var(--paper-deep); padding:1.3rem 1.5rem;
+}
+.linkcard:hover{background:var(--ember-wash);}
+.linkcard .tag{
+  display:block; font-family:var(--font-label); text-transform:uppercase;
+  letter-spacing:.18em; font-size:.66rem; font-weight:700; color:var(--ink-soft);
+}
+.linkcard .name{
+  display:block; font-family:var(--font-display); font-weight:700;
+  font-size:2rem; line-height:1.1; margin:.2rem 0 .1rem; color:var(--honey);
+}
+.linkcard .url{
+  display:block; font-family:var(--font-label); font-weight:700; font-size:1rem;
+  color:var(--ember); letter-spacing:.04em; border-bottom:2px solid var(--rule);
+  padding-bottom:.4rem; margin-bottom:.6rem;
+}
+.linkcard .note{display:block; font-size:.92rem; line-height:1.45; color:var(--ink-soft);}
+
+/* table ------------------------------------------------------ */
+.tablewrap{overflow-x:auto; margin:2rem 0;}
+table{border-collapse:collapse; width:100%; min-width:40rem; font-size:.92rem;}
+th,td{text-align:left; vertical-align:top; padding:.75rem .8rem; border-bottom:1px solid var(--rule);}
+th{
+  font-family:var(--font-label); text-transform:uppercase; letter-spacing:.13em;
+  font-size:.66rem; color:var(--ember); border-bottom:2px solid var(--rule); font-weight:700;
+}
+td:first-child{font-weight:600;}
+td .sub{
+  font-family:var(--font-label); font-size:.82rem; font-weight:600;
+  color:var(--ember); letter-spacing:.03em;
+}
+
+/* FAQ --------------------------------------------------------- */
+.faq{max-width:var(--measure);}
+.qa{padding:1.8rem 0; border-bottom:1px solid var(--rule);}
+.qa:first-child{padding-top:.6rem;}
+.qa .q{
+  font-family:var(--font-display); font-weight:700;
+  font-size:clamp(1.3rem,2.4vw,1.9rem); line-height:1.15;
+  color:var(--ink); text-transform:none; letter-spacing:0;
+  margin:0 0 .5rem; padding:0; border:none; max-width:40ch;
+}
+.qa .horse-line{
+  font-family:var(--font-hand); font-size:1.4rem; line-height:1.3;
+  color:var(--ember); margin:0 0 .9rem; max-width:44rem;
+}
+.qa p{max-width:var(--measure);}
+.qa p:last-child{margin-bottom:0;}
+
+/* glossary --------------------------------------------------- */
+.glossary dl{margin:0; max-width:var(--measure); column-gap:3.5rem;}
+@media (min-width:70rem){ .glossary dl{columns:2;} .glossary dt{break-after:avoid;} .glossary dd{break-inside:avoid;} }
+.glossary dt{
+  font-family:var(--font-display); font-weight:700; font-size:1.15rem;
+  margin-top:1.3rem; color:var(--ink);
+}
+.glossary dd{margin:.2rem 0 0; padding-bottom:.9rem; border-bottom:1px dotted var(--rule); color:var(--ink-soft);}
+.glossary dd .horse{color:var(--ember); font-style:italic;}
+
+/* checklist -------------------------------------------------- */
+.checklist{list-style:none; padding:0; counter-reset:step; max-width:var(--measure);}
+.checklist li{
+  counter-increment:step; position:relative;
+  padding:.9rem 0 .9rem 3.2rem; border-bottom:1px solid var(--rule);
+}
+.checklist li::before{
+  content:counter(step); position:absolute; left:0; top:.75rem;
+  font-family:var(--font-display); font-size:1.6rem; color:var(--ember); font-weight:700;
+}
+
+/* back cover — the one dark surface in the book --------------- */
+.backcover{
+  background:var(--ink); color:var(--paper);
+  margin:3rem 0 0;
+  padding:clamp(2.4rem,5vw,4rem) clamp(1.6rem,4vw,3.5rem);
+  max-width:var(--measure);
+  border-top:6px solid var(--ember);
+}
+.bc-kicker{
+  display:block; font-family:var(--font-label); text-transform:uppercase;
+  letter-spacing:.26em; font-size:.7rem; font-weight:700; color:var(--honey);
+}
+.backcover h2{
+  font-family:var(--font-poster); font-weight:400;
+  font-size:clamp(1.7rem,3.6vw,2.6rem); line-height:1.08;
+  margin:.5rem 0 .8rem; color:var(--paper); max-width:22ch;
+}
+.backcover > .bc-inner > p{max-width:46rem; color:#d9cdba; margin:0 0 1.4rem;}
+.bc-grid{display:grid; gap:1.8rem; margin:2rem 0 2rem;}
+@media (min-width:52rem){ .bc-grid{grid-template-columns:repeat(3,1fr); gap:2.4rem;} }
+.bc-grid > div{border-top:2px solid var(--ember); padding-top:.9rem;}
+.bc-num{
+  font-family:var(--font-poster); font-size:1.2rem; color:var(--honey);
+  display:block; margin-bottom:.2rem;
+}
+.bc-grid h3{
+  font-family:var(--font-display); font-weight:700; font-size:1.35rem;
+  margin:0 0 .35rem; color:var(--paper); text-transform:none; letter-spacing:0;
+  border:none; padding:0;
+}
+.bc-grid p{margin:0; font-size:.95rem; line-height:1.5; color:#c3b7a4;}
+.bc-fact{
+  font-family:var(--font-hand) !important;
+  font-size:1.45rem !important; line-height:1.35;
+  color:var(--honey) !important;
+  border-left:3px solid var(--ember); padding-left:1rem;
+  max-width:38rem !important;
+}
+.bc-cta{
+  display:flex; flex-wrap:wrap; align-items:center; gap:1rem 1.6rem;
+  margin:2rem 0 0 !important; padding-top:1.5rem;
+  border-top:1px solid #4a3f33;
+  font-family:var(--font-label); text-transform:uppercase; letter-spacing:.16em;
+  font-size:.8rem;
+}
+.bc-cta span{color:#d9cdba; font-weight:600;}
+.bc-cta a{
+  color:var(--ink); background:var(--honey); font-weight:700;
+  padding:.7em 1.3em; text-decoration:none; letter-spacing:.12em;
+}
+.bc-cta a:hover{background:var(--paper);}
+
+/* colophon --------------------------------------------------- */
+.colophon{padding:3rem 0 5rem; font-family:var(--font-label); font-size:.72rem;
+  text-transform:uppercase; letter-spacing:.16em; color:var(--ink-soft); line-height:2;}
+.colophon .firm{color:var(--ember); font-weight:700; text-decoration:none; border-bottom:1px solid var(--rule);}
+
+/* svg drawing conventions ------------------------------------ */
+.ink{fill:#241d16;}
+.ink-far{fill:#5b4d3f;}
+.tack{fill:none; stroke:#b8391c; stroke-width:5; stroke-linecap:round; stroke-linejoin:round;}
+.tack-fill{fill:#b8391c;}
+.hair{fill:none; stroke:#241d16; stroke-width:2.5;}
+.tack-under{fill:none; stroke:#f4ede1; stroke-width:9; stroke-linecap:round; stroke-linejoin:round;}
+.lead{fill:none; stroke:#5b4d3f; stroke-width:2.5; stroke-dasharray:7 6;}
+.lead-under{fill:none; stroke:#f4ede1; stroke-width:8; stroke-linecap:round;}
+.lbl{font-family:"Archivo Narrow","Arial Narrow",sans-serif; font-size:23px; font-weight:700;
+  text-transform:uppercase; letter-spacing:.1em; fill:#241d16;}
+.lbl-em{fill:#b8391c;}
+.lbl-sm{font-family:"Archivo Narrow","Arial Narrow",sans-serif; font-size:18px; font-weight:600;
+  letter-spacing:.03em; fill:#5b4d3f; text-transform:none;}
+.plate{fill:#eadfcc; stroke:#c9b99f; stroke-width:2;}
+
+
+/* ---- split-session components (added when workshops became 45 min) ---- */
+
+/* the promise on the cover: what they leave able to do */
+.cover .promise{
+  max-width:34rem; margin:1.3rem 0 0; font-size:1.02rem; line-height:1.5;
+  color:var(--ink-soft); border-left:3px solid var(--honey); padding-left:1rem;
+}
+.cover .promise strong{color:var(--ink);}
+
+/* the recap that opens a second half */
+.recap{
+  border:1px solid var(--rule); border-left:5px solid var(--honey);
+  background:var(--paper-deep); padding:1.4rem 1.6rem;
+  margin:0 0 2.4rem; max-width:var(--measure);
+}
+.recap .rc-label{
+  display:block; font-family:var(--font-label); text-transform:uppercase;
+  letter-spacing:.18em; font-size:.68rem; font-weight:700; color:var(--honey);
+  margin-bottom:.6rem;
+}
+.recap p{margin:0 0 .8em; max-width:none;}
+.recap p:last-child{margin-bottom:0;}
+.recap ul{margin:.2rem 0 .9rem; padding-left:1.3em;}
+.recap li{margin-bottom:.35em;}
+.recap li::marker{color:var(--honey);}
+
+/* what is coming next session */
+.nexttime{
+  border-top:3px double var(--rule);
+  padding:clamp(2rem,4vw,3rem) 0 clamp(1.5rem,3vw,2rem);
+  max-width:var(--measure);
+}
+.nexttime .nt-label{
+  display:block; font-family:var(--font-label); text-transform:uppercase;
+  letter-spacing:.24em; font-size:.7rem; font-weight:700; color:var(--ember);
+}
+.nexttime h2{
+  font-family:var(--font-display); font-weight:700;
+  font-size:clamp(1.6rem,3.4vw,2.4rem); line-height:1.1;
+  margin:.4rem 0 .7rem;
+}
+.nexttime p{max-width:56rem; margin:0 0 1em;}
+.nexttime .nt-take{
+  font-family:var(--font-hand); font-size:1.4rem; color:var(--ember);
+  border-left:3px solid var(--ember); padding-left:1rem; margin-top:1.2rem;
+}
+
+/* glossary: which session each word arrived in */
+.glossary dt .from{
+  font-family:var(--font-label); font-size:.62rem; font-weight:700;
+  letter-spacing:.14em; color:var(--paper); background:var(--rule);
+  padding:.18em .5em; vertical-align:middle; margin-left:.5em;
+}
+.glossary dt .from.new{background:var(--ember);}
+
+/* a summary panel showing what is still to come */
+.strip .panel.soon{opacity:.55; border-style:dashed;}
+.strip .panel.soon .soon-tag{
+  display:block; font-family:var(--font-label); text-transform:uppercase;
+  letter-spacing:.16em; font-size:.6rem; font-weight:700; color:var(--ember);
+  margin-bottom:.3rem;
+}
+
+@media print{
+  .nexttime{page-break-inside:avoid;}
+  .recap{page-break-inside:avoid;}
+}
+
+/* print ------------------------------------------------------ */
+/* NOTE: no CSS running header/footer here. Chrome positions
+   position:fixed elements inside the page content area, so a
+   repeating header collides with the text (measured, 2026-08-27).
+   Use the browser's own Headers and footers option instead — it
+   also supplies page numbers, which CSS cannot in Chrome. */
+.printonly{display:none;}
+
+@media print{
+  html{font-size:12.5pt;}
+  body{background:#fff;}
+  .grain,.runner{display:none !important;}
+  .chapter{page-break-before:always; border-bottom:none;}
+  .cover{min-height:auto; page-break-after:always;}
+  .pull,.box,figure,table,.qa,.workshop{page-break-inside:avoid;}
+  a{color:inherit; text-decoration:none;}
+  /* don't print a full page of dark ink */
+  .backcover{background:#fff !important; color:#000 !important; border:2px solid #000;}
+  .backcover h2,.bc-grid h3,.bc-kicker,.bc-num,.bc-fact{color:#000 !important;}
+  .backcover p,.bc-grid p,.bc-cta span{color:#333 !important;}
+  .bc-cta a{background:none !important; color:#000 !important; border:1px solid #000;}
+}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ============================================================
+     SHARED DRAWINGS
+     ============================================================ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- the horse itself, no tack. viewBox space 0 0 520 360 -->
+    <g id="horse-body">
+      <!-- far legs first, lighter -->
+      <path class="ink-far" d="M212,196 L232,196 L230,254 L236,316 L216,316 L212,254 Z"/>
+      <path class="ink-far" d="M366,200 L392,200 L386,248 L360,284 L366,316 L346,316 L340,282 L364,246 Z"/>
+      <!-- tail -->
+      <path class="ink" d="M394,126 C430,138 450,180 444,232 C440,268 424,290 408,300 C424,264 430,216 417,178 C411,157 401,141 394,126 Z"/>
+      <!-- barrel + haunch + shoulder -->
+      <ellipse class="ink" cx="348" cy="172" rx="60" ry="66"/>
+      <ellipse class="ink" cx="272" cy="180" rx="78" ry="57"/>
+      <ellipse class="ink" cx="200" cy="172" rx="50" ry="60"/>
+      <!-- neck -->
+      <path class="ink" d="M126,44 C170,72 202,100 224,140 L168,196 C154,142 122,102 90,76 Z"/>
+      <!-- head -->
+      <path class="ink" d="M130,40 C120,20 98,14 80,28 L38,92 C33,104 43,114 56,108 L102,88 C122,79 136,58 130,40 Z"/>
+      <!-- ears -->
+      <path class="ink" d="M112,30 L104,2 L128,24 Z"/>
+      <path class="ink" d="M132,32 L134,6 L152,30 Z"/>
+      <!-- mane -->
+      <path class="ink" d="M112,40 C150,66 196,102 238,154 L262,132 C216,82 164,40 124,16 Z"/>
+      <!-- near legs -->
+      <path class="ink" d="M178,196 L202,196 L198,254 L203,316 L179,316 L174,254 Z"/>
+      <path class="ink" d="M336,200 L364,200 L358,248 L332,284 L338,316 L316,316 L310,282 L334,246 Z"/>
+      <!-- hooves -->
+      <rect class="ink" x="174" y="308" width="31" height="12" rx="2"/>
+      <rect class="ink" x="212" y="308" width="27" height="12" rx="2"/>
+      <rect class="ink" x="312" y="308" width="29" height="12" rx="2"/>
+      <rect class="ink" x="342" y="308" width="27" height="12" rx="2"/>
+      <!-- eye -->
+      <circle cx="101" cy="45" r="6" fill="#f4ede1"/>
+      <!-- ground -->
+      <path d="M40,322 L470,322" stroke="#c9b99f" stroke-width="3" fill="none"/>
+    </g>
+
+    <!-- bridle + reins. every strap is drawn twice: a paper casing, then
+         the ember strap, so it stays legible crossing the dark body -->
+    <g id="tack-bridle">
+      <path class="tack-under" d="M116,48 L72,94"/>
+      <path class="tack-under" d="M58,72 L84,102"/>
+      <path class="tack-under" d="M64,98 C140,120 216,132 296,132"/>
+      <path class="tack" d="M116,48 L72,94"/>
+      <path class="tack" d="M58,72 L84,102"/>
+      <path class="tack" d="M64,98 C140,120 216,132 296,132"/>
+      <circle class="tack-fill" cx="66" cy="98" r="7"/>
+    </g>
+
+    <!-- saddle, girth, stirrup -->
+    <g id="tack-saddle">
+      <path class="tack-under" d="M292,128 L296,208"/>
+      <path class="tack-under" d="M264,124 C244,156 246,206 268,238"/>
+      <path class="tack" d="M264,124 C244,156 246,206 268,238"/>
+      <ellipse class="tack-fill" cx="292" cy="120" rx="54" ry="17" transform="rotate(-4 292 120)"/>
+      <ellipse class="tack-fill" cx="340" cy="106" rx="9" ry="16" transform="rotate(16 340 106)"/>
+      <ellipse class="tack-fill" cx="246" cy="116" rx="7" ry="13" transform="rotate(-10 246 116)"/>
+      <path class="tack" d="M292,128 L296,208"/>
+      <path class="tack-fill" d="M282,206 h28 a7,7 0 0 1 7,7 v12 a7,7 0 0 1 -7,7 h-28 a7,7 0 0 1 -7,-7 v-12 a7,7 0 0 1 7,-7 Z M285,214 h22 v11 h-22 Z"/>
+    </g>
+
+    <!-- saddlebags -->
+    <g id="tack-bags">
+      <path class="tack-fill" d="M352,146 h72 a9,9 0 0 1 9,9 v48 a9,9 0 0 1 -9,9 h-72 a9,9 0 0 1 -9,-9 v-48 a9,9 0 0 1 9,-9 Z"/>
+      <path d="M343,168 h90" stroke="#f4ede1" stroke-width="4" fill="none"/>
+      <path d="M388,168 v20" stroke="#f4ede1" stroke-width="4" fill="none"/>
+    </g>
+  </defs>
+</svg>
+
+<header class="runner">
+  <a class="brand" href="index.html" title="All workshops"><span class="wsnum">#001</span> The Horse in the <em>Field</em></a>
+  <nav>
+    <a href="#contents">Contents</a>
+    <a href="#ch1">The Horse</a>
+    <a href="#ch2">Reins</a>
+    <a href="#ch3">Saddle</a>
+    <a href="#ch4">Bolting</a>
+    <a href="#ch5">Where to Start</a>
+    <a href="#ch6">FAQ</a>
+    <a href="#glossary">Glossary</a>
+  </nav>
+  <span class="sizer">
+    <button type="button" id="smaller" aria-label="Smaller text">A−</button>
+    <button type="button" id="bigger" aria-label="Larger text">A+</button>
+    <button type="button" id="printbtn" class="wide">Print</button>
+    <a class="wide" href="the-horse-in-the-field.html" download>Download</a>
+  </span>
+</header>
+
+<main class="page">
+
+<!-- ============================ COVER ============================ -->
+<section class="cover">
+  <div class="cover-text">
+    <span class="kicker"><span class="wsnum">Workshop&nbsp;#001</span> &middot; for complete beginners</span>
+    <h1>The Horse<br>in the <span class="ai">Field</span><span class="of">what a chatbot actually is</span></h1>
+    <p class="deck">Artificial intelligence explained through something people have understood for four thousand years: a horse, a saddle, and a job that needs doing.</p>
+    <p class="promise"><strong>By the end of today</strong> you will have an account open, you will know how to steer it with a firm rein instead of a loose one, and you will have written your standing instructions down once so you stop repeating yourself every morning.</p>
+    <p class="imprint">
+      Presented by Emile du Toit<br>
+      <a class="firm" href="https://brainitconsulting.com">brainitconsulting.com</a>
+    </p>
+  </div>
+  <div class="cover-art">
+    <svg viewBox="0 0 520 360" role="img" aria-label="A horse standing in a field, wearing no tack">
+      <use href="#horse-body"/>
+    </svg>
+  </div>
+</section>
+<!-- ============================ CONTENTS ============================ -->
+<section class="contents" id="contents">
+  <h3 style="margin-top:0">Contents</h3>
+  <ol>
+    <li><a href="#ch1">The horse in the field</a><span class="gloss">What it really does, and what it cannot do.</span></li>
+    <li><a href="#ch2">Bridle and reins</a><span class="gloss">The chat box. Steering with words.</span></li>
+    <li><a href="#ch3">Saddle and stirrups</a><span class="gloss">Standing instructions that make a ride repeatable.</span></li>
+    <li><a href="#ch4">When the horse bolts</a><span class="gloss">How it goes wrong, and how to sit it.</span></li>
+    <li><a href="#ch5">Where to start</a><span class="gloss">Two websites, and the one setting worth finding.</span></li>
+  </ol>
+  <p style="margin-top:1.4rem; max-width:var(--measure); color:var(--ink-soft); font-style:italic;">
+    Then the questions everyone asks, a plain-words glossary, and a one-page picture worth photographing before you leave.
+  </p>
+</section>
+<!-- ============================ CH 1 ============================ -->
+<section class="chapter" id="ch1">
+  <div class="chapter-head">
+    <div class="chapter-num">01</div>
+    <h2>The horse in the field</h2>
+    <p class="standfirst">Powerful, fast, well-traveled — and standing there with nothing on it.</p>
+  </div>
+
+  <p class="dropcap">Picture a horse in a field. It is strong. It is quick. It has covered a great deal of ground in its life. And right now it is doing absolutely nothing for you, because it has no bridle, no saddle, and no reason to go anywhere.</p>
+
+  <p>That horse is what the industry calls a <em class="term">large language model</em> — an LLM. ChatGPT, Claude and Gemini are all built on one. Before anyone puts tack on it, here is the whole of what it does:</p>
+
+  <p><strong>It reads the words in front of it and works out what should come next.</strong> Then it does that again, and again, one word at a time, until the answer is finished. It learned how by reading an enormous amount of writing — books, manuals, websites, conversations.</p>
+
+  <div class="box stable">
+    <span class="label">Why that isn't as thin as it sounds</span>
+    <p>To guess the next word well enough to write a decent estimate letter, you have to have absorbed how estimates go, what a customer worries about, and what ordinary business writing sounds like. The trick is simple. What the trick requires is not.</p>
+  </div>
+
+  <figure>
+    <svg viewBox="0 0 820 430" role="img" aria-label="An untacked horse, labelled: strong, no saddle, no memory">
+      <g transform="translate(10,26)"><use href="#horse-body"/></g>
+
+      <path class="lead-under" d="M330,92 L322,132"/><path class="lead" d="M330,92 L322,132"/>
+      <text class="lbl lbl-em" x="286" y="46">No saddle</text>
+      <text class="lbl-sm" x="286" y="76">Nothing of your business on it</text>
+
+      <path class="lead-under" d="M520,222 L442,224"/><path class="lead" d="M520,222 L442,224"/>
+      <text class="lbl lbl-em" x="532" y="218">Strong</text>
+      <text class="lbl-sm" x="532" y="246">Reads and writes anything</text>
+
+      <path class="lead-under" d="M104,364 L104,146"/><path class="lead" d="M104,364 L104,146"/>
+      <text class="lbl lbl-em" x="30" y="392">No memory</text>
+      <text class="lbl-sm" x="30" y="418">Every chat starts cold</text>
+    </svg>
+    <figcaption><b>Fig. 1</b> — The model on its own. Everything it knows is general. Nothing it knows is yours.</figcaption>
+  </figure>
+
+  <h3>Four things to hold on to</h3>
+  <ul>
+    <li><strong>It is good at language work.</strong> Drafting, summarizing, rewriting, translating, explaining, sorting, pulling the useful line out of a long email.</li>
+    <li><strong>It knows nothing about your business.</strong> Not your prices, not your customers, not your rules — unless you tell it, every time.</li>
+    <li><strong>It has no memory of yesterday.</strong> A fresh chat is a horse that has never met you.</li>
+    <li><strong>It cannot <em>do</em> anything.</strong> It produces text. It cannot send the email, open the spreadsheet or take the payment. Not yet &mdash; that&#8217;s next session.</li>
+  </ul>
+
+  <p class="pull">A horse in a field is not transport. It becomes transport when you put a saddle on it.</p>
+</section>
+
+<!-- ============================ CH 2 ============================ -->
+<section class="chapter" id="ch2">
+  <div class="chapter-head">
+    <div class="chapter-num">02</div>
+    <h2>Bridle and reins</h2>
+    <p class="standfirst">Add the reins and you have a chatbot. Now it goes where you point it.</p>
+  </div>
+
+  <p class="dropcap">The bridle is the chat box. You type, it answers — that back-and-forth is the whole of what people mean by a <em class="term">chatbot</em>. Model plus reins. Nothing more mysterious than that.</p>
+
+  <p>Reins only work if you use them. A loose rein gets you a horse wandering toward whatever looks interesting, which is exactly what a vague question gets you: a general, hedge-everything answer that could have been written for anybody.</p>
+
+  <figure>
+    <svg viewBox="0 0 820 430" role="img" aria-label="A horse wearing a bridle, with the reins labelled as what you type">
+      <g transform="translate(10,26)"><use href="#horse-body"/><use href="#tack-bridle"/></g>
+
+      <path class="lead-under" d="M520,120 L266,152"/><path class="lead" d="M520,120 L266,152"/>
+      <text class="lbl lbl-em" x="532" y="116">The reins</text>
+      <text class="lbl-sm" x="532" y="144">What you type. Your prompt.</text>
+
+      <path class="lead-under" d="M92,362 L88,150"/><path class="lead" d="M92,362 L88,150"/>
+      <text class="lbl lbl-em" x="30" y="390">Bridle</text>
+      <text class="lbl-sm" x="30" y="416">The chat window</text>
+    </svg>
+    <figcaption><b>Fig. 2</b> — Horse + reins = chatbot. Steering is done entirely in words.</figcaption>
+  </figure>
+
+  <h3>Loose rein, firm rein</h3>
+  <div class="compare">
+    <div class="bad">
+      <span class="tag">Loose rein</span>
+      <p>You get four paragraphs of generic advice.</p>
+      <code>Write something about our new opening hours.</code>
+    </div>
+    <div class="good">
+      <span class="tag">Firm rein</span>
+      <p>You get something you can send.</p>
+      <code>Write a 60-word notice for our front window.
+We're open Sundays 10–4 starting March 1.
+Friendly, no exclamation marks.
+We're a family-run bakery in Asheville.</code>
+    </div>
+  </div>
+
+  <p>Four things did the work there: <strong>who you are</strong>, <strong>what you want</strong>, <strong>how long</strong>, and <strong>what tone</strong>. That is most of what people dress up as "prompt engineering".</p>
+
+  <h3>How far it can see: the context window</h3>
+  <p>Everything in the current conversation is what the horse can hold in its head on this one ride — the <em class="term">context window</em>. It is large but not endless. On a very long ride, the earliest part of the conversation falls out the back, and the model stops referring to it.</p>
+  <p>Two practical habits follow. Start a new chat when you change subject. And when something matters, don't rely on it having been said an hour ago — say it again.</p>
+</section>
+
+<!-- ============================ CH 3 ============================ -->
+<section class="chapter" id="ch3">
+  <div class="chapter-head">
+    <div class="chapter-num">03</div>
+    <h2>Saddle and stirrups</h2>
+    <p class="standfirst">Bareback is fine for five minutes. A day's work needs a fitted saddle.</p>
+  </div>
+
+  <p class="dropcap">Anyone can sit on a horse for five minutes. Do it for a day and you will want a saddle, stirrups, and a girth that stays tight. In AI, the saddle is the set of standing instructions that goes along with <em>every</em> message, whether you type it or not.</p>
+
+  <p>The technical name is the <em class="term">system prompt</em>. You will meet it under friendlier names: a <strong>Custom GPT</strong>, a <strong>Project</strong>, an <strong>Assistant</strong>, "instructions". Same saddle. You fit it once and every ride after that starts properly.</p>
+
+  <figure>
+    <svg viewBox="0 0 820 430" role="img" aria-label="A horse wearing bridle, saddle, girth and stirrup, each labelled">
+      <g transform="translate(10,26)"><use href="#horse-body"/><use href="#tack-bridle"/><use href="#tack-saddle"/></g>
+
+      <path class="lead-under" d="M520,92 L352,130"/><path class="lead" d="M520,92 L352,130"/>
+      <text class="lbl lbl-em" x="532" y="88">Saddle</text>
+      <text class="lbl-sm" x="532" y="116">Standing instructions</text>
+
+      <path class="lead-under" d="M520,224 L326,250"/><path class="lead" d="M520,224 L326,250"/>
+      <text class="lbl lbl-em" x="532" y="220">Stirrup</text>
+      <text class="lbl-sm" x="532" y="248">Examples of good work</text>
+
+      <path class="lead-under" d="M520,352 L282,268"/><path class="lead" d="M520,352 L282,268"/>
+      <text class="lbl lbl-em" x="532" y="348">Girth</text>
+      <text class="lbl-sm" x="532" y="376">What it must never do</text>
+    </svg>
+    <figcaption><b>Fig. 3</b> — The tack you fit once and reuse. Written well, it does more for output quality than any clever wording in the chat.</figcaption>
+  </figure>
+
+  <h3>What goes in a saddle</h3>
+  <div class="box">
+    <span class="label">Worked example — a plumbing company's estimating assistant</span>
+    <p><strong>Who you are.</strong> You help Dale &amp; Son, a two-truck residential plumbing company, turn inquiry emails into written estimates.</p>
+    <p><strong>What you always do.</strong> Pull out the job, the address and the access notes. Price from the rate card below. Show labor and parts on separate lines. Add sales tax at the rate on file.</p>
+    <p><strong>Facts you may rely on.</strong> Service call $95. Labor $110/hour, one-hour minimum. Saturday rate ×1.5. We do not work on gas lines.</p>
+    <p><strong>Tone.</strong> Plain, warm, no jargon. Short sentences.</p>
+    <p><strong>Never.</strong> Never quote for gas work — flag it for Dale. Never promise a date. Never guess at a price you were not given: say what you'd need to know.</p>
+  </div>
+
+  <p>That last line is the girth. Most bad AI output in a small business comes from a missing "never".</p>
+
+  <p class="pull">If you can't write the instructions for a new employee, you can't write them for a machine.</p>
+</section>
+
+<!-- ============================ CH 4 ============================ -->
+<section class="chapter" id="ch4">
+  <div class="chapter-head">
+    <div class="chapter-num">04</div>
+    <h2>When the horse bolts</h2>
+    <p class="standfirst">It will. Knowing how it bolts is most of knowing how to sit it.</p>
+  </div>
+
+  <p class="dropcap">A horse is not malicious when it spooks at a plastic bag. It is doing exactly what it is built to do, in a situation you didn't anticipate. Every failure below is the same kind of thing, and none of them mean anything is broken.</p>
+
+  <h3>Three ways it goes wrong</h3>
+  <ul>
+    <li><strong>It makes things up, confidently.</strong> The industry calls this <em class="term">hallucination</em>. Because the model's job is to produce a plausible next word, a plausible wrong answer costs it nothing. It will invent a case reference, a regulation, a part number. Tell it plainly that "I don't know" is an acceptable answer, and check anything you'd be embarrassed to be wrong about.</li>
+    <li><strong>It goes where it thinks you meant.</strong> Ambiguous instruction, confident interpretation. "Tidy up the customer list" &mdash; and now the duplicates are gone, along with three live accounts.</li>
+    <li><strong>It doesn't know today.</strong> It has no idea what date it is, what you agreed on the phone yesterday, or that the price went up in March &mdash; unless something tells it.</li>
+  </ul>
+
+  <div class="box stable">
+    <span class="label">What that means for how you use it</span>
+    <ul>
+      <li><strong>Check anything that matters.</strong> Names, numbers, dates, rules, anything you would be embarrassed to repeat. It is a fast first draft, not a source.</li>
+      <li><strong>Say "tell me if you're not sure."</strong> It will not volunteer doubt. Asked directly, it is surprisingly willing to admit it.</li>
+      <li><strong>Give it today's facts.</strong> If the answer depends on your prices, your hours, or this week's news, put them in front of it rather than hoping.</li>
+      <li><strong>Don't paste what you wouldn't email.</strong> Bank details, Social Security numbers, anything you would be unhappy to see repeated.</li>
+    </ul>
+  </div>
+
+  <p>There is a fourth way it goes wrong, and it only shows up once the horse can act on the world rather than only talk about it &mdash; one bad instruction carried out two hundred times before anybody notices. That one belongs with the saddlebags, which is next session.</p>
+
+  <p class="pull">A wrong answer costs it nothing. That is the whole problem, in one line.</p>
+</section>
+<!-- ============================ CH 5 ============================ -->
+<section class="chapter" id="ch5">
+  <div class="chapter-head">
+    <div class="chapter-num">05</div>
+    <h2>Where to start</h2>
+    <p class="standfirst">Two websites, a free account each, and the one setting worth finding.</p>
+  </div>
+
+  <p class="dropcap">You don't need to buy anything today. Both of the big assistants run in an ordinary web browser and both have a free tier. Open one, make an account with your email address, and type in the box at the bottom. That is the whole setup.</p>
+
+  <div class="links">
+    <a class="linkcard" href="https://chatgpt.com">
+      <span class="tag">Made by OpenAI</span>
+      <span class="name">ChatGPT</span>
+      <span class="url">chatgpt.com</span>
+      <span class="note">The one most people have heard of. Free tier, paid tier around $20 a month.</span>
+    </a>
+    <a class="linkcard" href="https://claude.ai">
+      <span class="tag">Made by Anthropic</span>
+      <span class="name">Claude</span>
+      <span class="url">claude.ai</span>
+      <span class="note">Strong at long documents and careful writing. Free tier, paid tier around $20 a month.</span>
+    </a>
+  </div>
+
+  <h3>The one setting worth finding: standing instructions</h3>
+  <p>This is the saddle from chapter three, and both sites call it a <strong>Project</strong>. Anything you write in a project's instructions is sent along with every message you send inside it — you type it once instead of every time.</p>
+
+  <ol class="checklist">
+    <li><strong>Sign in</strong> at chatgpt.com or claude.ai.</li>
+    <li><strong>Find "Projects"</strong> in the menu down the left-hand side.</li>
+    <li><strong>Make a new project</strong> and give it the name of the job — "Estimates", "Monday numbers".</li>
+    <li><strong>Paste your standing instructions</strong> into the instructions box. Who you are, what you always do, the facts it may rely on, the tone, and the nevers.</li>
+    <li><strong>Do that job inside that project</strong> from now on. You can add files — a price list, a past estimate — and it will use them.</li>
+  </ol>
+
+  <h3>In the browser, or installed on your computer?</h3>
+
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr><th>Where</th><th>What it is</th><th>When it's worth it</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Web browser<br><span class="sub">chatgpt.com · claude.ai</span></td>
+          <td>Nothing to install. Works on any computer you sign in from.</td>
+          <td><strong>Start here.</strong> Most people never need anything else.</td>
+        </tr>
+        <tr>
+          <td>Desktop app<br><span class="sub">ChatGPT · Claude Desktop</span></td>
+          <td>The same assistant, installed on your Mac or Windows machine. Opens with a keyboard shortcut. Can be connected to files and programs on that computer.</td>
+          <td>Once you're using it most days — and when you want it working with files on your own machine rather than pasting into a browser. The download link is on each website.</td>
+        </tr>
+        <tr>
+          <td>Phone app<br><span class="sub">ChatGPT · Claude</span></td>
+          <td>Same account, same projects. You can talk to it instead of typing, and photograph a document to ask about it.</td>
+          <td>Questions from the truck or the job site. Reading a letter you've just been handed.</td>
+        </tr>
+        <tr>
+          <td>Codex &amp; Claude Code<br><span class="sub">the developer versions</span></td>
+          <td>Versions built to write and run software on a real codebase.</td>
+          <td>Only if you or someone on your team writes code. Skip these for now — they are not where a first ride belongs.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box stable">
+    <span class="label">Before you paste anything in</span>
+    <ul>
+      <li><strong>Treat it like email.</strong> Don't paste bank details, Social Security numbers, or anything you wouldn't put in an email to a stranger.</li>
+      <li><strong>Check the privacy setting.</strong> Both sites have a setting controlling whether your conversations can be used to improve the model. Look under Settings once, decide once.</li>
+      <li><strong>The free tier is enough to learn on.</strong> Pay only when you notice yourself hitting the limits.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================ CH 6 ============================ -->
+<section class="chapter" id="ch6">
+  <div class="chapter-head">
+    <div class="chapter-num">06</div>
+    <h2>Questions people actually ask</h2>
+    <p class="standfirst">The ones that come up in every single session.</p>
+  </div>
+
+  <div class="faq">
+<div class="qa">
+      <h3 class="q">Everyone keeps saying "tokens". What is a token?</h3>
+      <p class="horse-line">Sugar cubes. The horse works for sugar.</p>
+      <p>A token is a chunk of a word — roughly four characters, or about three-quarters of an average word. "Plumbing" is a couple of tokens. This paragraph is about eighty.</p>
+      <p>Every word you send it and every word it writes back costs sugar cubes. That's the meter running underneath all of it. On a free account you get a bowl a day and then the horse stops until tomorrow. On a paid account you get a much bigger bowl. And when you set up automation that runs on its own, you pay by the cube.</p>
+      <p><strong>Why it matters in practice:</strong> feeding it your entire 40-page price list on every single email reply costs forty pages of sugar, every time. Feed it what the job needs, not the whole barn. That is the whole of "managing your token costs".</p>
+    </div>
+
+    
+<div class="qa">
+      <h3 class="q">ChatGPT or Claude — which one should I get?</h3>
+      <p class="horse-line">Both are good horses. The mistake is changing stables every week.</p>
+      <p>Pick one, use it for a month on real work, and get good at it. The difference between the two matters far less than the difference between someone who has ridden for a month and someone who has read about riding for a month. If you want to compare, give both the exact same real task and judge the output — not the reviews.</p>
+    </div>
+
+    
+<div class="qa">
+      <h3 class="q">Does it remember me? Is it learning from what I tell it?</h3>
+      <p class="horse-line">A fresh chat is a horse that has never met you.</p>
+      <p>Two different things get mixed up here. <strong>Within your account</strong>, most services now have a memory feature and projects, so it can carry things between conversations — that's a setting you control, and you can look at what it has stored. <strong>Underneath</strong>, the model itself is not being retrained by your typing; it was trained long before you arrived.</p>
+      <p>Separately, whether your conversations may be used to improve future models is a privacy setting on each service. Look at it once and decide.</p>
+    </div>
+
+    
+<div class="qa">
+      <h3 class="q">Why do I get a different answer if I ask the same thing twice?</h3>
+      <p class="horse-line">Two rides to the same field, two slightly different routes.</p>
+      <p>There is deliberate randomness in how it picks each next word — that's what stops it sounding like a stuck record. It is not a calculator and it is not broken. If you need the identical output every single time, that's a job for a spreadsheet formula, not for a horse.</p>
+    </div>
+
+    
+<div class="qa">
+      <h3 class="q">Do I need to learn to code?</h3>
+      <p class="horse-line">No. You need to know the route.</p>
+      <p>Everything in this workshop is typing in plain English. The most valuable skill is being able to describe your own process clearly, in steps — and you already have that, because you do the work. Bring in a developer when you get to connecting real systems together, and you'll brief them far better than most.</p>
+    </div>
+
+    
+<div class="qa">
+      <h3 class="q">It told me something completely wrong. Is mine faulty?</h3>
+      <p class="horse-line">No. That's the horse spooking, and it's chapter four.</p>
+      <p>It will state a wrong thing with exactly the same confidence as a right thing, because producing a plausible sentence is the whole job. This isn't a defect you can settle down out of it. It's the reason a person checks anything that costs money, goes to a customer, or can't be undone.</p>
+    </div>
+
+  
+  </div>
+</section>
+<!-- ============================ GLOSSARY ============================ -->
+<section class="chapter glossary" id="glossary">
+  <div class="chapter-head">
+    <h2>Plain words</h2>
+    <p class="standfirst">Everything the series has named so far, and where it sits on the ranch.</p>
+  </div>
+
+  <p style="max-width:var(--measure)">This list grows every session and always shows the lot, so you never need last week's handout to read this week's. The tag says which session a word arrived in.</p>
+
+  <dl>
+    <dt>Large language model (LLM) <span class="from">001</span></dt>
+    <dd>The engine that predicts the next word. <span class="horse">The horse.</span></dd>
+
+    <dt>GPT <span class="from">001</span></dt>
+    <dd><strong>G</strong>enerative &mdash; it makes new text rather than looking up a stored answer.
+        <strong>P</strong>re-trained &mdash; all its learning happened in advance, before you ever met it.
+        <strong>T</strong>ransformer &mdash; the design of the machinery underneath, invented in 2017.
+        <span class="horse">A breed name, not a job title.</span></dd>
+
+    <dt>Knowledge cutoff <span class="from">001</span></dt>
+    <dd>The date its training stopped. It knows nothing that happened after that day &mdash; and it doesn't know that it doesn't. <span class="horse">The last day the horse was out in the world.</span></dd>
+
+    <dt>Prompt <span class="from">001</span></dt>
+    <dd>What you type. <span class="horse">A pull on the reins.</span></dd>
+
+    <dt>Chatbot <span class="from">001</span></dt>
+    <dd>A model you can talk to, turn by turn. <span class="horse">Horse plus bridle.</span></dd>
+
+    <dt>System prompt / instructions <span class="from">001</span></dt>
+    <dd>Standing orders sent with every message, whether you type them or not. <span class="horse">The saddle.</span></dd>
+
+    <dt>Context window <span class="from">001</span></dt>
+    <dd>How much of the conversation it can hold at once. <span class="horse">How far it can see on this ride.</span></dd>
+
+    <dt>Token <span class="from">001</span></dt>
+    <dd>A chunk of a word &mdash; how models count length, and how you're usually billed. <span class="horse">Sugar cubes.</span></dd>
+
+    <dt>Hallucination <span class="from">001</span></dt>
+    <dd>Making something up and sounding certain. <span class="horse">Bolting at a plastic bag.</span></dd>
+
+    <dt>Human in the loop <span class="from">001</span></dt>
+    <dd>A person approves before something real happens. <span class="horse">A hand on the reins.</span></dd>
+  </dl>
+
+  <div class="box stable">
+    <span class="label">Why it has to look things up</span>
+    <p>The <strong>P</strong> in GPT is the one that catches people out. <em class="term">Pre-trained</em> means the learning is finished before you arrive. Everything the model knows, it learned by a fixed date &mdash; its knowledge cutoff. Training takes months, so by the time you're talking to it, its picture of the world is already some way behind.</p>
+    <p>It has no way of sensing this. Ask about something recent and it will answer confidently from the last thing it saw, which may be a year stale.</p>
+    <p><strong>The habit worth keeping:</strong> for anything that changes &mdash; prices, hours, rules, who runs what &mdash; give it the current facts yourself. Next session it gets a way to go and look instead, which is a large part of what the saddlebags are for.</p>
+  </div>
+</section>
+<!-- ============================ ONE PAGE ============================ -->
+<section class="chapter" id="onepage">
+  <div class="chapter-head">
+    <h2>The whole thing on one page</h2>
+    <p class="standfirst">Photograph this before you go.</p>
+  </div>
+
+  <div class="strip">
+    <div class="panel">
+      <svg viewBox="0 0 520 360" aria-hidden="true"><use href="#horse-body"/></svg>
+      <h4>1 &middot; The model</h4>
+      <p>Predicts the next word. Knows a lot. Knows nothing about you.</p>
+    </div>
+    <div class="panel">
+      <svg viewBox="0 0 520 360" aria-hidden="true"><use href="#horse-body"/><use href="#tack-bridle"/></svg>
+      <h4>2 &middot; The chatbot</h4>
+      <p>Add reins and you can steer it. This is where everyone starts.</p>
+    </div>
+    <div class="panel">
+      <svg viewBox="0 0 520 360" aria-hidden="true"><use href="#horse-body"/><use href="#tack-bridle"/><use href="#tack-saddle"/></svg>
+      <h4>3 &middot; The harness</h4>
+      <p>Standing instructions, fitted once. Every ride starts right.</p>
+    </div>
+    <div class="panel soon">
+      <span class="soon-tag">Next session</span>
+      <svg viewBox="0 0 520 360" aria-hidden="true"><use href="#horse-body"/><use href="#tack-bridle"/><use href="#tack-saddle"/><use href="#tack-bags"/></svg>
+      <h4>4 &middot; The agent</h4>
+      <p>Saddlebags: tools, a goal and a loop. Now it does a job.</p>
+    </div>
+  </div>
+
+  <p style="margin-top:2rem"><strong>And the rider stays on.</strong> You set the goal, you set the boundary, you check the end of it. That doesn't get automated &mdash; it's the part that was always yours.</p>
+</section>
+<!-- ============================ NEXT TIME ============================ -->
+<section class="nexttime" id="nexttime">
+  <span class="nt-label">Next session</span>
+  <h2>#002 &mdash; Saddlebags and the Ride</h2>
+  <p>Everything today was a horse that talks. Next time we hang the saddlebags on it: the tools that let it read your price list, put a draft in a real file, and go and look something up instead of guessing from memory. That is the step where a chatbot stops answering questions and starts doing a job.</p>
+  <p class="nt-take"><strong>Bring one thing:</strong> a job you do most weeks that is mostly reading and writing, and that annoys you.</p>
+</section>
+<!-- ============================ BACK COVER ============================ -->
+<section class="backcover">
+  <div class="bc-inner">
+    <span class="bc-kicker">Want someone to hold the reins with you?</span>
+    <h2>I do this for a living, and I quite like it.</h2>
+    <p>Thirty-plus years in enterprise software and a computer science degree — which mostly means I have watched a great many horses bolt, and I can usually tell you which ones are worth saddling before you spend money on the saddle.</p>
+
+    <div class="bc-grid">
+      <div>
+        <span class="bc-num">01</span>
+        <h3>In person</h3>
+        <p>Your team, your room, your actual work on the whiteboard instead of somebody else's examples.</p>
+      </div>
+      <div>
+        <span class="bc-num">02</span>
+        <h3>Over video</h3>
+        <p>The same session, at your desks, with fewer chairs to stack afterwards.</p>
+      </div>
+      <div>
+        <span class="bc-num">03</span>
+        <h3>Built for real</h3>
+        <p>When the idea survives the workshop and somebody has to go and build the thing — that part I do too.</p>
+      </div>
+    </div>
+
+    <p class="bc-fact">Fun fact — I rode to school on horseback as a kid in South Africa. So the metaphor isn't borrowed. I've done the falling off in person.</p>
+
+    <p class="bc-cta">
+      <span>Emile du Toit</span>
+      <a href="https://brainitconsulting.com">brainitconsulting.com</a>
+    </p>
+  </div>
+</section>
+
+<p class="colophon">
+  Workshop #001 &middot; The Horse in the Field<br>
+  &copy; 2026 Emile du Toit, BrainIT Consulting<br>
+  Print it, download it, share it with your team. Just leave my name on it.
+</p>
+
+</main>
+
+<script>
+// text size control — three steps up from the default
+(function(){
+  var level = 0, root = document.documentElement;
+  function apply(){
+    root.classList.remove('t-1','t-2','t-3');
+    if(level > 0) root.classList.add('t-' + level);
+  }
+  document.getElementById('bigger').onclick  = function(){ if(level < 3){ level++; apply(); } };
+  document.getElementById('smaller').onclick = function(){ if(level > 0){ level--; apply(); } };
+  document.getElementById('printbtn').onclick = function(){ window.print(); };
+})();
+</script>
+</body>
+</html>
