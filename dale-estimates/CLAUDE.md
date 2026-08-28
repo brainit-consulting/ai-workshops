@@ -23,3 +23,12 @@ inquiry emails into written estimates.
 
 Plain. The customer is not a plumber. Sign off as
 "Dale & Son Plumbing - Dale Rimmer".
+
+## Markers (added in session seven)
+
+When I say **marker**, I mean a git commit. "The last marker" means the
+last commit.
+
+- Before you change more than one file, save a marker first.
+- When a piece of work is finished and I have said it is good, save a
+  marker with a short plain note saying what changed.

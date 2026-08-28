@@ -271,6 +271,16 @@ em.term{font-style:normal; font-weight:700; box-shadow:inset 0 -.34em 0 var(--em
 }
 .box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:0;}
 .box.stable{border-left:5px solid var(--ember);}
+.box .repo{
+  color:var(--ember); font-weight:700; text-decoration:none;
+  border-bottom:2px solid var(--rule); padding-bottom:1px; overflow-wrap:anywhere;
+}
+.box .repo:hover{border-bottom-color:var(--ember);}
+.checklist .repo{
+  color:var(--ember); font-weight:700; text-decoration:none;
+  border-bottom:2px solid var(--rule); padding-bottom:1px;
+}
+.checklist .repo:hover{border-bottom-color:var(--ember);}
 
 .compare{display:grid; gap:1.2rem; margin:1.6rem 0 2rem; max-width:var(--measure);}
 @media (min-width:48rem){ .compare{grid-template-columns:1fr 1fr;} }
@@ -352,6 +362,7 @@ td .sub{
 .faq{max-width:var(--measure);}
 .qa{padding:1.8rem 0; border-bottom:1px solid var(--rule);}
 .qa:first-child{padding-top:.6rem;}
+.faq .qa:last-child{border-bottom:none; padding-bottom:0;}
 .qa .q{
   font-family:var(--font-display); font-weight:700;
   font-size:clamp(1.3rem,2.4vw,1.9rem); line-height:1.15;
@@ -400,8 +411,8 @@ td .sub{
 }
 .backcover h2{
   font-family:var(--font-poster); font-weight:400;
-  font-size:clamp(1.7rem,3.6vw,2.6rem); line-height:1.08;
-  margin:.5rem 0 .8rem; color:var(--paper); max-width:22ch;
+  font-size:clamp(1.25rem,2.5vw,1.95rem); line-height:1.12;
+  margin:.5rem 0 .8rem; color:var(--paper); max-width:none;
 }
 .backcover > .bc-inner > p{max-width:46rem; color:#d9cdba; margin:0 0 1.4rem;}
 .bc-grid{display:grid; gap:1.8rem; margin:2rem 0 2rem;}
@@ -691,7 +702,7 @@ td .sub{
 
   <p class="dropcap">Picture a horse in a field. It is strong. It is quick. It has covered a great deal of ground in its life. And right now it is doing absolutely nothing for you, because it has no bridle, no saddle, and no reason to go anywhere.</p>
 
-  <p>That horse is what the industry calls a <em class="term">large language model</em> — an LLM. ChatGPT, Claude and Gemini are all built on one. Before anyone puts tack on it, here is the whole of what it does:</p>
+  <p>That horse is what the industry calls a <em class="term">large language model</em> — an LLM. ChatGPT, Claude and Gemini are all built on one. Before anyone puts tack on it, here is what it actually does:</p>
 
   <p><strong>It reads the words in front of it and works out what should come next.</strong> Then it does that again, and again, one word at a time, until the answer is finished. It learned how by reading an enormous amount of writing — books, manuals, websites, conversations.</p>
 
@@ -738,7 +749,7 @@ td .sub{
     <p class="standfirst">Add the reins and you have a chatbot. Now it goes where you point it.</p>
   </div>
 
-  <p class="dropcap">The bridle is the chat box. You type, it answers — that back-and-forth is the whole of what people mean by a <em class="term">chatbot</em>. Model plus reins. Nothing more mysterious than that.</p>
+  <p class="dropcap">The bridle is the chat box. You type, it answers — that back-and-forth is what people mean by a <em class="term">chatbot</em>. Model plus reins. Nothing more mysterious than that.</p>
 
   <p>Reins only work if you use them. A loose rein gets you a horse wandering toward whatever looks interesting, which is exactly what a vague question gets you: a general, hedge-everything answer that could have been written for anybody.</p>
 
@@ -774,7 +785,7 @@ We're a family-run bakery in Asheville.</code>
     </div>
   </div>
 
-  <p>Four things did the work there: <strong>who you are</strong>, <strong>what you want</strong>, <strong>how long</strong>, and <strong>what tone</strong>. That is most of what people dress up as "prompt engineering".</p>
+  <p>Four things did the work there: <strong>who you are</strong>, <strong>what you want</strong>, <strong>how long</strong>, and <strong>what tone</strong>. That is most of what people dress up as <strong><em>&#8220;prompt engineering&#8221;</em></strong>.</p>
 
   <h3>How far it can see: the context window</h3>
   <p>Everything in the current conversation is what the horse can hold in its head on this one ride — the <em class="term">context window</em>. It is large but not endless. On a very long ride, the earliest part of the conversation falls out the back, and the model stops referring to it.</p>
@@ -814,7 +825,7 @@ We're a family-run bakery in Asheville.</code>
 
   <h3>What goes in a saddle</h3>
   <div class="box">
-    <span class="label">Worked example — a plumbing company's estimating assistant</span>
+    <span class="label">Working example — a plumbing company's estimating assistant</span>
     <p><strong>Who you are.</strong> You help Dale &amp; Son, a two-truck residential plumbing company, turn inquiry emails into written estimates.</p>
     <p><strong>What you always do.</strong> Pull out the job, the address and the access notes. Price from the rate card below. Show labor and parts on separate lines. Add sales tax at the rate on file.</p>
     <p><strong>Facts you may rely on.</strong> Service call $95. Labor $110/hour, one-hour minimum. Saturday rate ×1.5. We do not work on gas lines.</p>
@@ -835,7 +846,7 @@ We're a family-run bakery in Asheville.</code>
     <p class="standfirst">It will. Knowing how it bolts is most of knowing how to sit it.</p>
   </div>
 
-  <p class="dropcap">A horse is not malicious when it spooks at a plastic bag. It is doing exactly what it is built to do, in a situation you didn't anticipate. Every failure below is the same kind of thing, and none of them mean anything is broken.</p>
+  <p class="dropcap">A horse is not malicious when it shies at a shed snakeskin in the grass. It is doing exactly what it is built to do, in a situation you didn't anticipate. Every failure below is the same kind of thing, and none of them mean anything is broken.</p>
 
   <h3>Three ways it goes wrong</h3>
   <ul>
@@ -856,7 +867,7 @@ We're a family-run bakery in Asheville.</code>
 
   <p>There is a fourth way it goes wrong, and it only shows up once the horse can act on the world rather than only talk about it &mdash; one bad instruction carried out two hundred times before anybody notices. That one belongs with the saddlebags, which is next session.</p>
 
-  <p class="pull">A wrong answer costs it nothing. That is the whole problem, in one line.</p>
+  <p class="pull">A wrong answer costs it nothing. That is the problem, in one line.</p>
 </section>
 <!-- ============================ CH 5 ============================ -->
 <section class="chapter" id="ch5">
@@ -866,16 +877,16 @@ We're a family-run bakery in Asheville.</code>
     <p class="standfirst">Two websites, a free account each, and the one setting worth finding.</p>
   </div>
 
-  <p class="dropcap">You don't need to buy anything today. Both of the big assistants run in an ordinary web browser and both have a free tier. Open one, make an account with your email address, and type in the box at the bottom. That is the whole setup.</p>
+  <p class="dropcap">You don't need to buy anything today. Both of the big assistants run in an ordinary web browser and both have a free tier. Open one, make an account with your email address, and type in the box at the bottom. That is all the setup there is.</p>
 
   <div class="links">
-    <a class="linkcard" href="https://chatgpt.com">
+    <a class="linkcard" href="https://chatgpt.com" target="_blank" rel="noopener">
       <span class="tag">Made by OpenAI</span>
       <span class="name">ChatGPT</span>
       <span class="url">chatgpt.com</span>
       <span class="note">The one most people have heard of. Free tier, paid tier around $20 a month.</span>
     </a>
-    <a class="linkcard" href="https://claude.ai">
+    <a class="linkcard" href="https://claude.ai" target="_blank" rel="noopener">
       <span class="tag">Made by Anthropic</span>
       <span class="name">Claude</span>
       <span class="url">claude.ai</span>
@@ -887,7 +898,7 @@ We're a family-run bakery in Asheville.</code>
   <p>This is the saddle from chapter three, and both sites call it a <strong>Project</strong>. Anything you write in a project's instructions is sent along with every message you send inside it — you type it once instead of every time.</p>
 
   <ol class="checklist">
-    <li><strong>Sign in</strong> at chatgpt.com or claude.ai.</li>
+    <li><strong>Sign in</strong> at <a class="repo" href="https://chatgpt.com" target="_blank" rel="noopener">chatgpt.com</a> or <a class="repo" href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a>.</li>
     <li><strong>Find "Projects"</strong> in the menu down the left-hand side.</li>
     <li><strong>Make a new project</strong> and give it the name of the job — "Estimates", "Monday numbers".</li>
     <li><strong>Paste your standing instructions</strong> into the instructions box. Who you are, what you always do, the facts it may rely on, the tone, and the nevers.</li>
@@ -926,6 +937,17 @@ We're a family-run bakery in Asheville.</code>
     </table>
   </div>
 
+  <h3>Three more you will meet later</h3>
+  <p>Nothing to do with these today. They are here so that when you hear the names &mdash; and you will &mdash; you know what they are and when they turn up. All three are free to start.</p>
+
+  <div class="box">
+    <span class="label">Coming later in the series</span>
+    <p><a class="repo" href="https://code.visualstudio.com" target="_blank" rel="noopener">code.visualstudio.com</a> &mdash; <strong>VS Code.</strong> The editor: a window onto one folder of your own work. We install it in session four.</p>
+    <p><a class="repo" href="https://github.com" target="_blank" rel="noopener">github.com</a> &mdash; <strong>GitHub.</strong> Where this course keeps its class folder, and where your undo comes from once you have one. Session seven.</p>
+    <p><a class="repo" href="https://vercel.com" target="_blank" rel="noopener">vercel.com</a> &mdash; <strong>Vercel.</strong> How something you have built stops living on your laptop and goes onto the internet. Session ten.</p>
+    <p>If you are a developer, or you employ one, those three plus Codex and Claude Code are the toolkit. If you are not, you will still meet all of them here, in order, with nothing assumed.</p>
+  </div>
+
   <div class="box stable">
     <span class="label">Before you paste anything in</span>
     <ul>
@@ -950,7 +972,7 @@ We're a family-run bakery in Asheville.</code>
       <p class="horse-line">Sugar cubes. The horse works for sugar.</p>
       <p>A token is a chunk of a word — roughly four characters, or about three-quarters of an average word. "Plumbing" is a couple of tokens. This paragraph is about eighty.</p>
       <p>Every word you send it and every word it writes back costs sugar cubes. That's the meter running underneath all of it. On a free account you get a bowl a day and then the horse stops until tomorrow. On a paid account you get a much bigger bowl. And when you set up automation that runs on its own, you pay by the cube.</p>
-      <p><strong>Why it matters in practice:</strong> feeding it your entire 40-page price list on every single email reply costs forty pages of sugar, every time. Feed it what the job needs, not the whole barn. That is the whole of "managing your token costs".</p>
+      <p><strong>Why it matters in practice:</strong> feeding it your entire 40-page price list on every single email reply costs forty pages of sugar, every time. Feed it what the job needs, not the whole barn. That is what "managing your token costs" comes down to.</p>
     </div>
 
     
@@ -986,7 +1008,7 @@ We're a family-run bakery in Asheville.</code>
 <div class="qa">
       <h3 class="q">It told me something completely wrong. Is mine faulty?</h3>
       <p class="horse-line">No. That's the horse spooking, and it's chapter four.</p>
-      <p>It will state a wrong thing with exactly the same confidence as a right thing, because producing a plausible sentence is the whole job. This isn't a defect you can settle down out of it. It's the reason a person checks anything that costs money, goes to a customer, or can't be undone.</p>
+      <p>It will state a wrong thing with exactly the same confidence as a right thing, because producing a plausible sentence is what it does. This isn't a defect you can settle down out of it. It's the reason a person checks anything that costs money, goes to a customer, or can't be undone.</p>
     </div>
 
   
@@ -1030,7 +1052,7 @@ We're a family-run bakery in Asheville.</code>
     <dd>A chunk of a word &mdash; how models count length, and how you're usually billed. <span class="horse">Sugar cubes.</span></dd>
 
     <dt>Hallucination <span class="from">001</span></dt>
-    <dd>Making something up and sounding certain. <span class="horse">Bolting at a plastic bag.</span></dd>
+    <dd>Making something up and sounding certain. <span class="horse">Shying at a shed snakeskin.</span></dd>
 
     <dt>Human in the loop <span class="from">001</span></dt>
     <dd>A person approves before something real happens. <span class="horse">A hand on the reins.</span></dd>
@@ -1046,7 +1068,7 @@ We're a family-run bakery in Asheville.</code>
 <!-- ============================ ONE PAGE ============================ -->
 <section class="chapter" id="onepage">
   <div class="chapter-head">
-    <h2>The whole thing on one page</h2>
+    <h2>Everything on one page</h2>
     <p class="standfirst">Photograph this before you go.</p>
   </div>
 
@@ -1087,7 +1109,7 @@ We're a family-run bakery in Asheville.</code>
 <section class="backcover">
   <div class="bc-inner">
     <span class="bc-kicker">Want someone to hold the reins with you?</span>
-    <h2>I do this for a living, and I quite like it.</h2>
+    <h2>I do this for a living, and love to help people.</h2>
     <p>Thirty-plus years in enterprise software and a computer science degree — which mostly means I have watched a great many horses bolt, and I can usually tell you which ones are worth saddling before you spend money on the saddle.</p>
 
     <div class="bc-grid">

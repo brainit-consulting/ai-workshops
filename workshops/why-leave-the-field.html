@@ -383,6 +383,7 @@ details.demo .say{font-family:var(--font-hand); font-size:1.25rem; color:var(--e
 .faq{max-width:var(--measure);}
 .qa{padding:1.8rem 0; border-bottom:1px solid var(--rule);}
 .qa:first-child{padding-top:.6rem;}
+.faq .qa:last-child{border-bottom:none; padding-bottom:0;}
 .qa .q{
   font-family:var(--font-display); font-weight:700;
   font-size:clamp(1.3rem,2.4vw,1.9rem); line-height:1.15;
@@ -431,8 +432,8 @@ details.demo .say{font-family:var(--font-hand); font-size:1.25rem; color:var(--e
 }
 .backcover h2{
   font-family:var(--font-poster); font-weight:400;
-  font-size:clamp(1.7rem,3.6vw,2.6rem); line-height:1.08;
-  margin:.5rem 0 .8rem; color:var(--paper); max-width:22ch;
+  font-size:clamp(1.25rem,2.5vw,1.95rem); line-height:1.12;
+  margin:.5rem 0 .8rem; color:var(--paper); max-width:none;
 }
 .backcover > .bc-inner > p{max-width:46rem; color:#d9cdba; margin:0 0 1.4rem;}
 .bc-grid{display:grid; gap:1.8rem; margin:2rem 0 2rem;}
@@ -775,7 +776,7 @@ code .</code>
 
       <p>The instruction, in full:</p>
       <div class="compare"><div class="good">
-        <span class="tag">The whole prompt</span>
+        <span class="tag">The prompt</span>
         <code>Read notes.txt and rate-card.txt first. Then write an
 estimate for every email in inbox/, saving each one into
 estimates/ named after the customer, like alvarez.txt.
@@ -789,7 +790,7 @@ paragraph what you did.</code>
         <p>Worth knowing generally: long instructions are normal and expected. Write them somewhere comfortable, then paste them in.</p>
       </div>
 
-      <p>That is the lot. No hidden setup, no special version, no rehearsed answer &mdash; and the same six steps are how you would do it on your own machine.</p>
+      <p>That is everything. No hidden setup, no special version, no rehearsed answer &mdash; and the same six steps are how you would do it on your own machine.</p>
       <p class="say">If it does something different today than it did in rehearsal, we'll talk about that too. That's the honest half of the lesson.</p>
     </div>
   </details>
@@ -805,7 +806,7 @@ paragraph what you did.</code>
     <p class="standfirst">Nothing wrong with the field. But out there, you are the courier.</p>
   </div>
 
-  <p class="dropcap">Think about how you actually used a chatbot after the last session. You had something on your screen. You selected it, copied it, went to another tab, pasted it in, typed what you wanted, waited, read the answer, copied that, went back, pasted it where it needed to go. Then the next email arrived and you did the whole thing again.</p>
+  <p class="dropcap">Think about how you actually used a chatbot after the last session. You had something on your screen. You selected it, copied it, went to another tab, pasted it in, typed what you wanted, waited, read the answer, copied that, went back, pasted it where it needed to go. Then the next email arrived and you did it all again.</p>
 
   <p>That works. Thousands of businesses run on exactly that, and if it is saving you an hour a week, keep doing it. But notice who is doing the fetching and carrying. The horse is standing in a field. Every single thing it needs to know, you walk out and hand to it, and every result, you walk back and carry away.</p>
 
@@ -870,7 +871,7 @@ paragraph what you did.</code>
     <p class="standfirst">The horse thing gets thin here. So we'll drop it for a page.</p>
   </div>
 
-  <p class="dropcap">A file is a thing with a name and some contents. That is the whole definition. A photo is a file. A letter is a file. Your rate card is a file. A folder is a box you put files in, and a folder can hold other folders, which is why things end up four boxes deep and nobody can find anything.</p>
+  <p class="dropcap">A file is a thing with a name and some contents. That is the definition. A photo is a file. A letter is a file. Your rate card is a file. A folder is a box you put files in, and a folder can hold other folders, which is why things end up four boxes deep and nobody can find anything.</p>
 
   <p>You already know this. You have been using files for thirty years. The reason it feels shaky is that most of us stopped looking at where things are — you search for the document by name, it appears, you never think about which box it came out of. That was fine. From here on it matters, because when you tell an assistant to work on something, you are going to have to tell it <em>where</em>.</p>
 
@@ -928,7 +929,7 @@ paragraph what you did.</code>
       <text class="lbl-sm" x="672" y="320">your photos, your taxes,</text>
       <text class="lbl-sm" x="672" y="344">everything else &mdash; untouched</text>
     </svg>
-    <figcaption><b>Fig. 2</b> &mdash; The ember line is the whole safety story. An assistant opened in this folder works in this folder.</figcaption>
+    <figcaption><b>Fig. 2</b> &mdash; The ember line is what keeps this safe. An assistant opened in this folder works in this folder.</figcaption>
   </figure>
 
   <p>When you sit an assistant down in that folder, that folder is its world. It can read the rate card because the rate card is in the room. It cannot read your bank statements, because your bank statements are not in the room. You did not have to configure that or trust a promise about it — it follows from where you opened it.</p>
@@ -1012,7 +1013,7 @@ paragraph what you did.</code>
     <dd>A chunk of a word &mdash; how length is counted, and how you're billed. <span class="horse">Sugar cubes.</span></dd>
 
     <dt>Hallucination <span class="from">001</span></dt>
-    <dd>Making something up and sounding certain. <span class="horse">Bolting at a plastic bag.</span></dd>
+    <dd>Making something up and sounding certain. <span class="horse">Shying at a shed snakeskin.</span></dd>
 
     <dt>Tool <span class="from">002</span></dt>
     <dd>A specific action it's allowed to take in the real world. <span class="horse">A saddlebag.</span></dd>
@@ -1048,7 +1049,7 @@ paragraph what you did.</code>
 <!-- ============================ ONE PAGE ============================ -->
 <section class="chapter" id="onepage">
   <div class="chapter-head">
-    <h2>The whole thing on one page</h2>
+    <h2>Everything on one page</h2>
     <p class="standfirst">Photograph this before you go.</p>
   </div>
   <div class="strip">
@@ -1059,10 +1060,11 @@ paragraph what you did.</code>
     </div>
     <div class="panel">
       <svg viewBox="0 0 900 620" aria-hidden="true">
-        <rect x="60" y="60" width="780" height="500" rx="10" fill="#eadfcc" stroke="#b8391c" stroke-width="10"/>
-        <rect x="140" y="170" width="620" height="80" rx="6" fill="#f4ede1" stroke="#c9b99f" stroke-width="4"/>
-        <rect x="140" y="280" width="620" height="80" rx="6" fill="#f4ede1" stroke="#c9b99f" stroke-width="4"/>
-        <rect x="140" y="390" width="620" height="80" rx="6" fill="#f4ede1" stroke="#c9b99f" stroke-width="4"/>
+        <path fill="#241d16" d="M110,190 v-40 a18,18 0 0 1 18,-18 h190 a18,18 0 0 1 14,7 l34,45 h416 a18,18 0 0 1 18,18 v300 a18,18 0 0 1 -18,18 h-654 a18,18 0 0 1 -18,-18 Z"/>
+        <rect x="230" y="212" width="440" height="230" rx="8" fill="#f4ede1" stroke="#c9b99f" stroke-width="6" transform="rotate(-3 450 330)"/>
+        <rect x="250" y="228" width="440" height="230" rx="8" fill="#f4ede1" stroke="#c9b99f" stroke-width="6" transform="rotate(2 450 330)"/>
+        <g stroke="#c9b99f" stroke-width="12" stroke-linecap="round"><path d="M300,290 h340"/><path d="M300,340 h340"/><path d="M300,390 h240"/></g>
+        <path fill="#b8391c" d="M110,300 h680 a18,18 0 0 1 18,18 v202 a18,18 0 0 1 -18,18 h-680 a18,18 0 0 1 -18,-18 v-202 a18,18 0 0 1 18,-18 Z"/>
       </svg>
       <h4>2 &middot; One folder, one job</h4>
       <p>Draw a line around the work. Everything happens inside it.</p>
@@ -1086,7 +1088,7 @@ paragraph what you did.</code>
       <p>It comes into the room and starts opening gates.</p>
     </div>
   </div>
-  <p style="margin-top:2rem"><strong>Nothing to install today.</strong> One folder, on your own machine, with real work in it. That is the whole homework.</p>
+  <p style="margin-top:2rem"><strong>Nothing to install today.</strong> One folder, on your own machine, with real work in it. That is all the homework there is.</p>
 </section>
 <!-- ============================ NEXT TIME ============================ -->
 <section class="nexttime" id="nexttime">
@@ -1099,7 +1101,7 @@ paragraph what you did.</code>
 <section class="backcover">
   <div class="bc-inner">
     <span class="bc-kicker">Want someone to hold the reins with you?</span>
-    <h2>I do this for a living, and I quite like it.</h2>
+    <h2>I do this for a living, and love to help people.</h2>
     <p>Thirty-plus years in enterprise software and a computer science degree — which mostly means I have watched a great many horses bolt, and I can usually tell you which ones are worth saddling before you spend money on the saddle.</p>
 
     <div class="bc-grid">

@@ -383,6 +383,7 @@ details.demo .say{font-family:var(--font-hand); font-size:1.25rem; color:var(--e
 .faq{max-width:var(--measure);}
 .qa{padding:1.8rem 0; border-bottom:1px solid var(--rule);}
 .qa:first-child{padding-top:.6rem;}
+.faq .qa:last-child{border-bottom:none; padding-bottom:0;}
 .qa .q{
   font-family:var(--font-display); font-weight:700;
   font-size:clamp(1.3rem,2.4vw,1.9rem); line-height:1.15;
@@ -431,8 +432,8 @@ details.demo .say{font-family:var(--font-hand); font-size:1.25rem; color:var(--e
 }
 .backcover h2{
   font-family:var(--font-poster); font-weight:400;
-  font-size:clamp(1.7rem,3.6vw,2.6rem); line-height:1.08;
-  margin:.5rem 0 .8rem; color:var(--paper); max-width:22ch;
+  font-size:clamp(1.25rem,2.5vw,1.95rem); line-height:1.12;
+  margin:.5rem 0 .8rem; color:var(--paper); max-width:none;
 }
 .backcover > .bc-inner > p{max-width:46rem; color:#d9cdba; margin:0 0 1.4rem;}
 .bc-grid{display:grid; gap:1.8rem; margin:2rem 0 2rem;}
@@ -815,7 +816,7 @@ details.demo .say{font-family:var(--font-hand); font-size:1.25rem; color:var(--e
 
   <p>Notice what happened this morning: I did the entire job in the assistant panel on the right and never touched the black one. That is normal. You could work this way for months. So it is worth being straight about what the terminal is actually for, rather than leaving it as the scary part of the screen.</p>
 
-  <p>It is a place where you type an instruction and press enter. That is the entire idea. Where the panel on the right talks to the horse, the terminal talks to the stable itself — the computer, directly, without any buttons in the way. Installing things, checking things, starting things: that is its job, and it is a job you will need perhaps once a month.</p>
+  <p>It is a place where you type an instruction and press enter. That is all it is. Where the panel on the right talks to the horse, the terminal talks to the stable itself — the computer, directly, without any buttons in the way. Installing things, checking things, starting things: that is its job, and it is a job you will need perhaps once a month.</p>
 
   <div class="box">
     <span class="label">Three words, and how they fit together</span>
@@ -828,7 +829,7 @@ details.demo .say{font-family:var(--font-hand); font-size:1.25rem; color:var(--e
     <p>These are the ones I use in front of you, and they are a fair sample of what the terminal is for &mdash; asking the computer about the software you have, rather than doing the work itself.</p>
     <p><code>claude --version</code> &mdash; tells you which version of the assistant you have. Useful when something behaves oddly, or when instructions you read online assume a newer one.</p>
     <p><code>claude --update</code> &mdash; checks whether there is a newer version and installs it if there is. If you are already current it says so and does nothing.</p>
-    <p>That is genuinely the shape of it. You are not commanding the machine to do your work; you are asking after its health.</p>
+    <p>Those two are a fair sample of what the terminal is for. You are not commanding the machine to do your work; you are asking after its health.</p>
   </div>
 
   <p>Why that pair, out of everything? Because this software changes every week or two, and almost every "it worked yesterday and not today" turns out to be a version behind. Knowing how to check and how to update is most of keeping the thing healthy, and it takes ten seconds.</p>
@@ -857,7 +858,7 @@ details.demo .say{font-family:var(--font-hand); font-size:1.25rem; color:var(--e
   </ul>
 
   <h3>The one that is</h3>
-  <p>The assistant can change and delete files, inside the folder you opened it in. That is the whole point of it — it is also the only genuine hazard in this room. If it edits your rate card and gets it wrong, the old rate card is gone, in the same way it would be gone if you overwrote it yourself.</p>
+  <p>The assistant can change and delete files, inside the folder you opened it in. That is what it is for &mdash; and it is also the only genuine hazard in this room. If it edits your rate card and gets it wrong, the old rate card is gone, in the same way it would be gone if you overwrote it yourself.</p>
 
   <p>There is a proper answer to this, and we get to it in session seven: a way of keeping every previous version of everything, forever, so any mistake becomes a matter of stepping back rather than starting again. Until then, the boring version below works fine.</p>
 
@@ -888,12 +889,12 @@ details.demo .say{font-family:var(--font-hand); font-size:1.25rem; color:var(--e
     <li><strong>Open that folder in VS Code.</strong> File, then Open Folder, then pick it. The window will look empty, because it is.</li>
     <li><strong>Find the three regions from chapter two.</strong> Files on the left, the big pane, and the dark strip along the bottom. If you can point at all three, you are ready.</li>
     <li><strong>Put one real file in it.</strong> Drag in a copy of something from your own business &mdash; a price list, a standard reply, anything you would not mind an assistant reading.</li>
-    <li><strong>Stop there.</strong> That is the whole assignment. Do not install anything else, and do not go looking for the assistant yet.</li>
+    <li><strong>Stop there.</strong> That is all you need to do. Do not install anything else, and do not go looking for the assistant yet.</li>
   </ol>
 
   <div class="box stable">
     <span class="label">If you fall off</span>
-    <p>Everything from every session lives in a public folder on the internet, with a marker for the start and end of each workshop. If step three defeats you at half past nine on a Tuesday, you can go and look at exactly what your screen was supposed to look like, and pick it up from there. It is at <a class="repo" href="https://github.com/brainit-consulting/ai-workshops" target="_blank" rel="noopener">github.com/brainit-consulting/ai-workshops</a> &mdash; pick <em>end-of-002</em> from the dropdown, then the green Code button and Download ZIP. Nobody is counting who uses it.</p>
+    <p>Everything from every session lives in a public folder on the internet, with a marker for the start and end of each workshop. If step three defeats you at half past nine on a Tuesday, you can go and look at exactly what your screen was supposed to look like, and pick it up from there. It is at <a class="repo" href="https://github.com/brainit-consulting/ai-workshops" target="_blank" rel="noopener">github.com/brainit-consulting/ai-workshops</a> &mdash; pick <em>end-of-004</em> from the dropdown, then the green Code button and Download ZIP. Nobody is counting who uses it.</p>
   </div>
 </section>
 
@@ -964,7 +965,7 @@ details.demo .say{font-family:var(--font-hand); font-size:1.25rem; color:var(--e
     <dd>A chunk of a word &mdash; how length is counted, and how you're billed. <span class="horse">Sugar cubes.</span></dd>
 
     <dt>Hallucination <span class="from">001</span></dt>
-    <dd>Making something up and sounding certain. <span class="horse">Bolting at a plastic bag.</span></dd>
+    <dd>Making something up and sounding certain. <span class="horse">Shying at a shed snakeskin.</span></dd>
 
     <dt>Tool <span class="from">002</span></dt>
     <dd>A specific action it's allowed to take in the real world. <span class="horse">A saddlebag.</span></dd>
@@ -1009,16 +1010,17 @@ details.demo .say{font-family:var(--font-hand); font-size:1.25rem; color:var(--e
 <!-- ============================ ONE PAGE ============================ -->
 <section class="chapter" id="onepage">
   <div class="chapter-head">
-    <h2>The whole thing on one page</h2>
+    <h2>Everything on one page</h2>
     <p class="standfirst">Photograph this before you go.</p>
   </div>
   <div class="strip">
     <div class="panel">
       <svg viewBox="0 0 900 620" aria-hidden="true">
-        <rect x="60" y="60" width="780" height="500" rx="10" fill="#eadfcc" stroke="#b8391c" stroke-width="10"/>
-        <rect x="140" y="170" width="620" height="80" rx="6" fill="#f4ede1" stroke="#c9b99f" stroke-width="4"/>
-        <rect x="140" y="280" width="620" height="80" rx="6" fill="#f4ede1" stroke="#c9b99f" stroke-width="4"/>
-        <rect x="140" y="390" width="620" height="80" rx="6" fill="#f4ede1" stroke="#c9b99f" stroke-width="4"/>
+        <path fill="#241d16" d="M110,190 v-40 a18,18 0 0 1 18,-18 h190 a18,18 0 0 1 14,7 l34,45 h416 a18,18 0 0 1 18,18 v300 a18,18 0 0 1 -18,18 h-654 a18,18 0 0 1 -18,-18 Z"/>
+        <rect x="230" y="212" width="440" height="230" rx="8" fill="#f4ede1" stroke="#c9b99f" stroke-width="6" transform="rotate(-3 450 330)"/>
+        <rect x="250" y="228" width="440" height="230" rx="8" fill="#f4ede1" stroke="#c9b99f" stroke-width="6" transform="rotate(2 450 330)"/>
+        <g stroke="#c9b99f" stroke-width="12" stroke-linecap="round"><path d="M300,290 h340"/><path d="M300,340 h340"/><path d="M300,390 h240"/></g>
+        <path fill="#b8391c" d="M110,300 h680 a18,18 0 0 1 18,18 v202 a18,18 0 0 1 -18,18 h-680 a18,18 0 0 1 -18,-18 v-202 a18,18 0 0 1 18,-18 Z"/>
       </svg>
       <h4>1 &middot; One folder, one job</h4>
       <p>From last session. The line round the work.</p>
@@ -1062,7 +1064,7 @@ details.demo .say{font-family:var(--font-hand); font-size:1.25rem; color:var(--e
 <section class="backcover">
   <div class="bc-inner">
     <span class="bc-kicker">Want someone to hold the reins with you?</span>
-    <h2>I do this for a living, and I quite like it.</h2>
+    <h2>I do this for a living, and love to help people.</h2>
     <p>Thirty-plus years in enterprise software and a computer science degree — which mostly means I have watched a great many horses bolt, and I can usually tell you which ones are worth saddling before you spend money on the saddle.</p>
 
     <div class="bc-grid">

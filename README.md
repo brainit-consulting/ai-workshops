@@ -16,10 +16,12 @@ On GitHub, use the branch/tag dropdown at the top left and choose:
 
 - `end-of-004` — after *Inside the Tack Room*
 - `end-of-006` — after *Driving the Working Horse*
+- `end-of-007` — after *Breadcrumbs*
 
 Then click the green **Code** button and **Download ZIP**. You do not
-need to know what git is to do that. Session seven is where we learn it
-properly.
+need to know what git is to do that — and session seven explains what
+those markers in the dropdown actually are, because they are the same
+thing you now put on your own folders.
 
 ## What's in here
 
@@ -36,8 +38,9 @@ Same as in the room:
 
 - One job, one folder. Nothing outside it is ever in reach.
 - Read the permission prompt before you answer it.
-- Work on copies of anything you'd be sorry to lose — at least until
-  session seven, when we fit a proper undo.
+- Mark before you hand it anything big, and mark when a piece of work
+  comes out right. From session seven on, that is the undo — you no
+  longer need to work on copies.
 
 ## Something not working?
 
