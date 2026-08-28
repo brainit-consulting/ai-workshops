@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Workshop #002 — The Tack Room</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='24 -8 140 126'%3E%3Crect x='24' y='-8' width='140' height='126' fill='%23f4ede1'/%3E%3Cpath fill='%23241d16' d='M112,40 C150,66 196,102 238,154 L262,132 C216,82 164,40 124,16 Z'/%3E%3Cpath fill='%23241d16' d='M130,40 C120,20 98,14 80,28 L38,92 C33,104 43,114 56,108 L102,88 C122,79 136,58 130,40 Z'/%3E%3Cpath fill='%23241d16' d='M112,30 L104,2 L128,24 Z'/%3E%3Cpath fill='%23241d16' d='M132,32 L134,6 L152,30 Z'/%3E%3Ccircle cx='101' cy='45' r='6' fill='%23f4ede1'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Zilla+Slab:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600;7..72,700&family=Archivo+Narrow:wght@500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   RIDING THE AI HORSE — workshop book
+   Edit the venue/date on the cover (search: EDIT ME)
+   ============================================================ */
+
+:root{
+  --paper:#f4ede1;
+  --paper-deep:#eadfcc;
+  --ink:#241d16;
+  --ink-soft:#5b4d3f;
+  --rule:#c9b99f;
+  --ember:#b8391c;
+  --ember-wash:#f0d9cf;
+  --honey:#c2841f;
+
+  /* slab faces — even stroke weight, no hairlines to squint at */
+  --font-poster:"Alfa Slab One", Georgia, serif;
+  --font-display:"Zilla Slab", Georgia, serif;
+  --font-body:"Literata", Georgia, serif;
+  --font-label:"Archivo Narrow", "Arial Narrow", sans-serif;
+  --font-hand:"Patrick Hand", "Segoe Print", cursive;
+
+  /* text runs the width of the screen — this is shown on a projector.
+     min() so it never overshoots the page gutters. */
+  --measure:min(100%, 72rem);
+}
+
+*{box-sizing:border-box;}
+
+html{
+  /* type scales with the viewport, so a big screen gets big text
+     rather than short lines. A− / A+ step it up three notches. */
+  font-size:clamp(19px, 1.35vw, 28px);
+  scroll-behavior:smooth;
+}
+html.t-1{font-size:clamp(21px, 1.55vw, 32px);}
+html.t-2{font-size:clamp(23px, 1.80vw, 36px);}
+html.t-3{font-size:clamp(25px, 2.05vw, 40px);}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:1.05rem;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* paper grain ------------------------------------------------ */
+.grain{
+  position:fixed; inset:0; pointer-events:none; z-index:50;
+  opacity:.35; mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/><feColorMatrix type='saturate' values='0'/></filter><rect width='180' height='180' filter='url(%23n)' opacity='0.16'/></svg>");
+}
+
+/* running head ----------------------------------------------- */
+.runner{
+  position:sticky; top:0; z-index:40;
+  display:flex; align-items:center; gap:1rem;
+  padding:.55rem clamp(1rem,4vw,3rem);
+  background:var(--paper);
+  border-bottom:1px solid var(--rule);
+  font-family:var(--font-label);
+  text-transform:uppercase; letter-spacing:.12em;
+  font-size:.62rem;
+}
+.runner .brand{font-weight:700; color:var(--ink); text-decoration:none;}
+.runner .brand:hover{color:var(--ember);}
+.runner .brand .wsnum{color:var(--honey); font-weight:700;}
+.cover .kicker .wsnum{
+  background:var(--ember); color:var(--paper);
+  padding:.28em .6em; letter-spacing:.2em; margin-right:.5em;
+}
+.runner .brand em{font-style:normal; color:var(--ember);}
+.runner nav{display:flex; gap:.8rem; flex-wrap:wrap; margin-left:auto;}
+.runner .brand{white-space:nowrap;}
+.runner nav a{color:var(--ink-soft); text-decoration:none; border-bottom:1px solid transparent; padding-bottom:2px;}
+.runner nav a:hover{color:var(--ember); border-bottom-color:var(--ember);}
+.sizer{display:flex; gap:.3rem; margin-left:.6rem;}
+.sizer button{
+  font-family:var(--font-label); font-size:.7rem; font-weight:700;
+  background:none; border:1px solid var(--rule); color:var(--ink-soft);
+  width:2rem; height:1.7rem; cursor:pointer; line-height:1;
+}
+.sizer button:hover{border-color:var(--ember); color:var(--ember);}
+.sizer .wide, .sizer a.wide{
+  width:auto; padding:0 .7rem; height:1.7rem; display:inline-flex; align-items:center;
+  font-family:var(--font-label); font-size:.62rem; font-weight:700;
+  text-transform:uppercase; letter-spacing:.12em; text-decoration:none;
+  border:1px solid var(--rule); color:var(--ink-soft); background:none; cursor:pointer;
+}
+.sizer .wide:hover{border-color:var(--ember); color:var(--ember);}
+
+/* page frame ------------------------------------------------- */
+.page{
+  max-width:none;
+  margin:0;
+  /* generous left gutter — the chapter numerals hang into it */
+  padding:0 clamp(1.1rem,4.5vw,7rem) 0 clamp(1.4rem,6.5vw,10rem);
+}
+
+/* ============ COVER ============ */
+.cover{
+  min-height:88vh;
+  display:grid;
+  grid-template-columns:1fr;
+  align-content:center;
+  padding-block:clamp(2rem,7vw,5rem);
+  border-bottom:3px double var(--rule);
+}
+.cover .kicker{
+  font-family:var(--font-label); text-transform:uppercase;
+  letter-spacing:.34em; font-size:.66rem; color:var(--ember); font-weight:700;
+}
+.cover h1{
+  font-family:var(--font-poster);
+  font-weight:400;
+  font-size:clamp(2.9rem,6.6vw,4.9rem);
+  line-height:.94;
+  margin:.4em 0 .1em;
+  letter-spacing:-.015em;
+  color:var(--honey);
+}
+.cover h1 .ai{
+  color:var(--ember);
+  letter-spacing:.01em;
+}
+.cover h1 .of{
+  display:block; font-family:var(--font-display);
+  font-size:.4em; font-weight:600; font-style:italic;
+  letter-spacing:.02em; margin-left:.25em;
+}
+.cover .deck{
+  font-size:1.28rem; line-height:1.45; max-width:34rem;
+  border-left:3px solid var(--ember); padding-left:1rem; margin:1.4rem 0 0;
+}
+.cover .imprint{
+  margin-top:2.6rem; font-family:var(--font-label); font-size:.78rem;
+  text-transform:uppercase; letter-spacing:.16em; color:var(--ink-soft);
+  line-height:2;
+}
+.cover .imprint .firm{
+  color:var(--ember); font-weight:700; text-decoration:none;
+  border-bottom:2px solid var(--rule); padding-bottom:2px;
+}
+.cover .imprint .firm:hover{border-bottom-color:var(--ember);}
+.cover-art{margin:1rem 0 0; }
+.cover-art svg{width:100%; height:auto; max-height:46vh; display:block;}
+
+@media (min-width:60rem){
+  .cover{grid-template-columns:1.05fr .95fr; gap:2.5rem; align-items:center;}
+  .cover-art{margin:0; grid-column:2; grid-row:1;}
+  .cover-text{grid-column:1; grid-row:1;}
+}
+
+/* ============ CONTENTS ============ */
+.contents{padding:clamp(2.5rem,6vw,4.5rem) 0; border-bottom:1px solid var(--rule);}
+.contents ol{list-style:none; margin:0; padding:0; counter-reset:toc;}
+.contents li{
+  counter-increment:toc;
+  display:flex; align-items:baseline; gap:.9rem;
+  padding:.55rem 0; border-bottom:1px dotted var(--rule);
+}
+.contents li::before{
+  content:counter(toc,decimal-leading-zero);
+  font-family:var(--font-display); font-size:1.5rem; color:var(--ember);
+  min-width:2.4rem;
+}
+.contents a{
+  font-family:var(--font-display); font-size:1.4rem; color:var(--ink);
+  text-decoration:none; font-weight:600;
+}
+.contents a:hover{color:var(--ember);}
+.contents .gloss{
+  font-family:var(--font-body); font-size:.85rem; color:var(--ink-soft);
+  margin-left:auto; text-align:right; max-width:32rem; line-height:1.35;
+}
+@media (max-width:44rem){ .contents .gloss{display:none;} }
+
+/* ============ CHAPTERS ============ */
+.chapter{
+  padding:clamp(3rem,8vw,6rem) 0 clamp(2rem,5vw,4rem);
+  border-bottom:1px solid var(--rule);
+  position:relative;
+}
+.chapter-head{position:relative; margin-bottom:2.2rem;}
+.chapter-num{
+  font-family:var(--font-poster);
+  font-size:clamp(2rem,3.4vw,2.8rem);
+  line-height:1;
+  color:var(--honey);
+  letter-spacing:.02em;
+  pointer-events:none;
+  display:flex; align-items:center; gap:.6rem;
+}
+/* a rule running off to the right of the numeral */
+.chapter-num::after{
+  content:""; flex:1; height:2px; background:var(--rule); max-width:14rem;
+}
+.chapter-num{margin-bottom:.1em;}
+.chapter h2{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:clamp(2rem,5.6vw,3.4rem);
+  line-height:1.02;
+  margin:-.12em 0 .2em;
+  max-width:24ch;
+}
+.chapter .standfirst{
+  font-size:1.22rem; line-height:1.5; font-style:italic; color:var(--ink-soft);
+  max-width:54rem; margin:.6rem 0 0;
+}
+.chapter p{max-width:var(--measure); margin:0 0 1.05em;}
+.chapter h3{
+  font-family:var(--font-label); text-transform:uppercase; letter-spacing:.16em;
+  font-size:.8rem; font-weight:700; color:var(--ember);
+  margin:2.2em 0 .7em; padding-bottom:.35em; border-bottom:1px solid var(--rule);
+  max-width:var(--measure);
+}
+.chapter ul,.chapter ol{max-width:var(--measure); padding-left:1.3em; margin:0 0 1.2em;}
+.chapter li{margin-bottom:.5em;}
+.chapter li::marker{color:var(--ember);}
+
+/* drop cap on the first paragraph of each chapter */
+.dropcap::first-letter{
+  font-family:var(--font-poster); font-weight:400;
+  float:left; font-size:3.6em; line-height:.86;
+  padding:.06em .09em 0 0; color:var(--honey);
+}
+
+strong{font-weight:700;}
+/* inset shadow, not padding — a highlight that doesn't push the
+   following punctuation away from the word */
+em.term{font-style:normal; font-weight:700; box-shadow:inset 0 -.34em 0 var(--ember-wash);}
+
+/* pull quote — deliberately breaks the measure */
+.pull{
+  font-family:var(--font-hand);
+  font-size:clamp(1.7rem,4vw,2.7rem);
+  line-height:1.28; font-style:normal;
+  margin:2.2rem 0 2.4rem;
+  padding:0 0 0 1.2rem;
+  border-left:4px solid var(--ember);
+  max-width:60rem;
+}
+@media (min-width:70rem){ .pull{margin-left:-3rem;} }
+
+/* boxes ------------------------------------------------------ */
+.box{
+  border:1px solid var(--rule);
+  background:var(--paper-deep);
+  padding:1.4rem 1.7rem;
+  margin:1.8rem 0 2rem;
+  max-width:62rem;
+}
+.box .label{
+  font-family:var(--font-label); text-transform:uppercase; letter-spacing:.18em;
+  font-size:.68rem; font-weight:700; color:var(--ember); display:block; margin-bottom:.6rem;
+}
+.box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:0;}
+.box.stable{border-left:5px solid var(--ember);}
+
+.compare{display:grid; gap:1.2rem; margin:1.6rem 0 2rem; max-width:var(--measure);}
+@media (min-width:48rem){ .compare{grid-template-columns:1fr 1fr;} }
+.compare > div{border:1px solid var(--rule); padding:1.1rem 1.2rem; background:var(--paper-deep);}
+.compare .tag{
+  font-family:var(--font-label); text-transform:uppercase; letter-spacing:.16em;
+  font-size:.66rem; font-weight:700; display:block; margin-bottom:.5rem;
+}
+.compare .bad .tag{color:var(--ink-soft);}
+.compare .good .tag{color:var(--ember);}
+.compare p{font-size:.95rem; margin:0;}
+.compare code{
+  font-family:var(--font-label); font-size:.95em; letter-spacing:.01em;
+  display:block; background:var(--paper); border-left:3px solid var(--rule);
+  padding:.6rem .8rem; margin-top:.5rem; white-space:pre-wrap; line-height:1.45;
+}
+
+/* figures ---------------------------------------------------- */
+figure{margin:2.4rem 0; max-width:var(--measure);}
+figure svg{width:100%; height:auto; display:block;}
+/* near-square diagrams stay on one screen instead of filling it */
+figure.tall svg{max-height:80vh; width:auto; margin:0;}
+figcaption{
+  font-family:var(--font-label); font-size:.76rem; letter-spacing:.06em;
+  color:var(--ink-soft); margin-top:.7rem; padding-top:.5rem;
+  border-top:1px solid var(--rule); max-width:56rem;
+}
+figcaption b{font-weight:700; color:var(--ember); text-transform:uppercase; letter-spacing:.14em; font-size:.9em;}
+figure.wide{max-width:none;}
+
+.strip{display:grid; grid-template-columns:repeat(2,1fr); gap:1.2rem;}
+@media (min-width:56rem){ .strip{grid-template-columns:repeat(4,1fr);} }
+.strip .panel{border:1px solid var(--rule); background:var(--paper-deep); padding:.7rem;}
+.strip .panel h4{
+  font-family:var(--font-label); text-transform:uppercase; letter-spacing:.13em;
+  font-size:.68rem; margin:.5rem 0 .2rem; color:var(--ember); font-weight:700;
+}
+.strip .panel p{font-size:.82rem; margin:0; line-height:1.35; color:var(--ink-soft);}
+
+/* resource cards --------------------------------------------- */
+.links{display:grid; gap:1.4rem; margin:2rem 0 2.6rem; max-width:var(--measure);}
+@media (min-width:48rem){ .links{grid-template-columns:1fr 1fr;} }
+.linkcard{
+  display:block; text-decoration:none; color:var(--ink);
+  border:1px solid var(--rule); border-left:5px solid var(--ember);
+  background:var(--paper-deep); padding:1.3rem 1.5rem;
+}
+.linkcard:hover{background:var(--ember-wash);}
+.linkcard .tag{
+  display:block; font-family:var(--font-label); text-transform:uppercase;
+  letter-spacing:.18em; font-size:.66rem; font-weight:700; color:var(--ink-soft);
+}
+.linkcard .name{
+  display:block; font-family:var(--font-display); font-weight:700;
+  font-size:2rem; line-height:1.1; margin:.2rem 0 .1rem; color:var(--honey);
+}
+.linkcard .url{
+  display:block; font-family:var(--font-label); font-weight:700; font-size:1rem;
+  color:var(--ember); letter-spacing:.04em; border-bottom:2px solid var(--rule);
+  padding-bottom:.4rem; margin-bottom:.6rem;
+}
+.linkcard .note{display:block; font-size:.92rem; line-height:1.45; color:var(--ink-soft);}
+
+/* table ------------------------------------------------------ */
+.tablewrap{overflow-x:auto; margin:2rem 0;}
+table{border-collapse:collapse; width:100%; min-width:40rem; font-size:.92rem;}
+th,td{text-align:left; vertical-align:top; padding:.75rem .8rem; border-bottom:1px solid var(--rule);}
+th{
+  font-family:var(--font-label); text-transform:uppercase; letter-spacing:.13em;
+  font-size:.66rem; color:var(--ember); border-bottom:2px solid var(--rule); font-weight:700;
+}
+td:first-child{font-weight:600;}
+td .sub{
+  font-family:var(--font-label); font-size:.82rem; font-weight:600;
+  color:var(--ember); letter-spacing:.03em;
+}
+
+/* the presenter's steps, shown openly ------------------------- */
+details.demo{
+  border:1px solid var(--rule); border-left:5px solid var(--honey);
+  background:var(--paper-deep); margin:1.8rem 0 2rem;
+  max-width:62rem; padding:0 1.5rem;
+}
+details.demo summary{
+  cursor:pointer; list-style:none; padding:1.1rem 0;
+  font-family:var(--font-label); text-transform:uppercase;
+  letter-spacing:.16em; font-size:.72rem; font-weight:700; color:var(--honey);
+  display:flex; align-items:center; gap:.7rem;
+}
+details.demo summary::-webkit-details-marker{display:none;}
+details.demo summary::before{
+  content:"+"; font-family:var(--font-poster); font-size:1.2rem;
+  line-height:1; color:var(--honey);
+}
+details.demo[open] summary::before{content:"\2013";}
+details.demo summary:hover{color:var(--ember);}
+details.demo .demo-body{padding:0 0 1.3rem;}
+details.demo ol{margin:0 0 1.1rem; padding-left:1.3em;}
+details.demo li{margin-bottom:.45em;}
+details.demo p{margin:0 0 .9em;}
+details.demo .say{font-family:var(--font-hand); font-size:1.25rem; color:var(--ember);}
+
+/* FAQ --------------------------------------------------------- */
+.faq{max-width:var(--measure);}
+.qa{padding:1.8rem 0; border-bottom:1px solid var(--rule);}
+.qa:first-child{padding-top:.6rem;}
+.qa .q{
+  font-family:var(--font-display); font-weight:700;
+  font-size:clamp(1.3rem,2.4vw,1.9rem); line-height:1.15;
+  color:var(--ink); text-transform:none; letter-spacing:0;
+  margin:0 0 .5rem; padding:0; border:none; max-width:40ch;
+}
+.qa .horse-line{
+  font-family:var(--font-hand); font-size:1.4rem; line-height:1.3;
+  color:var(--ember); margin:0 0 .9rem; max-width:44rem;
+}
+.qa p{max-width:var(--measure);}
+.qa p:last-child{margin-bottom:0;}
+
+/* glossary --------------------------------------------------- */
+.glossary dl{margin:0; max-width:var(--measure); column-gap:3.5rem;}
+@media (min-width:70rem){ .glossary dl{columns:2;} .glossary dt{break-after:avoid;} .glossary dd{break-inside:avoid;} }
+.glossary dt{
+  font-family:var(--font-display); font-weight:700; font-size:1.15rem;
+  margin-top:1.3rem; color:var(--ink);
+}
+.glossary dd{margin:.2rem 0 0; padding-bottom:.9rem; border-bottom:1px dotted var(--rule); color:var(--ink-soft);}
+.glossary dd .horse{color:var(--ember); font-style:italic;}
+
+/* checklist -------------------------------------------------- */
+.checklist{list-style:none; padding:0; counter-reset:step; max-width:var(--measure);}
+.checklist li{
+  counter-increment:step; position:relative;
+  padding:.9rem 0 .9rem 3.2rem; border-bottom:1px solid var(--rule);
+}
+.checklist li::before{
+  content:counter(step); position:absolute; left:0; top:.75rem;
+  font-family:var(--font-display); font-size:1.6rem; color:var(--ember); font-weight:700;
+}
+
+/* back cover — the one dark surface in the book --------------- */
+.backcover{
+  background:var(--ink); color:var(--paper);
+  margin:3rem 0 0;
+  padding:clamp(2.4rem,5vw,4rem) clamp(1.6rem,4vw,3.5rem);
+  max-width:var(--measure);
+  border-top:6px solid var(--ember);
+}
+.bc-kicker{
+  display:block; font-family:var(--font-label); text-transform:uppercase;
+  letter-spacing:.26em; font-size:.7rem; font-weight:700; color:var(--honey);
+}
+.backcover h2{
+  font-family:var(--font-poster); font-weight:400;
+  font-size:clamp(1.7rem,3.6vw,2.6rem); line-height:1.08;
+  margin:.5rem 0 .8rem; color:var(--paper); max-width:22ch;
+}
+.backcover > .bc-inner > p{max-width:46rem; color:#d9cdba; margin:0 0 1.4rem;}
+.bc-grid{display:grid; gap:1.8rem; margin:2rem 0 2rem;}
+@media (min-width:52rem){ .bc-grid{grid-template-columns:repeat(3,1fr); gap:2.4rem;} }
+.bc-grid > div{border-top:2px solid var(--ember); padding-top:.9rem;}
+.bc-num{
+  font-family:var(--font-poster); font-size:1.2rem; color:var(--honey);
+  display:block; margin-bottom:.2rem;
+}
+.bc-grid h3{
+  font-family:var(--font-display); font-weight:700; font-size:1.35rem;
+  margin:0 0 .35rem; color:var(--paper); text-transform:none; letter-spacing:0;
+  border:none; padding:0;
+}
+.bc-grid p{margin:0; font-size:.95rem; line-height:1.5; color:#c3b7a4;}
+.bc-fact{
+  font-family:var(--font-hand) !important;
+  font-size:1.45rem !important; line-height:1.35;
+  color:var(--honey) !important;
+  border-left:3px solid var(--ember); padding-left:1rem;
+  max-width:38rem !important;
+}
+.bc-cta{
+  display:flex; flex-wrap:wrap; align-items:center; gap:1rem 1.6rem;
+  margin:2rem 0 0 !important; padding-top:1.5rem;
+  border-top:1px solid #4a3f33;
+  font-family:var(--font-label); text-transform:uppercase; letter-spacing:.16em;
+  font-size:.8rem;
+}
+.bc-cta span{color:#d9cdba; font-weight:600;}
+.bc-cta a{
+  color:var(--ink); background:var(--honey); font-weight:700;
+  padding:.7em 1.3em; text-decoration:none; letter-spacing:.12em;
+}
+.bc-cta a:hover{background:var(--paper);}
+
+/* colophon --------------------------------------------------- */
+.colophon{padding:3rem 0 5rem; font-family:var(--font-label); font-size:.72rem;
+  text-transform:uppercase; letter-spacing:.16em; color:var(--ink-soft); line-height:2;}
+.colophon .firm{color:var(--ember); font-weight:700; text-decoration:none; border-bottom:1px solid var(--rule);}
+
+/* svg drawing conventions ------------------------------------ */
+.ink{fill:#241d16;}
+.ink-far{fill:#5b4d3f;}
+.tack{fill:none; stroke:#b8391c; stroke-width:5; stroke-linecap:round; stroke-linejoin:round;}
+.tack-fill{fill:#b8391c;}
+.hair{fill:none; stroke:#241d16; stroke-width:2.5;}
+.tack-under{fill:none; stroke:#f4ede1; stroke-width:9; stroke-linecap:round; stroke-linejoin:round;}
+.lead{fill:none; stroke:#5b4d3f; stroke-width:2.5; stroke-dasharray:7 6;}
+.lead-under{fill:none; stroke:#f4ede1; stroke-width:8; stroke-linecap:round;}
+.lbl{font-family:"Archivo Narrow","Arial Narrow",sans-serif; font-size:23px; font-weight:700;
+  text-transform:uppercase; letter-spacing:.1em; fill:#241d16;}
+.lbl-em{fill:#b8391c;}
+.lbl-sm{font-family:"Archivo Narrow","Arial Narrow",sans-serif; font-size:18px; font-weight:600;
+  letter-spacing:.03em; fill:#5b4d3f; text-transform:none;}
+.plate{fill:#eadfcc; stroke:#c9b99f; stroke-width:2;}
+
+/* print ------------------------------------------------------ */
+/* NOTE: no CSS running header/footer here. Chrome positions
+   position:fixed elements inside the page content area, so a
+   repeating header collides with the text (measured, 2026-08-27).
+   Use the browser's own Headers and footers option instead — it
+   also supplies page numbers, which CSS cannot in Chrome. */
+.printonly{display:none;}
+
+@media print{
+  html{font-size:12.5pt;}
+  body{background:#fff;}
+  .grain,.runner{display:none !important;}
+  .chapter{page-break-before:always; border-bottom:none;}
+  .cover{min-height:auto; page-break-after:always;}
+  .pull,.box,figure,table,.qa,.workshop{page-break-inside:avoid;}
+  a{color:inherit; text-decoration:none;}
+  /* don't print a full page of dark ink */
+  .backcover{background:#fff !important; color:#000 !important; border:2px solid #000;}
+  .backcover h2,.bc-grid h3,.bc-kicker,.bc-num,.bc-fact{color:#000 !important;}
+  .backcover p,.bc-grid p,.bc-cta span{color:#333 !important;}
+  .bc-cta a{background:none !important; color:#000 !important; border:1px solid #000;}
+}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ============================================================
+     SHARED DRAWINGS
+     ============================================================ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- the horse itself, no tack. viewBox space 0 0 520 360 -->
+    <g id="horse-body">
+      <!-- far legs first, lighter -->
+      <path class="ink-far" d="M212,196 L232,196 L230,254 L236,316 L216,316 L212,254 Z"/>
+      <path class="ink-far" d="M366,200 L392,200 L386,248 L360,284 L366,316 L346,316 L340,282 L364,246 Z"/>
+      <!-- tail -->
+      <path class="ink" d="M394,126 C430,138 450,180 444,232 C440,268 424,290 408,300 C424,264 430,216 417,178 C411,157 401,141 394,126 Z"/>
+      <!-- barrel + haunch + shoulder -->
+      <ellipse class="ink" cx="348" cy="172" rx="60" ry="66"/>
+      <ellipse class="ink" cx="272" cy="180" rx="78" ry="57"/>
+      <ellipse class="ink" cx="200" cy="172" rx="50" ry="60"/>
+      <!-- neck -->
+      <path class="ink" d="M126,44 C170,72 202,100 224,140 L168,196 C154,142 122,102 90,76 Z"/>
+      <!-- head -->
+      <path class="ink" d="M130,40 C120,20 98,14 80,28 L38,92 C33,104 43,114 56,108 L102,88 C122,79 136,58 130,40 Z"/>
+      <!-- ears -->
+      <path class="ink" d="M112,30 L104,2 L128,24 Z"/>
+      <path class="ink" d="M132,32 L134,6 L152,30 Z"/>
+      <!-- mane -->
+      <path class="ink" d="M112,40 C150,66 196,102 238,154 L262,132 C216,82 164,40 124,16 Z"/>
+      <!-- near legs -->
+      <path class="ink" d="M178,196 L202,196 L198,254 L203,316 L179,316 L174,254 Z"/>
+      <path class="ink" d="M336,200 L364,200 L358,248 L332,284 L338,316 L316,316 L310,282 L334,246 Z"/>
+      <!-- hooves -->
+      <rect class="ink" x="174" y="308" width="31" height="12" rx="2"/>
+      <rect class="ink" x="212" y="308" width="27" height="12" rx="2"/>
+      <rect class="ink" x="312" y="308" width="29" height="12" rx="2"/>
+      <rect class="ink" x="342" y="308" width="27" height="12" rx="2"/>
+      <!-- eye -->
+      <circle cx="101" cy="45" r="6" fill="#f4ede1"/>
+      <!-- ground -->
+      <path d="M40,322 L470,322" stroke="#c9b99f" stroke-width="3" fill="none"/>
+    </g>
+
+    <!-- bridle + reins. every strap is drawn twice: a paper casing, then
+         the ember strap, so it stays legible crossing the dark body -->
+    <g id="tack-bridle">
+      <path class="tack-under" d="M116,48 L72,94"/>
+      <path class="tack-under" d="M58,72 L84,102"/>
+      <path class="tack-under" d="M64,98 C140,120 216,132 296,132"/>
+      <path class="tack" d="M116,48 L72,94"/>
+      <path class="tack" d="M58,72 L84,102"/>
+      <path class="tack" d="M64,98 C140,120 216,132 296,132"/>
+      <circle class="tack-fill" cx="66" cy="98" r="7"/>
+    </g>
+
+    <!-- saddle, girth, stirrup -->
+    <g id="tack-saddle">
+      <path class="tack-under" d="M292,128 L296,208"/>
+      <path class="tack-under" d="M264,124 C244,156 246,206 268,238"/>
+      <path class="tack" d="M264,124 C244,156 246,206 268,238"/>
+      <ellipse class="tack-fill" cx="292" cy="120" rx="54" ry="17" transform="rotate(-4 292 120)"/>
+      <ellipse class="tack-fill" cx="340" cy="106" rx="9" ry="16" transform="rotate(16 340 106)"/>
+      <ellipse class="tack-fill" cx="246" cy="116" rx="7" ry="13" transform="rotate(-10 246 116)"/>
+      <path class="tack" d="M292,128 L296,208"/>
+      <path class="tack-fill" d="M282,206 h28 a7,7 0 0 1 7,7 v12 a7,7 0 0 1 -7,7 h-28 a7,7 0 0 1 -7,-7 v-12 a7,7 0 0 1 7,-7 Z M285,214 h22 v11 h-22 Z"/>
+    </g>
+
+    <!-- saddlebags -->
+    <g id="tack-bags">
+      <path class="tack-fill" d="M352,146 h72 a9,9 0 0 1 9,9 v48 a9,9 0 0 1 -9,9 h-72 a9,9 0 0 1 -9,-9 v-48 a9,9 0 0 1 9,-9 Z"/>
+      <path d="M343,168 h90" stroke="#f4ede1" stroke-width="4" fill="none"/>
+      <path d="M388,168 v20" stroke="#f4ede1" stroke-width="4" fill="none"/>
+    </g>
+  </defs>
+</svg>
+
+<header class="runner">
+  <a class="brand" href="index.html" title="All workshops"><span class="wsnum">#002</span> The <em>Tack</em> Room</a>
+  <nav>
+    <a href="#contents">Contents</a>
+    <a href="#ch1">The Hook</a>
+    <a href="#ch2">The Ceiling</a>
+    <a href="#ch3">Files</a>
+    <a href="#ch4">One Folder</a>
+    <a href="#ch5">Tack Room</a>
+    <a href="#ch6">The Three</a>
+    <a href="#ch7">Terminal</a>
+    <a href="#ch8">Risks</a>
+    <a href="#ch9">Homework</a>
+    <a href="#ch10">FAQ</a>
+    <a href="#glossary">Glossary</a>
+  </nav>
+  <span class="sizer">
+    <button type="button" id="smaller" aria-label="Smaller text">A−</button>
+    <button type="button" id="bigger" aria-label="Larger text">A+</button>
+    <button type="button" id="printbtn" class="wide">Print</button>
+    <a class="wide" href="the-tack-room.html" download>Download</a>
+  </span>
+</header>
+
+<main class="page">
+
+<!-- ============================ COVER ============================ -->
+<section class="cover">
+  <div class="cover-text">
+    <span class="kicker"><span class="wsnum">Workshop&nbsp;#002</span> &middot; still no experience needed</span>
+    <h1>The<br><span class="ai">Tack</span> Room<span class="of">where the work actually happens</span></h1>
+    <p class="deck">You have been riding in an open field, carrying everything the horse needs out to it by hand. There is a building for this, and today we go inside.</p>
+    <p class="imprint">
+      Presented by Emile du Toit<br>
+      <a class="firm" href="https://brainitconsulting.com">brainitconsulting.com</a>
+    </p>
+  </div>
+  <div class="cover-art">
+    <svg viewBox="0 0 520 360" role="img" aria-label="A saddled horse wearing its bridle">
+      <use href="#horse-body"/><use href="#tack-bridle"/><use href="#tack-saddle"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ============================ CONTENTS ============================ -->
+<section class="contents" id="contents">
+  <h3 style="margin-top:0">Contents</h3>
+  <ol>
+    <li><a href="#ch1">Fifteen minutes that won't make sense yet</a><span class="gloss">Watch first. Understand afterwards.</span></li>
+    <li><a href="#ch2">The ceiling in the chat window</a><span class="gloss">Why you are the one doing the carrying.</span></li>
+    <li><a href="#ch3">Files and folders, plainly</a><span class="gloss">The least horse-like chapter in the series.</span></li>
+    <li><a href="#ch4">One folder, one job</a><span class="gloss">The idea that keeps you safe later.</span></li>
+    <li><a href="#ch5">The tack room</a><span class="gloss">What an editor actually is.</span></li>
+    <li><a href="#ch6">Three things you'll actually look at</a><span class="gloss">Ignore the rest of the screen.</span></li>
+    <li><a href="#ch7">Talking to the stable</a><span class="gloss">The terminal, gently.</span></li>
+    <li><a href="#ch8">What can go wrong in here</a><span class="gloss">Almost nothing. And the one thing that can.</span></li>
+    <li><a href="#ch9">Before the next session</a><span class="gloss">Twenty minutes of setup, at your own kitchen table.</span></li>
+  </ol>
+  <p style="margin-top:1.4rem; max-width:var(--measure); color:var(--ink-soft); font-style:italic;">
+    Lids down today. Nothing to install while you are here — you only need to watch, and to leave with the checklist at the end.
+  </p>
+</section>
+
+<!-- ============================ CH 1 ============================ -->
+<section class="chapter" id="ch1">
+  <div class="chapter-head">
+    <div class="chapter-num">01</div>
+    <h2>Fifteen minutes that won't make sense yet</h2>
+    <p class="standfirst">Watch it happen first. We'll take it apart afterwards.</p>
+  </div>
+
+  <p class="dropcap">We are going to start at the wrong end on purpose. For the next fifteen minutes you are going to watch something get built, and quite a lot of it will not make sense. That is fine. It is meant to.</p>
+
+  <p>Dale runs the two-truck plumbing company from the last session. He has a rate card, a folder of past estimates, and a stack of inquiry emails. In a moment you will watch an assistant read all of that and produce a finished estimate — not a draft in a chat window that somebody has to copy out, but a file, sitting in Dale's folder, ready to send.</p>
+
+  <p>Nothing to follow along with. No laptops. Just watch, and when something makes you think <em>"hang on, how did it know that?"</em> — write the question down. We will answer every one of them before you leave.</p>
+
+  <div class="box stable">
+    <span class="label">What to watch for</span>
+    <ul>
+      <li><strong>Nobody pastes anything.</strong> No copying the rate card in, no copying the answer out.</li>
+      <li><strong>It opens things by itself.</strong> It goes and reads the rate card because it decided it needed the rate card.</li>
+      <li><strong>The result is a file.</strong> Not a message on a screen. A thing on Dale's computer with a name, that is still there tomorrow.</li>
+      <li><strong>It asks before it acts.</strong> Watch how often it stops and waits for a yes.</li>
+    </ul>
+  </div>
+
+  <p>Everything you are about to see happened inside a room you have not been in yet. Not a website, not a chat window — a folder on an ordinary computer, with the tack hanging on the wall. The rest of this session is a tour of that room.</p>
+
+  <details class="demo">
+    <summary>Nothing up my sleeve &mdash; exactly what I'm doing up here</summary>
+    <div class="demo-body">
+      <p>You are welcome to watch the mechanics rather than the magic. There are six steps and one instruction, and the folder starts identical every single time I run this.</p>
+      <ol>
+        <li><strong>Reset the folder.</strong> A script puts Dale's folder back to the same starting state &mdash; a rate card, his notes, one past estimate, and three unopened emails.</li>
+        <li><strong>Open that one folder</strong> in the editor &mdash; I do it from a command prompt rather than the menus, which is worth its own note below. Nothing else on this laptop is in reach.</li>
+        <li><strong>Make the text big</strong> enough to read from the back row.</li>
+        <li><strong>Open the assistant panel</strong> down the right-hand side. That is the same conversation you had in a browser last session, now sitting inside Dale's folder.</li>
+        <li><strong>Give it one instruction</strong> &mdash; the one below. I paste it rather than type it, which is worth a tip of its own.</li>
+        <li><strong>Say yes</strong> when it asks permission to write a file, and then open what it wrote.</li>
+      </ol>
+      <div class="box">
+        <span class="label">How I open the folder &mdash; and how you would</span>
+        <p><strong>Windows.</strong> Open a command prompt, move into the folder, then open the editor there:</p>
+        <div class="compare"><div class="good">
+          <span class="tag">Windows</span>
+          <code>cd h:\dale-estimates
+code .</code>
+        </div></div>
+        <p><code>cd</code> means "change directory" &mdash; go into that folder. <code>code .</code> means "open the editor here", and the dot is what means "here". Two commands, and you have just watched a command do something visible.</p>
+        <p><strong>Mac.</strong> Exactly the same two commands, in Terminal (press Cmd + Space, type "Terminal"). One difference: if <code>code .</code> comes back saying "command not found", VS Code needs one setup step first &mdash; press <strong>Cmd + Shift + P</strong>, type "shell command", and choose <em>Install 'code' command in PATH</em>. Then it works.</p>
+        <p>And if none of that appeals: File &rarr; Open Folder does the identical thing on both. Nothing here depends on using the command prompt.</p>
+      </div>
+
+      <p>The instruction, in full:</p>
+      <div class="compare"><div class="good">
+        <span class="tag">The whole prompt</span>
+        <code>Read notes.txt and rate-card.txt first. Then write an
+estimate for every email in inbox/, saving each one into
+estimates/ named after the customer, like alvarez.txt.
+Follow the format of past-estimates/smith-kitchen.txt and
+apply Dale's rules. When you're done, tell me in one short
+paragraph what you did.</code>
+      </div></div>
+      <div class="box">
+        <span class="label">Tip &mdash; you can paste into that black panel</span>
+        <p>Nobody types an instruction that long by hand, and you shouldn't either. Copy it, click into the box, and press <strong>Ctrl</strong> + <strong>V</strong> on Windows or <strong>Cmd</strong> + <strong>V</strong> on a Mac. If the shortcut doesn't take, right-click &mdash; that pastes too.</p>
+        <p>Worth knowing generally: long instructions are normal and expected. Write them somewhere comfortable, then paste them in.</p>
+      </div>
+
+      <p>That is the lot. No hidden setup, no special version, no rehearsed answer &mdash; and the same six steps are how you would do it on your own machine.</p>
+      <p class="say">If it does something different today than it did in rehearsal, we'll talk about that too. That's the honest half of the lesson.</p>
+    </div>
+  </details>
+
+  <p class="pull">Last time we rode in a field. Today we find out there was a stable all along.</p>
+</section>
+
+<!-- ============================ CH 2 ============================ -->
+<section class="chapter" id="ch2">
+  <div class="chapter-head">
+    <div class="chapter-num">02</div>
+    <h2>The ceiling in the chat window</h2>
+    <p class="standfirst">Nothing wrong with the field. But out there, you are the courier.</p>
+  </div>
+
+  <p class="dropcap">Think about how you actually used a chatbot after the last session. You had something on your screen. You selected it, copied it, went to another tab, pasted it in, typed what you wanted, waited, read the answer, copied that, went back, pasted it where it needed to go. Then the next email arrived and you did the whole thing again.</p>
+
+  <p>That works. Thousands of businesses run on exactly that, and if it is saving you an hour a week, keep doing it. But notice who is doing the fetching and carrying. The horse is standing in a field. Every single thing it needs to know, you walk out and hand to it, and every result, you walk back and carry away.</p>
+
+  <figure>
+    <svg viewBox="0 0 1000 480" role="img" aria-label="Two panels: in the field you carry every item to the horse by hand; in the tack room everything is already in the room">
+      <text class="lbl lbl-em" x="14" y="30">The field</text>
+      <text class="lbl-sm" x="14" y="56">a chat window &mdash; you carry everything</text>
+
+      <g transform="translate(4,190) scale(0.5)"><use href="#horse-body"/><use href="#tack-bridle"/><use href="#tack-saddle"/></g>
+
+      <rect class="plate" x="268" y="96" width="212" height="54" rx="4"/>
+      <text class="lbl-sm" x="284" y="128">Your rate card</text>
+      <rect class="plate" x="268" y="176" width="212" height="54" rx="4"/>
+      <text class="lbl-sm" x="284" y="208">The customer's email</text>
+      <rect class="plate" x="268" y="256" width="212" height="54" rx="4"/>
+      <text class="lbl-sm" x="284" y="288">Last month's estimate</text>
+
+      <g stroke="#5b4d3f" stroke-width="2.5" stroke-dasharray="7 6" fill="none">
+        <path d="M262,123 L212,180"/>
+        <path d="M262,203 L216,214"/>
+        <path d="M262,283 L216,248"/>
+      </g>
+      <text class="lbl-sm" x="150" y="410" style="font-size:17px">carried out and back, by hand,</text>
+      <text class="lbl-sm" x="150" y="434" style="font-size:17px">every single time</text>
+
+      <path d="M500,20 L500,460" stroke="#c9b99f" stroke-width="2"/>
+
+      <text class="lbl lbl-em" x="524" y="30">The tack room</text>
+      <text class="lbl-sm" x="524" y="56">one folder &mdash; everything already there</text>
+
+      <rect x="524" y="76" width="462" height="368" rx="6" fill="#eadfcc" stroke="#c9b99f" stroke-width="2"/>
+      <g transform="translate(516,232) scale(0.5)"><use href="#horse-body"/><use href="#tack-bridle"/><use href="#tack-saddle"/></g>
+
+      <rect class="plate" x="782" y="112" width="186" height="48" rx="4"/>
+      <text class="lbl-sm" x="796" y="142">Your rate card</text>
+      <rect class="plate" x="782" y="180" width="186" height="48" rx="4"/>
+      <text class="lbl-sm" x="796" y="210">The customer's email</text>
+      <rect class="plate" x="782" y="248" width="186" height="48" rx="4"/>
+      <text class="lbl-sm" x="796" y="278">Last month's estimate</text>
+
+      <text class="lbl-sm" x="546" y="426" style="font-size:17px">it reaches for what it needs</text>
+    </svg>
+    <figcaption><b>Fig. 1</b> &mdash; The same horse, the same tack. The difference is who does the fetching.</figcaption>
+  </figure>
+
+  <h3>What the field costs you</h3>
+  <ul>
+    <li><strong>It cannot see anything you don't hand it.</strong> Your files are invisible to it.</li>
+    <li><strong>Nothing stays.</strong> Close the tab and the work is gone. There is no folder, no file, nothing to come back to on Thursday.</li>
+    <li><strong>It works in one direction.</strong> It can write you an estimate; it cannot put the estimate anywhere.</li>
+    <li><strong>You are the bottleneck.</strong> Ten emails means ten rounds of copying. A hundred means you don't bother.</li>
+  </ul>
+
+  <p>The tack room fixes all four, and it does it in the dullest way imaginable: the horse and the gear end up in the same place, and that place is a folder on your computer.</p>
+</section>
+
+<!-- ============================ CH 3 ============================ -->
+<section class="chapter" id="ch3">
+  <div class="chapter-head">
+    <div class="chapter-num">03</div>
+    <h2>Files and folders, plainly</h2>
+    <p class="standfirst">The horse thing gets thin here. So we'll drop it for a page.</p>
+  </div>
+
+  <p class="dropcap">A file is a thing with a name and some contents. That is the whole definition. A photo is a file. A letter is a file. Your rate card is a file. A folder is a box you put files in, and a folder can hold other folders, which is why things end up four boxes deep and nobody can find anything.</p>
+
+  <p>You already know this. You have been using files for thirty years. The reason it feels shaky is that most of us stopped looking at where things are — you search for the document by name, it appears, you never think about which box it came out of. That was fine. From here on it matters, because when you tell an assistant to work on something, you are going to have to tell it <em>where</em>.</p>
+
+  <div class="box">
+    <span class="label">The only two words you need</span>
+    <p><strong>File.</strong> A thing with a name and contents. <code>rate-card.txt</code> is a file. So is <code>truck-photo.jpg</code>.</p>
+    <p><strong>Folder.</strong> A box holding files. Also called a directory, which is the same thing wearing a tie.</p>
+  </div>
+
+  <p>Two small habits will save you real trouble later, and they are worth adopting today whether or not you go any further with any of this.</p>
+
+  <ul>
+    <li><strong>Name things so you can read them.</strong> <code>dale-rate-card-2026.txt</code> beats <code>Document (3) final FINAL.txt</code>. An assistant reads names to decide what to open, exactly like you do.</li>
+    <li><strong>Keep one job in one place.</strong> Which is the next chapter, and honestly the most important idea in this session.</li>
+  </ul>
+
+  <p class="pull">A file is a thing with a name. A folder is a box. That's it. That's the chapter.</p>
+</section>
+
+<!-- ============================ CH 4 ============================ -->
+<section class="chapter" id="ch4">
+  <div class="chapter-head">
+    <div class="chapter-num">04</div>
+    <h2>One folder, one job</h2>
+    <p class="standfirst">Draw a line around the work. Everything that happens, happens inside it.</p>
+  </div>
+
+  <p class="dropcap">Here is the idea that makes everything after this safe. You put one job's worth of stuff in one folder, and that folder is the only place the assistant is allowed to work. People call it a <em class="term">project</em>, which sounds grander than it is. It is a box with a line drawn round it.</p>
+
+  <p>Dale's estimate job looks like this:</p>
+
+  <figure>
+    <svg viewBox="0 0 900 420" role="img" aria-label="A project folder containing a rate card, a folder of past estimates, and notes">
+      <rect x="10" y="14" width="620" height="392" rx="6" fill="#eadfcc" stroke="#b8391c" stroke-width="4"/>
+      <text class="lbl lbl-em" x="34" y="60">dale-estimates</text>
+      <text class="lbl-sm" x="34" y="86">the project folder &mdash; the whole job lives in here</text>
+
+      <rect class="plate" x="56" y="116" width="360" height="56" rx="4"/>
+      <text class="lbl-sm" x="76" y="150" style="font-size:19px">rate-card.txt</text>
+
+      <rect class="plate" x="56" y="188" width="360" height="120" rx="4"/>
+      <text class="lbl-sm" x="76" y="222" style="font-size:19px">past-estimates</text>
+      <rect class="plate" x="88" y="238" width="304" height="50" rx="4"/>
+      <text class="lbl-sm" x="106" y="269">smith-kitchen.txt</text>
+
+      <rect class="plate" x="56" y="324" width="360" height="56" rx="4"/>
+      <text class="lbl-sm" x="76" y="358" style="font-size:19px">notes.txt</text>
+
+      <path class="lead-under" d="M660,120 L636,150"/><path class="lead" d="M660,120 L636,150"/>
+      <text class="lbl lbl-em" x="672" y="112">Inside the line</text>
+      <text class="lbl-sm" x="672" y="140">it may read and write</text>
+
+      <path class="lead-under" d="M660,300 L636,270"/><path class="lead" d="M660,300 L636,270"/>
+      <text class="lbl lbl-em" x="672" y="292">Outside it</text>
+      <text class="lbl-sm" x="672" y="320">your photos, your taxes,</text>
+      <text class="lbl-sm" x="672" y="344">everything else &mdash; untouched</text>
+    </svg>
+    <figcaption><b>Fig. 2</b> &mdash; The ember line is the whole safety story. An assistant opened in this folder works in this folder.</figcaption>
+  </figure>
+
+  <p>When you sit an assistant down in that folder, that folder is its world. It can read the rate card because the rate card is in the room. It cannot read your bank statements, because your bank statements are not in the room. You did not have to configure that or trust a promise about it — it follows from where you opened it.</p>
+
+  <p>This is the same idea as the girth from the last session, the "never" that keeps a horse honest. Except this one you enforce by geography rather than by asking nicely.</p>
+
+  <div class="box stable">
+    <span class="label">How to set one up, when you get there</span>
+    <ol>
+      <li>Make a new folder. Give it the name of the job: <code>dale-estimates</code>.</li>
+      <li>Put in the things the job needs — the rate card, a couple of past examples, any notes.</li>
+      <li>That's it. That's a project.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================ CH 5 ============================ -->
+<section class="chapter" id="ch5">
+  <div class="chapter-head">
+    <div class="chapter-num">05</div>
+    <h2>The tack room</h2>
+    <p class="standfirst">A window onto that folder. Not a place where you type code.</p>
+  </div>
+
+  <p class="dropcap">The thing everyone installs at this point is called a code editor, and the name puts people off before they have seen it. Nearly all of them use one called <em class="term">VS Code</em>. Free, made by Microsoft, and despite the name you are not going to be writing code in it.</p>
+
+  <p>What it actually is: a single window that shows you one folder, everything in it, and gives the assistant somewhere to stand. That is why it is the tack room. It is not where the work is done — the horse does the work. It is where you can see all the gear at once, reach any of it, and watch what is being taken off the wall.</p>
+
+  <p>You could do all of this without ever opening it. People do. But then you are trusting the assistant's account of what it did, instead of looking. Opening the tack room means you can see the shelf it just changed.</p>
+
+  <div class="box">
+    <span class="label">Worth being clear about</span>
+    <p>You will not be typing code. You will be typing sentences, in English, in a panel — the same as you typed into the chat window last session. The difference is that the sentences now land in a room where the horse can reach the gear.</p>
+  </div>
+</section>
+
+<!-- ============================ CH 6 ============================ -->
+<section class="chapter" id="ch6">
+  <div class="chapter-head">
+    <div class="chapter-num">06</div>
+    <h2>Three things you'll actually look at</h2>
+    <p class="standfirst">The screen has about forty things on it. You need three, and a fourth you'll barely touch.</p>
+  </div>
+
+  <p class="dropcap">The first time you open it, the window looks busy in a way that makes people close it again. Almost all of it is for professional programmers and you can ignore it permanently. Here are the three regions that matter, and what each one is for.</p>
+
+  <figure>
+    <svg viewBox="0 0 960 560" role="img" aria-label="The editor window: file list on the left, the open page in the middle, the assistant panel on the right, and the terminal along the bottom">
+      <rect x="10" y="14" width="940" height="528" rx="8" fill="#eadfcc" stroke="#c9b99f" stroke-width="2"/>
+      <path d="M10,58 L950,58" stroke="#c9b99f" stroke-width="2"/>
+      <text class="lbl-sm" x="30" y="44">dale-estimates</text>
+
+      <rect x="10" y="58" width="238" height="378" fill="#f4ede1" stroke="#c9b99f" stroke-width="2"/>
+      <circle cx="46" cy="96" r="17" fill="#b8391c"/>
+      <text class="lbl" x="40" y="103" style="font-size:20px; fill:#f4ede1">1</text>
+      <text class="lbl lbl-em" x="76" y="103">The files</text>
+      <text class="lbl-sm" x="30" y="142">Everything in the</text>
+      <text class="lbl-sm" x="30" y="168">folder. Click one</text>
+      <text class="lbl-sm" x="30" y="194">to see inside it.</text>
+      <text class="lbl-sm" x="30" y="248">rate-card.txt</text>
+      <text class="lbl-sm" x="30" y="280">past-estimates</text>
+      <text class="lbl-sm" x="30" y="312">notes.txt</text>
+
+      <rect x="248" y="58" width="392" height="378" fill="#f4ede1" stroke="#c9b99f" stroke-width="2"/>
+      <circle cx="286" cy="96" r="17" fill="#b8391c"/>
+      <text class="lbl" x="280" y="103" style="font-size:20px; fill:#f4ede1">2</text>
+      <text class="lbl lbl-em" x="316" y="103">The open page</text>
+      <text class="lbl-sm" x="268" y="142">Whatever you clicked,</text>
+      <text class="lbl-sm" x="268" y="168">opened so you can read it.</text>
+      <text class="lbl-sm" x="268" y="212">This is where you check</text>
+      <text class="lbl-sm" x="268" y="238">the work &mdash; the estimate</text>
+      <text class="lbl-sm" x="268" y="264">it just wrote, in plain view,</text>
+      <text class="lbl-sm" x="268" y="290">before anything is sent.</text>
+
+      <rect x="640" y="58" width="310" height="378" fill="#f4ede1" stroke="#b8391c" stroke-width="4"/>
+      <circle cx="678" cy="96" r="17" fill="#b8391c"/>
+      <text class="lbl" x="672" y="103" style="font-size:20px; fill:#f4ede1">3</text>
+      <text class="lbl lbl-em" x="708" y="103">The assistant</text>
+      <text class="lbl-sm" x="660" y="142">You type here in plain</text>
+      <text class="lbl-sm" x="660" y="168">English &mdash; the same as</text>
+      <text class="lbl-sm" x="660" y="194">the chat window you</text>
+      <text class="lbl-sm" x="660" y="220">already know.</text>
+      <text class="lbl-sm" x="660" y="266">It answers here, and</text>
+      <text class="lbl-sm" x="660" y="292">asks before it changes</text>
+      <text class="lbl-sm" x="660" y="318">anything.</text>
+
+      <rect x="10" y="436" width="940" height="106" fill="#241d16"/>
+      <text class="lbl" x="40" y="478" style="fill:#c2841f; font-size:19px">And the terminal</text>
+      <text class="lbl-sm" x="40" y="512" style="fill:#d9cdba">Occasionally useful, never frightening. Chapter seven.</text>
+    </svg>
+    <figcaption><b>Fig. 3</b> &mdash; Learn these three. Everything else on that screen can wait, possibly forever.</figcaption>
+  </figure>
+
+  <p>Number three is where the work gets asked for, and it should look familiar &mdash; it is the same back-and-forth you had in a browser last session, moved into the room with your files. That dark strip along the bottom is the part that frightens people, so it gets its own chapter.</p>
+</section>
+
+<!-- ============================ CH 7 ============================ -->
+<section class="chapter" id="ch7">
+  <div class="chapter-head">
+    <div class="chapter-num">07</div>
+    <h2>Talking to the stable</h2>
+    <p class="standfirst">The black box with the blinking cursor. It's a doorway, not a test.</p>
+  </div>
+
+  <p class="dropcap">The dark panel along the bottom is called the <em class="term">terminal</em>, and it has an unearned reputation. If you have ever seen a film where somebody types furiously into a black screen, this is that, and it is nothing like that.</p>
+
+  <p>Notice what happened this morning: I did the entire job in the assistant panel on the right and never touched the black one. That is normal. You could work this way for months. So it is worth being straight about what the terminal is actually for, rather than leaving it as the scary part of the screen.</p>
+
+  <p>It is a place where you type an instruction and press enter. That is the entire idea. Where the panel on the right talks to the horse, the terminal talks to the stable itself — the computer, directly, without any buttons in the way. Installing things, checking things, starting things: that is its job, and it is a job you will need perhaps once a month.</p>
+
+  <div class="box">
+    <span class="label">Three words, and how they fit together</span>
+    <p>Worth getting straight, because we use all three. <strong>The stable</strong> is your computer &mdash; the whole building. <strong>The tack room</strong> is one room inside it: the folder you are working in, with your gear in it. <strong>The horse</strong> lives in neither. It lives down the road at the company that built it, and comes when you call.</p>
+    <p>That last part is the one worth remembering. Nothing you own is inside the model, which is why the folder you choose is the boundary that matters.</p>
+  </div>
+
+  <div class="box stable">
+    <span class="label">Two worth learning today</span>
+    <p>These are the ones I use in front of you, and they are a fair sample of what the terminal is for &mdash; asking the computer about the software you have, rather than doing the work itself.</p>
+    <p><code>claude --version</code> &mdash; tells you which version of the assistant you have. Useful when something behaves oddly, or when instructions you read online assume a newer one.</p>
+    <p><code>claude --update</code> &mdash; checks whether there is a newer version and installs it if there is. If you are already current it says so and does nothing.</p>
+    <p>That is genuinely the shape of it. You are not commanding the machine to do your work; you are asking after its health.</p>
+  </div>
+
+  <p>Why that pair, out of everything? Because this software changes every week or two, and almost every "it worked yesterday and not today" turns out to be a version behind. Knowing how to check and how to update is most of keeping the thing healthy, and it takes ten seconds.</p>
+
+  <p>Two things that help enormously and nobody mentions. It cannot read your mind, so it will complain about a typo rather than guess — that is not you failing, that is it being careful. And you can paste into it, so nobody is expecting you to type long things accurately.</p>
+
+  <p class="pull">You are not being tested by the black box. You are opening a door and calling the horse in.</p>
+</section>
+
+<!-- ============================ CH 8 ============================ -->
+<section class="chapter" id="ch8">
+  <div class="chapter-head">
+    <div class="chapter-num">08</div>
+    <h2>What can go wrong in here</h2>
+    <p class="standfirst">Much less than you fear. And one thing worth respecting.</p>
+  </div>
+
+  <p class="dropcap">People move slowly at this point because it feels like a room where you could break something expensive. Mostly you cannot. A folder is a folder. Opening one, looking in it, closing it again is about as dangerous as opening a filing cabinet.</p>
+
+  <h3>Things that are not the risk</h3>
+  <ul>
+    <li><strong>Typing the wrong thing in the terminal.</strong> Almost always it just says it doesn't understand and waits.</li>
+    <li><strong>Clicking the wrong part of the editor.</strong> The worst case is a panel you didn't want, which closes.</li>
+    <li><strong>Looking at a file.</strong> Looking changes nothing.</li>
+    <li><strong>Not understanding most of the screen.</strong> Nobody understands most of that screen.</li>
+  </ul>
+
+  <h3>The one that is</h3>
+  <p>The assistant can change and delete files, inside the folder you opened it in. That is the whole point of it — it is also the only genuine hazard in this room. If it edits your rate card and gets it wrong, the old rate card is gone, in the same way it would be gone if you overwrote it yourself.</p>
+
+  <p>There is a proper answer to this, and we get to it in session four: a way of keeping every previous version of everything, forever, so any mistake becomes a matter of stepping back rather than starting again. Until then, the boring version below works fine.</p>
+
+  <div class="box stable">
+    <span class="label">Until we fit the safety net</span>
+    <ul>
+      <li><strong>Work on copies.</strong> Copy the rate card into the project folder. Leave the original where it lives.</li>
+      <li><strong>Never open an assistant in your whole Documents folder.</strong> One job, one folder. That is what chapter four was for.</li>
+      <li><strong>Read what it says before you say yes.</strong> It tells you what it is about to change. That sentence is not decoration.</li>
+      <li><strong>Nothing irreplaceable, not yet.</strong> Not the only copy of anything.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================ CH 9 ============================ -->
+<section class="chapter" id="ch9">
+  <div class="chapter-head">
+    <div class="chapter-num">09</div>
+    <h2>Before the next session</h2>
+    <p class="standfirst">Twenty minutes at your own table, at your own pace.</p>
+  </div>
+
+  <p class="dropcap">Next time the lids come up and we all work along together. That goes well if everyone arrives with the room already built, and badly if we spend the first hour installing things on twelve different laptops. So here is the homework, and it is genuinely twenty minutes.</p>
+
+  <ol class="checklist">
+    <li><strong>Install VS Code.</strong> Search for "VS Code download", take the one from Microsoft, and accept every default it offers you.</li>
+    <li><strong>Make a folder called <code>tack-room</code></strong> somewhere you can find it again. Your desktop is a perfectly good place.</li>
+    <li><strong>Open that folder in VS Code.</strong> File, then Open Folder, then pick it. The window will look empty, because it is.</li>
+    <li><strong>Find the three regions from chapter six.</strong> Files on the left, the big pane, and the dark strip along the bottom. If you can point at all three, you are ready.</li>
+    <li><strong>Put one real file in it.</strong> Drag in a copy of something from your own business &mdash; a price list, a standard reply, anything you would not mind an assistant reading.</li>
+    <li><strong>Stop there.</strong> That is the whole assignment. Do not install anything else, and do not go looking for the assistant yet.</li>
+  </ol>
+
+  <div class="box stable">
+    <span class="label">If you fall off</span>
+    <p>Everything from every session lives in a public folder on the internet, with a marker for the start and end of each workshop. If step three defeats you at half past nine on a Tuesday, you can go and look at exactly what your screen was supposed to look like, and pick it up from there. Ask me for the address at the session and I will send it to you &mdash; and nobody is counting who uses it.</p>
+  </div>
+</section>
+
+<!-- ============================ CH 10 ============================ -->
+<section class="chapter" id="ch10">
+  <div class="chapter-head">
+    <div class="chapter-num">10</div>
+    <h2>Questions people actually ask</h2>
+    <p class="standfirst">Every one of these has come up in the room.</p>
+  </div>
+
+  <div class="faq">
+
+    <div class="qa">
+      <h3 class="q">Do I have to learn to code now?</h3>
+      <p class="horse-line">You are learning where the tack room is, not how to make saddles.</p>
+      <p>No. You will type sentences in English, the same as last session. What changes is where those sentences land — in a room where the assistant can reach your actual files instead of waiting for you to carry them in. The editor is called a code editor for historical reasons, in the same way a glovebox is called a glovebox.</p>
+    </div>
+
+    <div class="qa">
+      <h3 class="q">Why can't it just work with the files I already have, where they are?</h3>
+      <p class="horse-line">Because a horse loose in the house is a different animal to a horse in a stall.</p>
+      <p>It can, and that is exactly the thing to avoid at the start. Pointing an assistant at everything you own means everything you own is in reach of a mistake. The one-folder rule costs you a minute of copying and buys you a boundary you can see. Widen it later, deliberately, once you have watched it work for a while.</p>
+    </div>
+
+    <div class="qa">
+      <h3 class="q">Is my stuff being uploaded somewhere?</h3>
+      <p class="horse-line">The stable is yours. The horse still lives down the road.</p>
+      <p>The folder is on your computer. The model is not — it runs on the company's machines, so anything the assistant reads in order to answer you does travel to them, the same as when you pasted into the chat window. The honest difference from last session is that it can now decide what to read. So the rule from #001 stands and matters more: don't put anything in that folder you would not put in an email.</p>
+    </div>
+
+    <div class="qa">
+      <h3 class="q">Mac or Windows?</h3>
+      <p class="horse-line">Both stables have the same gear in them.</p>
+      <p>Either. Everything in this session works on both, and the buttons are in slightly different places, which is the only complication. If you have a choice, bring whichever machine you actually use for the business — the point is to end up with your real work in the room.</p>
+    </div>
+
+    <div class="qa">
+      <h3 class="q">What does this cost?</h3>
+      <p class="horse-line">The tack room is free. The horse still eats.</p>
+      <p>VS Code is free. The folder is free. The assistant that works in it is the same subscription we talked about last time, around twenty dollars a month, and it still eats sugar cubes by the token. Nothing in today's homework costs anything at all.</p>
+    </div>
+
+    <div class="qa">
+      <h3 class="q">I already tried this and closed it because it looked terrifying.</h3>
+      <p class="horse-line">Everybody does. The screen is built for somebody else.</p>
+      <p>That first screen is designed for professional programmers and shows you everything it can do, which is the opposite of helpful. Chapter six is the antidote: three regions, ignore the rest. Open it again with that page next to you and it shrinks to a manageable size.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================ GLOSSARY ============================ -->
+<section class="chapter glossary" id="glossary">
+  <div class="chapter-head">
+    <h2>Plain words</h2>
+    <p class="standfirst">This session's vocabulary, and where it sits on the ranch.</p>
+  </div>
+
+  <dl>
+    <dt>File</dt>
+    <dd>A thing with a name and contents. <span class="horse">A single piece of gear.</span></dd>
+
+    <dt>Folder <span style="font-weight:400">(directory)</span></dt>
+    <dd>A box holding files, and sometimes other folders. <span class="horse">A shelf.</span></dd>
+
+    <dt>Project</dt>
+    <dd>One folder holding one job's worth of everything. <span class="horse">The room, with the door shut.</span></dd>
+
+    <dt>Editor <span style="font-weight:400">(VS Code)</span></dt>
+    <dd>A window showing you one folder and everything in it. <span class="horse">The tack room.</span></dd>
+
+    <dt>Terminal</dt>
+    <dd>A panel where you type an instruction to the computer directly. <span class="horse">Talking to the stable itself.</span></dd>
+
+    <dt>Path</dt>
+    <dd>The written address of a file &mdash; which boxes it sits inside. <span class="horse">Directions to the shelf.</span></dd>
+
+    <dt>Install</dt>
+    <dd>Putting a program on your own machine, once. <span class="horse">Building the room.</span></dd>
+  </dl>
+
+  <div class="box stable">
+    <span class="label">Carried over from workshop #001</span>
+    <p>The horse is still the model. The reins are still what you type. The saddle is still the standing instructions you write once. The saddlebags are still the tools that let it act, and sugar cubes are still tokens.</p>
+    <p>Nothing from last session has been replaced today. We have only found the building it all lives in.</p>
+  </div>
+</section>
+
+<!-- ============================ ONE PAGE ============================ -->
+<section class="chapter" id="onepage">
+  <div class="chapter-head">
+    <h2>The whole thing on one page</h2>
+    <p class="standfirst">Photograph this before you go.</p>
+  </div>
+
+  <div class="strip">
+    <div class="panel">
+      <svg viewBox="0 0 520 360" aria-hidden="true"><use href="#horse-body"/><use href="#tack-bridle"/></svg>
+      <h4>1 &middot; The field</h4>
+      <p>A chat window. You carry every fact out and every answer back.</p>
+    </div>
+    <div class="panel">
+      <svg viewBox="0 0 900 620" aria-hidden="true">
+        <rect x="60" y="60" width="780" height="500" rx="10" fill="#eadfcc" stroke="#b8391c" stroke-width="10"/>
+        <rect x="140" y="170" width="620" height="80" rx="6" fill="#f4ede1" stroke="#c9b99f" stroke-width="4"/>
+        <rect x="140" y="280" width="620" height="80" rx="6" fill="#f4ede1" stroke="#c9b99f" stroke-width="4"/>
+        <rect x="140" y="390" width="620" height="80" rx="6" fill="#f4ede1" stroke="#c9b99f" stroke-width="4"/>
+      </svg>
+      <h4>2 &middot; One folder, one job</h4>
+      <p>Draw a line around the work. Inside it, the assistant may act.</p>
+    </div>
+    <div class="panel">
+      <svg viewBox="0 0 900 620" aria-hidden="true">
+        <rect x="40" y="60" width="820" height="500" rx="10" fill="#eadfcc" stroke="#c9b99f" stroke-width="6"/>
+        <rect x="40" y="60" width="230" height="330" fill="#f4ede1" stroke="#c9b99f" stroke-width="6"/>
+        <rect x="40" y="390" width="820" height="170" fill="#241d16"/>
+        <circle cx="140" cy="170" r="34" fill="#b8391c"/>
+        <circle cx="560" cy="170" r="34" fill="#b8391c"/>
+        <circle cx="140" cy="475" r="34" fill="#c2841f"/>
+      </svg>
+      <h4>3 &middot; The tack room</h4>
+      <p>Files on the left, the work in the middle, and where you talk to it below.</p>
+    </div>
+    <div class="panel">
+      <svg viewBox="0 0 520 360" aria-hidden="true"><use href="#horse-body"/><use href="#tack-bridle"/><use href="#tack-saddle"/><use href="#tack-bags"/></svg>
+      <h4>4 &middot; Next time</h4>
+      <p>The horse comes into the room and starts opening gates.</p>
+    </div>
+  </div>
+
+  <p style="margin-top:2rem"><strong>And you still hold the reins.</strong> Everything from the last session is intact. The room does not make the horse cleverer &mdash; it just means you stop being the one carrying buckets.</p>
+</section>
+<!-- ============================ BACK COVER ============================ -->
+<section class="backcover">
+  <div class="bc-inner">
+    <span class="bc-kicker">Want someone to hold the reins with you?</span>
+    <h2>I do this for a living, and I quite like it.</h2>
+    <p>Thirty-plus years in enterprise software and a computer science degree — which mostly means I have watched a great many horses bolt, and I can usually tell you which ones are worth saddling before you spend money on the saddle.</p>
+
+    <div class="bc-grid">
+      <div>
+        <span class="bc-num">01</span>
+        <h3>In person</h3>
+        <p>Your team, your room, your actual work on the whiteboard instead of somebody else's examples.</p>
+      </div>
+      <div>
+        <span class="bc-num">02</span>
+        <h3>Over video</h3>
+        <p>The same session, at your desks, with fewer chairs to stack afterwards.</p>
+      </div>
+      <div>
+        <span class="bc-num">03</span>
+        <h3>Built for real</h3>
+        <p>When the idea survives the workshop and somebody has to go and build the thing — that part I do too.</p>
+      </div>
+    </div>
+
+    <p class="bc-fact">Fun fact — I rode to school on horseback as a kid in South Africa. So the metaphor isn't borrowed. I've done the falling off in person.</p>
+
+    <p class="bc-cta">
+      <span>Emile du Toit</span>
+      <a href="https://brainitconsulting.com">brainitconsulting.com</a>
+    </p>
+  </div>
+</section>
+
+<p class="colophon">
+  Workshop #002 &middot; The Tack Room<br>
+  &copy; 2026 Emile du Toit, BrainIT Consulting<br>
+  Print it, download it, share it with your team. Just leave my name on it.
+</p>
+
+</main>
+
+<script>
+// text size control — three steps up from the default
+(function(){
+  var level = 0, root = document.documentElement;
+  function apply(){
+    root.classList.remove('t-1','t-2','t-3');
+    if(level > 0) root.classList.add('t-' + level);
+  }
+  document.getElementById('bigger').onclick  = function(){ if(level < 3){ level++; apply(); } };
+  document.getElementById('smaller').onclick = function(){ if(level > 0){ level--; apply(); } };
+  document.getElementById('printbtn').onclick = function(){ window.print(); };
+
+  // A closed <details> prints as just its summary line, which would leave
+  // the demo steps out of the handout. Open them all before printing.
+  window.addEventListener('beforeprint', function(){
+    var d = document.querySelectorAll('details');
+    for (var i = 0; i < d.length; i++) d[i].open = true;
+  });
+})();
+</script>
+</body>
+</html>

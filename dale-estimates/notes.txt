@@ -1,0 +1,11 @@
+HOW DALE LIKES ESTIMATES WRITTEN
+
+- Plain language. The customer is not a plumber.
+- Labor and parts on separate lines, always.
+- Show the service call as its own line so it doesn't look like a hidden fee.
+- Add sales tax at the end as its own line.
+- Never promise a date. Say "we'll call to schedule".
+- If the job involves gas, DO NOT price it. Flag it for Dale and say why.
+- If something in the email is unclear, list what we'd need to know rather
+  than guessing at a price.
+- Sign off: "Dale & Son Plumbing - Dale Rimmer"

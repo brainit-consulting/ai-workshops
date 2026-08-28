@@ -1,0 +1,44 @@
+# AI Workshops — the class folder
+
+Everything from the sessions, so you can catch up in your own time.
+
+Run by [Emile du Toit, BrainIT Consulting](https://brainitconsulting.com).
+The workshops themselves live at
+**https://brainit-aiworkshops.vercel.app**
+
+## If you fell behind
+
+This folder has a **marker for the end of each session**. Pick the one
+you need and you get the files exactly as they stood at that point —
+not a finished project you have to reverse-engineer.
+
+On GitHub, use the branch/tag dropdown at the top left and choose:
+
+- `end-of-002` — after *The Tack Room*
+- `end-of-003` — after *The Working Horse*
+
+Then click the green **Code** button and **Download ZIP**. You do not
+need to know what git is to do that. Session four is where we learn it
+properly.
+
+## What's in here
+
+**`dale-estimates/`** — the plumbing company's folder we work in during
+the sessions. This is the one to open in your editor if you want to
+follow along at home.
+
+**`workshops/`** — a copy of each workshop page, so you have them
+offline. They print, too.
+
+## The rules we work by
+
+Same as in the room:
+
+- One job, one folder. Nothing outside it is ever in reach.
+- Read the permission prompt before you answer it.
+- Work on copies of anything you'd be sorry to lose — at least until
+  session four, when we fit a proper undo.
+
+## Something not working?
+
+Bring it to the next session. Nobody is counting who uses this.
