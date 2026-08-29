@@ -21,6 +21,7 @@ On GitHub, use the branch/tag dropdown at the top left and choose:
 - `end-of-009` — after *The Well*
 - `end-of-010` — after *Taking the Wagon to Market*
 - `end-of-011` — after *Riding the Fences*
+- `end-of-012` — after *Who's at the Gate*, the last one
 
 Then click the green **Code** button and **Download ZIP**. You do not
 need to know what git is to do that — and session seven explains what
@@ -64,6 +65,15 @@ Same as in the room:
   the map. Then say: “Don't build anything yet. Ask me what you need to
   know first.”
 
+## That is the whole series
+
+Twelve sessions, and they all stay here. The pages stay online and
+printable, the markers stay in place, and nothing expires. Pick up
+anything you missed whenever it becomes useful rather than whenever it
+was taught.
+
 ## Something not working?
 
-Bring it to the next session. Nobody is counting who uses this.
+Bring it along, or send me a message. Getting somebody unstuck takes
+minutes and I would much rather do that than have you quietly stop.
+Nobody is counting who uses this.

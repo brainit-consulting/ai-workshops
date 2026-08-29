@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Workshop #012 — Who’s at the Gate</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='24 -8 140 126'%3E%3Crect x='24' y='-8' width='140' height='126' fill='%23f4ede1'/%3E%3Cpath fill='%23241d16' d='M112,40 C150,66 196,102 238,154 L262,132 C216,82 164,40 124,16 Z'/%3E%3Cpath fill='%23241d16' d='M130,40 C120,20 98,14 80,28 L38,92 C33,104 43,114 56,108 L102,88 C122,79 136,58 130,40 Z'/%3E%3Cpath fill='%23241d16' d='M112,30 L104,2 L128,24 Z'/%3E%3Cpath fill='%23241d16' d='M132,32 L134,6 L152,30 Z'/%3E%3Ccircle cx='101' cy='45' r='6' fill='%23f4ede1'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Zilla+Slab:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600;7..72,700&family=Archivo+Narrow:wght@500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   RIDING THE AI HORSE — workshop book
+   Edit the venue/date on the cover (search: EDIT ME)
+   ============================================================ */
+
+:root{
+  --paper:#f4ede1;
+  --paper-deep:#eadfcc;
+  --ink:#241d16;
+  --ink-soft:#5b4d3f;
+  --rule:#c9b99f;
+  --ember:#b8391c;
+  --ember-wash:#f0d9cf;
+  --honey:#c2841f;
+
+  /* slab faces — even stroke weight, no hairlines to squint at */
+  --font-poster:"Alfa Slab One", Georgia, serif;
+  --font-display:"Zilla Slab", Georgia, serif;
+  --font-body:"Literata", Georgia, serif;
+  --font-label:"Archivo Narrow", "Arial Narrow", sans-serif;
+  --font-hand:"Patrick Hand", "Segoe Print", cursive;
+
+  /* text runs the width of the screen — this is shown on a projector.
+     min() so it never overshoots the page gutters. */
+  --measure:min(100%, 72rem);
+}
+
+*{box-sizing:border-box;}
+
+html{
+  /* type scales with the viewport, so a big screen gets big text
+     rather than short lines. A− / A+ step it up three notches. */
+  font-size:clamp(19px, 1.35vw, 28px);
+  scroll-behavior:smooth;
+}
+html.t-1{font-size:clamp(21px, 1.55vw, 32px);}
+html.t-2{font-size:clamp(23px, 1.80vw, 36px);}
+html.t-3{font-size:clamp(25px, 2.05vw, 40px);}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:1.05rem;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* paper grain ------------------------------------------------ */
+.grain{
+  position:fixed; inset:0; pointer-events:none; z-index:50;
+  opacity:.35; mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/><feColorMatrix type='saturate' values='0'/></filter><rect width='180' height='180' filter='url(%23n)' opacity='0.16'/></svg>");
+}
+
+/* running head ----------------------------------------------- */
+.runner{
+  position:sticky; top:0; z-index:40;
+  display:flex; align-items:center; gap:1rem;
+  padding:.55rem clamp(1rem,4vw,3rem);
+  background:var(--paper);
+  border-bottom:1px solid var(--rule);
+  font-family:var(--font-label);
+  text-transform:uppercase; letter-spacing:.12em;
+  font-size:.62rem;
+}
+.runner .brand{font-weight:700; color:var(--ink); text-decoration:none;}
+.runner .brand:hover{color:var(--ember);}
+.runner .brand .wsnum{color:var(--honey); font-weight:700;}
+.cover .kicker .wsnum{
+  background:var(--ember); color:var(--paper);
+  padding:.28em .6em; letter-spacing:.2em; margin-right:.5em;
+}
+.cover .kicker .lvl{
+  background:var(--honey); color:var(--paper);
+  padding:.28em .6em; letter-spacing:.2em; margin-right:.5em;
+}
+.runner .brand em{font-style:normal; color:var(--ember);}
+.runner nav{display:flex; gap:.8rem; flex-wrap:wrap; margin-left:auto;}
+.runner .brand{white-space:nowrap;}
+.runner nav a{color:var(--ink-soft); text-decoration:none; border-bottom:1px solid transparent; padding-bottom:2px;}
+.runner nav a:hover{color:var(--ember); border-bottom-color:var(--ember);}
+.sizer{display:flex; gap:.3rem; margin-left:.6rem;}
+.sizer button{
+  font-family:var(--font-label); font-size:.7rem; font-weight:700;
+  background:none; border:1px solid var(--rule); color:var(--ink-soft);
+  width:2rem; height:1.7rem; cursor:pointer; line-height:1;
+}
+.sizer button:hover{border-color:var(--ember); color:var(--ember);}
+.sizer .wide, .sizer a.wide{
+  width:auto; padding:0 .7rem; height:1.7rem; display:inline-flex; align-items:center;
+  font-family:var(--font-label); font-size:.62rem; font-weight:700;
+  text-transform:uppercase; letter-spacing:.12em; text-decoration:none;
+  border:1px solid var(--rule); color:var(--ink-soft); background:none; cursor:pointer;
+}
+.sizer .wide:hover{border-color:var(--ember); color:var(--ember);}
+
+/* page frame ------------------------------------------------- */
+.page{
+  max-width:none;
+  margin:0;
+  /* generous left gutter — the chapter numerals hang into it */
+  padding:0 clamp(1.1rem,4.5vw,7rem) 0 clamp(1.4rem,6.5vw,10rem);
+}
+
+/* ============ COVER ============ */
+.cover{
+  min-height:88vh;
+  display:grid;
+  grid-template-columns:1fr;
+  align-content:center;
+  padding-block:clamp(2rem,7vw,5rem);
+  border-bottom:3px double var(--rule);
+}
+.cover .kicker{
+  font-family:var(--font-label); text-transform:uppercase;
+  letter-spacing:.34em; font-size:.66rem; color:var(--ember); font-weight:700;
+}
+.cover h1{
+  font-family:var(--font-poster);
+  font-weight:400;
+  font-size:clamp(2.9rem,6.6vw,4.9rem);
+  line-height:.94;
+  margin:.4em 0 .1em;
+  letter-spacing:-.015em;
+  color:var(--honey);
+}
+.cover h1 .ai{
+  color:var(--ember);
+  letter-spacing:.01em;
+}
+.cover h1 .of{
+  display:block; font-family:var(--font-display);
+  font-size:.4em; font-weight:600; font-style:italic;
+  letter-spacing:.02em; margin-left:.25em;
+}
+.cover .deck{
+  font-size:1.28rem; line-height:1.45; max-width:34rem;
+  border-left:3px solid var(--ember); padding-left:1rem; margin:1.4rem 0 0;
+}
+.cover .imprint{
+  margin-top:2.6rem; font-family:var(--font-label); font-size:.78rem;
+  text-transform:uppercase; letter-spacing:.16em; color:var(--ink-soft);
+  line-height:2;
+}
+.cover .imprint .firm{
+  color:var(--ember); font-weight:700; text-decoration:none;
+  border-bottom:2px solid var(--rule); padding-bottom:2px;
+}
+.cover .imprint .firm:hover{border-bottom-color:var(--ember);}
+.cover-art{margin:1rem 0 0; }
+.cover-art svg{width:100%; height:auto; max-height:46vh; display:block;}
+
+@media (min-width:60rem){
+  .cover{grid-template-columns:1.05fr .95fr; gap:2.5rem; align-items:center;}
+  .cover-art{margin:0; grid-column:2; grid-row:1;}
+  .cover-text{grid-column:1; grid-row:1;}
+}
+
+/* ============ CONTENTS ============ */
+.contents{padding:clamp(2.5rem,6vw,4.5rem) 0; border-bottom:1px solid var(--rule);}
+.contents ol{list-style:none; margin:0; padding:0; counter-reset:toc;}
+.contents li{
+  counter-increment:toc;
+  display:flex; align-items:baseline; gap:.9rem;
+  padding:.55rem 0; border-bottom:1px dotted var(--rule);
+}
+.contents li::before{
+  content:counter(toc,decimal-leading-zero);
+  font-family:var(--font-display); font-size:1.5rem; color:var(--ember);
+  min-width:2.4rem;
+}
+.contents a{
+  font-family:var(--font-display); font-size:1.4rem; color:var(--ink);
+  text-decoration:none; font-weight:600;
+}
+.contents a:hover{color:var(--ember);}
+.contents .gloss{
+  font-family:var(--font-body); font-size:.85rem; color:var(--ink-soft);
+  margin-left:auto; text-align:right; max-width:32rem; line-height:1.35;
+}
+@media (max-width:44rem){ .contents .gloss{display:none;} }
+
+/* ============ CHAPTERS ============ */
+.chapter{
+  padding:clamp(3rem,8vw,6rem) 0 clamp(2rem,5vw,4rem);
+  border-bottom:1px solid var(--rule);
+  position:relative;
+}
+.chapter-head{position:relative; margin-bottom:2.2rem;}
+.chapter-num{
+  font-family:var(--font-poster);
+  font-size:clamp(2rem,3.4vw,2.8rem);
+  line-height:1;
+  color:var(--honey);
+  letter-spacing:.02em;
+  pointer-events:none;
+  display:flex; align-items:center; gap:.6rem;
+}
+/* a rule running off to the right of the numeral */
+.chapter-num::after{
+  content:""; flex:1; height:2px; background:var(--rule); max-width:14rem;
+}
+.chapter-num{margin-bottom:.1em;}
+.chapter h2{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:clamp(2rem,5.6vw,3.4rem);
+  line-height:1.02;
+  margin:-.12em 0 .2em;
+  max-width:24ch;
+}
+.chapter .standfirst{
+  font-size:1.22rem; line-height:1.5; font-style:italic; color:var(--ink-soft);
+  max-width:54rem; margin:.6rem 0 0;
+}
+.chapter p{max-width:var(--measure); margin:0 0 1.05em;}
+.chapter h3{
+  font-family:var(--font-label); text-transform:uppercase; letter-spacing:.16em;
+  font-size:.8rem; font-weight:700; color:var(--ember);
+  margin:2.2em 0 .7em; padding-bottom:.35em; border-bottom:1px solid var(--rule);
+  max-width:var(--measure);
+}
+.chapter ul,.chapter ol{max-width:var(--measure); padding-left:1.3em; margin:0 0 1.2em;}
+.chapter li{margin-bottom:.5em;}
+.chapter li::marker{color:var(--ember);}
+
+/* drop cap on the first paragraph of each chapter */
+.dropcap::first-letter{
+  font-family:var(--font-poster); font-weight:400;
+  float:left; font-size:3.6em; line-height:.86;
+  padding:.06em .09em 0 0; color:var(--honey);
+}
+
+strong{font-weight:700;}
+/* inset shadow, not padding — a highlight that doesn't push the
+   following punctuation away from the word */
+em.term{font-style:normal; font-weight:700; box-shadow:inset 0 -.34em 0 var(--ember-wash);}
+
+/* pull quote — deliberately breaks the measure */
+.pull{
+  font-family:var(--font-hand);
+  font-size:clamp(1.7rem,4vw,2.7rem);
+  line-height:1.28; font-style:normal;
+  margin:2.2rem 0 2.4rem;
+  padding:0 0 0 1.2rem;
+  border-left:4px solid var(--ember);
+  max-width:60rem;
+}
+@media (min-width:70rem){ .pull{margin-left:-3rem;} }
+
+/* boxes ------------------------------------------------------ */
+.box{
+  border:1px solid var(--rule);
+  background:var(--paper-deep);
+  padding:1.4rem 1.7rem;
+  margin:1.8rem 0 2rem;
+  max-width:62rem;
+}
+.box .label{
+  font-family:var(--font-label); text-transform:uppercase; letter-spacing:.18em;
+  font-size:.68rem; font-weight:700; color:var(--ember); display:block; margin-bottom:.6rem;
+}
+.box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:0;}
+.box.stable{border-left:5px solid var(--ember);}
+.box .repo{
+  color:var(--ember); font-weight:700; text-decoration:none;
+  border-bottom:2px solid var(--rule); padding-bottom:1px;
+  overflow-wrap:anywhere;
+}
+.box .repo:hover{border-bottom-color:var(--ember);}
+
+.compare{display:grid; gap:1.2rem; margin:1.6rem 0 2rem; max-width:var(--measure);}
+@media (min-width:48rem){ .compare{grid-template-columns:1fr 1fr;} }
+.compare > div{border:1px solid var(--rule); padding:1.1rem 1.2rem; background:var(--paper-deep);}
+.compare .tag{
+  font-family:var(--font-label); text-transform:uppercase; letter-spacing:.16em;
+  font-size:.66rem; font-weight:700; display:block; margin-bottom:.5rem;
+}
+.compare .bad .tag{color:var(--ink-soft);}
+.compare .good .tag{color:var(--ember);}
+.compare p{font-size:.95rem; margin:0;}
+.compare code{
+  font-family:var(--font-label); font-size:.95em; letter-spacing:.01em;
+  display:block; background:var(--paper); border-left:3px solid var(--rule);
+  padding:.6rem .8rem; margin-top:.5rem; white-space:pre-wrap; line-height:1.45;
+}
+
+/* figures ---------------------------------------------------- */
+figure{margin:2.4rem 0; max-width:var(--measure);}
+figure svg{width:100%; height:auto; display:block;}
+/* near-square diagrams stay on one screen instead of filling it */
+figure.tall svg{max-height:80vh; width:auto; margin:0;}
+figcaption{
+  font-family:var(--font-label); font-size:.76rem; letter-spacing:.06em;
+  color:var(--ink-soft); margin-top:.7rem; padding-top:.5rem;
+  border-top:1px solid var(--rule); max-width:56rem;
+}
+figcaption b{font-weight:700; color:var(--ember); text-transform:uppercase; letter-spacing:.14em; font-size:.9em;}
+figure.wide{max-width:none;}
+
+.strip{display:grid; grid-template-columns:repeat(2,1fr); gap:1.2rem;}
+@media (min-width:56rem){ .strip{grid-template-columns:repeat(4,1fr);} }
+.strip .panel{border:1px solid var(--rule); background:var(--paper-deep); padding:.7rem;}
+.strip .panel h4{
+  font-family:var(--font-label); text-transform:uppercase; letter-spacing:.13em;
+  font-size:.68rem; margin:.5rem 0 .2rem; color:var(--ember); font-weight:700;
+}
+.strip .panel p{font-size:.82rem; margin:0; line-height:1.35; color:var(--ink-soft);}
+
+/* resource cards --------------------------------------------- */
+.links{display:grid; gap:1.4rem; margin:2rem 0 2.6rem; max-width:var(--measure);}
+@media (min-width:48rem){ .links{grid-template-columns:1fr 1fr;} }
+.linkcard{
+  display:block; text-decoration:none; color:var(--ink);
+  border:1px solid var(--rule); border-left:5px solid var(--ember);
+  background:var(--paper-deep); padding:1.3rem 1.5rem;
+}
+.linkcard:hover{background:var(--ember-wash);}
+.linkcard .tag{
+  display:block; font-family:var(--font-label); text-transform:uppercase;
+  letter-spacing:.18em; font-size:.66rem; font-weight:700; color:var(--ink-soft);
+}
+.linkcard .name{
+  display:block; font-family:var(--font-display); font-weight:700;
+  font-size:2rem; line-height:1.1; margin:.2rem 0 .1rem; color:var(--honey);
+}
+.linkcard .url{
+  display:block; font-family:var(--font-label); font-weight:700; font-size:1rem;
+  color:var(--ember); letter-spacing:.04em; border-bottom:2px solid var(--rule);
+  padding-bottom:.4rem; margin-bottom:.6rem;
+}
+.linkcard .note{display:block; font-size:.92rem; line-height:1.45; color:var(--ink-soft);}
+
+/* table ------------------------------------------------------ */
+.tablewrap{overflow-x:auto; margin:2rem 0;}
+table{border-collapse:collapse; width:100%; min-width:40rem; font-size:.92rem;}
+th,td{text-align:left; vertical-align:top; padding:.75rem .8rem; border-bottom:1px solid var(--rule);}
+th{
+  font-family:var(--font-label); text-transform:uppercase; letter-spacing:.13em;
+  font-size:.66rem; color:var(--ember); border-bottom:2px solid var(--rule); font-weight:700;
+}
+td:first-child{font-weight:600;}
+td .sub{
+  font-family:var(--font-label); font-size:.82rem; font-weight:600;
+  color:var(--ember); letter-spacing:.03em;
+}
+
+/* the presenter's steps, shown openly ------------------------- */
+details.demo{
+  border:1px solid var(--rule); border-left:5px solid var(--honey);
+  background:var(--paper-deep); margin:1.8rem 0 2rem;
+  max-width:62rem; padding:0 1.5rem;
+}
+details.demo summary{
+  cursor:pointer; list-style:none; padding:1.1rem 0;
+  font-family:var(--font-label); text-transform:uppercase;
+  letter-spacing:.16em; font-size:.72rem; font-weight:700; color:var(--honey);
+  display:flex; align-items:center; gap:.7rem;
+}
+details.demo summary::-webkit-details-marker{display:none;}
+details.demo summary::before{
+  content:"+"; font-family:var(--font-poster); font-size:1.2rem;
+  line-height:1; color:var(--honey);
+}
+details.demo[open] summary::before{content:"\2013";}
+details.demo summary:hover{color:var(--ember);}
+details.demo .demo-body{padding:0 0 1.3rem;}
+details.demo ol{margin:0 0 1.1rem; padding-left:1.3em;}
+details.demo li{margin-bottom:.45em;}
+details.demo p{margin:0 0 .9em;}
+details.demo .say{font-family:var(--font-hand); font-size:1.25rem; color:var(--ember);}
+
+/* a printed conversation ---------------------------------------- */
+.transcript{max-width:var(--measure); margin:1.8rem 0 2.2rem;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);}
+.transcript .turn{padding:1.1rem 0 1.2rem; border-bottom:1px solid var(--rule);}
+.transcript .turn:last-child{border-bottom:none;}
+.transcript .who{
+  display:block; font-family:var(--font-label); text-transform:uppercase;
+  letter-spacing:.18em; font-size:.66rem; font-weight:700;
+  margin-bottom:.5em; color:var(--ink-soft);
+}
+.transcript .you{
+  background:var(--paper-deep); border-left:4px solid var(--ember);
+  padding:1.1rem 1.2rem 1.2rem;
+}
+.transcript .you .who{color:var(--ember);}
+.transcript p{margin:0 0 .75em; max-width:none;}
+.transcript p:last-child{margin-bottom:0;}
+.transcript ul{margin:.35em 0 .9em; max-width:none;}
+.transcript .aside{font-style:italic; color:var(--ink-soft); font-size:.94em;}
+details.demo h4{
+  font-family:var(--font-label); text-transform:uppercase; letter-spacing:.16em;
+  font-size:.74rem; font-weight:700; color:var(--ember);
+  margin:1.8em 0 .6em; padding-bottom:.3em; border-bottom:1px solid var(--rule);
+}
+details.demo h4:first-of-type{margin-top:.4em;}
+
+/* FAQ --------------------------------------------------------- */
+.faq{max-width:var(--measure);}
+.qa{padding:1.8rem 0; border-bottom:1px solid var(--rule);}
+.qa:first-child{padding-top:.6rem;}
+.faq .qa:last-child{border-bottom:none; padding-bottom:0;}
+.qa .q{
+  font-family:var(--font-display); font-weight:700;
+  font-size:clamp(1.3rem,2.4vw,1.9rem); line-height:1.15;
+  color:var(--ink); text-transform:none; letter-spacing:0;
+  margin:0 0 .5rem; padding:0; border:none; max-width:40ch;
+}
+.qa .horse-line{
+  font-family:var(--font-hand); font-size:1.4rem; line-height:1.3;
+  color:var(--ember); margin:0 0 .9rem; max-width:44rem;
+}
+.qa p{max-width:var(--measure);}
+.qa p:last-child{margin-bottom:0;}
+
+/* glossary --------------------------------------------------- */
+.glossary dl{margin:0; max-width:var(--measure); column-gap:3.5rem;}
+@media (min-width:70rem){ .glossary dl{columns:2;} .glossary dt{break-after:avoid;} .glossary dd{break-inside:avoid;} }
+.glossary dt{
+  font-family:var(--font-display); font-weight:700; font-size:1.15rem;
+  margin-top:1.3rem; color:var(--ink);
+}
+.glossary dd{margin:.2rem 0 0; padding-bottom:.9rem; border-bottom:1px dotted var(--rule); color:var(--ink-soft);}
+.glossary dd .horse{color:var(--ember); font-style:italic;}
+
+/* checklist -------------------------------------------------- */
+.checklist{list-style:none; padding:0; counter-reset:step; max-width:var(--measure);}
+.checklist li{
+  counter-increment:step; position:relative;
+  padding:.9rem 0 .9rem 3.2rem; border-bottom:1px solid var(--rule);
+}
+.checklist li::before{
+  content:counter(step); position:absolute; left:0; top:.75rem;
+  font-family:var(--font-display); font-size:1.6rem; color:var(--ember); font-weight:700;
+}
+
+/* back cover — the one dark surface in the book --------------- */
+.backcover{
+  background:var(--ink); color:var(--paper);
+  margin:3rem 0 0;
+  padding:clamp(2.4rem,5vw,4rem) clamp(1.6rem,4vw,3.5rem);
+  max-width:var(--measure);
+  border-top:6px solid var(--ember);
+}
+.bc-kicker{
+  display:block; font-family:var(--font-label); text-transform:uppercase;
+  letter-spacing:.26em; font-size:.7rem; font-weight:700; color:var(--honey);
+}
+.backcover h2{
+  font-family:var(--font-poster); font-weight:400;
+  font-size:clamp(1.25rem,2.5vw,1.95rem); line-height:1.12;
+  margin:.5rem 0 .8rem; color:var(--paper); max-width:none;
+}
+.backcover > .bc-inner > p{max-width:46rem; color:#d9cdba; margin:0 0 1.4rem;}
+.bc-grid{display:grid; gap:1.8rem; margin:2rem 0 2rem;}
+@media (min-width:52rem){ .bc-grid{grid-template-columns:repeat(3,1fr); gap:2.4rem;} }
+.bc-grid > div{border-top:2px solid var(--ember); padding-top:.9rem;}
+.bc-num{
+  font-family:var(--font-poster); font-size:1.2rem; color:var(--honey);
+  display:block; margin-bottom:.2rem;
+}
+.bc-grid h3{
+  font-family:var(--font-display); font-weight:700; font-size:1.35rem;
+  margin:0 0 .35rem; color:var(--paper); text-transform:none; letter-spacing:0;
+  border:none; padding:0;
+}
+.bc-grid p{margin:0; font-size:.95rem; line-height:1.5; color:#c3b7a4;}
+.bc-fact{
+  font-family:var(--font-hand) !important;
+  font-size:1.45rem !important; line-height:1.35;
+  color:var(--honey) !important;
+  border-left:3px solid var(--ember); padding-left:1rem;
+  max-width:38rem !important;
+}
+.bc-cta{
+  display:flex; flex-wrap:wrap; align-items:center; gap:1rem 1.6rem;
+  margin:2rem 0 0 !important; padding-top:1.5rem;
+  border-top:1px solid #4a3f33;
+  font-family:var(--font-label); text-transform:uppercase; letter-spacing:.16em;
+  font-size:.8rem;
+}
+.bc-cta span{color:#d9cdba; font-weight:600;}
+.bc-cta a{
+  color:var(--ink); background:var(--honey); font-weight:700;
+  padding:.7em 1.3em; text-decoration:none; letter-spacing:.12em;
+}
+.bc-cta a:hover{background:var(--paper);}
+
+/* colophon --------------------------------------------------- */
+.colophon{padding:3rem 0 5rem; font-family:var(--font-label); font-size:.72rem;
+  text-transform:uppercase; letter-spacing:.16em; color:var(--ink-soft); line-height:2;}
+.colophon .firm{color:var(--ember); font-weight:700; text-decoration:none; border-bottom:1px solid var(--rule);}
+
+/* svg drawing conventions ------------------------------------ */
+.ink{fill:#241d16;}
+.ink-far{fill:#5b4d3f;}
+.tack{fill:none; stroke:#b8391c; stroke-width:5; stroke-linecap:round; stroke-linejoin:round;}
+.tack-fill{fill:#b8391c;}
+.hair{fill:none; stroke:#241d16; stroke-width:2.5;}
+.tack-under{fill:none; stroke:#f4ede1; stroke-width:9; stroke-linecap:round; stroke-linejoin:round;}
+.lead{fill:none; stroke:#5b4d3f; stroke-width:2.5; stroke-dasharray:7 6;}
+.lead-under{fill:none; stroke:#f4ede1; stroke-width:8; stroke-linecap:round;}
+.lbl{font-family:"Archivo Narrow","Arial Narrow",sans-serif; font-size:23px; font-weight:700;
+  text-transform:uppercase; letter-spacing:.1em; fill:#241d16;}
+.lbl-em{fill:#b8391c;}
+.lbl-sm{font-family:"Archivo Narrow","Arial Narrow",sans-serif; font-size:18px; font-weight:600;
+  letter-spacing:.03em; fill:#5b4d3f; text-transform:none;}
+.plate{fill:#eadfcc; stroke:#c9b99f; stroke-width:2;}
+
+
+/* ---- split-session components (added when workshops became 45 min) ---- */
+
+/* the promise on the cover: what they leave able to do */
+.cover .promise{
+  max-width:34rem; margin:1.3rem 0 0; font-size:1.02rem; line-height:1.5;
+  color:var(--ink-soft); border-left:3px solid var(--honey); padding-left:1rem;
+}
+.cover .promise strong{color:var(--ink);}
+
+/* the recap that opens a second half */
+.recap{
+  border:1px solid var(--rule); border-left:5px solid var(--honey);
+  background:var(--paper-deep); padding:1.4rem 1.6rem;
+  margin:0 0 2.4rem; max-width:var(--measure);
+}
+.recap .rc-label{
+  display:block; font-family:var(--font-label); text-transform:uppercase;
+  letter-spacing:.18em; font-size:.68rem; font-weight:700; color:var(--honey);
+  margin-bottom:.6rem;
+}
+.recap p{margin:0 0 .8em; max-width:none;}
+.recap p:last-child{margin-bottom:0;}
+.recap ul{margin:.2rem 0 .9rem; padding-left:1.3em;}
+.recap li{margin-bottom:.35em;}
+.recap li::marker{color:var(--honey);}
+
+/* what is coming next session */
+.nexttime{
+  border-top:3px double var(--rule);
+  padding:clamp(2rem,4vw,3rem) 0 clamp(1.5rem,3vw,2rem);
+  max-width:var(--measure);
+}
+.nexttime .nt-label{
+  display:block; font-family:var(--font-label); text-transform:uppercase;
+  letter-spacing:.24em; font-size:.7rem; font-weight:700; color:var(--ember);
+}
+.nexttime h2{
+  font-family:var(--font-display); font-weight:700;
+  font-size:clamp(1.6rem,3.4vw,2.4rem); line-height:1.1;
+  margin:.4rem 0 .7rem;
+}
+.nexttime p{max-width:56rem; margin:0 0 1em;}
+.nexttime .nt-take{
+  font-family:var(--font-hand); font-size:1.4rem; color:var(--ember);
+  border-left:3px solid var(--ember); padding-left:1rem; margin-top:1.2rem;
+}
+
+/* glossary: which session each word arrived in */
+.glossary dt .from{
+  font-family:var(--font-label); font-size:.62rem; font-weight:700;
+  letter-spacing:.14em; color:var(--paper); background:var(--rule);
+  padding:.18em .5em; vertical-align:middle; margin-left:.5em;
+}
+.glossary dt .from.new{background:var(--ember);}
+
+/* a summary panel showing what is still to come */
+.strip .panel.soon{opacity:.55; border-style:dashed;}
+.strip .panel.soon .soon-tag{
+  display:block; font-family:var(--font-label); text-transform:uppercase;
+  letter-spacing:.16em; font-size:.6rem; font-weight:700; color:var(--ember);
+  margin-bottom:.3rem;
+}
+
+@media print{
+  .nexttime{page-break-inside:avoid;}
+  .recap{page-break-inside:avoid;}
+}
+
+/* print ------------------------------------------------------ */
+/* NOTE: no CSS running header/footer here. Chrome positions
+   position:fixed elements inside the page content area, so a
+   repeating header collides with the text (measured, 2026-08-27).
+   Use the browser's own Headers and footers option instead — it
+   also supplies page numbers, which CSS cannot in Chrome. */
+.printonly{display:none;}
+
+@media print{
+  html{font-size:12.5pt;}
+  body{background:#fff;}
+  .grain,.runner{display:none !important;}
+  .chapter{page-break-before:always; border-bottom:none;}
+  .cover{min-height:auto; page-break-after:always;}
+  .pull,.box,figure,table,.qa,.workshop{page-break-inside:avoid;}
+  a{color:inherit; text-decoration:none;}
+  /* don't print a full page of dark ink */
+  .backcover{background:#fff !important; color:#000 !important; border:2px solid #000;}
+  .backcover h2,.bc-grid h3,.bc-kicker,.bc-num,.bc-fact{color:#000 !important;}
+  .backcover p,.bc-grid p,.bc-cta span{color:#333 !important;}
+  .bc-cta a{background:none !important; color:#000 !important; border:1px solid #000;}
+}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ============================================================
+     SHARED DRAWINGS
+     ============================================================ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- the horse itself, no tack. viewBox space 0 0 520 360 -->
+    <g id="horse-body">
+      <!-- far legs first, lighter -->
+      <path class="ink-far" d="M212,196 L232,196 L230,254 L236,316 L216,316 L212,254 Z"/>
+      <path class="ink-far" d="M366,200 L392,200 L386,248 L360,284 L366,316 L346,316 L340,282 L364,246 Z"/>
+      <!-- tail -->
+      <path class="ink" d="M394,126 C430,138 450,180 444,232 C440,268 424,290 408,300 C424,264 430,216 417,178 C411,157 401,141 394,126 Z"/>
+      <!-- barrel + haunch + shoulder -->
+      <ellipse class="ink" cx="348" cy="172" rx="60" ry="66"/>
+      <ellipse class="ink" cx="272" cy="180" rx="78" ry="57"/>
+      <ellipse class="ink" cx="200" cy="172" rx="50" ry="60"/>
+      <!-- neck -->
+      <path class="ink" d="M126,44 C170,72 202,100 224,140 L168,196 C154,142 122,102 90,76 Z"/>
+      <!-- head -->
+      <path class="ink" d="M130,40 C120,20 98,14 80,28 L38,92 C33,104 43,114 56,108 L102,88 C122,79 136,58 130,40 Z"/>
+      <!-- ears -->
+      <path class="ink" d="M112,30 L104,2 L128,24 Z"/>
+      <path class="ink" d="M132,32 L134,6 L152,30 Z"/>
+      <!-- mane -->
+      <path class="ink" d="M112,40 C150,66 196,102 238,154 L262,132 C216,82 164,40 124,16 Z"/>
+      <!-- near legs -->
+      <path class="ink" d="M178,196 L202,196 L198,254 L203,316 L179,316 L174,254 Z"/>
+      <path class="ink" d="M336,200 L364,200 L358,248 L332,284 L338,316 L316,316 L310,282 L334,246 Z"/>
+      <!-- hooves -->
+      <rect class="ink" x="174" y="308" width="31" height="12" rx="2"/>
+      <rect class="ink" x="212" y="308" width="27" height="12" rx="2"/>
+      <rect class="ink" x="312" y="308" width="29" height="12" rx="2"/>
+      <rect class="ink" x="342" y="308" width="27" height="12" rx="2"/>
+      <!-- eye -->
+      <circle cx="101" cy="45" r="6" fill="#f4ede1"/>
+      <!-- ground -->
+      <path d="M40,322 L470,322" stroke="#c9b99f" stroke-width="3" fill="none"/>
+    </g>
+
+    <!-- bridle + reins. every strap is drawn twice: a paper casing, then
+         the ember strap, so it stays legible crossing the dark body -->
+    <g id="tack-bridle">
+      <path class="tack-under" d="M116,48 L72,94"/>
+      <path class="tack-under" d="M58,72 L84,102"/>
+      <path class="tack-under" d="M64,98 C140,120 216,132 296,132"/>
+      <path class="tack" d="M116,48 L72,94"/>
+      <path class="tack" d="M58,72 L84,102"/>
+      <path class="tack" d="M64,98 C140,120 216,132 296,132"/>
+      <circle class="tack-fill" cx="66" cy="98" r="7"/>
+    </g>
+
+    <!-- saddle, girth, stirrup -->
+    <g id="tack-saddle">
+      <path class="tack-under" d="M292,128 L296,208"/>
+      <path class="tack-under" d="M264,124 C244,156 246,206 268,238"/>
+      <path class="tack" d="M264,124 C244,156 246,206 268,238"/>
+      <ellipse class="tack-fill" cx="292" cy="120" rx="54" ry="17" transform="rotate(-4 292 120)"/>
+      <ellipse class="tack-fill" cx="340" cy="106" rx="9" ry="16" transform="rotate(16 340 106)"/>
+      <ellipse class="tack-fill" cx="246" cy="116" rx="7" ry="13" transform="rotate(-10 246 116)"/>
+      <path class="tack" d="M292,128 L296,208"/>
+      <path class="tack-fill" d="M282,206 h28 a7,7 0 0 1 7,7 v12 a7,7 0 0 1 -7,7 h-28 a7,7 0 0 1 -7,-7 v-12 a7,7 0 0 1 7,-7 Z M285,214 h22 v11 h-22 Z"/>
+    </g>
+
+    <!-- saddlebags -->
+    <g id="tack-bags">
+      <path class="tack-fill" d="M352,146 h72 a9,9 0 0 1 9,9 v48 a9,9 0 0 1 -9,9 h-72 a9,9 0 0 1 -9,-9 v-48 a9,9 0 0 1 9,-9 Z"/>
+      <path d="M343,168 h90" stroke="#f4ede1" stroke-width="4" fill="none"/>
+      <path d="M388,168 v20" stroke="#f4ede1" stroke-width="4" fill="none"/>
+    </g>
+  </defs>
+</svg>
+
+<header class="runner">
+  <a class="brand" href="index.html" title="All workshops"><span class="wsnum">#012</span> Who&rsquo;s at the <em>Gate</em></a>
+  <nav>
+    <a href="#contents">Contents</a>
+    <a href="#ch1">Second Person</a>
+    <a href="#ch2">Who Is It</a>
+    <a href="#ch3">Whose Rows</a>
+    <a href="#ch4">Mail</a>
+    <a href="#ch5">The End</a>
+    <a href="#ch6">FAQ</a>
+    <a href="#glossary">Glossary</a>
+  </nav>
+  <span class="sizer">
+    <button type="button" id="smaller" aria-label="Smaller text">A−</button>
+    <button type="button" id="bigger" aria-label="Larger text">A+</button>
+    <button type="button" id="printbtn" class="wide">Print</button>
+    <a class="wide" href="whos-at-the-gate.html" download>Download</a>
+  </span>
+</header>
+
+<main class="page">
+
+<!-- ============================ COVER ============================ -->
+<section class="cover">
+  <div class="cover-text">
+    <span class="kicker"><span class="wsnum">Workshop&nbsp;#012</span> &middot; <span class="lvl">Intermediate</span> lids down &mdash; the last one</span>
+    <h1>Who&rsquo;s at the <span class="ai">Gate</span><span class="of">and what they are allowed to see</span></h1>
+    <p class="deck">Everything you have built has had one user, and it was you. This is what changes the moment somebody else needs to get in &mdash; and it is the last session in the series.</p>
+    <p class="promise"><strong>By the end of today</strong> you will know how a thing works out who somebody is, how to keep one customer out of another&rsquo;s business, and where the line is between what to do yourself and what not to.</p>
+    <p class="imprint">
+      Presented by Emile du Toit<br>
+      <a class="firm" href="https://brainitconsulting.com">brainitconsulting.com</a>
+    </p>
+  </div>
+  <div class="cover-art">
+    <svg viewBox="0 0 830 360" role="img" aria-label="A horse in a yard behind a closed gate with a name board over it">
+      <path d="M470,322 L810,322" stroke="#c9b99f" stroke-width="3" fill="none"/>
+      <rect x="536" y="86" width="228" height="46" rx="5" fill="#5b4d3f"/>
+      <rect x="556" y="102" width="188" height="12" rx="6" fill="#eadfcc"/>
+      <path d="M548,322 L548,132 M752,322 L752,132" stroke="#5b4d3f" stroke-width="15" fill="none" stroke-linecap="round"/>
+      <path d="M556,180 L744,180 M556,240 L744,240 M556,300 L744,300"
+            stroke="#5b4d3f" stroke-width="11" fill="none" stroke-linecap="round"/>
+      <path d="M556,300 L744,180" stroke="#5b4d3f" stroke-width="9" fill="none" stroke-linecap="round"/>
+      <circle cx="752" cy="212" r="19" fill="#b8391c"/>
+      <circle cx="752" cy="212" r="7" fill="#f4ede1"/>
+      <use href="#horse-body"/><use href="#tack-bridle"/><use href="#tack-saddle"/><use href="#tack-bags"/>
+    </svg>
+  </div>
+</section>
+<!-- ============================ RECAP ============================ -->
+<section class="page-recap">
+  <div class="recap">
+    <span class="rc-label">Where we got to</span>
+    <p>Here is an overview of the last two sessions in five lines.</p>
+    <ul>
+      <li><strong>Your work is on the internet</strong> at a real address, and you can take it back down in two seconds.</li>
+      <li><strong>Paddock, training ring, open road</strong> &mdash; and only the last one has the public on it.</li>
+      <li><strong>You have a short list</strong> of things that must never quietly stop being true.</li>
+      <li><strong>A machine checks them</strong> on every change, before anything reaches a customer.</li>
+      <li><strong>And all of it still has exactly one user.</strong></li>
+    </ul>
+    <p>Today that stops being true.</p>
+  </div>
+</section>
+<!-- ============================ CONTENTS ============================ -->
+<section class="contents" id="contents">
+  <h3 style="margin-top:0">Contents</h3>
+  <ol>
+    <li><a href="#ch1">The moment a second person arrives</a><span class="gloss">Two different gates, and which one this is.</span></li>
+    <li><a href="#ch2">How it knows who you are</a><span class="gloss">Somebody else checks, and tells you.</span></li>
+    <li><a href="#ch3">What they are allowed to see</a><span class="gloss">The question people skip.</span></li>
+    <li><a href="#ch4">Sending mail without you</a><span class="gloss">The one that fails quietly.</span></li>
+    <li><a href="#ch5">The end of the trail</a><span class="gloss">Twelve sessions, and what to do next.</span></li>
+  </ol>
+  <p style="margin-top:1.4rem; max-width:var(--measure); color:var(--ink-soft); font-style:italic;">
+    Then the questions this always raises, the whole glossary, and the picture to photograph.
+  </p>
+</section>
+<!-- ============================ CH 01 ============================ -->
+<section class="chapter" id="ch1">
+  <div class="chapter-head">
+    <div class="chapter-num">01</div>
+    <h2>The moment a second person arrives</h2>
+    <p class="standfirst">Everything so far had exactly one user, and it was you.</p>
+  </div>
+
+  <p class="dropcap">Eleven sessions, and every single thing you have built has had one user. You opened it, you were allowed, and the question of who you were never came up because there was nobody else in the building.</p>
+
+  <p>Then Dale's daughter needs to mark a job as sent from the office. Then a customer asks whether they could just look up their own estimate instead of ringing. And a set of questions arrives all at once that were not questions yesterday.</p>
+
+  <div class="box stable">
+    <span class="label">Two different gates, and it is worth separating them now</span>
+    <p><strong>Session five's gate</strong> was the horse stopping to ask <em>you</em> before it changed something. That gate faces inward and it is still there.</p>
+    <p><strong>Today's gate</strong> is at the road, and other people arrive at it. It faces outward, and the questions are different: who is this, and what should they be allowed to see?</p>
+    <p>Same word, two jobs. Worth saying plainly rather than letting it blur.</p>
+  </div>
+
+  <p>Go back to session nine and the question you answered there &mdash; who is going to use this? The three answers each lead somewhere different, and today is where that difference finally costs something.</p>
+
+  <ul>
+    <li><strong>Just me.</strong> Then none of today applies and that is a genuinely fine place to stop. Put a password on the whole thing if you like; it is a setting, not a build.</li>
+    <li><strong>Me and the people who work for me.</strong> Two or three people who all trust each other. This is the common case and it is the easy one.</li>
+    <li><strong>My customers, each seeing their own.</strong> This is a real step up, and it is worth knowing that before you start rather than three weekends in.</li>
+  </ul>
+
+  <p class="pull">The second person is the expensive one. The third is nearly free.</p>
+</section>
+<!-- ============================ CH 02 ============================ -->
+<section class="chapter" id="ch2">
+  <div class="chapter-head">
+    <div class="chapter-num">02</div>
+    <h2>How it knows who you are</h2>
+    <p class="standfirst">The short version: somebody else checks, and tells you.</p>
+  </div>
+
+  <p class="dropcap">Working out who somebody is has a name &mdash; <em class="term">authentication</em> &mdash; and one piece of advice that matters more than everything else in this chapter put together. <strong>Do not build it yourself, and do not store passwords.</strong> Not because it is hard to write, but because it is hard to keep right for years, and the day it goes wrong it goes wrong in the newspaper.</p>
+
+  <figure class="wide">
+    <svg viewBox="0 0 1120 400" role="img" aria-label="A visitor, a gate, and a third party vouching for who the visitor is, with the password never reaching you">
+      <defs><marker id="ar12" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+        <path d="M0,0 L10,5 L0,10 Z" fill="#b8391c"/></marker></defs>
+
+      <rect class="plate" x="40" y="150" width="220" height="96" rx="8"/>
+      <text class="lbl-sm" x="150" y="190" text-anchor="middle" style="font-size:19px">somebody</text>
+      <text class="lbl-sm" x="150" y="216" text-anchor="middle" style="font-size:19px">at the gate</text>
+
+      <path d="M276,182 L392,182" style="fill:none;stroke:#b8391c;stroke-width:6" marker-end="url(#ar12)"/>
+      <path d="M392,220 L276,220" style="fill:none;stroke:#b8391c;stroke-width:6" marker-end="url(#ar12)"/>
+
+      <rect x="410" y="96" width="290" height="204" rx="8" fill="#eadfcc" stroke="#5b4d3f" stroke-width="5"/>
+      <text class="lbl lbl-em" x="555" y="150" text-anchor="middle">Somebody else</text>
+      <text class="lbl-sm" x="555" y="182" text-anchor="middle" style="font-size:19px">Google, or their own inbox</text>
+      <text class="lbl-sm" x="555" y="212" text-anchor="middle" style="font-size:19px">checks, and vouches for them</text>
+      <text class="lbl-sm" x="555" y="256" text-anchor="middle" style="font-size:19px; fill:#b8391c">the password stops here</text>
+
+      <path d="M716,182 L832,182" style="fill:none;stroke:#b8391c;stroke-width:6" marker-end="url(#ar12)"/>
+      <text class="lbl-sm" x="774" y="164" text-anchor="middle" style="font-size:17px">&ldquo;this is Rosa&rdquo;</text>
+
+      <path d="M856,300 L856,120 M1064,300 L1064,120" stroke="#5b4d3f" stroke-width="14" fill="none" stroke-linecap="round"/>
+      <path d="M864,166 L1056,166 M864,226 L1056,226 M864,286 L1056,286"
+            stroke="#5b4d3f" stroke-width="10" fill="none" stroke-linecap="round"/>
+      <circle cx="1064" cy="196" r="17" fill="#b8391c"/>
+      <text class="lbl lbl-em" x="856" y="346">Your gate</text>
+      <text class="lbl-sm" x="856" y="372">never sees a password at all</text>
+    </svg>
+    <figcaption><b>Fig. 1</b> &mdash; You are not in the password business, and you should never want to be. Somebody else does the checking; you are told who turned up.</figcaption>
+  </figure>
+
+  <p>What you do instead is let somebody who does this for a living do the checking, and simply be told the answer. There are two shapes of it and you have used both this week without thinking about it.</p>
+
+  <ul>
+    <li><strong>Sign in with Google</strong> &mdash; or Apple, or Microsoft. They already know who this person is. They check, and hand you back a name and an email address. The password never comes near you.</li>
+    <li><strong>A <em class="term">magic link</em></strong> &mdash; they type their email address, you send them a one-time link, they click it. If they can open that inbox, they are who they said. Nothing to remember, nothing to leak.</li>
+  </ul>
+
+  <p>For a small business, magic links are often the kindest answer. Your customers do not want another password for the plumber, and you do not want to be the reason they have one.</p>
+
+  <div class="box">
+    <span class="label">What this actually costs you</span>
+    <p>Less than you would think. It is a service you switch on, the same way the well was &mdash; a few settings and a page that says <em>sign in</em>. Free at small numbers, and it is an afternoon's work rather than a project.</p>
+    <p>What it is <strong>not</strong> is something to write from scratch because it looks simple. It looks simple for about a week.</p>
+  </div>
+
+  <p>Once somebody is in, the thing needs to remember it let them in &mdash; otherwise they are asked again on every page. That memory is a <em class="term">session</em>, it is handled for you, and the only decision you will make about it is how long it lasts. A day is usually right.</p>
+
+  <p class="pull">You are not in the password business. Do not let anybody talk you into it.</p>
+</section>
+<!-- ============================ CH 03 ============================ -->
+<section class="chapter" id="ch3">
+  <div class="chapter-head">
+    <div class="chapter-num">03</div>
+    <h2>What they are allowed to see</h2>
+    <p class="standfirst">The question people skip, and the one that actually bites.</p>
+  </div>
+
+  <p class="dropcap">Knowing who somebody is and knowing what they may do are two entirely separate questions, and almost everybody who gets into trouble got the first right and never asked the second. The second one is called <em class="term">authorization</em>.</p>
+
+  <p>Here is the failure, and it is so common it has a shape. You build the customer page. It works beautifully. Brody signs in, and the page shows Brody his job. Then somebody changes the number at the end of the address by one, and it shows them Tanner's.</p>
+
+  <p>Nothing was hacked. The page simply never asked <em>whose</em>.</p>
+
+  <figure class="wide">
+    <svg viewBox="0 0 1120 546" role="img" aria-label="One well with three troughs, each person drawing only their own rows">
+      <path d="M446,110 L560,48 L674,110 Z" fill="#b8391c"/>
+      <rect x="466" y="106" width="17" height="110" fill="#5b4d3f"/>
+      <rect x="637" y="106" width="17" height="110" fill="#5b4d3f"/>
+      <rect x="466" y="116" width="188" height="13" rx="6" fill="#5b4d3f"/>
+      <rect x="446" y="218" width="228" height="20" rx="7" fill="#5b4d3f"/>
+      <rect x="458" y="238" width="204" height="84" rx="5" fill="#eadfcc" stroke="#5b4d3f" stroke-width="5"/>
+      <path d="M458,276 L662,276 M526,238 L526,276 M594,238 L594,276 M492,276 L492,322 M560,276 L560,322 M628,276 L628,322"
+            stroke="#5b4d3f" stroke-width="3" fill="none"/>
+
+      <path class="lead-under" d="M262,144 L440,222"/><path class="lead" d="M262,144 L440,222"/>
+      <text class="lbl lbl-em" x="40" y="126">One well, still</text>
+      <text class="lbl-sm" x="40" y="152">every job in the business is in here</text>
+
+      <path d="M452,296 C340,296 250,320 176,356" style="fill:none;stroke:#c9b99f;stroke-width:9;stroke-linecap:round"/>
+      <path d="M560,330 C560,370 560,392 560,422" style="fill:none;stroke:#c9b99f;stroke-width:9;stroke-linecap:round"/>
+      <path d="M668,296 C780,296 870,320 944,356" style="fill:none;stroke:#c9b99f;stroke-width:9;stroke-linecap:round"/>
+
+      <path d="M40,358 L232,358 L212,422 L60,422 Z" fill="#eadfcc" stroke="#5b4d3f" stroke-width="5"/>
+      <text class="lbl-sm" x="136" y="452" text-anchor="middle">Dale sees everything</text>
+
+      <path d="M464,424 L656,424 L636,488 L484,488 Z" fill="#f0d9cf" stroke="#b8391c" stroke-width="5"/>
+
+      <path d="M888,358 L1080,358 L1060,422 L908,422 Z" fill="#f0d9cf" stroke="#b8391c" stroke-width="5"/>
+      <text class="lbl-sm" x="984" y="452" text-anchor="middle">Brody sees Brody's job</text>
+
+      <text class="lbl-sm" x="560" y="518" text-anchor="middle">Rosa sees her own jobs</text>
+    </svg>
+    <figcaption><b>Fig. 2</b> &mdash; The well does not change. What changes is that every question put to it now ends with <em>&mdash; and only this person's rows.</em></figcaption>
+  </figure>
+
+  <p>The rule that prevents all of it is one sentence, and it goes on the wall.</p>
+
+  <div class="box stable">
+    <span class="label">The sentence</span>
+    <p><strong>Every question the well is asked must end with &ldquo;&mdash; and only this person's rows.&rdquo;</strong></p>
+    <p>Not most questions. Not the ones that look sensitive. Every single one, including the ones you are sure about, because the one you are sure about is the one that gets copied into a new page in March by somebody in a hurry.</p>
+  </div>
+
+  <p>And a second rule underneath it, which is about people rather than pages: give everybody the smallest access that lets them do their job. Dale's daughter needs to mark jobs as sent. She does not need to be able to delete customers. That is <em class="term">least privilege</em>, and the reason for it is not that you distrust her &mdash; it is that a mistake can only reach as far as the permissions allow.</p>
+
+  <p><strong>How to check it, since you cannot read the code.</strong> Session eleven, applied here. Make two accounts. Sign in as one, note the address of something you can see, sign out, sign in as the other, and paste that address in. You should be turned away. Write that down as a check, and it will be tested forever.</p>
+
+  <p class="pull">The page knew who Brody was. It never asked whose job it was showing him.</p>
+</section>
+<!-- ============================ CH 04 ============================ -->
+<section class="chapter" id="ch4">
+  <div class="chapter-head">
+    <div class="chapter-num">04</div>
+    <h2>Sending mail without you</h2>
+    <p class="standfirst">The quiet workhorse, and the one that stops working without telling you.</p>
+  </div>
+
+  <p class="dropcap">Once other people are using the thing, it has to talk to them. Not marketing &mdash; the ordinary notes a business sends because something happened. Your estimate is ready. Here is the link you asked for. We got your message and Dale will call Tuesday.</p>
+
+  <p>That is <em class="term">transactional email</em>, it is a service you switch on like the others, and there are three things worth knowing before you do.</p>
+
+  <ul>
+    <li><strong>Send from your own name.</strong> There is a setting-up step where you prove you own your email domain, and it is worth doing properly on day one. Mail from <em>dale@daleandson.com</em> arrives. Mail from a service pretending to be Dale goes to spam.</li>
+    <li><strong>Keep it to things that happened.</strong> A receipt, a confirmation, a link somebody asked for. The moment you start sending newsletters through the same route you put the important mail at risk, and the important mail is the one that must arrive.</li>
+    <li><strong>It will fail silently.</strong> This is the one. Mail does not bounce back to you with a red light &mdash; it quietly stops arriving, and you find out from a customer six weeks later. It is exactly the fence from last session, and it belongs on your list of checks.</li>
+  </ul>
+
+  <div class="box">
+    <span class="label">Worth saying to a room that runs businesses</span>
+    <p>Email is the piece people most underestimate, because sending one is easy and having them reliably <em>arrive</em> is not. If any part of today is worth an afternoon of somebody else's time, it is usually this one.</p>
+  </div>
+
+  <p class="pull">Nobody tells you the mail stopped arriving. That is the whole trouble with it.</p>
+</section>
+<!-- ============================ CH 05 ============================ -->
+<section class="chapter" id="ch5">
+  <div class="chapter-head">
+    <div class="chapter-num">05</div>
+    <h2>The end of the trail</h2>
+    <p class="standfirst">Twelve sessions. Here is what you can actually do now.</p>
+  </div>
+
+  <p class="dropcap">This is the last one, so it is worth being plain about what has happened rather than finishing on a flourish. Twelve sessions ago the whole thing was a chat box you were slightly suspicious of.</p>
+
+  <figure class="wide">
+    <svg viewBox="0 0 1120 400" role="img" aria-label="Twelve markers along a trail, one for each session">
+      <path d="M40,300 L1080,300" stroke="#c9b99f" stroke-width="8" fill="none" stroke-linecap="round"/>
+      <rect x="78" y="228" width="13" height="72" rx="4" fill="#5b4d3f"/>
+      <rect x="70" y="240" width="29" height="15" rx="4" fill="#5b4d3f"/>
+      <text class="lbl-sm" x="84" y="212" text-anchor="middle" style="font-size:16px">01</text>
+      <rect x="162" y="228" width="13" height="72" rx="4" fill="#5b4d3f"/>
+      <rect x="154" y="240" width="29" height="15" rx="4" fill="#5b4d3f"/>
+      <text class="lbl-sm" x="168" y="212" text-anchor="middle" style="font-size:16px">02</text>
+      <rect x="246" y="228" width="13" height="72" rx="4" fill="#5b4d3f"/>
+      <rect x="238" y="240" width="29" height="15" rx="4" fill="#5b4d3f"/>
+      <text class="lbl-sm" x="252" y="212" text-anchor="middle" style="font-size:16px">03</text>
+      <rect x="330" y="228" width="13" height="72" rx="4" fill="#5b4d3f"/>
+      <rect x="322" y="240" width="29" height="15" rx="4" fill="#5b4d3f"/>
+      <text class="lbl-sm" x="336" y="212" text-anchor="middle" style="font-size:16px">04</text>
+      <rect x="414" y="228" width="13" height="72" rx="4" fill="#5b4d3f"/>
+      <rect x="406" y="240" width="29" height="15" rx="4" fill="#5b4d3f"/>
+      <text class="lbl-sm" x="420" y="212" text-anchor="middle" style="font-size:16px">05</text>
+      <rect x="498" y="228" width="13" height="72" rx="4" fill="#5b4d3f"/>
+      <rect x="490" y="240" width="29" height="15" rx="4" fill="#5b4d3f"/>
+      <text class="lbl-sm" x="504" y="212" text-anchor="middle" style="font-size:16px">06</text>
+      <rect x="582" y="228" width="13" height="72" rx="4" fill="#5b4d3f"/>
+      <rect x="574" y="240" width="29" height="15" rx="4" fill="#5b4d3f"/>
+      <text class="lbl-sm" x="588" y="212" text-anchor="middle" style="font-size:16px">07</text>
+      <rect x="666" y="228" width="13" height="72" rx="4" fill="#5b4d3f"/>
+      <rect x="658" y="240" width="29" height="15" rx="4" fill="#5b4d3f"/>
+      <text class="lbl-sm" x="672" y="212" text-anchor="middle" style="font-size:16px">08</text>
+      <rect x="750" y="228" width="13" height="72" rx="4" fill="#5b4d3f"/>
+      <rect x="742" y="240" width="29" height="15" rx="4" fill="#5b4d3f"/>
+      <text class="lbl-sm" x="756" y="212" text-anchor="middle" style="font-size:16px">09</text>
+      <rect x="834" y="228" width="13" height="72" rx="4" fill="#5b4d3f"/>
+      <rect x="826" y="240" width="29" height="15" rx="4" fill="#5b4d3f"/>
+      <text class="lbl-sm" x="840" y="212" text-anchor="middle" style="font-size:16px">10</text>
+      <rect x="918" y="228" width="13" height="72" rx="4" fill="#5b4d3f"/>
+      <rect x="910" y="240" width="29" height="15" rx="4" fill="#5b4d3f"/>
+      <text class="lbl-sm" x="924" y="212" text-anchor="middle" style="font-size:16px">11</text>
+      <rect x="1002" y="228" width="13" height="72" rx="4" fill="#5b4d3f"/>
+      <rect x="994" y="240" width="29" height="15" rx="4" fill="#b8391c"/>
+      <text class="lbl-sm" x="1008" y="212" text-anchor="middle" style="font-size:16px">12</text>
+
+      <text class="lbl" x="40" y="360">Twelve markers</text>
+      <text class="lbl-sm" x="40" y="386">You can ride back to any of them. That was rather the idea.</text>
+    </svg>
+    <figcaption><b>Fig. 3</b> &mdash; The trail behind you. Nothing on it was clever; all of it was ordinary, done in order.</figcaption>
+  </figure>
+
+  <div class="box stable">
+    <span class="label">What you can do now that you could not in session one</span>
+    <p><strong>Use one properly</strong> &mdash; steer it, give it standing instructions, and know when it is confidently wrong.</p>
+    <p><strong>Work in your own project folder</strong>, with an editor, with an assistant sitting in it that reads and writes real files.</p>
+    <p><strong>Describe a job so you get the thing you meant</strong>, and make it ask you the questions you had not thought of.</p>
+    <p><strong>Undo anything</strong>, and stop working on copies.</p>
+    <p><strong>Keep your information in one place</strong> and ask it questions in English.</p>
+    <p><strong>Put something on the internet</strong>, at a real address, and take it back down in two seconds.</p>
+    <p><strong>Write down what must never quietly stop being true</strong>, and have a machine check it forever.</p>
+    <p>That is not a beginner's list. It was twelve ordinary steps, taken in order.</p>
+  </div>
+
+  <h3>What to do next</h3>
+
+  <p>Pick one real thing in your business &mdash; small, annoying, and yours. Write the map for it. Build it badly. Put it on the internet where only you can see it. Then use it for a fortnight and fix what actually irritates you, rather than what you imagined would.</p>
+
+  <p>That fortnight will teach you more than another twelve sessions would, and you now have everything you need to survive it, including the undo.</p>
+
+  <h3>Where I come in, briefly</h3>
+
+  <p>Some of this is worth your evenings and some of it is not, and the line moves depending on what your time is worth.</p>
+
+  <p>Below the line: the map, the checks, the small changes, and anything where knowing your own business is most of the job. Nobody can do those better than you, and you should not pay anybody to.</p>
+
+  <p>Above it: the pieces where somebody who has done it fifty times takes an afternoon and you would lose a fortnight. Moving a working business onto a well without dropping anything. Logins that still hold up in two years. The specialised parts, where the tools stop being general and start being particular to your trade.</p>
+
+  <p>You now know enough to tell which is which, and that was always the real point of the series. If you would rather hand a piece over, or you would like somebody alongside you for a week while you do it yourself, that is what I do &mdash; and I would much rather you asked than quietly stopped.</p>
+
+  <h3>Before you leave</h3>
+
+  <ol class="checklist">
+    <li><strong>Write down the one thing</strong> you are going to build. One line. Now, before the room empties.</li>
+    <li><strong>Put a date on it</strong> &mdash; the day you will have the ugly first version working, only for you.</li>
+    <li><strong>Tell somebody</strong> in the room what it is. That is the whole trick to actually doing it.</li>
+    <li><strong>Keep the class folder.</strong> It is at <a class="repo" href="https://github.com/brainit-consulting/ai-workshops" target="_blank" rel="noopener">github.com/brainit-consulting/ai-workshops</a> and it is not going anywhere.</li>
+  </ol>
+
+  <p>Thank you for coming. It has been a pleasure, and I mean that in the ordinary way rather than the way people say it at the end of things.</p>
+</section>
+<!-- ============================ CH 06 ============================ -->
+<section class="chapter" id="ch6">
+  <div class="chapter-head">
+    <div class="chapter-num">06</div>
+    <h2>Questions people actually ask</h2>
+    <p class="standfirst">Six that come up every time this session is taught.</p>
+  </div>
+
+  <div class="faq">
+    <div class="qa">
+      <p class="q">Can I just put one password on the whole thing?</p>
+      <p class="horse-line">One key, one gate, everybody uses it.</p>
+      <p>Yes, and for a staff-only tool that is often exactly right. It is a setting rather than a build, it takes two minutes, and it is far better than an amateur login screen. Its limit is that everybody sees everything &mdash; the moment that stops being true, you need chapter three.</p>
+    </div>
+    <div class="qa">
+      <p class="q">Is &ldquo;sign in with Google&rdquo; safe for a small business?</p>
+      <p class="horse-line">Let the man who knows the faces stand at the gate.</p>
+      <p>Safer than anything you or I would build. They handle the password, the stolen-account checks and the two-factor codes, and you never see any of it. The one thing to remember is that some customers will not have a Google account, which is why magic links usually sit alongside it.</p>
+    </div>
+    <div class="qa">
+      <p class="q">How do I know somebody cannot see another customer's job?</p>
+      <p class="horse-line">Try the wrong gate yourself, before somebody else does.</p>
+      <p>Test it, the way chapter three describes: two accounts, and try to open one's page while signed in as the other. Then write it down as a check so it is tested forever. This is the single most valuable check you will ever write.</p>
+    </div>
+    <div class="qa">
+      <p class="q">Do I need all of this to start?</p>
+      <p class="horse-line">You do not fit the gate before the yard exists.</p>
+      <p>No, and building it early is a common way to waste a month. Start with the thing only you use. Add sign-in when a second real person actually needs it, not when you imagine they might.</p>
+    </div>
+    <div class="qa">
+      <p class="q">What if I want to charge people?</p>
+      <p class="horse-line">The market has its own rules, and they are not ours today.</p>
+      <p>Taking money is its own subject and we have not covered it. The short version: use a company that specialises in it, never handle card numbers yourself, and expect the paperwork to take longer than the building. Ask me if it comes up &mdash; it is usually simpler than people fear.</p>
+    </div>
+    <div class="qa">
+      <p class="q">Is that really the end?</p>
+      <p class="horse-line">The end of the marked trail. Not the end of the riding.</p>
+      <p>It is the end of the series, yes. The class folder stays where it is, the pages stay online and printable, and every marker is still there. What comes after this is your own work, which was the point &mdash; and I am around if you want a hand with a particular piece of it.</p>
+    </div>
+  </div>
+</section>
+<!-- ============================ GLOSSARY ============================ -->
+<section class="chapter glossary" id="glossary">
+  <div class="chapter-head">
+    <h2>Plain words</h2>
+    <p class="standfirst">Everything the series has named so far. Today's are marked.</p>
+  </div>
+
+  <p style="max-width:var(--measure)">This list grows every session and always shows the lot, so you never need last week's handout to read this week's.</p>
+
+  <dl>
+    <dt>Large language model (LLM) <span class="from">001</span></dt>
+    <dd>The engine that predicts the next word. <span class="horse">The horse.</span></dd>
+
+    <dt>GPT <span class="from">001</span></dt>
+    <dd><strong>G</strong>enerative &mdash; it makes new text rather than looking up a stored answer. <strong>P</strong>re-trained &mdash; all its learning happened in advance. <strong>T</strong>ransformer &mdash; the design of the machinery underneath. <span class="horse">A breed name, not a job title.</span></dd>
+
+    <dt>Knowledge cutoff <span class="from">001</span></dt>
+    <dd>The date its training stopped. It knows nothing after it, and doesn't know that it doesn't. <span class="horse">The last day the horse was out in the world.</span></dd>
+
+    <dt>Prompt <span class="from">001</span></dt>
+    <dd>What you type. <span class="horse">A pull on the reins.</span></dd>
+
+    <dt>Chatbot <span class="from">001</span></dt>
+    <dd>A model you can talk to, turn by turn. <span class="horse">Horse plus bridle.</span></dd>
+
+    <dt>System prompt / instructions <span class="from">001</span></dt>
+    <dd>Standing orders sent with every message, whether you type them or not. <span class="horse">The saddle.</span></dd>
+
+    <dt>Context window <span class="from">001</span></dt>
+    <dd>How much of the conversation it can hold at once. <span class="horse">How far it can see on this ride.</span></dd>
+
+    <dt>Token <span class="from">001</span></dt>
+    <dd>A chunk of a word &mdash; how length is counted, and how you're billed. <span class="horse">Sugar cubes.</span></dd>
+
+    <dt>Hallucination <span class="from">001</span></dt>
+    <dd>Making something up and sounding certain. <span class="horse">Shying at a shed snakeskin.</span></dd>
+
+    <dt>Tool <span class="from">002</span></dt>
+    <dd>A specific action it's allowed to take in the real world. <span class="horse">A saddlebag.</span></dd>
+
+    <dt>MCP <span class="from">002</span></dt>
+    <dd>An agreed standard for plugging tools into a model. <span class="horse">Standard-size buckles.</span></dd>
+
+    <dt>Agent <span class="from">002</span></dt>
+    <dd>A model given a goal, tools, and permission to keep going. <span class="horse">A working horse, not a show pony.</span></dd>
+
+    <dt>Agentic loop <span class="from">002</span></dt>
+    <dd>Look, decide, act, check, repeat. <span class="horse">The ride itself.</span></dd>
+
+    <dt>Human in the loop <span class="from">002</span></dt>
+    <dd>A person approves before something real happens. <span class="horse">A hand on the reins.</span></dd>
+
+    <dt>Automation <span class="from">002</span></dt>
+    <dd>The same work happening without you starting it each time. <span class="horse">The horse knows the route.</span></dd>
+
+    <dt>File <span class="from">003</span></dt>
+    <dd>A thing with a name and contents. <span class="horse">A single piece of gear.</span></dd>
+
+    <dt>Folder <span style="font-weight:400">(directory)</span> <span class="from">003</span></dt>
+    <dd>A box holding files, and sometimes other folders. <span class="horse">A shelf.</span></dd>
+
+    <dt>Project <span class="from">003</span></dt>
+    <dd>One folder holding one job's worth of everything. <span class="horse">The room, with the door shut.</span></dd>
+
+    <dt>Path <span class="from">003</span></dt>
+    <dd>The written address of a file &mdash; which boxes it sits inside. <span class="horse">Directions to the shelf.</span></dd>
+
+    <dt>Editor <span style="font-weight:400">(VS Code)</span> <span class="from">004</span></dt>
+    <dd>A window showing you one folder and everything in it. <span class="horse">The tack room.</span></dd>
+
+    <dt>Terminal <span class="from">004</span></dt>
+    <dd>A panel where you type an instruction to the computer directly. <span class="horse">Talking to the stable itself.</span></dd>
+
+    <dt>Install <span class="from">004</span></dt>
+    <dd>Putting a program on your own machine, once. <span class="horse">Building the room.</span></dd>
+
+    <dt>Permission prompt <span class="from">005</span></dt>
+    <dd>The stop before it changes anything, showing what it plans to do. <span class="horse">The gate, and your hand on the latch.</span></dd>
+
+    <dt>Approval mode <span class="from">005</span></dt>
+    <dd>Whether it asks every time, works on its own, or only shows a plan. <span class="horse">How loose you're holding the reins.</span></dd>
+
+    <dt>Interrupting <span class="from">005</span></dt>
+    <dd>Stopping it mid-job with the escape key. <span class="horse">A pull on the reins. Ordinary.</span></dd>
+
+    <dt>Project instructions <span class="from">006</span></dt>
+    <dd>A plain-English file of standing rules that lives in the folder. <span class="horse">The saddle, hanging in the room.</span></dd>
+
+    <dt>Run a command <span class="from">006</span></dt>
+    <dd>Doing something on the computer rather than writing words about it. <span class="horse">Actual work, not conversation.</span></dd>
+
+    <dt>Working on copies <span class="from">006</span></dt>
+    <dd>Duplicating a file so the original can't be harmed. <span class="horse">Schooling in the paddock, not on the road.</span></dd>
+
+    <dt>Version control <span class="from">007</span></dt>
+    <dd>Keeping every previous version of everything, so any of them can come back. <span class="horse">A trail you can ride back.</span></dd>
+
+    <dt>Git <span class="from">007</span></dt>
+    <dd>The program that keeps the trail. It runs on your own machine. <span class="horse">What drives the markers in.</span></dd>
+
+    <dt>Commit <span class="from">007</span></dt>
+    <dd>One marker, with a short note saying what you had just done. <span class="horse">A gate you can ride back through.</span></dd>
+
+    <dt>Repository <span style="font-weight:400">(repo)</span> <span class="from">007</span></dt>
+    <dd>A folder that keeps its own history. <span class="horse">The field, with the trail marked in it.</span></dd>
+
+    <dt>GitHub <span class="from">007</span></dt>
+    <dd>A copy of the repository kept online &mdash; a real backup, and a way to hand it to somebody. <span class="horse">The shared stable at the trailhead.</span></dd>
+
+    <dt>Push and pull <span class="from">007</span></dt>
+    <dd>Sending your markers up to that copy, and fetching down anything that is there and not here. <span class="horse">Riding to the trailhead and back.</span></dd>
+
+    <dt>Spec <span style="font-weight:400">(brief)</span> <span class="from">008</span></dt>
+    <dd>One page describing a job well enough to hand it over. What it must do &mdash; not how to build it. <span class="horse">The trail map. Where you are going, not which foot the horse leads with.</span></dd>
+
+    <dt>Scope <span class="from">008</span></dt>
+    <dd>What is in this job, and what is deliberately not. <span class="horse">Where the map stops. The country past the edge is not today's ride.</span></dd>
+
+    <dt>Acceptance <span class="from">008</span></dt>
+    <dd>How you will know the thing is right when you see it. <span class="horse">How you know you arrived.</span></dd>
+
+    <dt>Plan mode <span class="from">008</span></dt>
+    <dd>A setting where it works out what it would do, and shows you, before touching anything. <span class="horse">Reading the map aloud before anyone mounts up.</span></dd>
+
+    <dt>Assumption <span class="from">008</span></dt>
+    <dd>Something you took to be true and never checked. <span class="horse">A stretch of map you drew from memory rather than from riding it.</span></dd>
+
+    <dt>Database <span class="from">009</span></dt>
+    <dd>One place the information lives, built to be read and written by several things at once without ever disagreeing with itself. <span class="horse">The well.</span></dd>
+
+    <dt>Table <span class="from">009</span></dt>
+    <dd>A list of one kind of thing, with the same facts recorded about each one. <span class="horse">One list on the slate: every job, every time.</span></dd>
+
+    <dt>Row <span class="from">009</span></dt>
+    <dd>One of the things. One job, one customer, one invoice. <span class="horse">A single line on the slate.</span></dd>
+
+    <dt>Column <span class="from">009</span></dt>
+    <dd>One fact, kept about every row. Customer. Status. Date received. <span class="horse">The same question asked of every line.</span></dd>
+
+    <dt>Query <span style="font-weight:400">(SQL)</span> <span class="from">009</span></dt>
+    <dd>A written question put to the database. SQL is the language they are written in. <span class="horse">Lowering the bucket, and what you asked it to bring up.</span></dd>
+
+    <dt>Connection string <span class="from">009</span></dt>
+    <dd>One line of text that says where the well is and unlocks it. Treat it as a key, because it is one. <span class="horse">The key to the pump house.</span></dd>
+
+    <dt>Postgres <span style="font-weight:400">(Neon)</span> <span class="from">009</span></dt>
+    <dd>The most widely used serious database; Neon is a company that runs one for you. <span class="horse">A well somebody else dug, and maintains.</span></dd>
+
+    <dt>Deploy <span class="from">010</span></dt>
+    <dd>Sending a copy of your work to a machine that is always on, so other people can reach it. <span class="horse">Loading the wagon and driving it to market.</span></dd>
+
+    <dt>Production <span class="from">010</span></dt>
+    <dd>The version the public sees. There is only ever one. <span class="horse">The open road.</span></dd>
+
+    <dt>Preview <span class="from">010</span></dt>
+    <dd>The same work, live on the internet, at an address only your people can open. <span class="horse">The training ring &mdash; real ground, fence round it.</span></dd>
+
+    <dt>Rollback <span class="from">010</span></dt>
+    <dd>Putting the previous version back as the public one. Seconds, not a repair job. <span class="horse">Turning the wagon round.</span></dd>
+
+    <dt>Domain <span class="from">010</span></dt>
+    <dd>The name people type. Yours, rented by the year, pointed at your work. <span class="horse">The name over the stall.</span></dd>
+
+    <dt>Environment variable <span class="from">010</span></dt>
+    <dd>A secret kept on the machine that serves the page, never inside the page itself. <span class="horse">The key stays in the driver's pocket.</span></dd>
+
+    <dt>Test <span class="from">011</span></dt>
+    <dd>One thing that must always be true, written so a machine can check it. <span class="horse">One fence post you ride out to.</span></dd>
+
+    <dt>Test suite <span class="from">011</span></dt>
+    <dd>All of them together, run in one go. <span class="horse">The whole round.</span></dd>
+
+    <dt>Regression <span class="from">011</span></dt>
+    <dd>Something that used to work and quietly stopped. <span class="horse">A gap that opened where you had already mended it.</span></dd>
+
+    <dt>Continuous integration <span style="font-weight:400">(CI)</span> <span class="from">011</span></dt>
+    <dd>The machine running the round for you, on every single change. <span class="horse">Somebody rides the fence every time, without being asked.</span></dd>
+
+    <dt>Edge case <span class="from">011</span></dt>
+    <dd>The odd situation nobody thought about until it happened. <span class="horse">The corner of the field where the ground goes soft.</span></dd>
+
+    <dt>Authentication <span style="font-weight:400">(sign-in)</span> <span class="from new">012</span></dt>
+    <dd>Working out who somebody is. <span class="horse">The gate at the road, recognising a face.</span></dd>
+
+    <dt>Authorization <span class="from new">012</span></dt>
+    <dd>Working out what that person is allowed to do. A different question, and the one people skip. <span class="horse">Which gates on the property open for them.</span></dd>
+
+    <dt>Session <span class="from new">012</span></dt>
+    <dd>The thing that remembers it let you in ten minutes ago, so you are not asked again on every page. <span class="horse">The gateman knowing you are already in the yard.</span></dd>
+
+    <dt>Magic link <span class="from new">012</span></dt>
+    <dd>Signing in by clicking a one-time link sent to your own email. No password to forget or leak. <span class="horse">A one-time key posted to your own letterbox.</span></dd>
+
+    <dt>Transactional email <span class="from new">012</span></dt>
+    <dd>Mail your thing sends because something happened &mdash; a receipt, a confirmation, a reset. <span class="horse">The note the yard sends when the job is done.</span></dd>
+
+    <dt>Least privilege <span class="from new">012</span></dt>
+    <dd>Giving each person the smallest access that lets them do their job, and no more. <span class="horse">Not everybody needs a key to the feed store.</span></dd>
+  </dl>
+</section>
+<!-- ============================ ONE PAGE ============================ -->
+<section class="chapter" id="onepage">
+  <div class="chapter-head">
+    <div class="chapter-num">&#9733;</div>
+    <h2>Everything on one page</h2>
+    <p class="standfirst">If you photograph one thing today, photograph this.</p>
+  </div>
+
+  <div class="strip">
+    <div class="panel">
+      <svg viewBox="0 0 900 620" aria-hidden="true">
+        <path d="M180,540 L180,180 M720,540 L720,180" stroke="#5b4d3f" stroke-width="34" fill="none" stroke-linecap="round"/>
+        <path d="M200,260 L700,260 M200,380 L700,380 M200,500 L700,500" stroke="#5b4d3f" stroke-width="26" fill="none" stroke-linecap="round"/>
+        <path d="M200,500 L700,260" stroke="#5b4d3f" stroke-width="22" fill="none" stroke-linecap="round"/>
+        <circle cx="720" cy="320" r="46" fill="#b8391c"/><circle cx="720" cy="320" r="17" fill="#f4ede1"/>
+      </svg>
+      <h4>1 &middot; Who is it?</h4>
+      <p>Let somebody else check. You are not in the password business.</p>
+    </div>
+    <div class="panel">
+      <svg viewBox="0 0 900 620" aria-hidden="true">
+        <rect x="90" y="90" width="720" height="90" fill="#5b4d3f"/>
+        <rect x="90" y="180" width="720" height="90" fill="#f0d9cf" stroke="#b8391c" stroke-width="8"/>
+        <rect x="90" y="270" width="720" height="90" fill="#eadfcc" stroke="#c9b99f" stroke-width="4"/>
+        <rect x="90" y="360" width="720" height="90" fill="#f0d9cf" stroke="#b8391c" stroke-width="8"/>
+        <rect x="90" y="450" width="720" height="90" fill="#eadfcc" stroke="#c9b99f" stroke-width="4"/>
+      </svg>
+      <h4>2 &middot; Whose rows?</h4>
+      <p>Every question ends with &ldquo;and only this person's&rdquo;.</p>
+    </div>
+    <div class="panel">
+      <svg viewBox="0 0 900 620" aria-hidden="true">
+        <path d="M120,180 L780,180 L780,470 L120,470 Z" fill="#eadfcc" stroke="#5b4d3f" stroke-width="14"/>
+        <path d="M120,180 L450,360 L780,180" style="fill:none;stroke:#5b4d3f;stroke-width:14;stroke-linejoin:round"/>
+        <circle cx="700" cy="430" r="58" fill="#b8391c"/>
+        <path d="M672,430 L692,452 L730,406" style="fill:none;stroke:#f4ede1;stroke-width:16;stroke-linecap:round;stroke-linejoin:round"/>
+      </svg>
+      <h4>3 &middot; Did it arrive?</h4>
+      <p>Mail fails quietly. Put it on your list of checks.</p>
+    </div>
+    <div class="panel soon">
+      <span class="soon-tag">And that is the series</span>
+      <svg viewBox="0 0 900 620" aria-hidden="true">
+        <path d="M60,470 L840,470" stroke="#c9b99f" stroke-width="20" fill="none" stroke-linecap="round"/>
+        <path d="M120,470 L120,350 M240,470 L240,350 M360,470 L360,350 M480,470 L480,350 M600,470 L600,350 M720,470 L720,350"
+              stroke="#5b4d3f" stroke-width="26" fill="none" stroke-linecap="round"/>
+        <path d="M104,378 L136,378 M224,378 L256,378 M344,378 L376,378 M464,378 L496,378 M584,378 L616,378"
+              stroke="#5b4d3f" stroke-width="24" fill="none" stroke-linecap="round"/>
+        <path d="M704,378 L736,378" stroke="#b8391c" stroke-width="24" fill="none" stroke-linecap="round"/>
+      </svg>
+      <h4>4 &middot; Twelve markers</h4>
+      <p>Ordinary steps, taken in order. Go and build the thing.</p>
+    </div>
+  </div>
+
+  <p style="margin-top:2rem"><strong>And the sentence from today worth keeping:</strong> every question the well is asked must end with &ldquo;&mdash; and only this person's rows&rdquo;. Everything else in this session is a service you switch on. That one is a habit, and it is yours to keep.</p>
+</section>
+<!-- ============================ NEXT TIME ============================ -->
+<section class="nexttime" id="nexttime">
+  <span class="nt-label">That is the series</span>
+  <h2>Twelve of twelve</h2>
+  <p>Every session stays online, stays printable, and stays free. The class folder keeps a marker for the end of each one, so you can pick up anything you missed whenever it becomes useful rather than whenever it was taught. Nothing here expires.</p>
+  <p class="nt-take"><strong>The only thing left:</strong> go and build the small annoying thing you wrote down. Badly, at first, where only you can see it.</p>
+</section>
+<!-- ============================ BACK COVER ============================ -->
+<section class="backcover">
+  <div class="bc-inner">
+    <span class="bc-kicker">Want someone to hold the reins with you?</span>
+    <h2>I do this for a living, and love to help people.</h2>
+    <p>Thirty-plus years in enterprise software and a computer science degree — which mostly means I have watched a great many horses bolt, and I can usually tell you which ones are worth saddling before you spend money on the saddle.</p>
+
+    <div class="bc-grid">
+      <div>
+        <span class="bc-num">01</span>
+        <h3>In person</h3>
+        <p>Your team, your room, your actual work on the whiteboard instead of somebody else's examples.</p>
+      </div>
+      <div>
+        <span class="bc-num">02</span>
+        <h3>Over video</h3>
+        <p>The same session, at your desks, with fewer chairs to stack afterwards.</p>
+      </div>
+      <div>
+        <span class="bc-num">03</span>
+        <h3>Built for real</h3>
+        <p>When the idea survives the workshop and somebody has to go and build the thing — that part I do too.</p>
+      </div>
+    </div>
+
+    <p class="bc-fact">Fun fact — I rode to school on horseback as a kid in South Africa. So the metaphor isn't borrowed. I've done the falling off in person.</p>
+
+    <p class="bc-cta">
+      <span>Emile du Toit</span>
+      <a href="https://brainitconsulting.com">brainitconsulting.com</a>
+    </p>
+  </div>
+</section>
+
+<p class="colophon">
+  Workshop #012 &middot; Who&rsquo;s at the Gate<br>
+  &copy; 2026 Emile du Toit, BrainIT Consulting<br>
+  Print it, download it, share it with your team. Just leave my name on it.
+</p>
+
+</main>
+
+<script>
+// text size control — three steps up from the default
+(function(){
+  var level = 0, root = document.documentElement;
+  function apply(){
+    root.classList.remove('t-1','t-2','t-3');
+    if(level > 0) root.classList.add('t-' + level);
+  }
+  document.getElementById('bigger').onclick  = function(){ if(level < 3){ level++; apply(); } };
+  document.getElementById('smaller').onclick = function(){ if(level > 0){ level--; apply(); } };
+  document.getElementById('printbtn').onclick = function(){ window.print(); };
+
+  // A closed <details> prints as just its summary line, which would leave
+  // the demo steps out of the handout. Open them all before printing.
+  window.addEventListener('beforeprint', function(){
+    var d = document.querySelectorAll('details');
+    for (var i = 0; i < d.length; i++) d[i].open = true;
+  });
+})();
+</script>
+</body>
+</html>
